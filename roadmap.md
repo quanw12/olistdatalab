@@ -26,7 +26,7 @@ Không học trong tháng đầu: Kafka, Kubernetes, Terraform, nhiều cloud c�
 | Ngày | Chủ đề | Đầu ra |
 |---|---|---|
 | 01 | Python, file CSV, Git cơ bản | Chương trình làm sạch CSV thời tiết |
-| 02 | Python: hàm, dict, list, set, exception | Hoàn thiện và refactor chương trình ngày 1 |
+| 02 | Python: hàm, dict, list, set, exception | Báo cáo thời tiết nhỏ và hiểu/refactor chương trình ngày 1 |
 | 03 | Datetime, JSON, logging, cấu hình | Đọc JSON và ghi log có cấu trúc |
 | 04 | pandas: đọc, lọc, kiểu dữ liệu, missing values | Notebook làm sạch dữ liệu |
 | 05 | pandas: merge, groupby, kiểm tra kết quả | Báo cáo tổng hợp theo thành phố/ngày |
