@@ -36,7 +36,7 @@ def summarize_weather(rows):
     # TODO 6: return one dictionary with these keys:
     # row_count, cities, temperature_min_c, temperature_max_c, temperature_avg_c.
     result = {
-        "row_count": len(row), 
+        "row_count": len(rows), 
         "cities": sorted(cities), # sort lại vì set không đảm bảo thứ tự nên sắp xếp để output luôn ổn định
         "temperature_min_c": lowest_temperature, 
         "temperature_max_c": highest_temperature,
