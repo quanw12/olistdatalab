@@ -17,6 +17,7 @@ resources.md # Tài liệu ngoài được chọn theo từng giai đoạn
 day-01/     # Bài học, dữ liệu và code Ngày 1
 day-02/     # Python: hàm, list, set và dict
 day-03/     # JSON, datetime, cấu hình và log
+day-04/     # pandas: làm sạch dữ liệu theo cột
 ...
 ```
 
