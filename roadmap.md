@@ -28,7 +28,7 @@ Không học trong tháng đầu: Kafka, Kubernetes, Terraform, nhiều cloud c�
 | 01 | Python, file CSV, Git cơ bản | Chương trình làm sạch CSV thời tiết |
 | 02 | Python: hàm, dict, list, set, exception | Báo cáo thời tiết nhỏ và hiểu/refactor chương trình ngày 1 |
 | 03 | Datetime, JSON, logging, cấu hình | Đọc JSON và ghi log có cấu trúc |
-| 04 | pandas: đọc, lọc, kiểu dữ liệu, missing values | Notebook làm sạch dữ liệu |
+| 04 | pandas: đọc, lọc, kiểu dữ liệu, missing values | Script làm sạch dữ liệu theo cột |
 | 05 | pandas: merge, groupby, kiểm tra kết quả | Báo cáo tổng hợp theo thành phố/ngày |
 | 06 | CLI, environment variables, HTTP cơ bản | Script nhận tham số và gọi API nhỏ |
 | 07 | Ôn và mini-project 1 | Repository sạch, README, 5 test |
