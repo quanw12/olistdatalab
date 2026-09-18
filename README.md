@@ -19,6 +19,7 @@ day-02/     # Python: hàm, list, set và dict
 day-03/     # JSON, datetime, cấu hình và log
 day-04/     # pandas: làm sạch dữ liệu theo cột
 day-05/     # pandas: merge, groupby và kiểm tra kết quả
+day-06/     # CLI, environment variables và HTTP API
 ...
 ```
 
