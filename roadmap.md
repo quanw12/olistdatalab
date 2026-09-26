@@ -31,7 +31,7 @@ Không học trong tháng đầu: Kafka, Kubernetes, Terraform, nhiều cloud c�
 | 04 | pandas: đọc, lọc, kiểu dữ liệu, missing values | Script làm sạch dữ liệu theo cột |
 | 05 | pandas: merge, groupby, kiểm tra kết quả | Báo cáo tổng hợp thời tiết theo thành phố |
 | 06 | CLI, environment variables, HTTP cơ bản | Script CLI lấy thời tiết hiện tại từ API |
-| 07 | Ôn và mini-project 1 | Repository sạch, README, 5 test |
+| 07 | Ôn và mini-project 1 | Repository sạch, README và 5 quality checks |
 | 08 | PostgreSQL: bảng, kiểu dữ liệu, khóa và constraint | Schema dữ liệu thời tiết |
 | 09 | SQL: SELECT, WHERE, JOIN, GROUP BY | 10 truy vấn có lời giải thích |
 | 10 | SQL: CTE, CASE, date/time, subquery | 10 truy vấn nâng cao |

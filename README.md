@@ -20,6 +20,7 @@ day-03/     # JSON, datetime, cấu hình và log
 day-04/     # pandas: làm sạch dữ liệu theo cột
 day-05/     # pandas: merge, groupby và kiểm tra kết quả
 day-06/     # CLI, environment variables và HTTP API
+day-07/     # Mini-project 1: raw JSON thành weather record sạch
 ...
 ```
 
