@@ -1,35 +1,33 @@
-# Day 5 — Ghép dữ liệu và tạo báo cáo thành phố
+# Day 5 — Join data and build a city report
 
-## Mục tiêu hôm nay
+## Today's goal
 
-Ngày 4 tạo bảng thời tiết sạch. Ngày 5 thêm thông tin vùng miền từ một bảng tra cứu, rồi tổng hợp số liệu theo thành phố.
+Day 4 produced clean weather data. Today, add region information from a lookup table and summarize by city.
 
 ~~~text
 weather_clean.csv + city_lookup.csv
-             -> merge theo city
-             -> kiểm tra thành phố chưa có vùng
+             -> merge on city
+             -> detect cities without a region
              -> groupby region + city
              -> output/city_weather_summary.csv
 ~~~
 
-Trong hệ thống thật, `weather_clean.csv` sẽ là output từ Ngày 4. Bài hôm nay để sẵn bản sao dữ liệu sạch, nên bạn có thể chạy độc lập.
+In a real pipeline, `weather_clean.csv` would come from Day 4. Today's folder includes a copy so this exercise can run independently.
 
-## Học theo thứ tự này
+## Learning order
 
-1. Đọc [Bài học: merge, groupby và kiểm tra](lesson.md), mục 1 đến mục 6.
-2. Mở `weather_clean.csv` và `city_lookup.csv`. Nhìn xem key dùng để ghép là gì.
-3. Đọc `summary.py`, đặc biệt `main` để hiểu đầu vào và output.
-4. Hoàn thành 4 TODO trong `build_summary`.
-5. Khi kẹt, đọc [Gợi ý](help.md) theo đúng TODO.
-6. Chạy trong `C:\DE Courses\day-05`:
+1. Read [the merge and groupby lesson](lesson.md), sections 1–6.
+2. Open `weather_clean.csv` and `city_lookup.csv`. Identify the shared key.
+3. Read `summary.py`, especially `main`, to understand input and output.
+4. Complete the four TODOs in `build_summary`.
+5. Use the matching [hint](help.md) when stuck.
+6. Run from `C:\DE Courses\day-05`:
 
 ~~~powershell
 python summary.py
 ~~~
 
-## Kết quả cần có
-
-Terminal phải có:
+## Expected results
 
 ~~~text
 weather rows: 4
@@ -37,7 +35,7 @@ city lookup rows: 3
 summary rows: 2
 ~~~
 
-File `output/city_weather_summary.csv`:
+`output/city_weather_summary.csv`:
 
 ~~~csv
 region,city,observation_count,avg_temperature_c,min_temperature_c,max_temperature_c,avg_humidity_pct
@@ -45,26 +43,26 @@ Central,Da Nang,2,29.8,29.5,30.1,79.5
 North,Hanoi,2,32.6,31.2,34.1,75.0
 ~~~
 
-## Data contract của báo cáo
+## Report data contract
 
-Mỗi dòng output đại diện cho **một thành phố trong một vùng**. Đây gọi là grain của bảng tổng hợp.
+Each output row represents **one city in one region**. This is the summary table's **grain**.
 
-| Cột | Ý nghĩa |
+| Column | Meaning |
 |---|---|
-| `region`, `city` | nhóm được tổng hợp |
-| `observation_count` | số quan sát thời tiết trong nhóm |
-| `avg_temperature_c` | nhiệt độ trung bình |
-| `min_temperature_c`, `max_temperature_c` | nhiệt độ thấp/cao nhất |
-| `avg_humidity_pct` | độ ẩm trung bình |
+| `region`, `city` | Group being summarized |
+| `observation_count` | Number of weather observations in the group |
+| `avg_temperature_c` | Mean temperature |
+| `min_temperature_c`, `max_temperature_c` | Lowest/highest temperature |
+| `avg_humidity_pct` | Mean humidity |
 
-Hai kiểm tra chất lượng bắt buộc:
+Two required quality checks:
 
-1. Sau merge, không được có `region` bị thiếu.
-2. Tổng `observation_count` phải bằng số hàng dữ liệu thời tiết sau merge.
+1. No missing `region` after merging.
+2. The sum of `observation_count` equals the number of merged weather rows.
 
 ## Git checkpoint
 
-Khi output đúng:
+When the output is correct, run from `C:\DE Courses`:
 
 ~~~powershell
 git add README.md roadmap.md day-05
@@ -72,9 +70,9 @@ git commit -m "feat(day-05): summarize weather by city"
 git push
 ~~~
 
-## Gửi mình sau khi xong
+## Send after finishing
 
-1. Toàn bộ output của `python summary.py`.
-2. Nội dung `output/city_weather_summary.csv`.
-3. Phần thân hàm `build_summary`.
-4. Một câu: vì sao `how="left"` phù hợp hơn `how="inner"` khi ta muốn phát hiện thành phố thiếu trong bảng tra cứu?
+1. Full output from `python summary.py`.
+2. Contents of `output/city_weather_summary.csv`.
+3. Your `build_summary` function body.
+4. Why is `how="left"` better than `how="inner"` when detecting cities missing from the lookup?

@@ -1,43 +1,42 @@
-# Day 3 — JSON, datetime, cấu hình và log
-## Mục tiêu hôm nay
+# Day 3 — JSON, datetime, configuration, and logs
 
-Đọc một file JSON mô phỏng phản hồi từ API thời tiết, lấy các trường cần thiết, kiểm tra nhiệt độ theo file cấu hình, rồi tạo:
+## Today's goal
 
-1. `output/weather_snapshot.json` — bản ghi đã chuẩn hóa.
-2. Một log JSON trên terminal — cho biết pipeline đã ghi thành công.
+Read a JSON file that simulates a weather API response. Extract the fields you need, check temperature against a configuration file, and produce:
 
-Pipeline hôm nay:
+1. `output/weather_snapshot.json` — a normalized record.
+2. A JSON log in the terminal — confirming that the pipeline wrote the output.
 
 ~~~text
 weather_response.json + settings.json
-             -> đọc và chuẩn hóa
+             -> read and normalize
              -> weather_snapshot.json + JSON log
 ~~~
 
-Ngày 15, file `weather_response.json` sẽ được thay bằng API thật. Logic đọc JSON, kiểm tra và ghi output vẫn giống như hôm nay.
+In Day 15, a live API will replace `weather_response.json`. The parsing, validation, and output logic will stay similar.
 
-## Học theo thứ tự này
+## Learning order
 
-1. Đọc [Bài học](lesson.md), mục 1 đến mục 6.
-2. Mở `weather_response.json` và `settings.json`. Đọc cấu trúc bằng mắt trước.
-3. Mở `extract.py`. Đọc các hàm đã có: `load_json`, `write_json`, `log_event` và `main`.
-4. Hoàn thành riêng hàm `build_snapshot` theo 5 TODO. Làm tuần tự, không viết tất cả một lượt.
-5. Nếu kẹt, xem [Gợi ý](help.md) đúng phần TODO đó.
-6. Trong PowerShell tại `C:\DE Courses\day-03`, chạy:
+1. Read [lesson.md](lesson.md), sections 1–6.
+2. Open `weather_response.json` and `settings.json`. Inspect their structure first.
+3. Read the existing functions in `extract.py`: `load_json`, `write_json`, `log_event`, and `main`.
+4. Complete the five TODOs in `build_snapshot`, one at a time.
+5. When stuck, read the matching [hint](help.md).
+6. Run from PowerShell in `C:\DE Courses\day-03`:
 
 ~~~powershell
 python extract.py
 ~~~
 
-## Kết quả cần có
+## Expected results
 
-Terminal có một dòng JSON với các key `event`, `logged_at` và `details`. Giá trị `logged_at` thay đổi theo lúc chạy.
+The terminal shows one JSON line with `event`, `logged_at`, and `details`. `logged_at` changes each time you run it.
 
 ~~~text
 {"event": "snapshot_written", "logged_at": "...", "details": {"city": "Ho Chi Minh City", "observed_at": "2026-09-13T09:00:00"}}
 ~~~
 
-Mở `output/weather_snapshot.json`. Nội dung phải chứa:
+Open `output/weather_snapshot.json`. It should contain:
 
 ~~~json
 {
@@ -50,17 +49,17 @@ Mở `output/weather_snapshot.json`. Nội dung phải chứa:
 }
 ~~~
 
-## Checklist hoàn thành
+## Completion checklist
 
-- [ ] Phân biệt được JSON object, JSON array và chuỗi JSON.
-- [ ] Lấy được `payload["current"]["temperature_2m"]`.
-- [ ] Giải thích được vì sao đổi text thời gian thành `datetime` rồi lại ghi ra text ISO.
-- [ ] Biết `settings.json` thay đổi luật mà không cần đổi code.
-- [ ] Chạy ra output JSON và log JSON đúng cấu trúc.
+- [ ] Distinguish a JSON object, array, and JSON text string.
+- [ ] Access `payload["current"]["temperature_2m"]`.
+- [ ] Explain why you parse time text into datetime, then write ISO text again.
+- [ ] Explain how `settings.json` changes rules without changing code.
+- [ ] Produce the expected output record and log structure.
 
 ## Git checkpoint
 
-Khi hoàn thành Ngày 2 và Ngày 3:
+After completing Days 2 and 3, run from `C:\DE Courses`:
 
 ~~~powershell
 git add day-02 day-03 README.md roadmap.md
@@ -68,9 +67,9 @@ git commit -m "feat(day-03): add JSON weather snapshot exercise"
 git push
 ~~~
 
-## Gửi mình sau khi xong
+## Send after finishing
 
-1. Toàn bộ dòng log từ `python extract.py`.
-2. Nội dung `output/weather_snapshot.json`.
-3. Phần thân hàm `build_snapshot`.
-4. Một câu: tại sao `settings.json` hữu ích hơn việc ghi cứng giới hạn nhiệt độ trong code?
+1. The full log line from `python extract.py`.
+2. Contents of `output/weather_snapshot.json`.
+3. Your `build_snapshot` function body.
+4. One sentence: why is `settings.json` useful compared with hard-coding temperature limits?

@@ -1,17 +1,17 @@
-# Gợi ý Ngày 2
+# Day 2 hints
 
-Chỉ mở đúng phần TODO đang kẹt. Tự gõ lại từng dòng để biết biến nào đang chứa giá trị gì.
+Open only the TODO you are stuck on. Type each line yourself and track what each variable contains.
 
-## TODO 1 và 2: hai vùng nhớ rỗng
+## TODOs 1 and 2: empty collections
 
 ~~~python
 temperatures = []
 cities = set()
 ~~~
 
-`[]` tạo list rỗng. `set()` tạo set rỗng; không dùng `{}` vì `{}` là dictionary rỗng.
+`[]` creates an empty list. `set()` creates an empty set; `{}` creates an empty dictionary.
 
-## TODO 3: đi qua từng hàng
+## TODO 3: visit each row
 
 ~~~python
 for row in rows:
@@ -19,22 +19,22 @@ for row in rows:
     temperature_c = row["temperature_c"]
 ~~~
 
-`row` là biến tạm. Sau mỗi lượt lặp, nó trỏ sang dictionary kế tiếp trong `rows`.
+`row` is a temporary variable. Each iteration assigns the next dictionary in `rows` to it.
 
-## TODO 4: thêm dữ liệu
+## TODO 4: collect values
 
-Đặt các dòng này **bên trong** vòng lặp, cùng mức thụt lề với hai dòng lấy dữ liệu:
+Place these **inside** the loop, at the same indentation as the two lookup lines:
 
 ~~~python
 cities.add(city)
 temperatures.append(temperature_c)
 ~~~
 
-`cities.add` tự bỏ tên thành phố lặp. `temperatures.append` giữ mọi nhiệt độ vì mỗi giá trị đều là một quan sát cần tính.
+The set keeps each city name once. The list keeps every temperature because each is an observation used in the calculation.
 
-## TODO 5: tính các số
+## TODO 5: calculate statistics
 
-Đặt phần này **sau** vòng lặp, nghĩa là thụt lề 4 dấu cách trong hàm:
+Place this **after** the loop, at the function body's indentation level (four spaces):
 
 ~~~python
 lowest_temperature = min(temperatures)
@@ -42,9 +42,9 @@ highest_temperature = max(temperatures)
 average_temperature = round(sum(temperatures) / len(temperatures), 1)
 ~~~
 
-Tại đây `temperatures` có 5 số, nên chia cho `len(temperatures)` là tính trung bình.
+The list now contains five numbers. Their sum divided by their count gives the mean.
 
-## TODO 6: trả về báo cáo
+## TODO 6: return the report
 
 ~~~python
 return {
@@ -56,31 +56,31 @@ return {
 }
 ~~~
 
-`sorted(cities)` biến set thành list có thứ tự để output lần nào cũng giống nhau.
+`sorted(cities)` produces an ordered list so the output is consistent.
 
-## Nếu thấy lỗi
+## Troubleshooting
 
-| Lỗi | Nguyên nhân hay gặp | Cách sửa |
+| Error or symptom | Common cause | Fix |
 |---|---|---|
-| `NameError: temperatures is not defined` | Chưa tạo list hoặc tạo sai mức thụt lề | Đặt `temperatures = []` ngay trong `summarize_weather`, trước `for` |
-| `KeyError: ...` | Gõ sai tên key | Chỉ dùng `"city"` và `"temperature_c"` |
-| `TypeError: 'NoneType' object is not subscriptable` | Hàm chưa `return` dictionary | Hoàn thành TODO 6 và xóa `pass` |
-| `IndentationError` | Các dòng trong cùng block không thụt lề giống nhau | Dùng 4 spaces; không trộn tab và spaces |
-| Trung bình sai | `append` ở ngoài vòng lặp hoặc quên chia cho số dòng | So lại TODO 4 và TODO 5 |
+| `NameError: temperatures is not defined` | Missing list or wrong scope | Create it inside `summarize_weather`, before `for` |
+| `KeyError: ...` | Misspelled key | Use `"city"` and `"temperature_c"` |
+| `TypeError: 'NoneType' object is not subscriptable` | Function does not return a dictionary | Complete TODO 6 and remove `pass` |
+| `IndentationError` | Inconsistent block indentation | Use four spaces; do not mix tabs and spaces |
+| Incorrect average | Append outside the loop, or missing division | Check TODOs 4 and 5 |
 
-## Tự trace bằng tay
+## Trace by hand
 
-Ở lượt lặp đầu tiên:
+First iteration:
 
 ~~~python
 row = {"city": "Hanoi", "temperature_c": 31.2}
 ~~~
 
-Sau hai lệnh thêm dữ liệu:
+After collecting the values:
 
 ~~~python
 cities        # {"Hanoi"}
 temperatures  # [31.2]
 ~~~
 
-Ở lượt thứ hai, `"Da Nang"` và `30.1` được thêm vào. Sau 5 lượt, list có 5 nhiệt độ, còn set chỉ có 3 tên thành phố.
+The second iteration adds `"Da Nang"` and `30.1`. After five iterations, the list has five temperatures and the set has three city names.

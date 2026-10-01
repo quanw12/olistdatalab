@@ -1,31 +1,31 @@
-# Day 6 — CLI, environment variable và HTTP API
+# Day 6 — CLI, environment variables, and HTTP APIs
 
-## Mục tiêu hôm nay
+## Today's goal
 
-Lấy thời tiết hiện tại từ API công khai Open-Meteo bằng script Python.
+Fetch current weather from the public Open-Meteo API using Python.
 
 ~~~text
-tham số terminal + WEATHER_TIMEOUT_SECONDS
-              -> HTTP GET với timeout
-              -> kiểm tra HTTP status + JSON response
+terminal arguments + WEATHER_TIMEOUT_SECONDS
+              -> HTTP GET with timeout
+              -> check HTTP status + JSON response
               -> output/weather_api_response.json
 ~~~
 
-Không cần API key cho bài này. `WEATHER_TIMEOUT_SECONDS` là environment variable để bạn học cách đưa cấu hình nằm ngoài code.
+This exercise does not need an API key. `WEATHER_TIMEOUT_SECONDS` lets you practise configuration outside the code.
 
-## Học theo thứ tự này
+## Learning order
 
-1. Đọc [Bài học](lesson.md), mục 1 đến mục 6.
-2. Đọc `fetch_weather.py`. Xem trước hàm `parse_args` và `main`.
-3. Hoàn thành 4 TODO trong `fetch_current_weather`.
-4. Nếu vướng, xem [Gợi ý](help.md).
-5. Trong `C:\DE Courses\day-06`, chạy với cấu hình timeout mặc định:
+1. Read [lesson.md](lesson.md), sections 1–6.
+2. Read `parse_args` and `main` in `fetch_weather.py`.
+3. Complete the four TODOs in `fetch_current_weather`.
+4. Use [help.md](help.md) when stuck.
+5. Run with the default timeout from `C:\DE Courses\day-06`:
 
 ~~~powershell
 python fetch_weather.py
 ~~~
 
-6. Thử một thành phố khác:
+6. Try another city:
 
 ~~~powershell
 python fetch_weather.py --city "Da Nang" --latitude 16.0544 --longitude 108.2022
@@ -33,18 +33,16 @@ python fetch_weather.py --city "Da Nang" --latitude 16.0544 --longitude 108.2022
 
 ## Environment variable
 
-Đặt timeout 15 giây cho **PowerShell hiện tại**:
+Set a 15-second timeout in the **current PowerShell session**:
 
 ~~~powershell
 $env:WEATHER_TIMEOUT_SECONDS = "15"
 python fetch_weather.py
 ~~~
 
-Đóng terminal rồi mở lại thì biến này không còn. Đây là chủ ý: cấu hình môi trường hiện tại không được lưu vào Git.
+This assignment does not persist after closing the terminal. The session's configuration is not stored in Git.
 
-## Kết quả cần có
-
-Terminal sẽ in:
+## Expected results
 
 ~~~text
 city: Ho Chi Minh City
@@ -52,28 +50,28 @@ current weather: {...}
 wrote: output\weather_api_response.json
 ~~~
 
-Nhiệt độ và thời điểm trong `current weather` thay đổi theo dữ liệu API lúc bạn chạy. Mở `output/weather_api_response.json` và kiểm tra:
+Temperature and observation time change with the live API data. Open `output/weather_api_response.json` and check for:
 
-- Có `city` và `requested_at`.
-- Có `request` ghi tọa độ, timezone và biến current đã yêu cầu.
-- Có `response.current`.
+- `city` and `requested_at`.
+- `request` containing coordinates, timezone, and requested current variables.
+- `response.current`.
 
-## Khi mạng hoặc API lỗi
+## Network and API failures
 
-Script cần báo lỗi rõ thay vì ghi file JSON rỗng:
+The script should report an error instead of writing an empty JSON file.
 
-| Hiện tượng | Ý nghĩa |
+| Error | Meaning |
 |---|---|
-| `Timeout` | API phản hồi quá lâu theo giới hạn cấu hình |
-| `HTTPError` | Server trả status lỗi như 4xx hoặc 5xx |
-| `ConnectionError` | Máy không kết nối được endpoint |
-| `ValueError: response has no current weather` | JSON trả về không đúng data contract bài này |
+| `Timeout` | Request exceeded a configured waiting limit |
+| `HTTPError` | Server returned an error status, such as 4xx or 5xx |
+| `ConnectionError` | Cannot connect to the endpoint |
+| `ValueError: response has no current weather` | JSON violates this exercise's contract |
 
-Không thêm vòng lặp retry hôm nay. Retry cần thiết trong pipeline thật, nhưng phải có giới hạn và quy tắc rõ; ta sẽ quay lại ở Ngày 15.
+Do not add retries today. Real pipelines need bounded retries with clear rules; we return to them in Day 15.
 
 ## Git checkpoint
 
-Khi script chạy đúng:
+When the script works, run from `C:\DE Courses`:
 
 ~~~powershell
 git add README.md roadmap.md requirements.txt day-06
@@ -81,9 +79,9 @@ git commit -m "feat(day-06): fetch weather with CLI"
 git push
 ~~~
 
-## Gửi mình sau khi xong
+## Send after finishing
 
-1. Toàn bộ terminal output của một lần chạy thành công.
-2. Phần `request` và `response.current` từ file output.
-3. Phần thân hàm `fetch_current_weather`.
-4. Một câu: vì sao dùng `params=...` tốt hơn tự nối query string vào URL?
+1. Full terminal output from one successful run.
+2. The output file's request and response.current sections.
+3. Your `fetch_current_weather` function body.
+4. Why use `params=...` instead of manually building a URL query string?

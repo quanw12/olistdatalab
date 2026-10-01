@@ -1,6 +1,6 @@
-# Gợi ý Ngày 7
+# Day 7 hints
 
-Hoàn thành `build_clean_record` trước, rồi mới làm `validate_record`.
+Complete `build_clean_record` before `validate_record`.
 
 ## build_clean_record
 
@@ -44,20 +44,20 @@ if not 0 <= record["humidity_pct"] <= 100:
 return errors
 ~~~
 
-## Debug có kiểm soát
+## Debug deliberately
 
-Trước `return` trong `build_clean_record`, có thể tạm thêm:
+Before return in build_clean_record, temporarily add:
 
 ~~~python
 print(response)
 print(current)
 ~~~
 
-Trước `if errors` trong `main`, có thể in:
+Before `if errors` in main:
 
 ~~~python
 print(clean_record)
 print(errors)
 ~~~
 
-Khi hiểu xong, xóa các `print` debug để terminal chỉ hiện report cuối.
+Once you understand the values, remove debug prints so only the final report remains.

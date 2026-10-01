@@ -1,24 +1,24 @@
-# Bài học Ngày 5: merge, groupby và kiểm tra dữ liệu
+# Day 5 lesson: merge, groupby, and data checks
 
-## 1. Hai bảng, hai mục đích
+## 1. Two tables with different jobs
 
-`weather_clean.csv` có các sự kiện thời tiết:
+`weather_clean.csv` stores weather observations:
 
 | city | observed_at | temperature_c | humidity_pct |
 |---|---|---:|---:|
 | Hanoi | 2026-09-14 | 31.2 | 78 |
 | Da Nang | 2026-09-14 | 30.1 | 81 |
 
-`city_lookup.csv` có thông tin dùng chung theo thành phố:
+`city_lookup.csv` stores shared city information:
 
 | city | region |
 |---|---|
 | Hanoi | North |
 | Da Nang | Central |
 
-Không nên lặp `region` trong nguồn dữ liệu thời tiết nếu nó có thể được tra bằng `city`. Ta ghép hai bảng bằng key chung `city`.
+You can look up region by city instead of repeating it in the weather source. Join the tables using their shared `city` key.
 
-## 2. `merge` là gì?
+## 2. What does merge do?
 
 ~~~python
 enriched_df = weather_df.merge(
@@ -29,28 +29,26 @@ enriched_df = weather_df.merge(
 )
 ~~~
 
-Đọc từng phần:
-
-| Phần | Nghĩa |
+| Part | Meaning |
 |---|---|
-| `weather_df.merge(city_df, ...)` | ghép bảng tra cứu vào bảng thời tiết |
-| `on="city"` | dùng city làm key |
-| `how="left"` | giữ tất cả hàng của weather_df |
-| `validate="many_to_one"` | nhiều hàng thời tiết được ghép với tối đa một hàng lookup |
+| `weather_df.merge(city_df, ...)` | Adds lookup data to weather rows |
+| `on="city"` | Uses city as the matching key |
+| `how="left"` | Keeps every weather row |
+| `validate="many_to_one"` | Each weather row can match at most one lookup row |
 
-Sau merge, mỗi dòng thời tiết có thêm cột `region`.
+The merged weather rows now include region.
 
-### Vì sao là `left` join?
+### Why a left join?
 
-Nếu `weather_df` có city mới mà `city_df` chưa có, `left` join vẫn giữ dòng thời tiết và đặt `region` là missing. Pipeline nhờ đó phát hiện được vấn đề.
+When a weather city is absent from the lookup, a left join keeps that observation with a missing region. The pipeline can detect the problem.
 
-`inner` join sẽ im lặng bỏ hẳn dòng không có match. Báo cáo có vẻ chạy bình thường, nhưng dữ liệu bị mất.
+An inner join drops unmatched rows. The report may look successful while losing data.
 
-### Vì sao có `validate`?
+### Why validate the relationship?
 
-Nếu lookup vô tình có hai dòng cho `Hanoi`, một hàng weather có thể bị nhân thành hai hàng sau merge. `validate="many_to_one"` khiến pandas báo lỗi thay vì âm thầm tạo báo cáo sai.
+Two lookup rows for Hanoi could duplicate every Hanoi weather row during the merge. `validate="many_to_one"` raises an error instead of silently producing an incorrect report.
 
-## 3. Kiểm tra ngay sau merge
+## 3. Check immediately after merging
 
 ~~~python
 missing_region = enriched_df["region"].isna()
@@ -60,20 +58,20 @@ if missing_region.any():
     raise ValueError(f"city lookup is missing: {unknown_cities.tolist()}")
 ~~~
 
-- `isna()` tạo mask True/False.
-- `any()` là True khi có ít nhất một giá trị True.
-- `.loc[mask, "city"]` lấy city của những dòng bị thiếu region.
-- `unique()` bỏ city lặp để thông báo lỗi ngắn hơn.
+- `isna()` creates a Boolean mask.
+- `any()` is true if at least one value is true.
+- `.loc[mask, "city"]` selects cities with missing regions.
+- `unique()` removes repeated city names from the error message.
 
-Đây là một data-quality check: đừng tạo báo cáo khi dữ liệu chưa có ngữ cảnh cần thiết.
+This quality check prevents reporting on data without its required context.
 
-## 4. `groupby`: tạo các nhóm
+## 4. Groupby: form groups
 
 ~~~python
 enriched_df.groupby(["region", "city"], as_index=False)
 ~~~
 
-Lệnh này chia dữ liệu thành nhóm. Mỗi nhóm có cùng `region` và `city`. Nó chưa tính kết quả; ta thêm `agg`:
+Rows in each group share region and city. Add `agg` to calculate results:
 
 ~~~python
 summary_df = (
@@ -88,59 +86,59 @@ summary_df = (
 )
 ~~~
 
-Đây là **named aggregation**. Dạng chung:
+This is **named aggregation**. Its general form is:
 
 ~~~python
-ten_cot_output=("cot_input", "phep_tinh")
+output_column=("input_column", "operation")
 ~~~
 
-Ví dụ `("temperature_c", "mean")` nghĩa là lấy trung bình cột `temperature_c` trong từng nhóm.
+For example, `("temperature_c", "mean")` calculates the group's mean temperature.
 
-## 5. Làm tròn, sắp xếp và kiểm tra tổng
+## 5. Round, sort, and check totals
 
-Mean thường có nhiều chữ số thập phân. Báo cáo dễ đọc hơn khi làm tròn:
+Round means for readability:
 
 ~~~python
 summary_df["avg_temperature_c"] = summary_df["avg_temperature_c"].round(1)
 summary_df["avg_humidity_pct"] = summary_df["avg_humidity_pct"].round(1)
 ~~~
 
-Sắp xếp để file luôn có cùng thứ tự:
+Sort for consistent output order:
 
 ~~~python
 summary_df = summary_df.sort_values(["region", "city"]).reset_index(drop=True)
 ~~~
 
-`reset_index(drop=True)` tạo index 0, 1, ... mới. `drop=True` không giữ index cũ thành cột.
+`reset_index(drop=True)` creates a new 0, 1, ... index without keeping the old index as a column.
 
-Cuối cùng, tổng số quan sát trong báo cáo phải bằng số dòng đã ghép:
+The report's observation total must equal the merged row count:
 
 ~~~python
 if summary_df["observation_count"].sum() != len(enriched_df):
     raise ValueError("summary observation count does not match input rows")
 ~~~
 
-Đây không chứng minh báo cáo hoàn hảo, nhưng nó bắt được một loại lỗi phổ biến: vô tình làm mất hoặc nhân bản hàng trong quá trình tổng hợp.
+This is one consistency check, not proof that the whole report is correct. Use it together with merge validation and the missing-region check.
 
-## 6. Luồng của bài
+## 6. Exercise flow
 
 ~~~text
 main
-  -> đọc weather_clean.csv và city_lookup.csv
+  -> read weather_clean.csv and city_lookup.csv
   -> build_summary
        -> merge
-       -> kiểm tra missing region
+       -> check missing regions
        -> groupby + agg
-       -> làm tròn + sắp xếp
-       -> kiểm tra tổng quan sát
-  -> ghi CSV summary
-  -> in report
+       -> round + sort
+       -> check observation total
+  -> write summary CSV
+  -> print report
 ~~~
 
-## 7. Tài liệu ngoài
+## 7. References
 
-- [pandas `merge` API](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html)
-- [pandas `merge` user guide](https://pandas.pydata.org/docs/user_guide/merging.html)
-- [pandas `groupby` user guide](https://pandas.pydata.org/docs/user_guide/groupby.html)
+- [pandas merge API](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html)
+- [pandas merge guide](https://pandas.pydata.org/docs/user_guide/merging.html)
+- [pandas groupby guide](https://pandas.pydata.org/docs/user_guide/groupby.html)
 
-Chỉ cần hiểu `left merge`, `validate`, `groupby` và `agg` cho bài này. Chưa cần học nhiều kiểu join hoặc pivot table.
+Focus on left merge, validate, groupby, and agg. Other join types and pivot tables can wait.

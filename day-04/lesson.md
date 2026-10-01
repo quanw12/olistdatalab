@@ -1,20 +1,20 @@
-# Bài học Ngày 4: pandas cho làm sạch dữ liệu theo cột
+# Day 4 lesson: clean whole columns with pandas
 
-## 1. Vì sao dùng pandas?
+## 1. Why pandas?
 
-Ở Ngày 1, bạn đọc từng row của CSV rồi dùng `for`, `if` và `set` để xử lý. Cách đó rất tốt để hiểu logic pipeline.
+Day 1 used for loops, conditions, and a set to clean one CSV row at a time. That is useful for understanding pipeline logic.
 
-Pandas phù hợp khi dữ liệu là một bảng. Thay vì nói “lấy một dòng rồi kiểm tra”, ta nói “chuyển cả cột này thành số” hoặc “giữ các dòng thỏa tất cả điều kiện”.
+Pandas works well with tables. Instead of processing one row, you can say "convert this whole column to numbers" or "keep rows that satisfy all conditions".
 
 ~~~text
 CSV                 DataFrame
-city,temperature    một bảng có cột và hàng
-Hanoi,31.2          có thể lọc/xử lý theo cả cột
+city,temperature    a table of rows and columns
+Hanoi,31.2          filter and process whole columns
 ~~~
 
-Pandas không thay thế tư duy data contract. Nó chỉ làm thao tác bảng ngắn hơn và ít vòng lặp hơn.
+Pandas makes table operations shorter; you still need a data contract.
 
-## 2. DataFrame và Series
+## 2. DataFrame and Series
 
 ~~~python
 import pandas as pd
@@ -22,15 +22,15 @@ import pandas as pd
 df = pd.read_csv("messy_weather.csv")
 ~~~
 
-`df` là một **DataFrame**: toàn bộ bảng. Lấy một cột:
+`df` is a **DataFrame**, the whole table. Select a column:
 
 ~~~python
 temperature = df["temperature_c"]
 ~~~
 
-`temperature` là một **Series**: một danh sách có nhãn, tương ứng với cột `temperature_c`.
+`temperature` is a **Series**, a labelled sequence corresponding to that column.
 
-Ba lệnh nên dùng khi mở một file chưa quen:
+Inspect unfamiliar data:
 
 ~~~python
 print(df.head())
@@ -38,13 +38,13 @@ print(df.dtypes)
 print(df.info())
 ~~~
 
-- `head()` xem vài dòng đầu.
-- `dtypes` xem pandas đang hiểu kiểu dữ liệu mỗi cột.
-- `info()` cho biết số dòng non-null và kiểu dữ liệu.
+- `head()` shows the first few rows.
+- `dtypes` shows the current column types.
+- `info()` reports non-null counts and types.
 
-## 3. Missing value và `NaN`
+## 3. Missing values and NaN
 
-CSV không có kiểu dữ liệu thật. Một ô trống hoặc giá trị không đổi được sang số có thể trở thành `NaN` trong pandas. `NaN` nghĩa là “giá trị số bị thiếu hoặc không hợp lệ”.
+CSV is text. An empty cell or an unparseable numeric value may become NaN in pandas, marking a missing numeric value.
 
 ~~~python
 pd.isna(df["temperature_c"])
@@ -52,27 +52,27 @@ df["temperature_c"].isna()
 df["temperature_c"].notna()
 ~~~
 
-Kết quả là một Series True/False theo từng dòng.
+These produce a True/False Series.
 
-| Giá trị trong CSV | Sau khi chuyển số với `errors="coerce"` |
+| CSV value | After numeric conversion with errors="coerce" |
 |---|---|
 | `31.2` | `31.2` |
-| `not_available` | `NaN` |
-| ô trống | `NaN` |
+| `not_available` | NaN |
+| Empty cell | NaN |
 
-Điều này cho pipeline cơ hội xử lý lỗi theo quy tắc của mình, thay vì dừng ngay ở dòng lỗi đầu tiên.
+Your pipeline can then apply its own rejection rules instead of stopping at the first bad value.
 
-## 4. Chuẩn hóa cột
+## 4. Normalize columns
 
-### Dọn text
+### Clean text
 
 ~~~python
 df["city"] = df["city"].str.strip()
 ~~~
 
-`df["city"]` lấy Series thành phố. `.str` mở các method text cho cả cột; `.strip()` xóa khoảng trắng đầu/cuối của từng giá trị.
+`.str` provides string methods for the Series. `.strip()` removes surrounding whitespace from each value.
 
-### Đổi số
+### Convert numbers
 
 ~~~python
 df["temperature_c"] = pd.to_numeric(
@@ -81,9 +81,9 @@ df["temperature_c"] = pd.to_numeric(
 )
 ~~~
 
-Không dùng `float(...)` ở đây vì `float` chỉ đổi được một giá trị. `pd.to_numeric` đổi toàn bộ Series.
+`float(...)` converts one value; `pd.to_numeric` converts the whole Series.
 
-### Đổi ngày
+### Convert dates
 
 ~~~python
 df["observed_at"] = pd.to_datetime(
@@ -93,24 +93,22 @@ df["observed_at"] = pd.to_datetime(
 )
 ~~~
 
-Sau dòng này, ngày hợp lệ trở thành kiểu pandas datetime; ngày thiếu hoặc sai trở thành `NaT`, nghĩa là missing datetime.
+Valid dates become pandas datetime values. Missing or invalid dates become NaT, the missing datetime marker.
 
-## 5. Boolean mask: điều kiện cho cả cột
+## 5. Boolean masks: conditions for a column
 
-Trong Python thường:
+Ordinary Python checks a single value:
 
 ~~~python
 if 0 <= humidity <= 100:
     ...
 ~~~
 
-Trong pandas, điều kiện đó áp dụng cho cả Series:
+Pandas applies a condition to a Series:
 
 ~~~python
 df["humidity_pct"].between(0, 100)
 ~~~
-
-Kết quả có dạng:
 
 ~~~text
 0     True
@@ -119,7 +117,7 @@ Kết quả có dạng:
 ...
 ~~~
 
-Nối nhiều điều kiện bằng `&`. Mỗi điều kiện phải nằm trong ngoặc:
+Combine conditions with `&`. Use parentheses around the combined expression; comparison expressions need parentheses when combined with these operators.
 
 ~~~python
 valid_rows = (
@@ -130,27 +128,25 @@ valid_rows = (
 )
 ~~~
 
-Đây là một **mask**: `True` cho dòng được giữ, `False` cho dòng bị loại.
+The **mask** is True for accepted rows and False for rejected rows.
 
-Đếm dòng invalid:
+Count invalid rows:
 
 ~~~python
 invalid_rows = int((~valid_rows).sum())
 ~~~
 
-`~` đảo mask: True thành False và ngược lại. Với Boolean trong Python, `True` được tính như 1, `False` như 0, nên `sum()` đếm số dòng True.
+`~` reverses the mask. Summing Boolean values counts True values, because True contributes 1 and False contributes 0.
 
-## 6. Lọc, copy và bỏ trùng
-
-Lọc DataFrame bằng `.loc`:
+## 6. Filter, copy, and remove duplicates
 
 ~~~python
 candidate_df = df.loc[valid_rows].copy()
 ~~~
 
-`.loc[valid_rows]` giữ các dòng có mask True. `copy()` tạo bảng mới độc lập, giúp bạn có thể sửa bảng lọc mà không vô tình sửa `df` gốc.
+`.loc[valid_rows]` selects rows marked True. `copy()` gives you a separate table to modify without changing the original.
 
-Bỏ trùng theo city và ngày:
+Deduplicate by city and date:
 
 ~~~python
 before_deduplicate = len(candidate_df)
@@ -161,52 +157,52 @@ clean_df = candidate_df.drop_duplicates(
 duplicate_rows = before_deduplicate - len(clean_df)
 ~~~
 
-`subset` chỉ định cột tạo khóa trùng. `keep="first"` giữ dòng hợp lệ xuất hiện đầu tiên, giống quy tắc Ngày 1.
+`subset` defines the duplicate key. `keep="first"` keeps the first valid occurrence, matching Day 1's rule.
 
-## 7. Chuẩn bị output
+## 7. Prepare output
 
-Ở thời điểm này `observed_at` là datetime. CSV nên có text ngày rõ ràng:
+Convert datetime values to clear date text:
 
 ~~~python
 clean_df["observed_at"] = clean_df["observed_at"].dt.strftime("%Y-%m-%d")
 ~~~
 
-Ghi CSV:
+Write CSV:
 
 ~~~python
 clean_df.to_csv(output_path, index=False)
 ~~~
 
-`index=False` quan trọng: nó không ghi thêm cột đánh số 0, 1, 2... của pandas vào file.
+`index=False` prevents pandas from writing its row index as an extra CSV column.
 
-## 8. Luồng code của bài
+## 8. Exercise flow
 
 ~~~text
 main
-  -> pd.read_csv: CSV thành DataFrame
+  -> pd.read_csv: CSV to DataFrame
   -> clean_weather
-       -> copy bảng
-       -> chuẩn hóa text, số, ngày
-       -> tạo valid_rows
-       -> lọc invalid
-       -> bỏ trùng
-       -> trả clean_df và hai số đếm
-  -> to_csv: ghi output
-  -> print: in report
+       -> copy table
+       -> normalize text, numbers, dates
+       -> build valid_rows
+       -> filter invalid rows
+       -> remove duplicates
+       -> return clean_df and two counts
+  -> to_csv: write output
+  -> print: show report
 ~~~
 
-Hàm `clean_weather` trả về ba giá trị:
+The function returns three values:
 
 ~~~python
 clean_df, invalid_rows, duplicate_rows = clean_weather(raw_df)
 ~~~
 
-Đây là tuple unpacking, giống `clean, rejection_reason = clean_row(raw_row)` ở Ngày 1.
+This is tuple unpacking, like Day 1's `clean, rejection_reason = clean_row(raw_row)`.
 
-## 9. Tài liệu ngoài
+## 9. References
 
 - [pandas: Getting started tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html)
 - [pandas: Missing data](https://pandas.pydata.org/docs/user_guide/missing_data.html)
-- [pandas: `read_csv` API](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
+- [pandas: read_csv API](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
 
-Đọc khi cần, sau đó quay lại bài. Không cần học `groupby`, merge hay biểu đồ hôm nay; chúng thuộc Ngày 5.
+Read what you need, then return to the exercise. Grouping and merging come in Day 5.

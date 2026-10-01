@@ -1,54 +1,53 @@
-# Bài học Ngày 6: script CLI gọi HTTP API
+# Day 6 lesson: call an HTTP API from a CLI script
 
-## 1. CLI: đưa dữ liệu vào từ terminal
+## 1. CLI: input from the terminal
 
-CLI là giao diện dòng lệnh. Thay vì sửa code mỗi lần muốn đổi tọa độ, ta truyền tham số lúc chạy:
+CLI means **command-line interface**. Pass coordinates when running the script instead of editing code:
 
 ~~~powershell
 python fetch_weather.py --city "Da Nang" --latitude 16.0544 --longitude 108.2022
 ~~~
 
-Các phần `--city`, `--latitude` và `--longitude` là arguments. Python dùng `argparse` để đọc chúng:
+`--city`, `--latitude`, and `--longitude` are command-line options. Python's argparse reads them:
 
 ~~~python
 parser.add_argument("--latitude", type=float, default=10.8231)
 args = parser.parse_args()
 ~~~
 
-- `type=float` đổi text người dùng gõ thành số thực.
-- `default=...` là giá trị dùng khi không truyền flag.
-- `args.latitude` lấy giá trị sau khi parse.
+- `type=float` converts the input text to a number.
+- `default` supplies a value when the option is absent.
+- `args.latitude` accesses the parsed value.
 
-Thử xem tất cả flags:
+See all options:
 
 ~~~powershell
 python fetch_weather.py --help
 ~~~
 
-## 2. Environment variable: cấu hình ở ngoài code
+## 2. Environment variables: configuration outside code
 
-Environment variable là key/value gắn với process. Đọc nó trong Python:
+An environment variable is a key/value setting available to a process. Read one in Python:
 
 ~~~python
 timeout_seconds = float(os.getenv("WEATHER_TIMEOUT_SECONDS", "10"))
 ~~~
 
-- `os.getenv("WEATHER_TIMEOUT_SECONDS", "10")`: lấy biến nếu có, nếu không dùng text `"10"`.
-- `float(...)`: đổi text thành số để Requests dùng làm timeout.
+`os.getenv` reads the variable, falling back to `"10"` if absent. `float` converts the text for use as a timeout.
 
-Timeout là cấu hình triển khai, không phải logic làm sạch. Ta có thể đổi timeout theo môi trường mà không sửa file Python.
+Timeout is runtime configuration, separate from cleaning logic. You can change it for an environment without editing Python.
 
-API key cũng thường được đọc bằng environment variable, ví dụ `os.getenv("WEATHER_API_KEY")`. Bài này không có API key vì Open-Meteo endpoint công khai không yêu cầu nó. Không đặt secret thật vào source code, file JSON output hoặc Git.
+API keys are also often read this way, such as `os.getenv("WEATHER_API_KEY")`. This exercise's public endpoint does not require a key. Keep real secrets out of source code, output JSON, and Git.
 
-## 3. HTTP GET và query parameters
+## 3. HTTP GET and query parameters
 
-Một HTTP request có:
+An HTTP request includes:
 
 ~~~text
-method + URL + query parameters + headers + body (tùy request)
+method + URL + query parameters + headers + body (depending on request)
 ~~~
 
-Bài này dùng GET: lấy dữ liệu, không thay đổi dữ liệu trên server.
+This exercise uses GET to retrieve data.
 
 ~~~python
 params = {
@@ -61,23 +60,23 @@ params = {
 response = requests.get(API_URL, params=params, timeout=timeout_seconds)
 ~~~
 
-Requests tự mã hóa `params` thành query string. Đừng ghép URL bằng tay như `f"...?latitude={...}&..."`: dễ quên encode text, khó đọc và khó thêm/xóa tham số.
+Requests encodes params into the URL query string. Manual concatenation is harder to read and makes encoding and parameter changes easier to get wrong.
 
-## 4. Timeout và HTTP status
+## 4. Timeout and HTTP status
 
-Không có `timeout`, script có thể chờ rất lâu khi network gặp vấn đề. Luôn truyền timeout:
+Without a timeout, a request may wait a long time during network problems. Pass it explicitly:
 
 ~~~python
 response = requests.get(API_URL, params=params, timeout=timeout_seconds)
 ~~~
 
-HTTP không tự ném lỗi với status 404 hay 500. Dòng này biến status lỗi thành `HTTPError`:
+Requests does not automatically raise an exception for a 404 or 500 response. Check it:
 
 ~~~python
 response.raise_for_status()
 ~~~
 
-Bao hai bước trong `try/except`:
+Wrap request and status checking:
 
 ~~~python
 try:
@@ -87,36 +86,36 @@ except requests.exceptions.RequestException as error:
     raise RuntimeError(f"weather request failed: {error}") from error
 ~~~
 
-`RequestException` bao các lỗi request phổ biến, gồm timeout, connection và HTTP status. `from error` giữ lại nguyên nhân gốc trong traceback.
+`RequestException` covers common Requests errors, including connection, timeout, and HTTP errors. `from error` preserves the original cause in the traceback.
 
-## 5. JSON response và data contract
+## 5. JSON response and data contract
 
-Sau khi request thành công:
+After a successful request:
 
 ~~~python
 payload = response.json()
 ~~~
 
-`response.json()` đổi JSON trong HTTP response thành dictionary Python, giống `json.load` ở Ngày 3 nhưng nguồn lần này là network thay vì file.
+This parses response JSON into Python objects. It is similar to Day 3's json.load, but the source is a network response.
 
-Bài mong đợi response có:
+The exercise expects:
 
 ~~~python
 payload["current"]
 ~~~
 
-Trước khi dùng, kiểm tra contract:
+Check before using it:
 
 ~~~python
 if "current" not in payload:
     raise ValueError("response has no current weather")
 ~~~
 
-Sau này API có thể thay version hoặc trả lỗi dưới dạng JSON. Data contract check giúp phát hiện điều đó sớm.
+APIs can change their responses or return JSON error objects. Contract checks help detect unexpected data early.
 
-## 6. Lưu raw response và metadata
+## 6. Save raw response and metadata
 
-Output không chỉ chứa response API. Nó ghi thêm:
+Save more than the API payload:
 
 ~~~python
 {
@@ -127,36 +126,34 @@ Output không chỉ chứa response API. Nó ghi thêm:
 }
 ~~~
 
-Lý do:
+- `city` is a label supplied by you; the API receives coordinates and does not confirm this city name.
+- `requested_at` records when the pipeline called the API.
+- `request` preserves the parameters for reproduction.
+- `response` preserves raw data for a later transformation.
 
-- `city` là nhãn con người chọn; API nhận tọa độ chứ không tự xác nhận tên thành phố.
-- `requested_at` cho biết pipeline gọi API lúc nào.
-- `request` cho phép tái hiện chính xác các tham số đã dùng.
-- `response` giữ raw data để transform ở bước sau.
+This introduces a **raw layer**: source data and metadata kept before cleaning.
 
-Đây là mô hình nhỏ của data lake `raw layer`: giữ nguyên nguồn và metadata trước khi làm sạch.
-
-## 7. Luồng chạy
+## 7. Execution flow
 
 ~~~text
 parse_args
-  -> lấy các flag CLI
+  -> read CLI options
 fetch_current_weather
-  -> đọc timeout environment variable
-  -> GET API với params và timeout
-  -> kiểm tra status
-  -> JSON thành dictionary
-  -> kiểm tra current
+  -> read timeout environment variable
+  -> GET API with parameters and timeout
+  -> check status
+  -> parse JSON
+  -> check current
 main
-  -> tạo record raw gồm metadata + response
-  -> ghi JSON
-  -> in tóm tắt
+  -> build raw record with metadata and response
+  -> write JSON
+  -> print summary
 ~~~
 
-## 8. Tài liệu ngoài
+## 8. References
 
 - [Requests quickstart](https://requests.readthedocs.io/en/latest/user/quickstart/)
-- [Python `argparse`](https://docs.python.org/3/library/argparse.html)
+- [Python argparse](https://docs.python.org/3/library/argparse.html)
 - [Open-Meteo API](https://open-meteo.com/en/docs)
 
-Chỉ cần hiểu GET, `params`, `timeout`, `raise_for_status` và `response.json` hôm nay.
+Focus on GET, params, timeout, raise_for_status, and response.json today.

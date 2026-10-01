@@ -1,45 +1,43 @@
-# Tutorial Ngày 1: từ file CSV thô đến dữ liệu sạch
+# Day 1 tutorial: from raw CSV to clean data
 
-## 1. Hôm nay bạn đang học gì?
+## 1. What are you learning today?
 
-Data Engineer không chỉ “đọc file rồi lưu lại”. Công việc là biến dữ liệu không chắc chắn thành dữ liệu mà người khác có thể tin và dùng được.
+A Data Engineer does more than read and save files. The job is to turn uncertain data into data that other people can trust and use.
 
-Ví dụ: một hệ thống thời tiết muốn biết nhiệt độ trung bình ở Hà Nội. Nếu file có ngày sai định dạng, nhiệt độ ghi chữ, độ ẩm 105% và dữ liệu trùng, phép tính trung bình có thể sai hoặc chương trình dừng giữa chừng.
+Suppose a weather system needs Hanoi's average temperature. Wrong dates, text in a temperature field, humidity of 105%, and duplicate rows can make the average wrong or stop the program.
 
-Pipeline nhỏ hôm nay có 4 bước:
+Today's small pipeline has four steps:
 
 ```text
-CSV thô -> đọc từng dòng -> kiểm tra/làm sạch -> CSV sạch + báo cáo lỗi
+raw CSV -> read each row -> validate/clean -> clean CSV + error report
 ```
 
-Đây là phiên bản mini của pipeline thực tế. Sau này CSV sẽ thành API, kho dữ liệu và database, nhưng cách suy nghĩ không đổi.
+This is a small version of a real pipeline. Later, the inputs and outputs will include APIs, databases, and warehouses, but the way of thinking stays the same.
 
-## 2. Data contract: luật của dữ liệu
+## 2. Data contract: the rules for your data
 
-Trước khi code, hãy viết luật. Luật này gọi là **data contract**: bên gửi dữ liệu phải gửi gì, và pipeline chấp nhận gì.
+Write the rules before coding. A **data contract** describes what a source should provide and what the pipeline accepts.
 
-Data contract của bài:
-
-| Cột | Kiểu sau khi làm sạch | Luật |
+| Column | Type after cleaning | Rule |
 |---|---|---|
-| `city` | chuỗi | Không được rỗng |
-| `observed_at` | chuỗi ngày `YYYY-MM-DD` | Phải là một ngày hợp lệ |
-| `temperature_c` | số thực | Từ -50 đến 60 |
-| `humidity_pct` | số nguyên | Từ 0 đến 100 |
+| `city` | String | Must not be empty |
+| `observed_at` | Date string `YYYY-MM-DD` | Must be a valid date |
+| `temperature_c` | Float | From -50 to 60 |
+| `humidity_pct` | Integer | From 0 to 100 |
 
-Khóa duy nhất của bài là `(city, observed_at)`. Nghĩa là chỉ có một quan sát cho cùng thành phố trong cùng một ngày.
+The unique key is `(city, observed_at)`: one observation per city per day.
 
-Trong dữ liệu thật, luật này thường nằm trong tài liệu, database constraint, hoặc code test. Hôm nay nó nằm trong `clean_row`.
+In real systems, rules may live in documentation, database constraints, or tests. Today they live in `clean_row`.
 
-## 3. CSV không “biết” kiểu dữ liệu
+## 3. CSV does not know data types
 
-CSV là văn bản. Khi `csv.DictReader` đọc dòng này:
+CSV is text. When `csv.DictReader` reads:
 
 ```csv
 Hanoi,2026-08-01,31.2,78
 ```
 
-Python nhận được:
+Python receives:
 
 ```python
 {
@@ -50,28 +48,28 @@ Python nhận được:
 }
 ```
 
-Hai số vẫn là chuỗi. Vì vậy `"31.2" + "1"` sẽ cho `"31.21"`, không phải `32.2`.
+Both numbers are still strings. `"31.2" + "1"` produces `"31.21"`, not `32.2`.
 
-Ta phải đổi kiểu dữ liệu có chủ đích:
+Convert the types deliberately:
 
 ```python
 temperature_c = float(raw_row["temperature_c"])
 humidity_pct = int(raw_row["humidity_pct"])
 ```
 
-Nếu giá trị là `not_available`, hai dòng trên sẽ tạo `ValueError`. Đó không phải lỗi đáng sợ; đó là tín hiệu để pipeline loại dòng này và ghi lại lý do.
+A value such as `not_available` causes `ValueError`. Use that signal to reject the row and record the reason.
 
-## 4. Hàm `clean_row`: một việc rõ ràng
+## 4. Give `clean_row` one clear job
 
-Hàm trong bài nhận một dòng thô rồi trả về một trong hai kết quả:
+The function receives one raw row and returns one of two results:
 
 ```python
 clean_row(raw_row)
-# hợp lệ: (cleaned_dictionary, None)
-# không hợp lệ: (None, "lý do")
+# Valid: (cleaned_dictionary, None)
+# Invalid: (None, "reason")
 ```
 
-Ví dụ một dòng hợp lệ:
+A valid result:
 
 ```python
 cleaned = {
@@ -83,19 +81,19 @@ cleaned = {
 return cleaned, None
 ```
 
-Ví dụ một dòng bị loại:
+A rejected result:
 
 ```python
 return None, "temperature_c is not a number"
 ```
 
-Lý do tách việc theo hàm: bạn có thể đọc, test và sửa luật của **một dòng** mà không phải nghĩ cùng lúc về file, output hay thống kê.
+Separating this work into a function lets you read, test, and change the rules for **one row** without also thinking about files, output, and reporting.
 
-## 5. Kiểm tra từng trường theo thứ tự
+## 5. Check each field in order
 
-Trong `clean_row`, làm theo thứ tự sau. Sau mỗi bước không đạt, trả về ngay.
+Inside `clean_row`, return immediately when a check fails.
 
-### 5.1 Thành phố
+### 5.1 City
 
 ```python
 city = raw_row["city"].strip()
@@ -103,9 +101,9 @@ if not city:
     return None, "city is empty"
 ```
 
-`strip()` xóa khoảng trắng đầu/cuối. Dòng chỉ có dấu cách cũng được xem là rỗng.
+`strip()` removes leading and trailing whitespace. A string containing only spaces becomes empty.
 
-### 5.2 Ngày
+### 5.2 Date
 
 ```python
 observed_at = raw_row["observed_at"].strip()
@@ -115,9 +113,9 @@ except ValueError:
     return None, "observed_at is not YYYY-MM-DD"
 ```
 
-`date.fromisoformat` vừa kiểm tra định dạng, vừa kiểm tra ngày có tồn tại. `2026-02-30` cũng sẽ bị loại.
+`date.fromisoformat` parses an ISO date and checks that it exists. For example, `2026-02-30` is rejected.
 
-### 5.3 Số
+### 5.3 Numbers
 
 ```python
 try:
@@ -127,7 +125,7 @@ except ValueError:
     return None, "temperature_c or humidity_pct is not numeric"
 ```
 
-Sau đó kiểm tra phạm vi:
+Then check the ranges:
 
 ```python
 if not -50 <= temperature_c <= 60:
@@ -137,18 +135,18 @@ if not 0 <= humidity_pct <= 100:
     return None, "humidity_pct is outside allowed range"
 ```
 
-Đừng dùng `except Exception`. Nó che cả lỗi lập trình của bạn. Hôm nay ta chỉ biết có thể xảy ra `ValueError` khi chuyển chuỗi thành số hoặc ngày.
+Avoid `except Exception`: it can hide programming mistakes. Here, the expected conversion error is `ValueError`.
 
-## 6. Bốn cấu trúc dữ liệu bạn đang dùng
+## 6. Four data structures used in the exercise
 
-| Cấu trúc | Dùng trong bài | Vì sao |
+| Structure | Used for | Why |
 |---|---|---|
-| `dict` | Một dòng dữ liệu | Truy cập theo tên cột, ví dụ `row["city"]` |
-| `list` | `accepted_rows` | Giữ các dòng sạch theo thứ tự để ghi ra file |
-| `set` | `seen_keys` | Kiểm tra “đã thấy khóa này chưa” rất nhanh |
-| `Counter` | `rejection_reasons` | Đếm số lần từng lý do bị loại |
+| `dict` | One data row | Access values by column name, such as `row["city"]` |
+| `list` | `accepted_rows` | Keep clean rows in order for output |
+| `set` | `seen_keys` | Check whether a key has been seen |
+| `Counter` | `rejection_reasons` | Count how often each rejection reason occurs |
 
-Ví dụ kiểm tra trùng:
+Duplicate detection:
 
 ```python
 key = (clean["city"], clean["observed_at"])
@@ -160,11 +158,11 @@ seen_keys.add(key)
 accepted_rows.append(clean)
 ```
 
-`continue` nghĩa là bỏ phần còn lại của vòng lặp hiện tại, rồi chuyển sang dòng CSV kế tiếp.
+`continue` skips the rest of the current loop iteration and moves to the next CSV row.
 
-## 7. Đọc và ghi file an toàn
+## 7. Read and write files safely
 
-Mẫu `with` bảo đảm file được đóng, kể cả khi chương trình xảy ra lỗi.
+`with` closes the file when the block finishes, even if an error occurs:
 
 ```python
 with INPUT_PATH.open(newline="", encoding="utf-8") as source_file:
@@ -173,9 +171,9 @@ with INPUT_PATH.open(newline="", encoding="utf-8") as source_file:
         print(raw_row)
 ```
 
-`DictReader` dùng dòng đầu tiên của CSV làm tên cột. `newline=""` là khuyến nghị của thư viện `csv` để đọc/ghi CSV đúng trên các hệ điều hành.
+`DictReader` uses the CSV header as dictionary keys. The `csv` module recommends `newline=""` when opening CSV files to handle newlines correctly across operating systems.
 
-Khi ghi file, `DictWriter` cần biết thứ tự các cột:
+`DictWriter` needs the output column order:
 
 ```python
 writer = csv.DictWriter(output_file, fieldnames=[
@@ -185,27 +183,27 @@ writer.writeheader()
 writer.writerows(accepted_rows)
 ```
 
-## 8. Pseudocode cho phần còn thiếu
+## 8. Pseudocode for the unfinished work
 
-Đọc pseudocode, tự chuyển thành Python, rồi mới xem lại các phần trên nếu kẹt:
+Read the pseudocode and turn it into Python yourself. Return to earlier sections if you get stuck.
 
-## 8.1 TODO 5–7: khối code cần đặt trong vòng lặp
+### 8.1 TODOs 5–7: code inside the loop
 
-Trong `main`, bạn đang có ba biến đã chuẩn bị sẵn:
+Three variables are already prepared in `main`:
 
 ```python
-accepted_rows = []          # nơi giữ dòng hợp lệ
-rejection_reasons = Counter()  # nơi đếm lý do bị loại
-seen_keys = set()           # nơi nhớ các khóa đã gặp
+accepted_rows = []             # Stores valid rows
+rejection_reasons = Counter()  # Counts rejection reasons
+seen_keys = set()              # Remembers keys already seen
 ```
 
-Ngay sau dòng này:
+Immediately after:
 
 ```python
 clean, rejection_reason = clean_row(raw_row)
 ```
 
-hãy **thay cả ba TODO và dòng `pass`** bằng khối sau:
+replace the three TODOs and `pass` with:
 
 ```python
 if clean is None:
@@ -222,9 +220,7 @@ seen_keys.add(key)
 accepted_rows.append(clean)
 ```
 
-### Đọc khối này theo từng nhánh
-
-**Nhánh 1: dòng không hợp lệ.** `clean_row` trả về `(None, "lý do")`. `clean is None` sẽ đúng. Ta tăng số đếm cho lý do đó, rồi `continue` để bỏ qua mọi bước dưới và sang dòng CSV kế tiếp.
+**Branch 1: invalid row.** `clean_row` returns `(None, "reason")`. The condition `clean is None` is true, so increment that reason's count and move to the next row:
 
 ```python
 if clean is None:
@@ -232,26 +228,26 @@ if clean is None:
     continue
 ```
 
-Ví dụ với dòng có `temperature_c = not_available`, kết quả trở thành:
+For a row containing `temperature_c = not_available`, the counter becomes:
 
 ```python
 rejection_reasons["temperature_c or humidity_pct is not numeric"]
 # 1
 ```
 
-**Nhánh 2: dòng hợp lệ nhưng trùng.** Khi đã qua nhánh 1, `clean` chắc chắn là một dictionary. Ta tạo tuple gồm thành phố và ngày. Tuple dùng được làm phần tử của `set`.
+**Branch 2: valid but duplicate.** After branch 1, `clean` is a dictionary. Build a tuple of city and date, which can be stored in a set:
 
 ```python
 key = (clean["city"], clean["observed_at"])
 ```
 
-Với bản ghi Hà Nội ngày 2026-08-01, `key` là:
+For Hanoi on 2026-08-01:
 
 ```python
 ("Hanoi", "2026-08-01")
 ```
 
-Nếu key đã có trong `seen_keys`, ta chỉ đếm lỗi trùng và chuyển sang dòng tiếp theo. Không thêm bản ghi đó vào `accepted_rows`.
+If the key is already in `seen_keys`, count the duplicate and skip the row. Do not append it:
 
 ```python
 if key in seen_keys:
@@ -259,83 +255,81 @@ if key in seen_keys:
     continue
 ```
 
-**Nhánh 3: dòng hợp lệ và chưa trùng.** Đây là vị trí duy nhất được phép lưu dữ liệu. Thứ tự quan trọng: nhớ key trước, rồi thêm dòng.
+**Branch 3: valid and new.** This is where you save the row. Remember its key, then append the clean dictionary:
 
 ```python
 seen_keys.add(key)
 accepted_rows.append(clean)
 ```
 
-## 8.2 Ba cú pháp cần biết đúng cho TODO 5–7
+### 8.2 Syntax needed for TODOs 5–7
 
-| Cú pháp | Nghĩa trong bài |
+| Syntax | Meaning in this exercise |
 |---|---|
-| `if condition:` | Chỉ chạy phần thụt vào khi condition đúng |
-| `continue` | Dừng xử lý dòng hiện tại, quay sang dòng tiếp theo trong `for` |
-| `key in seen_keys` | Hỏi set xem key này đã được gặp chưa |
-| `counter[name] += 1` | Tăng bộ đếm cho một tên lý do |
+| `if condition:` | Run the indented block only when the condition is true |
+| `continue` | Stop processing this row and move to the next loop iteration |
+| `key in seen_keys` | Check whether the set already contains the key |
+| `counter[name] += 1` | Increment the count for a named reason |
 
-Đọc đúng các phần sau, mỗi phần 5–10 phút:
+Read the relevant sections, about 5–10 minutes each:
 
 - [Python: `if`](https://docs.python.org/3/tutorial/controlflow.html#if-statements)
-- [Python: `continue` trong vòng lặp](https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops)
-- [Python: `set`](https://docs.python.org/3/tutorial/datastructures.html#sets)
-- [Python: `Counter`](https://docs.python.org/3/library/collections.html#collections.Counter)
+- [Python: `continue` in loops](https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops)
+- [Python: sets](https://docs.python.org/3/tutorial/datastructures.html#sets)
+- [Python: Counter](https://docs.python.org/3/library/collections.html#collections.Counter)
 
-## 8.3 Kiểm tra một lỗi trước khi chạy
+### 8.3 Check the column name before running
 
-Trong `weather.csv`, tên cột là `temperature_c`. Vì vậy trong phần TODO 2, dòng chuyển nhiệt độ phải dùng chính key đó:
+The column in `weather.csv` is named `temperature_c`. Use that exact key in TODO 2:
 
 ```python
 temperature_c = float(raw_row["temperature_c"])
 ```
 
-Nếu dùng `raw_row["temperature"]`, chương trình sẽ báo `KeyError` vì CSV không có cột tên `temperature`.
+`raw_row["temperature"]` raises `KeyError` because that column does not exist.
 
 ```text
-tạo thư mục output
-tạo list các dòng hợp lệ
-tạo Counter cho lý do bị loại
-tạo set các khóa đã thấy
+create the output folder
+create a list for valid rows
+create a Counter for rejection reasons
+create a set for seen keys
 
-với mỗi dòng trong CSV:
-    gọi clean_row
-    nếu dòng không hợp lệ:
-        tăng Counter theo lý do
-        chuyển sang dòng tiếp theo
+for each CSV row:
+    call clean_row
+    if invalid:
+        count the reason
+        move to the next row
 
-    tạo khóa từ city và observed_at
-    nếu khóa đã có:
-        tăng Counter duplicate
-        chuyển sang dòng tiếp theo
+    build a key from city and observed_at
+    if the key has been seen:
+        count the duplicate
+        move to the next row
 
-    lưu khóa vào set
-    thêm dòng sạch vào list
+    save the key in the set
+    append the clean row to the list
 
-ghi list hợp lệ ra CSV
-in số lượng và Counter
+write the valid rows to CSV
+print the counts and reasons
 ```
 
-## 9. Tự kiểm tra trước khi chạy
+## 9. Check your understanding
 
-Trả lời được các câu này nghĩa là bạn hiểu bài ở mức đủ tốt:
+1. Why convert `"78"` to `78`?
+2. Why should one invalid row not stop the whole cleaning pipeline?
+3. Why use `(city, observed_at)` instead of only `city` for duplicates?
+4. If you run the script twice, does the output double in size? Why?
 
-1. Vì sao phải đổi `"78"` thành `78`?
-2. Vì sao không nên để một dòng lỗi làm cả pipeline dừng?
-3. Vì sao dùng `(city, observed_at)` thay vì chỉ `city` để tìm dòng trùng?
-4. Nếu chạy script hai lần, file output có bị nhân đôi không? Vì sao?
+Question 4 introduces **idempotency**: repeating the same input should still produce the correct result. We return to it in Day 17.
 
-Câu 4 là mầm mống của khái niệm **idempotency**: chạy lại cùng đầu vào vẫn cho kết quả đúng. Ta sẽ quay lại nó ở Ngày 17.
+## 10. References for today's topics
 
-## 10. Tài liệu ngoài cho đúng bài hôm nay
+Open only what you need:
 
-Không cần đọc hết. Chỉ mở khi cần làm rõ:
+- [Python Tutorial: control flow, functions, and data structures](https://docs.python.org/3/tutorial/)
+- [Python csv: DictReader and DictWriter](https://docs.python.org/3/library/csv.html)
+- [Python datetime: dates](https://docs.python.org/3/library/datetime.html)
+- [Pro Git: basics](https://git-scm.com/book/en/v2)
 
-- [Python Tutorial: flow control, functions và data structures](https://docs.python.org/3/tutorial/)
-- [Python `csv`: DictReader và DictWriter](https://docs.python.org/3/library/csv.html)
-- [Python `datetime`: xử lý ngày](https://docs.python.org/3/library/datetime.html)
-- [Pro Git: phần cơ bản](https://git-scm.com/book/en/v2)
+## When should you look for an answer?
 
-## Khi nào mới xem đáp án?
-
-Tự làm tối đa 45 phút cho một TODO. Nếu kẹt, gửi mình phần code hiện tại và lỗi. Mình sẽ đưa gợi ý theo đúng bước đang vướng, không ném cả đáp án để bạn mất cơ hội luyện tư duy.
+Try a TODO yourself for up to 45 minutes. If stuck, send your current code and the error. I will give a hint for that step so you can still practise solving it.

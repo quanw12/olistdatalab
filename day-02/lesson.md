@@ -1,64 +1,60 @@
-# Bài học Ngày 2: hiểu Python bằng chính pipeline Ngày 1
+# Day 2 lesson: understand Python through Day 1's pipeline
 
-## 1. Bức tranh lớn: script Ngày 1 chạy như thế nào?
+## 1. How does the Day 1 script run?
 
-Khi bạn chạy:
+When you run:
 
 ~~~powershell
 python clean.py
 ~~~
 
-Python đọc file từ trên xuống. Nó **định nghĩa** các hàm trước, nhưng chưa chạy nội dung trong hàm ngay. Cuối file có:
+Python reads the file from top to bottom. Function definitions create functions, but their bodies do not run until called. At the bottom:
 
 ~~~python
 if __name__ == "__main__":
     main()
 ~~~
 
-Khi một file được chạy trực tiếp, Python đặt biến đặc biệt `__name__` thành `"__main__"`. Điều kiện đúng, nên `main()` được gọi.
-
-Luồng chạy sau đó là:
+When a file runs directly, its special variable `__name__` is `"__main__"`. The condition is true, so Python calls `main()`.
 
 ~~~text
 main()
-  -> tạo thư mục output và các vùng nhớ
-  -> mở weather.csv
-  -> lặp qua từng raw_row
-       -> gọi clean_row(raw_row)
-       -> nếu không hợp lệ: đếm lý do, sang dòng tiếp
-       -> nếu trùng: đếm lý do, sang dòng tiếp
-       -> nếu hợp lệ: giữ lại dòng
-  -> ghi các dòng hợp lệ ra CSV
-  -> in báo cáo
+  -> create output folder and collections
+  -> open weather.csv
+  -> loop over raw_row
+       -> call clean_row(raw_row)
+       -> invalid: count reason, skip
+       -> duplicate: count reason, skip
+       -> valid: keep row
+  -> write accepted rows to CSV
+  -> print report
 ~~~
 
-Đây là cách chia nhỏ một chương trình: `main` điều phối công việc, còn `clean_row` chỉ chịu trách nhiệm làm sạch **một** dòng.
+`main` coordinates the work; `clean_row` cleans **one** row.
 
-## 2. Biến và giá trị
+## 2. Variables and values
 
-Một biến là tên trỏ tới một giá trị:
+A variable is a name referring to a value:
 
 ~~~python
 city = "Hanoi"
 temperature_c = 31.2
 ~~~
 
-Dấu `=` nghĩa là “gán giá trị ở bên phải cho tên ở bên trái”, không phải phép so sánh. Muốn so sánh bằng nhau thì dùng `==`:
+`=` assigns the value on the right to the name on the left. Equality comparison uses `==`:
 
 ~~~python
-city == "Hanoi"  # kết quả là True hoặc False
+city == "Hanoi"  # True or False
 ~~~
 
-Bốn kiểu dữ liệu gặp nhiều nhất trong bài:
-
-| Kiểu | Ví dụ | Dùng để làm gì |
+| Type | Example | Purpose |
 |---|---|---|
-| `str` | `"Hanoi"` | văn bản |
-| `int` | `78` | số nguyên |
-| `float` | `31.2` | số có phần thập phân |
-| `bool` | `True`, `False` | kết quả đúng/sai |
+| `str` | `"Hanoi"` | Text |
+| `int` | `78` | Whole numbers |
+| `float` | `31.2` | Numbers with a fractional part |
+| `bool` | `True`, `False` | True/false values |
 
-Các hàm chuyển kiểu bạn đã dùng:
+Type conversions:
 
 ~~~python
 int("78")        # 78
@@ -66,11 +62,11 @@ float("31.2")    # 31.2
 str(78)          # "78"
 ~~~
 
-Nếu Python không thể chuyển `"not_available"` thành số, nó ném ra `ValueError`.
+If Python cannot convert `"not_available"` to a number, it raises `ValueError`.
 
-## 3. Hàm: đóng gói một việc có tên
+## 3. Functions: a named piece of work
 
-Hàm được tạo bằng `def`:
+Define a function using `def`:
 
 ~~~python
 def say_hello(name):
@@ -78,26 +74,26 @@ def say_hello(name):
     return message
 ~~~
 
-- `def` bắt đầu định nghĩa hàm.
-- `say_hello` là tên hàm.
-- `name` là **tham số**: chỗ trống nhận dữ liệu đi vào.
-- Phần thụt vào là thân hàm.
-- `return` gửi một giá trị ra ngoài hàm và kết thúc lần gọi hàm đó.
+- `def` starts the definition.
+- `say_hello` is the function name.
+- `name` is a **parameter**, which receives input.
+- The indented block is the function body.
+- `return` sends a value back to the caller and ends this function call.
 
-Gọi hàm:
+Call it:
 
 ~~~python
 greeting = say_hello("Quan")
 print(greeting)  # Hello, Quan
 ~~~
 
-Trong `clean.py`:
+In `clean.py`:
 
 ~~~python
 clean, rejection_reason = clean_row(raw_row)
 ~~~
 
-Nghĩa là gửi một dòng thô vào `clean_row`. Hàm trả về **hai giá trị**. Python ghép hai giá trị đó thành một tuple rồi tách chúng ra:
+The raw row is passed into the function. Its two returned values form a tuple, then Python **unpacks** it into two variables. This is equivalent to:
 
 ~~~python
 result = clean_row(raw_row)
@@ -105,55 +101,47 @@ clean = result[0]
 rejection_reason = result[1]
 ~~~
 
-Hai cách trên có cùng ý nghĩa; cách đầu ngắn và thường gặp hơn.
-
-### `return` và `print` khác nhau
+### Return versus print
 
 ~~~python
 def double(number):
     return number * 2
 
-answer = double(4)  # answer nhận 8
-print(answer)       # chỉ hiển thị 8 ra terminal
+answer = double(4)  # answer receives 8
+print(answer)       # Displays 8 in the terminal
 ~~~
 
-`return` chuyển dữ liệu cho phần khác của chương trình dùng tiếp. `print` chỉ hiển thị để người chạy nhìn thấy.
+`return` gives data to other code for reuse. `print` displays a value for the person running the program.
 
-## 4. Type hint trong `clean.py`
+## 4. Type hints in `clean.py`
 
-Dòng này trông dài vì có type hint:
+This line is long because of type hints:
 
 ~~~python
 def clean_row(raw_row: dict[str, str]) -> tuple[dict[str, object] | None, str | None]:
 ~~~
 
-Đọc phần quan trọng trước:
+First read the basic definition:
 
 ~~~python
 def clean_row(raw_row):
 ~~~
 
-Đó là một hàm tên `clean_row`, nhận một tham số tên `raw_row`. Các phần còn lại chỉ là **nhãn mô tả**:
+The rest describes expected types:
 
-| Phần | Ý nghĩa |
+| Part | Meaning |
 |---|---|
-| `raw_row: dict[str, str]` | `raw_row` là dictionary có key và value dạng chuỗi |
-| `-> ...` | mô tả giá trị hàm trả về |
-| `tuple[A, B]` | trả về cặp gồm A và B |
-| `X | None` | giá trị có thể là X, hoặc `None` |
-| `object` | chấp nhận một giá trị Python bất kỳ |
+| `raw_row: dict[str, str]` | Dictionary with string keys and values |
+| `-> ...` | Describes the return type |
+| `tuple[A, B]` | A pair containing A and B |
+| `X | None` | Either X or None |
+| `object` | Any Python object |
 
-Python vẫn chạy được nếu bỏ type hint:
+The function can still run without these hints. Day 2 leaves them out of `exercise.py` so you can focus on the logic; we will use them again later.
 
-~~~python
-def clean_row(raw_row):
-~~~
+## 5. Dictionaries, lists, and sets
 
-Trong Ngày 2, ta cố tình chưa dùng type hint trong `exercise.py` để nhìn rõ logic. Bạn sẽ dùng lại chúng khi đã quen.
-
-## 5. Cấu trúc dữ liệu: `dict`, `list`, `set`
-
-### Dictionary: một hàng dữ liệu có tên cột
+### Dictionary: a row with named fields
 
 ~~~python
 row = {
@@ -162,12 +150,12 @@ row = {
 }
 
 city = row["city"]                 # "Hanoi"
-row["temperature_c"] = 30.5        # cập nhật giá trị
+row["temperature_c"] = 30.5        # Updates the value
 ~~~
 
-`row["city"]` không phải hàm. Dấu ngoặc vuông lấy giá trị bằng key `"city"`. Nếu key không tồn tại, Python báo `KeyError`.
+`row["city"]` is not a function call. Square brackets look up a key. A missing key raises `KeyError`.
 
-### List: giữ nhiều giá trị theo thứ tự
+### List: values in order
 
 ~~~python
 temperatures = []
@@ -175,9 +163,9 @@ temperatures.append(31.2)
 temperatures.append(30.1)
 ~~~
 
-`append` là một **method**: hàm gắn với list. List bây giờ là `[31.2, 30.1]`. List giữ được giá trị trùng và giữ thứ tự thêm vào.
+`append` is a **method**: a function associated with the list. The list becomes `[31.2, 30.1]`. Lists preserve insertion order and allow duplicates.
 
-### Set: chỉ giữ mỗi giá trị một lần
+### Set: each value appears once
 
 ~~~python
 cities = set()
@@ -186,24 +174,24 @@ cities.add("Hanoi")
 cities.add("Da Nang")
 ~~~
 
-`cities` chỉ có `"Hanoi"` và `"Da Nang"`. Vì vậy `set` phù hợp để phát hiện key trùng ở Ngày 1 và tìm các thành phố khác nhau ở Ngày 2.
+The set contains only `"Hanoi"` and `"Da Nang"`. It helps detect duplicate keys in Day 1 and find distinct cities in Day 2.
 
 ~~~python
 "Hanoi" in cities  # True
 ~~~
 
-## 6. Vòng lặp và điều kiện
+## 6. Loops and conditions
 
-### `for`
+### For loops
 
 ~~~python
 for row in rows:
     print(row["city"])
 ~~~
 
-Nếu `rows` có 5 dictionary, phần thụt vào chạy 5 lần. Mỗi lần, `row` lần lượt là một dictionary.
+With five dictionaries in `rows`, the indented block runs five times. Each time, `row` refers to the next dictionary.
 
-### `if`, `not` và `continue`
+### If, not, and continue
 
 ~~~python
 if clean is None:
@@ -211,22 +199,22 @@ if clean is None:
     continue
 ~~~
 
-- `is None` hỏi liệu biến có đúng là giá trị đặc biệt `None` không.
-- `+= 1` tăng giá trị hiện có thêm 1.
-- `continue` bỏ phần còn lại của vòng lặp hiện tại và bắt đầu dòng kế tiếp.
+- `is None` checks for the special value None.
+- `+= 1` adds one to the current count.
+- `continue` skips the rest of this iteration and moves to the next row.
 
-Sau `continue`, code bên dưới không chạy cho dòng lỗi. Vì thế ở các dòng sau đó, `clean` không còn là `None`; nó là dictionary hợp lệ.
+For an invalid row, the code below does not run. Therefore, rows that reach the later code have a clean dictionary rather than None.
 
-So sánh phạm vi:
+Range check:
 
 ~~~python
 if not 0 <= humidity_pct <= 100:
     return None, "humidity_pct is outside allowed range"
 ~~~
 
-Python hiểu `0 <= humidity_pct <= 100` là “nằm trong khoảng từ 0 đến 100”. `not` đảo kết quả: nằm ngoài khoảng thì điều kiện đúng.
+`0 <= humidity_pct <= 100` checks whether humidity is within the range. `not` reverses the result, so the condition is true outside the range.
 
-## 7. Xử lý lỗi mong đợi với `try` và `except`
+## 7. Handle expected errors with try and except
 
 ~~~python
 try:
@@ -235,82 +223,78 @@ except ValueError:
     return None, "temperature_c is not numeric"
 ~~~
 
-Python thử phần `try`. Nếu đổi chuỗi thành số thất bại và tạo đúng lỗi `ValueError`, nó chuyển vào `except` thay vì làm toàn bộ chương trình dừng.
+Python attempts the `try` block. If conversion raises `ValueError`, it runs the matching `except` block instead of stopping the whole program.
 
-Chỉ bắt lỗi mà bạn dự đoán và biết cách xử lý. Trong bài này, bắt `ValueError` là hợp lý; `except Exception` quá rộng, có thể che mất lỗi code thật.
+Catch errors you expect and know how to handle. `except Exception` is too broad here and may hide programming mistakes.
 
-## 8. Các module và method còn lại của `clean.py`
+## 8. Other modules and methods in `clean.py`
 
-`import` đưa công cụ từ thư viện có sẵn của Python vào file:
+`import` brings tools from Python's libraries into the file:
 
-| Cú pháp trong file | Công dụng |
+| Syntax | Purpose |
 |---|---|
-| `import csv` | đọc/ghi file CSV |
-| `from collections import Counter` | dictionary đặc biệt để đếm |
-| `from datetime import date` | kiểm tra ngày ISO |
-| `from pathlib import Path` | làm việc với đường dẫn file/thư mục |
+| `import csv` | Read/write CSV |
+| `from collections import Counter` | Count occurrences |
+| `from datetime import date` | Parse ISO dates |
+| `from pathlib import Path` | Work with file and folder paths |
 
-Các lời gọi bạn gặp:
-
-| Cú pháp | Nó làm gì |
+| Call | What it does |
 |---|---|
-| `raw_row["city"].strip()` | lấy city rồi xóa khoảng trắng đầu/cuối |
-| `OUTPUT_DIR.mkdir(exist_ok=True)` | tạo `output`; không lỗi nếu thư mục đã tồn tại |
-| `INPUT_PATH.open(...)` | mở file |
-| `with ... as source_file:` | tự đóng file sau khi xong, kể cả khi lỗi |
-| `csv.DictReader(source_file)` | đọc CSV thành từng dictionary |
-| `Counter()` | tạo bộ đếm rỗng |
-| `rejection_reasons[reason] += 1` | tăng đếm cho reason |
-| `seen_keys.add(key)` | thêm một giá trị vào set |
-| `accepted_rows.append(clean)` | thêm một dictionary vào cuối list |
-| `date.fromisoformat(text)` | kiểm tra/đổi chuỗi ngày ISO thành đối tượng ngày |
-| `len(values)` | đếm số phần tử |
-| `sum(values)` | cộng các số |
-| `min(values)`, `max(values)` | số nhỏ nhất/lớn nhất |
-| `round(number, 1)` | làm tròn đến một chữ số thập phân |
-| `sorted(values)` | tạo một list đã sắp xếp |
+| `raw_row["city"].strip()` | Gets city and removes surrounding whitespace |
+| `OUTPUT_DIR.mkdir(exist_ok=True)` | Creates output; allows an existing folder |
+| `INPUT_PATH.open(...)` | Opens a file |
+| `with ... as source_file:` | Closes it after the block, including on errors |
+| `csv.DictReader(source_file)` | Reads rows as dictionaries |
+| `Counter()` | Creates an empty counter |
+| `rejection_reasons[reason] += 1` | Increments this reason's count |
+| `seen_keys.add(key)` | Adds a key to the set |
+| `accepted_rows.append(clean)` | Appends a row to the list |
+| `date.fromisoformat(text)` | Parses an ISO date into a date object |
+| `len(values)` | Counts items |
+| `sum(values)` | Adds numbers |
+| `min(values)`, `max(values)` | Finds smallest/largest values |
+| `round(number, 1)` | Rounds to one decimal place |
+| `sorted(values)` | Creates a sorted list |
 
-Một f-string đặt chữ `f` trước chuỗi để chèn biến vào `{}`:
+An **f-string** starts with `f` and inserts values inside `{}`:
 
 ~~~python
 count = 5
 print(f"accepted: {count}")
 ~~~
 
-`pass` nghĩa là “không làm gì”. Nó thường là chỗ giữ chỗ cho code chưa viết. Dòng `pass` còn lại ở cuối vòng lặp của bạn không làm chương trình sai, nhưng khi đã có `seen_keys.add` và `accepted_rows.append`, nó không còn cần thiết.
+`pass` means "do nothing". It often holds a place for unfinished code. The remaining `pass` at the end of your Day 1 loop does not break it, but is unnecessary after adding real code.
 
-## 9. Làm bài `exercise.py`
+## 9. Complete `exercise.py`
 
-Hàm `summarize_weather` có hợp đồng đơn giản:
+The function's contract:
 
 ~~~text
-Đầu vào: một list các dictionary đã sạch.
-Đầu ra: một dictionary chứa số dòng, danh sách thành phố,
-         nhiệt độ thấp nhất, cao nhất và trung bình.
+Input: a list of already-clean dictionaries.
+Output: a dictionary with the row count, cities,
+        minimum, maximum, and average temperature.
 ~~~
 
-Hãy làm theo đúng thứ tự:
+1. Create an empty `temperatures` list and `cities` set.
+2. Loop over each row.
+3. Look up city and temperature by dictionary key.
+4. Add city to the set and temperature to the list.
+5. Calculate minimum, maximum, and mean.
+6. Return one dictionary.
 
-1. Tạo `temperatures` là list rỗng và `cities` là set rỗng.
-2. Dùng `for` để đi qua từng `row`.
-3. Lấy city và temperature bằng key của dictionary.
-4. Thêm city vào set, thêm temperature vào list.
-5. Tính `min`, `max`, trung bình.
-6. `return` một dictionary.
-
-Đừng cố viết hết trong một lần. Sau khi làm xong phần vòng lặp, bạn có thể tạm thêm:
+Do it in small steps. After writing the loop, temporarily inspect:
 
 ~~~python
 print(temperatures)
 print(cities)
 ~~~
 
-để nhìn thấy vùng nhớ thay đổi. Xóa các `print` debug đó trước khi nộp bài.
+Remove debug prints before submitting.
 
-## 10. Tài liệu ngoài, chỉ đọc phần cần thiết
+## 10. Focused references
 
-- [Python Tutorial: defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
-- [Python Tutorial: lists, dictionaries và sets](https://docs.python.org/3/tutorial/datastructures.html)
-- [Python Tutorial: errors and exceptions](https://docs.python.org/3/tutorial/errors.html)
+- [Python: defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
+- [Python: lists, dictionaries, and sets](https://docs.python.org/3/tutorial/datastructures.html)
+- [Python: errors and exceptions](https://docs.python.org/3/tutorial/errors.html)
 
-Đọc 10–15 phút mỗi phần, gõ lại một ví dụ nhỏ, rồi quay về bài. Nếu chỉ đọc mà không chạy code, cú pháp sẽ rất khó nhớ.
+Read each section for 10–15 minutes, type a small example, then return to the exercise. Running code helps you remember syntax.

@@ -1,19 +1,19 @@
 # Day 1 — Python foundations for a small data pipeline
 
-## Học trước khi làm
+## Learn before coding
 
-Đọc theo thứ tự này trước khi mở `clean.py`:
+Read these before opening `clean.py`:
 
-1. [Bài học: Từ CSV thô đến dữ liệu sạch](lesson.md)
-2. [Trợ giúp: lệnh và cách debug](help.md)
+1. [Lesson: from raw CSV to clean data](lesson.md)
+2. [Help: commands and debugging](help.md)
 
-Không cần hiểu hết ngay lần đầu. Sau mỗi phần tutorial, chạy ví dụ nhỏ rồi quay lại code khung.
+You do not need to understand everything on the first reading. After each tutorial section, run a small example, then return to the exercise scaffold.
 
-## Today’s outcome
+## Today's outcome
 
 Turn a small, imperfect CSV file into a clean CSV and a short quality report.
 
-You are not expected to know how to build a full system. Today’s job is only to learn the shape of one:
+You are not expected to know how to build a full system. Today's job is to learn the shape of one:
 
 `raw file -> validate -> clean -> output + report`
 
@@ -23,7 +23,7 @@ About 2.5–3.5 hours. Stop after the required part if you get stuck; record the
 
 ## 1. Set up the project (15 min)
 
-Mở terminal tại `C:\DE Courses` và kích hoạt môi trường Python đã có của project:
+Open a terminal in `C:\DE Courses` and activate the project's existing Python environment:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -31,7 +31,7 @@ python --version
 git status
 ```
 
-Không tạo thêm `.venv` trong `day-01`; cả khóa học dùng một môi trường chung tại thư mục gốc.
+Do not create another `.venv` inside `day-01`; the whole course shares one environment in the root folder.
 
 Create `.gitignore` containing:
 
@@ -59,7 +59,7 @@ Use this data contract for the required part:
 
 ## 3. Complete `clean.py` (90 min)
 
-Run the scaffold first:
+From `C:\DE Courses\day-01`, run the scaffold first:
 
 ```powershell
 python clean.py
@@ -72,9 +72,9 @@ Then implement the TODOs in this order:
 3. Reject invalid rows with a useful reason.
 4. Track duplicate keys with a `set`.
 5. Write valid rows to `output/clean.csv`.
-6. Print a report with counts of accepted/rejected rows and rejection reasons.
+6. Print accepted/rejected counts and rejection reasons.
 
-Do not use pandas today. The point is to practice ordinary Python: functions, dictionaries, loops, conditionals, exceptions and files.
+Do not use pandas today. Practise ordinary Python: functions, dictionaries, loops, conditionals, exceptions, and files.
 
 ## 4. Verify it (25 min)
 
@@ -82,11 +82,13 @@ Your program must report:
 
 - `accepted: 5`
 - `rejected: 5`
-- exactly one duplicate
+- Exactly one duplicate
 
-Open the clean output and check that it contains five data rows, no duplicate `(city, observed_at)` pair, and numeric values formatted consistently.
+Open the clean output and check for five data rows, no duplicate `(city, observed_at)` pair, and consistently formatted numbers.
 
 ## 5. Git checkpoint (15 min)
+
+From the `day-01` folder:
 
 ```powershell
 git add guide.md lesson.md help.md weather.csv clean.py notes.txt
@@ -96,18 +98,16 @@ git log --oneline
 
 ## Optional stretch (30 min)
 
-Add a `--input` argument with `argparse`, so this works:
+Add an `--input` argument with `argparse`, so this works:
 
 ```powershell
 python clean.py --input weather.csv
 ```
 
-## What to send me after you finish
+## What to send after finishing
 
-Paste these three things:
-
-1. Your program’s final report.
+1. Your program's final report.
 2. Any error that blocked you, verbatim.
 3. One sentence: which part felt least clear?
 
-I will review the result and turn the errors into your Day 2 lesson.
+I will review the result and use the unclear parts to shape your Day 2 lesson.

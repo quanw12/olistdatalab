@@ -1,17 +1,17 @@
-# Gợi ý Ngày 4
+# Day 4 hints
 
-Hoàn thành `clean_weather` theo từng TODO. Các đoạn dưới là cú pháp cần dùng, không cần viết vòng lặp `for`.
+Complete `clean_weather` one TODO at a time. These examples use column operations; no for loop is needed.
 
-## TODO 1: copy và chuẩn hóa
+## TODO 1: copy and normalize text
 
 ~~~python
 df = raw_df.copy()
 df["city"] = df["city"].str.strip()
 ~~~
 
-`copy()` giữ nguyên `raw_df` để có thể so input với output.
+`copy()` preserves `raw_df` so you can compare input and output.
 
-## TODO 2: đổi kiểu dữ liệu
+## TODO 2: convert types
 
 ~~~python
 df["observed_at"] = pd.to_datetime(
@@ -23,7 +23,7 @@ df["temperature_c"] = pd.to_numeric(df["temperature_c"], errors="coerce")
 df["humidity_pct"] = pd.to_numeric(df["humidity_pct"], errors="coerce")
 ~~~
 
-## TODO 3: lọc invalid
+## TODO 3: filter invalid rows
 
 ~~~python
 valid_rows = (
@@ -36,7 +36,7 @@ invalid_rows = int((~valid_rows).sum())
 candidate_df = df.loc[valid_rows].copy()
 ~~~
 
-## TODO 4: bỏ trùng, định dạng ngày và return
+## TODO 4: remove duplicates, format dates, and return
 
 ~~~python
 before_deduplicate = len(candidate_df)
@@ -51,12 +51,12 @@ clean_df["observed_at"] = clean_df["observed_at"].dt.strftime("%Y-%m-%d")
 return clean_df, invalid_rows, duplicate_rows
 ~~~
 
-## Nếu có lỗi
+## Troubleshooting
 
-| Lỗi | Thường do | Cách sửa |
+| Error or symptom | Common cause | Fix |
 |---|---|---|
-| `AttributeError: Can only use .str accessor...` | Cột city không phải text hoặc gọi `.str` sai chỗ | Dùng `df["city"].str.strip()` |
-| `TypeError: bad operand type for unary ~` | `valid_rows` không phải Series True/False | Kiểm tra từng điều kiện trong mask |
-| `KeyError` | Sai tên cột | Chỉ dùng `city`, `observed_at`, `temperature_c`, `humidity_pct` |
-| Có thêm cột 0,1,2 trong CSV output | Quên `index=False` | Giữ `clean_df.to_csv(..., index=False)` |
-| Accepted không phải 4 | Bỏ quên `drop_duplicates` hoặc dùng mask thiếu một điều kiện | So lại TODO 3 và TODO 4 |
+| `AttributeError: Can only use .str accessor...` | Non-text column or misplaced .str | Check `df["city"].str.strip()` and its input type |
+| `TypeError: bad operand type for unary ~` | Mask is not a Boolean Series | Inspect each mask condition |
+| `KeyError` | Wrong column name | Use city, observed_at, temperature_c, humidity_pct |
+| Extra index column in output | Missing index=False | Use `clean_df.to_csv(..., index=False)` |
+| Accepted count is not 4 | Missing deduplication or mask condition | Check TODOs 3 and 4 |

@@ -1,24 +1,26 @@
 # Weather Snapshot Pipeline
 
-Mini-project tuần 1 của lộ trình Data Engineering.
+Week 1 mini-project in the Data Engineering learning plan.
 
-## Bài toán
+## Problem
 
-Chuyển raw response của API thời tiết thành một bản ghi sạch, có contract rõ ràng, rồi chỉ ghi output khi dữ liệu qua đủ 5 quality checks.
+Turn a raw weather API response into a clean record with a clear contract. Write output only after all five quality checks pass.
 
-## Luồng dữ liệu
+## Data flow
 
 ~~~text
 raw_weather.json -> build_clean_record -> validate_record -> weather_clean.json
 ~~~
 
-## Chạy project
+## Run the project
+
+From `C:\DE Courses\day-07`:
 
 ~~~powershell
 python pipeline.py
 ~~~
 
-Bạn cũng có thể đổi input/output:
+Specify different input/output paths if needed:
 
 ~~~powershell
 python pipeline.py --input raw_weather.json --output output/weather_clean.json
@@ -26,32 +28,32 @@ python pipeline.py --input raw_weather.json --output output/weather_clean.json
 
 ## Input
 
-`raw_weather.json` mô phỏng raw layer từ API và giữ:
+raw_weather.json simulates the API raw layer and preserves:
 
-- thành phố do người dùng chọn;
-- thời điểm request;
-- request parameters;
-- response gốc từ API.
+- The user-selected city label.
+- Request time.
+- Request parameters.
+- Original API response.
 
 ## Output contract
 
-| Trường | Kiểu | Ý nghĩa |
+| Field | Type | Meaning |
 |---|---|---|
-| `city` | string | thành phố do người dùng gắn nhãn |
-| `requested_at` | ISO datetime string | thời điểm pipeline gọi API |
-| `observed_at` | ISO datetime string | thời điểm API quan sát thời tiết |
-| `timezone` | string | timezone của quan sát |
-| `temperature_c` | float | nhiệt độ Celsius |
-| `humidity_pct` | integer | độ ẩm phần trăm |
-| `source` | string | nguồn dữ liệu |
+| `city` | String | City label supplied by the user |
+| `requested_at` | ISO datetime string | Time the pipeline called the API |
+| `observed_at` | ISO datetime string | Time the API observed weather |
+| `timezone` | String | Observation timezone |
+| `temperature_c` | Float | Temperature in Celsius |
+| `humidity_pct` | Integer | Humidity percentage |
+| `source` | String | Data source |
 
 ## Quality checks
 
-Pipeline từ chối input nếu city/timezone rỗng, observed_at sai ISO format, nhiệt độ ngoài -50 đến 60 hoặc độ ẩm ngoài 0 đến 100.
+The pipeline rejects records with empty city/timezone, invalid ISO observation time, temperature outside -50 to 60, or humidity outside 0 to 100.
 
 ## What I learned
 
-1. Raw layer giữ dữ liệu gốc gần như nguyên vẹn để debug, audit hoặc chạy lại pipeline.  Clean layer chỉ giữ các trường cần thiết, đồng thời chuẩn hóa và kiểm tra dữ liệu.
-2. requested_at là lúc pipeline gọi API, còn observed_at là lúc API ghi nhận thời tiết.
-3. Với humidity_pct = 130, hàm sẽ thêm lỗi.
-4. Input cố định giúp mỗi lần chạy cho cùng kết quả, dễ debug và kiểm tra hơn API sống.
+1. The raw layer preserves the original data almost unchanged for debugging, auditing, or replay. The clean layer keeps needed fields and normalizes and validates them.
+2. requested_at is when the pipeline calls the API; observed_at is when the API records the weather.
+3. With humidity_pct = 130, the function adds an error.
+4. Fixed input produces the same result each time, making debugging and checking easier than with a live API.
