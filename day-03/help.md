@@ -1,14 +1,14 @@
-# Gợi ý Ngày 3
+# Day 3 hints
 
-Xem từng phần theo TODO. Tự gõ code vào `build_snapshot` thay vì dán cả hàm.
+Work through one TODO at a time. Type the code into `build_snapshot` rather than pasting the whole function.
 
-## TODO 1: lấy object `current`
+## TODO 1: get the current object
 
 ~~~python
 current = payload["current"]
 ~~~
 
-Sau dòng này, `current` là:
+Now `current` contains:
 
 ~~~python
 {
@@ -18,33 +18,33 @@ Sau dòng này, `current` là:
 }
 ~~~
 
-## TODO 2: đổi text thời gian thành datetime
+## TODO 2: parse time text
 
 ~~~python
 observed_at = datetime.fromisoformat(current["time"])
 ~~~
 
-Không cần tạo thời gian mới. Đây là thời gian có sẵn từ nguồn.
+Use the source's observation time. Do not create a new time here.
 
-## TODO 3: lấy số
+## TODO 3: extract numbers
 
 ~~~python
 temperature_c = float(current["temperature_2m"])
 humidity_pct = int(current["relative_humidity_2m"])
 ~~~
 
-Trong file mẫu, hai giá trị đã là số. Viết `float` và `int` để hàm vẫn có ý nghĩa khi API trả số dưới dạng text.
+The sample values are already numbers. Explicit conversions also allow the function to handle numeric text.
 
-## TODO 4: kiểm tra luật từ config
+## TODO 4: apply the configuration rule
 
 ~~~python
 if not settings["temperature_min_c"] <= temperature_c <= settings["temperature_max_c"]:
     raise ValueError("temperature_c is outside configured range")
 ~~~
 
-Đặt khối này sau phần chuyển nhiệt độ sang số và trước `return`.
+Place this after numeric conversion and before `return`.
 
-## TODO 5: trả về snapshot
+## TODO 5: return the snapshot
 
 ~~~python
 return {
@@ -57,16 +57,16 @@ return {
 }
 ~~~
 
-`observed_at.isoformat()` biến object `datetime` quay lại chuỗi ISO để ghi JSON. `json.dump` không tự ghi được object `datetime`.
+`isoformat()` converts datetime back to an ISO string for JSON. `json.dump` does not serialize datetime objects by default.
 
-## Tự trace một lần
+## Trace the values
 
-| Biến | Giá trị sau khi chạy |
+| Variable | Value after processing |
 |---|---|
-| `current` | dictionary bên trong key `"current"` |
-| `observed_at` | datetime cho 2026-09-13 09:00 |
+| `current` | Dictionary under the `"current"` key |
+| `observed_at` | Datetime for 2026-09-13 09:00 |
 | `temperature_c` | `30.4` |
 | `humidity_pct` | `76` |
-| snapshot trả về | dictionary 6 key cần ghi ra file |
+| Returned snapshot | Dictionary with six output keys |
 
-Nếu bị `KeyError`, in tạm `payload` hoặc `current`, rồi so key thật trong file JSON. Không tự đổi tên key theo cảm giác.
+For `KeyError`, temporarily print `payload` or `current` and compare the actual keys in the JSON file. Do not guess key names.

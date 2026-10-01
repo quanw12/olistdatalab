@@ -1,36 +1,34 @@
-# Cheat sheet Ngày 1
+# Day 1 cheat sheet
 
-## Chạy bài
+## Run the exercise
 
-Mở PowerShell trong `C:\DE Courses\day-01`:
+Open PowerShell in `C:\DE Courses\day-01`:
 
 ```powershell
 python clean.py
 ```
 
-Nếu terminal đang ở `C:\DE Courses`, dùng:
+If your terminal is in `C:\DE Courses`, use:
 
 ```powershell
 python .\day-01\clean.py
 ```
 
-## Lỗi thường gặp
+## Common problems
 
-| Hiện tượng | Nguyên nhân thường gặp | Cách kiểm tra |
+| Symptom | Common cause | What to check |
 |---|---|---|
-| `FileNotFoundError` | Chạy ở sai thư mục | Dùng `Get-Location`, rồi chạy lại trong `day-01` |
-| `TypeError: cannot unpack...` | `clean_row` không trả về đúng hai giá trị | Mọi nhánh của hàm phải trả `(clean, reason)` |
-| `AttributeError: 'NoneType'...` | Dùng `clean[...]` trước khi kiểm tra `clean is None` | Xử lý dòng bị loại trước |
-| Output rỗng | `clean_row` luôn trả `None` hoặc chưa thêm dòng vào list | In thử `raw_row`, rồi in `clean` |
-| Số dòng hợp lệ sai | Kiểm tra trùng trước khi xác nhận dòng hợp lệ, hoặc quên `continue` | So lại pseudocode trong tutorial |
+| `FileNotFoundError` | Wrong working folder | Use `Get-Location`, then run from `day-01` |
+| `TypeError: cannot unpack...` | `clean_row` does not return two values | Every branch must return `(clean, reason)` |
+| Error when using `clean[...]` | Accessing the result before checking `clean is None` | Handle rejected rows first |
+| Empty output | `clean_row` always returns None, or rows are not appended | Print `raw_row`, then `clean` |
+| Wrong accepted count | Checking duplicates before validity, or missing `continue` | Compare with the lesson's pseudocode |
 
+Full syntax for TODOs 5–7 is in **section 8.1** of `lesson.md`.
 
+## Print values to debug
 
-Phần cú pháp đầy đủ cho TODO 5–7 nằm ở mục **8.1** trong `lesson.md`.
-
-## In để debug
-
-Tạm thời thêm một trong các dòng sau trong vòng lặp:
+Temporarily add one of these inside the loop:
 
 ```python
 print(raw_row)
@@ -38,9 +36,9 @@ print(clean, rejection_reason)
 print(seen_keys)
 ```
 
-Sau khi hiểu lỗi, xóa hoặc comment các dòng `print` đó để output sạch.
+Once you understand the problem, remove or comment out these prints to keep the output clear.
 
-## Git tối thiểu hôm nay
+## Basic Git commands
 
 ```powershell
 git status
@@ -49,4 +47,4 @@ git commit -m "feat: clean weather CSV"
 git log --oneline
 ```
 
-Commit là một mốc lưu thay đổi có mô tả. Chưa cần học branch, rebase hay pull request hôm nay.
+A commit saves a snapshot of changes with a description. You do not need branches, rebase, or pull requests today.

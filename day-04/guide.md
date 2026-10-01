@@ -1,36 +1,34 @@
-# Day 4 — Làm sạch CSV với pandas
+# Day 4 — Clean CSV data with pandas
 
-## Mục tiêu hôm nay
+## Today's goal
 
-Ngày 1 làm sạch CSV bằng vòng lặp từng dòng. Hôm nay bạn làm cùng kiểu công việc bằng `pandas`: thao tác trên cả cột dữ liệu.
-
-Pipeline:
+Day 1 cleaned CSV row by row. Today you do similar work with pandas, operating on whole columns.
 
 ~~~text
-messy_weather.csv -> DataFrame -> chuẩn hóa kiểu dữ liệu + lọc lỗi
-                 -> bỏ trùng -> output/clean_weather.csv + báo cáo
+messy_weather.csv -> DataFrame -> normalize types + filter invalid rows
+                 -> remove duplicates -> output/clean_weather.csv + report
 ~~~
 
-Pandas đã có trong môi trường Python hiện tại. Nếu cần tự kiểm tra:
+Pandas is available in the current Python environment. Check it with:
 
 ~~~powershell
 python -c "import pandas as pd; print(pd.__version__)"
 ~~~
 
-## Học theo thứ tự này
+## Learning order
 
-1. Đọc [Bài học pandas](lesson.md), mục 1 đến mục 7.
-2. Mở `messy_weather.csv`. Dự đoán 6 dòng nào sẽ không đi vào output.
-3. Mở `clean_pandas.py`. Đọc `main` để biết đầu vào, đầu ra và báo cáo.
-4. Hoàn thành 4 TODO trong `clean_weather` theo thứ tự.
-5. Khi kẹt, xem [Gợi ý theo TODO](help.md), rồi tự gõ code lại.
-6. Trong PowerShell tại `C:\DE Courses\day-04`, chạy:
+1. Read [the pandas lesson](lesson.md), sections 1–7.
+2. Open `messy_weather.csv`. Predict which six rows will not appear in the output.
+3. Read `main` in `clean_pandas.py` to understand the input, output, and report.
+4. Complete the four TODOs in `clean_weather` in order.
+5. If stuck, read the matching [hint](help.md), then type the code yourself.
+6. Run from `C:\DE Courses\day-04`:
 
 ~~~powershell
 python clean_pandas.py
 ~~~
 
-## Kết quả cần có
+## Expected results
 
 ~~~text
 input rows: 10
@@ -39,7 +37,7 @@ duplicate rows: 1
 accepted rows: 4
 ~~~
 
-File `output/clean_weather.csv` phải có đúng 4 dòng dữ liệu:
+`output/clean_weather.csv` should contain four data rows:
 
 ~~~csv
 city,observed_at,temperature_c,humidity_pct
@@ -49,19 +47,19 @@ Hanoi,2026-09-15,34.1,72
 Da Nang,2026-09-15,29.5,78
 ~~~
 
-Ở dataset này, độ ẩm không có missing value nên được ghi dạng số nguyên. Nếu một cột số nguyên có missing value, pandas có thể hiển thị giá trị dạng `78.0`; điều đó không làm dữ liệu sai. Ta sẽ học kiểm soát schema kỹ hơn khi vào database.
+This dataset's humidity column has no missing values and is written as integers. A numeric column with missing values may display values like `78.0` in pandas; the display alone does not make the data incorrect. We will control types more carefully when using databases.
 
-## Điều cần hiểu sau bài
+## What you should understand
 
-- `DataFrame` là bảng dữ liệu trong Python.
-- `Series` là một cột trong DataFrame.
-- `pd.to_numeric(..., errors="coerce")` biến dữ liệu không đổi được thành `NaN` để pipeline có thể phát hiện và loại bỏ.
-- Boolean mask là một cột `True/False` dùng để lọc dòng.
-- `drop_duplicates` xử lý trùng lặp mà không cần tự tạo `set`.
+- A DataFrame is a table in Python.
+- A Series is one column of a DataFrame.
+- `pd.to_numeric(..., errors="coerce")` converts unparseable values to NaN so you can detect and reject them.
+- A Boolean mask contains True/False values used to select rows.
+- `drop_duplicates` handles duplicates without creating your own set.
 
 ## Git checkpoint
 
-Khi output đúng:
+When the output is correct, run from `C:\DE Courses`:
 
 ~~~powershell
 git add requirements.txt roadmap.md day-04
@@ -69,9 +67,9 @@ git commit -m "feat(day-04): clean weather data with pandas"
 git push
 ~~~
 
-## Gửi mình sau khi xong
+## Send after finishing
 
-1. Toàn bộ report của `python clean_pandas.py`.
-2. Nội dung `output/clean_weather.csv`.
-3. Phần thân hàm `clean_weather`.
-4. Một câu: vì sao `errors="coerce"` hữu ích hơn để script dừng ngay khi gặp `not_available`?
+1. Full report from `python clean_pandas.py`.
+2. Contents of `output/clean_weather.csv`.
+3. Your `clean_weather` function body.
+4. Why is `errors="coerce"` useful compared with stopping at `not_available`?

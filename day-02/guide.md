@@ -1,19 +1,19 @@
-# Day 2 — Python căn bản qua báo cáo thời tiết
+# Day 2 — Python basics through a weather report
 
-## Review Ngày 1
+## Day 1 review
 
-Kết quả bạn gửi là đúng:
+Your submitted counts were correct:
 
 ~~~text
 accepted: 5
 rejected: 5
 ~~~
 
-Năm dòng bị loại cũng khớp với data contract. Không có lỗi nào chặn bài. Phần bạn chưa rõ là cú pháp, hàm và logic Python, nên Ngày 2 sẽ chậm lại để học đúng những thứ đó trước khi đi tiếp tới JSON, API hay database.
+The five rejected rows matched the data contract, and no error blocked the exercise. Functions, syntax, and Python logic were still unclear, so Day 2 slows down to practise them before moving to JSON, APIs, and databases.
 
-## Mục tiêu hôm nay
+## Today's goal
 
-Từ 5 bản ghi thời tiết đã sạch, viết một hàm tạo báo cáo:
+Write a function that summarizes five clean weather records:
 
 ~~~text
 rows: 5
@@ -23,33 +23,33 @@ temperature max: 33.4 C
 temperature avg: 31.3 C
 ~~~
 
-Đây là một bước **transform** nhỏ trong pipeline: dữ liệu sạch đi vào, bảng tổng hợp đi ra.
+This is a small **transform** step: clean data goes in, a summary comes out.
 
-## Học theo thứ tự này
+## Learning order
 
-1. Đọc [Bài học: đọc hiểu `clean.py` và Python căn bản](lesson.md), mục 1 đến mục 7.
-2. Mở `exercise.py`. Đọc dữ liệu `WEATHER_ROWS` và phần `print_summary` trước.
-3. Tự gõ phần thân của `summarize_weather` theo từng TODO, không cần dùng pandas hay tìm thư viện mới.
-4. Nếu vướng một TODO quá 15 phút, xem đúng mục tương ứng trong [Gợi ý và cú pháp](help.md).
-5. Chạy bài trong PowerShell khi đang ở thư mục `C:\DE Courses\day-02`:
+1. Read [the Python lesson](lesson.md), sections 1–7.
+2. Open `exercise.py`. Read `WEATHER_ROWS` and `print_summary` first.
+3. Complete `summarize_weather` one TODO at a time. No pandas or new libraries are needed.
+4. If a TODO takes more than 15 minutes without progress, read its section in [help.md](help.md).
+5. Run from PowerShell in `C:\DE Courses\day-02`:
 
 ~~~powershell
 python exercise.py
 ~~~
 
-6. Đối chiếu với output ở đầu trang này.
+6. Compare the result with the expected output above.
 
-## Checklist hoàn thành
+## Completion checklist
 
-- [ ] Giải thích được hàm nhận gì, trả về gì.
-- [ ] Biết vì sao dùng `list` cho nhiệt độ và `set` cho tên thành phố.
-- [ ] Biết `for row in rows` chạy lần lượt thế nào.
-- [ ] Chạy ra đúng 5 dòng báo cáo.
-- [ ] Tự xóa dòng `pass` trong `summarize_weather` sau khi đã viết code thật.
+- [ ] Explain the function's input and return value.
+- [ ] Explain why temperatures use a list and cities use a set.
+- [ ] Trace `for row in rows` step by step.
+- [ ] Produce the five report lines.
+- [ ] Remove `pass` from `summarize_weather` after adding real code.
 
 ## Git checkpoint
 
-Khi đã chạy đúng:
+When the result is correct, run from `C:\DE Courses`:
 
 ~~~powershell
 git status
@@ -58,20 +58,20 @@ git commit -m "feat(day-02): add weather summary exercise"
 git push
 ~~~
 
-Chỉ commit sau khi bạn đã tự viết và hiểu bài. Không cần tạo branch mới cho bài học cá nhân này.
+Commit after writing and understanding the exercise yourself. A new branch is not required for this personal learning exercise.
 
-## Việc thêm nếu còn thời gian
+## Extra practice
 
-Quay lại `C:\DE Courses\day-01\clean.py` và tự chỉ ra:
+Return to `C:\DE Courses\day-01\clean.py` and explain:
 
-1. `pass` ở cuối vòng lặp làm gì?
-2. Vì sao sau `if clean is None: ... continue`, biến `clean` có thể được dùng như dictionary?
-3. Vì sao `str(clean["city"])` là không cần thiết trong bài này?
+1. What does the `pass` at the end of the loop do?
+2. Why can `clean` be treated as a dictionary after `if clean is None: ... continue`?
+3. Why is `str(clean["city"])` unnecessary here?
 
-Chưa cần sửa file Ngày 1. Gửi câu trả lời cho mình trước; mình sẽ review cách bạn suy luận.
+You do not need to change Day 1 yet. Send your reasoning for review first.
 
-## Gửi mình sau khi xong
+## Send after finishing
 
-1. Toàn bộ output của `python exercise.py`.
-2. Phần thân hàm `summarize_weather` bạn đã viết.
-3. Một câu trả lời: `return` khác `print` ở điểm nào?
+1. Full output from `python exercise.py`.
+2. Your `summarize_weather` function body.
+3. One sentence explaining how `return` differs from `print`.

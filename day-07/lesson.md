@@ -1,8 +1,8 @@
-# Bài ôn tập Ngày 7: từ raw JSON đến clean record
+# Day 7 review: raw JSON to a clean record
 
-## 1. Raw layer và clean layer
+## 1. Raw and clean layers
 
-Ngày 6 ghi raw API response:
+Day 6 saved the raw API response:
 
 ~~~json
 {
@@ -16,9 +16,9 @@ Ngày 6 ghi raw API response:
 }
 ~~~
 
-Raw layer giữ dữ liệu gần nguồn nhất có thể. Nó hữu ích khi cần debug API, thay đổi logic transform hoặc chạy lại pipeline.
+The raw layer keeps data as close to the source as possible. It helps debug API behavior, change transformations, and replay the pipeline.
 
-Clean layer chỉ giữ trường đã chuẩn hóa để downstream dùng:
+The clean layer keeps normalized fields for downstream use:
 
 ~~~json
 {
@@ -29,20 +29,20 @@ Clean layer chỉ giữ trường đã chuẩn hóa để downstream dùng:
 }
 ~~~
 
-Clean layer nhỏ hơn và dễ query hơn, nhưng không thay thế raw layer.
+It is smaller and easier to query, but does not replace the raw layer.
 
-## 2. Hai thời điểm khác nhau
+## 2. Two different times
 
-| Trường | Lấy từ đâu | Ý nghĩa |
+| Field | Source | Meaning |
 |---|---|---|
-| `requested_at` | máy chạy pipeline | lúc request được gửi |
-| `observed_at` | `response.current.time` | lúc nguồn quan sát thời tiết |
+| `requested_at` | Pipeline machine | Time the request was sent |
+| `observed_at` | response.current.time | Time the source observed the weather |
 
-Không thay `observed_at` bằng `requested_at`. API có thể trả một quan sát cũ hơn thời điểm request, hoặc timestamp theo timezone khác.
+Do not replace observed_at with requested_at. The API may return an older observation or use a different timezone.
 
-## 3. Xây một clean record
+## 3. Build a clean record
 
-Đường đi qua nested dictionary:
+Navigate the nested dictionary:
 
 ~~~python
 response = raw["response"]
@@ -52,11 +52,11 @@ temperature_c = float(current["temperature_2m"])
 humidity_pct = int(current["relative_humidity_2m"])
 ~~~
 
-Sau đó return dictionary mới. Không sửa trực tiếp `raw`; raw data phải giữ nguyên để debug hoặc replay.
+Return a new dictionary rather than modifying raw. Preserve the raw input for debugging or replay.
 
-## 4. Data contract và validate
+## 4. Data contract and validation
 
-Một contract viết ra các điều kiện clean layer phải thỏa. Hôm nay `validate_record` không tự ghi file, nó chỉ trả về list lỗi:
+The contract states the conditions the clean record must satisfy. `validate_record` returns a list of errors; it does not write a file:
 
 ~~~python
 errors = validate_record(clean_record)
@@ -65,9 +65,9 @@ if errors:
     raise ValueError("; ".join(errors))
 ~~~
 
-Điểm tốt của list lỗi: nếu nhiều trường sai, bạn thấy tất cả lỗi trong một lần chạy thay vì sửa từng lỗi một.
+Collecting errors lets you see multiple problems in one run instead of finding only the first one.
 
-### Kiểm tra datetime
+### Check datetime
 
 ~~~python
 try:
@@ -76,18 +76,18 @@ except ValueError:
     errors.append("observed_at is not ISO datetime")
 ~~~
 
-### Kiểm tra range
+### Check a range
 
 ~~~python
 if not -50 <= record["temperature_c"] <= 60:
     errors.append("temperature_c is outside allowed range")
 ~~~
 
-`not` đảo kết quả condition. Đọc câu này như: “nếu nhiệt độ không nằm trong khoảng -50 đến 60”.
+`not` reverses the condition: "if temperature is not within -50 to 60".
 
-## 5. Fail before write
+## 5. Fail before writing
 
-Trong `main`:
+In main:
 
 ~~~python
 errors = validate_record(clean_record)
@@ -97,20 +97,20 @@ if errors:
 write_json(args.output, clean_record)
 ~~~
 
-Thứ tự quan trọng: validate trước, ghi sau. Nếu ghi trước rồi mới phát hiện lỗi, output layer đã có dữ liệu không đáng tin.
+Validate first, then write. Writing before validation would put untrusted data in the output layer.
 
-## 6. CLI và reproducibility
+## 6. CLI and reproducibility
 
-`--input` và `--output` làm pipeline linh hoạt mà không phải sửa code:
+Input/output options make the pipeline flexible without code changes:
 
 ~~~powershell
 python pipeline.py --input raw_weather.json --output output/weather_clean.json
 ~~~
 
-Lưu raw input cố định trong repo giúp cùng một lệnh luôn cho cùng output. Khi test API sống, kết quả có thể đổi do thời tiết và thời gian.
+Fixed raw input in the repository gives the same output for the same command. A live API's results can change with weather and time.
 
-## 7. Tài liệu ngoài
+## 7. References
 
-- [Python `json`](https://docs.python.org/3/library/json.html)
-- [Python `datetime`](https://docs.python.org/3/library/datetime.html)
+- [Python json](https://docs.python.org/3/library/json.html)
+- [Python datetime](https://docs.python.org/3/library/datetime.html)
 - [Pro Git: recording changes](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)

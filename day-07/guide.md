@@ -1,45 +1,45 @@
 # Day 7 — Mini-project 1: Weather snapshot pipeline
 
-## Mục tiêu tuần 1
+## Week 1 goal
 
-Bạn đã học Python cơ bản, CSV/JSON, pandas, Git và HTTP API. Hôm nay ghép chúng thành một pipeline nhỏ, có thể chạy lại từ đầu:
+You have practised Python, CSV/JSON, pandas, Git, and HTTP APIs. Combine these ideas into a small pipeline you can run from the beginning:
 
 ~~~text
 raw_weather.json
-  -> đọc raw response + request metadata
-  -> chuẩn hóa thành weather record
-  -> chạy 5 quality checks
+  -> read raw response + request metadata
+  -> normalize a weather record
+  -> run five quality checks
   -> output/weather_clean.json
 ~~~
 
-Input được lưu sẵn, mô phỏng output của Ngày 6. Không cần mạng để chạy; đây là tính chất quan trọng của một bài test/review có thể tái lập.
+The saved input simulates Day 6's output. No network is needed, making the exercise reproducible for testing and review.
 
-## Học theo thứ tự này
+## Learning order
 
-1. Đọc [Project README](README.md) để hiểu mục tiêu như một reviewer portfolio.
-2. Đọc [Bài ôn tập](lesson.md), nhất là data contract và 5 quality checks.
-3. Mở `raw_weather.json`. Xác định đường đi để lấy nhiệt độ:
+1. Read the [project README](README.md) as a portfolio reviewer would.
+2. Read [lesson.md](lesson.md), especially the contract and checks.
+3. Open `raw_weather.json` and locate the temperature:
 
 ~~~python
 raw["response"]["current"]["temperature_2m"]
 ~~~
 
-4. Hoàn thành hai hàm trong `pipeline.py`: `build_clean_record` và `validate_record`.
-5. Chỉ mở [Gợi ý](help.md) khi cần.
-6. Trong `C:\DE Courses\day-07`, chạy:
+4. Complete `build_clean_record` and `validate_record` in `pipeline.py`.
+5. Open [help.md](help.md) only when needed.
+6. Run from `C:\DE Courses\day-07`:
 
 ~~~powershell
 python pipeline.py
 ~~~
 
-## Kết quả cần có
+## Expected results
 
 ~~~text
 checks passed: 5
 wrote: output\weather_clean.json
 ~~~
 
-`output/weather_clean.json` phải có:
+`output/weather_clean.json`:
 
 ~~~json
 {
@@ -53,30 +53,30 @@ wrote: output\weather_clean.json
 }
 ~~~
 
-## Năm quality checks
+## Five quality checks
 
-1. `city` không rỗng.
-2. `observed_at` là ISO datetime hợp lệ.
-3. `timezone` không rỗng.
-4. `temperature_c` nằm từ -50 đến 60.
-5. `humidity_pct` nằm từ 0 đến 100.
+1. City is not empty.
+2. observed_at is a valid ISO datetime.
+3. Timezone is not empty.
+4. Temperature is between -50 and 60.
+5. Humidity is between 0 and 100.
 
-Nếu một check thất bại, pipeline không được ghi output. Đây là nền tảng của data quality.
+If a check fails, the pipeline must not write output. This is a foundation of data quality.
 
-## Đánh giá bản thân trước khi commit
+## Reflect before committing
 
-Trả lời bằng lời của bạn:
+Answer in your own words:
 
-1. Raw layer khác clean layer ở đâu?
-2. Vì sao giữ `requested_at` và `observed_at` là hai trường riêng?
-3. Điều gì xảy ra nếu API trả `humidity_pct = 130`?
-4. Vì sao input cố định giúp kiểm tra pipeline dễ hơn API sống?
+1. How do the raw and clean layers differ?
+2. Why keep requested_at and observed_at as separate fields?
+3. What happens if the API supplies humidity_pct = 130?
+4. Why is fixed input easier to test than a live API?
 
-Viết câu trả lời ngắn vào cuối [README.md](README.md), mục `What I learned`.
+Add short answers to **What I learned** in [README.md](README.md).
 
 ## Git checkpoint
 
-Khi pipeline chạy đúng và README có reflection:
+When the pipeline works and the reflection is complete, run from `C:\DE Courses`:
 
 ~~~powershell
 git add README.md roadmap.md day-07
@@ -84,9 +84,9 @@ git commit -m "feat(day-07): add weather snapshot pipeline"
 git push
 ~~~
 
-## Gửi mình sau khi xong
+## Send after finishing
 
-1. Output terminal.
-2. Nội dung `output/weather_clean.json`.
-3. Hai hàm bạn đã hoàn thành.
-4. Bốn câu reflection trong README.
+1. Terminal output.
+2. Contents of output/weather_clean.json.
+3. The two completed functions.
+4. Your four reflection answers.

@@ -1,6 +1,6 @@
-# Gợi ý Ngày 5
+# Day 5 hints
 
-Làm `build_summary` theo từng TODO. Không cần viết vòng lặp `for`.
+Complete `build_summary` one TODO at a time. No for loop is needed.
 
 ## TODO 1: merge
 
@@ -13,7 +13,7 @@ enriched_df = weather_df.merge(
 )
 ~~~
 
-## TODO 2: kiểm tra region thiếu
+## TODO 2: check for missing regions
 
 ~~~python
 missing_region = enriched_df["region"].isna()
@@ -23,7 +23,7 @@ if missing_region.any():
     raise ValueError(f"city lookup is missing: {unknown_cities.tolist()}")
 ~~~
 
-## TODO 3: groupby và aggregation
+## TODO 3: grouping and aggregation
 
 ~~~python
 summary_df = (
@@ -38,7 +38,7 @@ summary_df = (
 )
 ~~~
 
-## TODO 4: hoàn thiện report và return
+## TODO 4: finish and return the report
 
 ~~~python
 summary_df["avg_temperature_c"] = summary_df["avg_temperature_c"].round(1)
@@ -51,12 +51,12 @@ if summary_df["observation_count"].sum() != len(enriched_df):
 return summary_df
 ~~~
 
-## Nếu lỗi
+## Troubleshooting
 
-| Lỗi | Thường do | Cách sửa |
+| Error or symptom | Common cause | Fix |
 |---|---|---|
-| `MergeError: not a many-to-one merge` | city_lookup có city lặp | Kiểm tra bảng lookup, mỗi city chỉ một lần |
-| `KeyError: region` | Merge chưa thành công hoặc sai tên cột | Hoàn thành TODO 1, dùng đúng `region` |
-| `city lookup is missing...` | Có city weather không nằm trong lookup | Thêm city vào lookup, không đổi `how="left"` để che lỗi |
-| Summary chỉ có 1 dòng | Quên `["region", "city"]` trong groupby | Group theo cả hai cột |
-| Summary count sai | Aggregation dùng sai cột hoặc merge nhân bản hàng | So lại `validate="many_to_one"` và dòng kiểm tra cuối |
+| `MergeError: not a many-to-one merge` | Duplicate city in lookup | Keep one lookup row per city |
+| `KeyError: region` | Missing merge or wrong column | Complete TODO 1 and use region |
+| `city lookup is missing...` | Weather city absent from lookup | Add its lookup entry; do not change the join to hide the error |
+| Only one summary row | Wrong grouping columns | Group by both region and city |
+| Wrong summary count | Wrong aggregation column or duplicated merged rows | Check many_to_one validation and the final count check |

@@ -1,10 +1,10 @@
-# Bài học Ngày 3: JSON, datetime, cấu hình và log
+# Day 3 lesson: JSON, datetime, configuration, and logs
 
-## 1. JSON là gì?
+## 1. What is JSON?
 
-JSON là định dạng văn bản phổ biến để các hệ thống trao đổi dữ liệu. API thường trả dữ liệu JSON, còn Python thường biến nó thành `dict` và `list` để xử lý.
+JSON is a text format commonly used to exchange data between systems. APIs often return JSON; Python usually converts it to dictionaries and lists.
 
-Trong `weather_response.json`:
+In `weather_response.json`:
 
 ~~~json
 {
@@ -16,7 +16,7 @@ Trong `weather_response.json`:
 }
 ~~~
 
-Phần ngoài cùng là một JSON **object**, tương ứng với Python dictionary:
+The outer JSON **object** corresponds to a Python dictionary:
 
 ~~~python
 payload = {
@@ -28,19 +28,19 @@ payload = {
 }
 ~~~
 
-Lấy object lồng bên trong theo từng tầng:
+Access the nested object one level at a time:
 
 ~~~python
 current = payload["current"]
 temperature = current["temperature_2m"]
 
-# Hoặc viết trên một dòng:
+# Or use one line:
 temperature = payload["current"]["temperature_2m"]
 ~~~
 
-Dùng biến `current` là cách dễ đọc hơn khi bạn mới học. Nếu gõ sai tên key, Python báo `KeyError`; đó là tín hiệu cấu trúc dữ liệu không đúng như pipeline chờ đợi.
+Using `current` is easier to read when learning. A wrong key raises `KeyError`, signalling that the structure differs from what the pipeline expects.
 
-JSON array tương ứng với Python list:
+A JSON array corresponds to a Python list:
 
 ~~~json
 {"cities": ["Hanoi", "Da Nang"]}
@@ -50,79 +50,75 @@ JSON array tương ứng với Python list:
 data["cities"]  # ["Hanoi", "Da Nang"]
 ~~~
 
-## 2. Đọc và ghi JSON bằng module `json`
+## 2. Read and write JSON
 
-Python có sẵn module `json`, không cần cài thư viện.
+Python's `json` module is built in; no library installation is needed.
 
-Đọc JSON từ file:
+Read from a file:
 
 ~~~python
 with path.open(encoding="utf-8") as source_file:
     data = json.load(source_file)
 ~~~
 
-- `path.open(...)` mở file.
-- `with ... as ...` tự đóng file khi xong.
-- `json.load` đổi **file JSON** thành dictionary/list Python.
+- `path.open` opens the file.
+- `with` closes it after the block.
+- `json.load` converts JSON in a file into Python objects.
 
-Ghi dictionary Python thành JSON:
+Write a dictionary:
 
 ~~~python
 with path.open("w", encoding="utf-8") as output_file:
     json.dump(data, output_file, ensure_ascii=False, indent=2)
 ~~~
 
-- `"w"` là ghi mới hoặc thay nội dung file cũ.
-- `indent=2` chỉ làm file dễ đọc hơn.
-- `ensure_ascii=False` giữ tiếng Việt có dấu nếu dữ liệu có tiếng Việt.
+- `"w"` creates or overwrites the file.
+- `indent=2` makes it readable.
+- `ensure_ascii=False` preserves characters such as Vietnamese letters instead of escaping them.
 
-Phân biệt hai cặp hàm:
-
-| Hàm | Đọc/ghi với |
+| Functions | Work with |
 |---|---|
-| `json.load` / `json.dump` | file đang mở |
-| `json.loads` / `json.dumps` | chuỗi văn bản |
+| `json.load` / `json.dump` | Open files |
+| `json.loads` / `json.dumps` | Text strings |
 
-Hôm nay `dump` ghi ra file output. `dumps` biến dictionary log thành một dòng text JSON để `print` ra terminal.
+Today `dump` writes output to a file. `dumps` creates JSON text for printing a log in the terminal.
 
-## 3. Datetime: chuỗi thời gian và thời điểm thật
+## 3. Datetime: time text and a parsed time
 
-Trong JSON, thời gian ban đầu chỉ là chuỗi:
+The JSON time begins as a string:
 
 ~~~python
 time_text = "2026-09-13T09:00"
 ~~~
 
-Ta đổi nó thành `datetime` để Python biết đây là thời điểm và có thể kiểm tra/so sánh/tính toán sau này:
+Parse it so Python can validate, compare, or calculate with it:
 
 ~~~python
 observed_at = datetime.fromisoformat(time_text)
 ~~~
 
-Nếu `time_text` sai định dạng ISO, Python tạo `ValueError`. Sau khi kiểm tra, ghi lại bằng định dạng chuẩn:
+Invalid ISO text raises `ValueError`. After parsing, create normalized output text:
 
 ~~~python
 observed_at.isoformat()  # "2026-09-13T09:00:00"
 ~~~
 
-File mẫu có thêm key `timezone` vì `2026-09-13T09:00` không tự nói nó thuộc múi giờ nào. Trong hệ thống thật, thường lưu timestamp theo UTC hoặc lưu timestamp cùng timezone rõ ràng.
+The sample also provides `timezone`: `2026-09-13T09:00` alone does not identify a timezone. Real systems commonly use UTC timestamps or make the timezone explicit.
 
-`logged_at` trong log khác `observed_at`:
-
-| Trường | Nghĩa |
+| Field | Meaning |
 |---|---|
-| `observed_at` | lúc thời tiết được quan sát, lấy từ nguồn |
-| `logged_at` | lúc pipeline chạy và ghi log |
+| `observed_at` | Time the source observed the weather |
+| `logged_at` | Time the pipeline wrote its log |
 
-Hàm này tạo thời gian UTC hiện tại:
+Current UTC time:
 
 ~~~python
 datetime.now(timezone.utc).isoformat()
 ~~~
 
-## 4. Cấu hình: tách luật khỏi code
+## 4. Configuration: separate rules from code
 
-Trong `settings.json` có thành phố, nguồn dữ liệu và giới hạn nhiệt độ:
+`settings.json` contains the city, source, and temperature limits. A shortened example:
 
 ~~~json
 {
@@ -132,26 +128,26 @@ Trong `settings.json` có thành phố, nguồn dữ liệu và giới hạn nhi
 }
 ~~~
 
-Vì sao không viết thẳng `-50` và `60` vào hàm?
+Read the limits from configuration rather than hard-coding them:
 
 ~~~python
 if not settings["temperature_min_c"] <= temperature_c <= settings["temperature_max_c"]:
     raise ValueError("temperature_c is outside configured range")
 ~~~
 
-Sau này nếu có nguồn dữ liệu khác hoặc luật mới, chỉ cần sửa file cấu hình. Code kiểm tra không đổi. Đây là cách pipeline dễ dùng lại hơn.
+A new rule or source can use different settings while keeping the validation code. This makes the pipeline easier to reuse.
 
-`raise ValueError(...)` chủ động tạo lỗi với lý do rõ ràng khi dữ liệu phá vỡ data contract. Nó khác `return None` của Ngày 1, nhưng mục đích giống nhau: không cho dữ liệu không hợp lệ đi vào output.
+`raise ValueError(...)` deliberately raises an error with a clear reason when the data violates the contract. Day 1 used `return None`; both approaches prevent invalid data from entering output, but they control execution differently.
 
-## 5. Structured log: log để máy cũng hiểu
+## 5. Structured logs: readable by programs too
 
-Log dạng câu tự do:
+A free-form log might say:
 
 ~~~text
-Đã ghi dữ liệu thời tiết của Thành phố Hồ Chí Minh lúc 09:00
+Wrote weather data for Ho Chi Minh City at 09:00
 ~~~
 
-Con người đọc được, nhưng chương trình khó lọc theo thành phố hay sự kiện. Log có cấu trúc lưu từng thông tin dưới một key:
+A person can read this, but it is harder for code to filter by city or event. A structured log uses named fields:
 
 ~~~json
 {
@@ -164,73 +160,71 @@ Con người đọc được, nhưng chương trình khó lọc theo thành ph�
 }
 ~~~
 
-Sau này hệ thống log có thể tìm tất cả record với `event = "snapshot_written"`, hoặc đếm số lần từng thành phố được xử lý.
+A logging system can search for `event = "snapshot_written"` or count events per city.
 
-Hàm `log_event` của bài tạo dictionary log rồi dùng:
+`log_event` builds a dictionary and prints:
 
 ~~~python
 print(json.dumps(record, ensure_ascii=False))
 ~~~
 
-Một dòng JSON in ra terminal là cách logging phổ biến cho script, container và pipeline. Đừng dùng log để chứa mật khẩu, API key hay dữ liệu riêng tư.
+One JSON record per terminal line is a common logging approach for scripts and pipelines. Keep passwords, API keys, and private information out of logs.
 
-## 6. Đọc `extract.py` như một pipeline
+## 6. Read extract.py as a pipeline
 
 ~~~text
 main
   -> load settings.json
   -> load weather_response.json
-  -> build_snapshot: lấy dữ liệu, đổi kiểu, kiểm tra, chuẩn hóa
-  -> write_json: ghi output
-  -> log_event: in log JSON
+  -> build_snapshot: extract, convert, validate, normalize
+  -> write_json: save output
+  -> log_event: print JSON log
 ~~~
 
-Ba hàm đã viết sẵn có trách nhiệm rõ:
-
-| Hàm | Nhận vào | Trả ra / tác động |
+| Function | Input | Return value / effect |
 |---|---|---|
-| `load_json(path)` | đường dẫn | dictionary từ file JSON |
-| `write_json(path, data)` | đường dẫn, dictionary | tạo file JSON |
-| `log_event(event, details)` | tên sự kiện, chi tiết | in một record log |
+| `load_json(path)` | Path | Dictionary from a JSON file |
+| `write_json(path, data)` | Path and dictionary | Writes a JSON file |
+| `log_event(event, details)` | Event name and details | Prints a log record |
 
-Bạn chỉ hoàn thành `build_snapshot(payload, settings)`. Hợp đồng của nó:
+Complete only `build_snapshot(payload, settings)`:
 
 ~~~text
-Nhận: payload từ nguồn và settings từ file cấu hình.
-Trả: một dictionary đã chuẩn hóa, hoặc ValueError nếu nhiệt độ ngoài giới hạn.
+Input: source payload and configuration settings.
+Output: normalized dictionary, or ValueError for out-of-range temperature.
 ~~~
 
-## 7. Làm theo từng TODO
+## 7. Work through the TODOs
 
-1. Lấy `current` từ `payload`.
-2. Đổi `current["time"]` thành `datetime`.
-3. Lấy và chuyển nhiệt độ, độ ẩm sang `float` và `int`.
-4. So sánh nhiệt độ với hai giới hạn trong `settings`.
-5. `return` dictionary theo đúng key yêu cầu.
+1. Get `current` from `payload`.
+2. Parse `current["time"]` into datetime.
+3. Convert temperature and humidity to float and int.
+4. Compare temperature with the two configured bounds.
+5. Return a dictionary using the required keys.
 
-Sau TODO 3, có thể thêm tạm:
+After TODO 3, temporarily inspect:
 
 ~~~python
 print(current)
 print(observed_at, temperature_c, humidity_pct)
 ~~~
 
-để quan sát giá trị. Xóa các dòng debug trước khi hoàn thành bài.
+Remove these debug prints before finishing.
 
-## 8. Lỗi thường gặp
+## 8. Common errors
 
-| Lỗi | Thường do | Cách xem lại |
+| Error | Common cause | What to check |
 |---|---|---|
-| `FileNotFoundError` | Chạy script ở sai thư mục | Chạy trong `C:\DE Courses\day-03` |
-| `JSONDecodeError` | JSON bị thiếu dấu phẩy/dấu ngoặc | Mở file JSON, không sửa nếu chưa cần |
-| `KeyError` | Gõ sai key như `temperature` thay vì `temperature_2m` | So lại `weather_response.json` |
-| `ValueError: Invalid isoformat string` | Chuỗi thời gian sai | Dùng `datetime.fromisoformat(current["time"])` |
-| `TypeError: 'NoneType' ...` | Quên `return` dictionary | Hoàn thành TODO 5 |
+| `FileNotFoundError` | Wrong working folder | Run from `C:\DE Courses\day-03` |
+| `JSONDecodeError` | Missing JSON comma or bracket | Inspect the JSON file |
+| `KeyError` | Wrong key, such as temperature instead of temperature_2m | Compare with `weather_response.json` |
+| `ValueError: Invalid isoformat string` | Invalid time text | Inspect the value passed to `datetime.fromisoformat` |
+| `TypeError: 'NoneType' ...` | Missing dictionary return | Complete TODO 5 |
 
-## 9. Tài liệu ngoài
+## 9. Focused references
 
-- [Python `json`](https://docs.python.org/3/library/json.html)
-- [Python `datetime`](https://docs.python.org/3/library/datetime.html)
+- [Python json](https://docs.python.org/3/library/json.html)
+- [Python datetime](https://docs.python.org/3/library/datetime.html)
 - [Python exceptions](https://docs.python.org/3/tutorial/errors.html)
 
-Chỉ đọc phần đang dùng trong bài. Mục tiêu là tự chạy được pipeline nhỏ, không phải thuộc hết thư viện.
+Read only the parts needed for the exercise. The goal is to run a small pipeline yourself, not memorize the whole library.

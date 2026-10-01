@@ -1,69 +1,73 @@
-# Lộ trình Data Engineering 30 ngày
+# 30-day Data Engineering roadmap
 
-## Cách dùng thư mục này
+## How to use this workspace
 
-Mỗi ngày học có một thư mục riêng theo mẫu `NN-day-ten-ngan`.
+Each day has its own folder named `day-NN`, such as `day-01`.
 
-- Đọc `README.md` của ngày đó trước.
-- Tự viết code, không chép nguyên đáp án.
-- Lưu ghi chú, ảnh lỗi và kết quả chạy vào chính thư mục ngày học.
-- Chỉ chuyển sang ngày tiếp theo khi hoàn thành "đầu ra" của ngày hiện tại.
+- Start with that day's `guide.md`; it gives the learning order.
+- Write the code yourself instead of copying a complete answer.
+- Keep notes, error screenshots, and results in the day's folder.
+- Move on after completing the day's required output.
 
-Mỗi buổi được thiết kế cho 2.5–4 giờ. Nếu cần lâu hơn, không sao; điều quan trọng là hiểu và tự chạy lại được.
+Each session is designed for 2.5–4 hours. Taking longer is fine; understanding the work and being able to run it again matter more.
 
-## Đích đến sau 30 ngày
+## Goal after 30 days
 
-Xây được một pipeline dữ liệu thời tiết: lấy dữ liệu API, lưu raw data, làm sạch, nạp PostgreSQL, tạo bảng phân tích, kiểm tra chất lượng, chạy lại an toàn bằng Docker và orchestration cơ bản. Có README, test, log mẫu và báo cáo ngắn để đưa vào portfolio.
+Build a weather data pipeline: fetch API data, preserve raw data, clean it, load PostgreSQL, create analytics tables, check quality, and run it using Docker and basic orchestration. Include a README, tests, sample logs, and a short report for your portfolio.
 
-## Stack của tháng đầu
+## First-month stack
 
-Python, SQL/PostgreSQL, Git/GitHub, terminal, CSV/JSON/Parquet, `pytest`, Docker Compose, Prefect, BigQuery Sandbox và một LLM API ở mức hỗ trợ pipeline.
+Python, SQL/PostgreSQL, Git/GitHub, terminal, CSV/JSON/Parquet, pytest, Docker Compose, Prefect, BigQuery Sandbox, and an LLM API for a small pipeline-support experiment.
 
-Không học trong tháng đầu: Kafka, Kubernetes, Terraform, nhiều cloud cùng lúc, Spark chuyên sâu, vector database hay RAG. Spark chỉ xem khái niệm sau capstone.
+Leave Kafka, Kubernetes, Terraform, multiple clouds, advanced Spark, vector databases, and RAG for later. Explore Spark concepts after the capstone.
 
-## Lịch từng ngày
+## Daily schedule
 
-| Ngày | Chủ đề | Đầu ra |
+| Day | Topic | Required output |
 |---|---|---|
-| 01 | Python, file CSV, Git cơ bản | Chương trình làm sạch CSV thời tiết |
-| 02 | Python: hàm, dict, list, set, exception | Báo cáo thời tiết nhỏ và hiểu/refactor chương trình ngày 1 |
-| 03 | Datetime, JSON, logging, cấu hình | Đọc JSON và ghi log có cấu trúc |
-| 04 | pandas: đọc, lọc, kiểu dữ liệu, missing values | Script làm sạch dữ liệu theo cột |
-| 05 | pandas: merge, groupby, kiểm tra kết quả | Báo cáo tổng hợp thời tiết theo thành phố |
-| 06 | CLI, environment variables, HTTP cơ bản | Script CLI lấy thời tiết hiện tại từ API |
-| 07 | Ôn và mini-project 1 | Repository sạch, README và 5 quality checks |
-| 08 | PostgreSQL: bảng, kiểu dữ liệu, khóa và constraint | Schema dữ liệu thời tiết |
-| 09 | SQL: SELECT, WHERE, JOIN, GROUP BY | 10 truy vấn có lời giải thích |
-| 10 | SQL: CTE, CASE, date/time, subquery | 10 truy vấn nâng cao |
-| 11 | SQL: window functions | Phân tích rank, lag và rolling average |
-| 12 | Data modeling: grain, OLTP/OLAP, fact/dimension | ERD và star schema |
-| 13 | PostgreSQL từ Python: transaction, upsert | Script nạp staging an toàn |
-| 14 | Ôn và mini-project 2 | Weather analytics mart |
-| 15 | REST API: timeout, status, JSON, retry | Module extract từ Open-Meteo |
-| 16 | Raw/staging/mart, ETL và ELT | Pipeline ba lớp dữ liệu |
-| 17 | Incremental load, idempotency, backfill | Chạy lại không sinh dữ liệu trùng |
-| 18 | Docker: image, container, volume, network | PostgreSQL bằng Docker Compose |
-| 19 | Docker Compose cho toàn ứng dụng | Một lệnh khởi động môi trường |
-| 20 | Prefect: flow, task, retry, logs | Pipeline được điều phối |
-| 21 | Ôn và mini-project 3 | Pipeline chạy theo lịch local |
-| 22 | Testing: pytest, fixtures, mock API | Test cho transform và ingestion |
-| 23 | Data quality: schema, null, unique, range, freshness | Bộ kiểm tra chất lượng |
-| 24 | Data warehouse: columnar storage, partitioning, chi phí | Bài lab BigQuery Sandbox |
-| 25 | Analytics: KPI, SQL mart, trực quan hóa | Ba biểu đồ và nhận xét có số liệu |
-| 26 | CI cơ bản với GitHub Actions | Test chạy tự động khi push |
-| 27 | AI/LLM hỗ trợ DE: docs, test, tóm tắt có kiểm chứng | Một thử nghiệm được đánh giá |
-| 28 | Thiết kế capstone và README | Architecture, data dictionary, runbook |
-| 29 | Chạy capstone và xử lý lỗi | Demo pipeline từ đầu đến cuối |
-| 30 | Hoàn thiện portfolio | README, video demo, retrospective |
+| 01 | Python, CSV files, basic Git | Weather CSV cleaning program |
+| 02 | Python: functions, dict, list, set, exceptions | Small weather report and understanding/refactoring of Day 1 |
+| 03 | Datetime, JSON, logging, configuration | JSON reading and structured logs |
+| 04 | pandas: reading, filtering, types, missing values | Script that cleans whole columns |
+| 05 | pandas: merge, groupby, result checks | City weather summary |
+| 06 | CLI, environment variables, HTTP basics | CLI script that fetches current weather |
+| 07 | Review and mini-project 1 | Organized repository, README, five quality checks |
+| 08 | PostgreSQL through pgAdmin 4: tables, types, keys, constraints | Weather schema on local PostgreSQL |
+| 09 | SQL: SELECT, WHERE, JOIN, GROUP BY | Ten queries with explanations |
+| 10 | SQL: CTE, CASE, date/time, subqueries | Ten more advanced queries |
+| 11 | SQL window functions | Rank, lag, and rolling-average analysis |
+| 12 | Data modeling: grain, OLTP/OLAP, fact/dimension | ERD and star schema |
+| 13 | PostgreSQL from Python: transactions, upsert | Safe staging-load script |
+| 14 | Review and mini-project 2 | Weather analytics mart |
+| 15 | REST APIs: timeout, status, JSON, retry | Open-Meteo extraction module |
+| 16 | Raw/staging/mart, ETL and ELT | Three-layer data pipeline |
+| 17 | Incremental loading, idempotency, backfill | Reruns without duplicate data |
+| 18 | Docker: images, containers, volumes, networks | PostgreSQL container with persistent storage |
+| 19 | Docker Compose for the application | Start the environment with one command |
+| 20 | Prefect: flows, tasks, retry, logs | Orchestrated pipeline |
+| 21 | Review and mini-project 3 | Locally scheduled pipeline |
+| 22 | Testing: pytest, fixtures, mock API | Transformation and ingestion tests |
+| 23 | Data quality: schema, null, uniqueness, range, freshness | Data quality checks |
+| 24 | Data warehouses: columnar storage, partitioning, costs | BigQuery Sandbox lab |
+| 25 | Analytics: KPIs, SQL mart, visualization | Three charts and observations supported by numbers |
+| 26 | Basic CI with GitHub Actions | Tests run automatically on push |
+| 27 | AI/LLM support for DE: docs, tests, verified summaries | Evaluated experiment |
+| 28 | Capstone design and README | Architecture, data dictionary, runbook |
+| 29 | Run capstone and handle failures | End-to-end pipeline demo |
+| 30 | Finish the portfolio | README, demo video, retrospective |
 
-## Quy tắc hoàn thành
+For Days 08–17, use locally installed PostgreSQL, with pgAdmin 4 for SQL practice. Docker is not a prerequisite for these lessons. Start Day 8 with `day-08/guide.md`.
 
-Một phần được xem là xong khi bạn có thể:
+Day 18 introduces Docker step by step: why use it, image versus container, installing/starting Docker Desktop, understanding each command, host versus container ports, connecting pgAdmin, and using a volume to preserve data. Move to Docker Compose in Day 19. Consider the local server's existing port when choosing the container's host port.
 
-1. Chạy lại từ đầu mà không phụ thuộc vào notebook hoặc trạng thái máy cũ.
-2. Giải thích đầu vào, đầu ra, lỗi có thể xảy ra và cách chương trình xử lý chúng.
-3. Có một commit Git mô tả đúng thay đổi.
+## Completion criteria
 
-## Vai trò của roadmap.sh
+A section is complete when you can:
 
-[Data Engineer Roadmap](https://roadmap.sh/data-engineer) là bản đồ tham khảo dài hạn. Nó đúng ở các mảng Python, SQL, data storage, pipelines, orchestration, warehouse, big data và cloud. Ta dùng nó để biết phần nào sẽ đến sau, không dùng nó làm checklist phải học hết trong một tháng.
+1. Run it from the beginning without relying on hidden notebook state or a previous session.
+2. Explain its inputs, outputs, possible errors, and how the program handles them.
+3. Make a Git commit that accurately describes the change.
+
+## Role of roadmap.sh
+
+The [Data Engineer Roadmap](https://roadmap.sh/data-engineer) is a long-term reference covering Python, SQL, storage, pipelines, orchestration, warehouses, big data, and cloud. Use it to see what comes later, rather than as a checklist to finish in one month.
