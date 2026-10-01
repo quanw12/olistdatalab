@@ -160,3 +160,19 @@ Repeat the two count queries afterward: they should still show **2 cities and 3 
 5. Your explanation: why use `TIMESTAMPTZ` for `observed_at`, and why keep `timezone_name` separately?
 
 Budget about 2.5–4 hours. Python connections come in Day 13. After review, commit the lesson files and completed SQL. Keep passwords and the server's data directory out of Git.
+
+## 10. Git checkpoint
+
+After completing the practical checks, open PowerShell and run:
+
+```powershell
+Set-Location "C:\DE Courses"
+git status
+git add day-08/schema.sql day-08/guide.md README.md
+git commit -m "feat(day-08): complete PostgreSQL weather constraints"
+git push -u origin feature/day08
+```
+
+These paths include the completed schema, this guide's commit instructions, and the shared course convention. Review `git status` before committing. If you also changed other Day 8 lesson files, stage those explicitly too. Run the commit yourself after checking your work.
+
+The current branch is `feature/day08` and does not yet have an upstream. The `-u` option connects it to the remote branch; later pushes from the same branch can use `git push`. This publishes the feature branch, without merging it into `main`.

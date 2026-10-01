@@ -28,3 +28,7 @@ day-08/      # PostgreSQL with pgAdmin 4: tables, keys, and constraints
 For each day, follow **guide.md → lesson.md → exercise**, opening **help.md** when you need a hint. Day 7 also has a project README.
 
 New days will be added directly to this project with practice data, code scaffolds, and instructions.
+
+## Convention for future lesson guides
+
+Every new day's `guide.md` must include a **Git checkpoint** with ready-to-run PowerShell commands: move to `C:\DE Courses`, inspect `git status`, stage the relevant lesson files, commit with a meaningful message, and push. Specify the working folder and use paths appropriate to that day. Check the current branch and its upstream; include `git push -u origin <actual-branch-name>` when no upstream is configured. The learner runs these commands after completing and reviewing the exercise.
