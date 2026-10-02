@@ -22,6 +22,7 @@ day-05/      # pandas: merge, groupby, and result checks
 day-06/      # CLI, environment variables, and HTTP APIs
 day-07/      # Mini-project 1: raw JSON to a clean weather record
 day-08/      # PostgreSQL with pgAdmin 4: tables, keys, and constraints
+day-09/      # SQL: SELECT, WHERE, JOIN, GROUP BY, and ten query exercises
 ...
 ```
 
