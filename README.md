@@ -24,6 +24,7 @@ day-07/      # Mini-project 1: raw JSON to a clean weather record
 day-08/      # PostgreSQL with pgAdmin 4: tables, keys, and constraints
 day-09/      # SQL: SELECT, WHERE, JOIN, GROUP BY, and ten query exercises
 day-10/      # SQL: local dates, CASE, subqueries, CTEs, and a daily weather report
+day-11/      # SQL windows: ranking, LAG, rolling averages, and latest-weather trends
 ...
 ```
 
