@@ -1,0 +1,2 @@
+# LE18: add the actual build-context exclusion patterns yourself.
+# Gitignore does not replace dockerignore.

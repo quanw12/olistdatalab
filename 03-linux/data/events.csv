@@ -1,0 +1,7 @@
+event_id,amount_cents
+E1,1000
+E2,2050
+E2,2050
+E3,0
+BAD,-1
+,500

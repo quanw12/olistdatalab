@@ -1,0 +1,14 @@
+[
+  {
+    "customer_id": " c1 ",
+    "amount_cents": 10
+  },
+  {
+    "customer_id": "c1",
+    "amount_cents": 20
+  },
+  {
+    "customer_id": "c2",
+    "amount_cents": 5
+  }
+]

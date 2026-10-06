@@ -1,0 +1,5 @@
+# Keep Bash and container text portable without changing other course folders.
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
