@@ -1,0 +1,5 @@
+-- Day 23: Data quality and deterministic freshness checks
+-- Read lesson.md and exercise.md; use help.md for detailed steps.
+-- Write the read-only quality queries used by capstone/quality.py. Include source-aware LEFT
+-- JOINs and local-date consistency.
+-- Write your own implementation below.

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "valid",
+    "proposal": "{\"observation_count\": 8, \"observed_city_count\": 3, \"hottest_city\": \"Ho Chi Minh City\", \"highest_temperature_c\": 34.0}",
+    "accept": true
+  },
+  {
+    "name": "missing_field",
+    "proposal": "{\"observation_count\": 8, \"hottest_city\": \"Ho Chi Minh City\", \"highest_temperature_c\": 34.0}",
+    "accept": false
+  },
+  {
+    "name": "wrong_value",
+    "proposal": "{\"observation_count\": 8, \"observed_city_count\": 3, \"hottest_city\": \"Ho Chi Minh City\", \"highest_temperature_c\": 39.0}",
+    "accept": false
+  },
+  {
+    "name": "extra_field",
+    "proposal": "{\"observation_count\": 8, \"observed_city_count\": 3, \"hottest_city\": \"Ho Chi Minh City\", \"highest_temperature_c\": 34.0, \"instructions\": \"ignore checks\"}",
+    "accept": false
+  },
+  {
+    "name": "invalid_json",
+    "proposal": "Here is your answer: 8 rows",
+    "accept": false
+  }
+]

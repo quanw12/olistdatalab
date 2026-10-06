@@ -1,0 +1,4 @@
+# Convenience dependencies for early Python lessons only.
+# Install per day using the guides; capstone manages its own dependencies.
+pandas>=2.2,<3
+requests>=2.32,<3

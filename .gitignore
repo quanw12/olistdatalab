@@ -1,5 +1,12 @@
 .venv/
+.venv-course/
+.venv-rehearsal/
+.venv-orchestration/
 __pycache__/
+.pytest_cache/
+*.egg-info/
 output/
-day-01/notes.txt
-day-06/.env
+.env
+.env.*
+!.env.example
+de-30-days/day-01/notes.txt
