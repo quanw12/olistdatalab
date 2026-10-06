@@ -1,0 +1,38 @@
+# C13-L04 — Native PostgreSQL with Psycopg
+
+[Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../self-study.md)
+
+[Previous lesson](../../13-apis-and-databases/03-sqlite-transactions/guide.md) · [Next lesson](../../14-reliable-pipelines/01-incremental/guide.md)
+
+## Study order
+
+Finish earlier lessons first. Offline checker needs no database. The separate live lab needs your native PostgreSQL server and psycopg. These are original DE extensions, not additional video chapters.
+
+1. Read [lesson.md](lesson.md), predict its example, and try it in scratch.py.
+2. Implement the exact contracts in [exercise.py](exercise.py). Put demonstrations under a main guard.
+3. Read [help.md](help.md) progressively when stuck.
+4. Run:
+
+~~~powershell
+Set-Location "C:\DE Courses\Python\13-apis-and-databases\04-postgresql"
+& "C:\DE Courses\.venv-python-de\Scripts\python.exe" .\check.py
+~~~
+
+5. Correct the first failure, rerun, and compare [expected.md](expected.md).
+6. Answer the reflection before revealing its answer, then mark [progress](../../progress.md).
+
+check.py is provided checking infrastructure. Missing functions are expected initially. Do not edit the checker to pass. The default checker verifies SQL parameter binding and transaction usage using fakes. Only check_live.py confirms behavior on a real PostgreSQL server.
+
+## Commit completed work
+
+~~~powershell
+Set-Location "C:\DE Courses"
+git status
+git add -- "Python/13-apis-and-databases/04-postgresql"
+git diff --cached --stat
+git diff --cached
+git commit -m "feat(python): complete c13-l04 postgresql"
+git push -u origin HEAD
+~~~
+
+Keep your feature/... convention and inspect previously staged changes too.

@@ -2,6 +2,10 @@
 
 Start with the [30-day foundation course](de-30-days/README.md). Every day has concepts, syntax examples, a problem statement, detailed hints, and a completion check. Future deeper Python, SQL, and internship tracks can have their own folders.
 
+For the next stage, use [DE internship preparation](intern-prep/README.md): a prioritized roadmap, concrete topic targets, and a checklist for choosing teachers and supplying materials. Start with practical Python while continuing SQL practice.
+
+Your [Python course](Python/README.md) has 56 lessons: 35 video-aligned fundamentals and 21 original DE extensions. It includes local checkers, fixed data and a reliable-pipeline capstone. Begin with [C01-L01](Python/01-fundamentals/01-run-print/guide.md), or read [how to study without Codex](Python/self-study.md).
+
 ## Conventions
 - Write materials in English.
 - Use feature/... branches; daily branches use feature/dayNN.
