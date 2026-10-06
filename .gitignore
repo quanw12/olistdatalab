@@ -1,4 +1,5 @@
 .venv/
+.venv-python-de/
 .venv-course/
 .venv-rehearsal/
 .venv-orchestration/
