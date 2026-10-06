@@ -1,0 +1,9 @@
+city,observed_at,requested_at,timezone_name,temperature_c,humidity_pct,source
+Hanoi,2026-09-18T02:00:00+00:00,2026-09-18T02:01:00+00:00,Asia/Ho_Chi_Minh,30.0,80,open-meteo-demo
+Hanoi,2026-09-18T05:00:00+00:00,2026-09-18T05:01:00+00:00,Asia/Ho_Chi_Minh,32.0,70,open-meteo-demo
+Hanoi,2026-09-19T02:00:00+00:00,2026-09-19T02:01:00+00:00,Asia/Ho_Chi_Minh,31.0,75,open-meteo-demo
+Da Nang,2026-09-18T02:00:00+00:00,2026-09-18T02:01:00+00:00,Asia/Ho_Chi_Minh,29.0,85,open-meteo-demo
+Da Nang,2026-09-18T05:00:00+00:00,2026-09-18T05:01:00+00:00,Asia/Ho_Chi_Minh,30.0,80,open-meteo-demo
+Ho Chi Minh City,2026-09-18T02:00:00+00:00,2026-09-18T02:01:00+00:00,Asia/Ho_Chi_Minh,33.0,65,open-meteo-demo
+Ho Chi Minh City,2026-09-18T05:00:00+00:00,2026-09-18T05:01:00+00:00,Asia/Ho_Chi_Minh,34.0,60,open-meteo-demo
+Ho Chi Minh City,2026-09-19T02:00:00+00:00,2026-09-19T02:01:00+00:00,Asia/Ho_Chi_Minh,32.0,70,open-meteo-demo

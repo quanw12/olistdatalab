@@ -1,36 +1,46 @@
-# Data Engineering Course
+# Data Engineering learning workspace
 
-A workspace for learning Data Engineering one day at a time. The learning materials are in English so you can practise technical English while studying.
+Start with the [30-day foundation course](de-30-days/README.md). Every day has concepts, syntax examples, a problem statement, detailed hints, and a completion check. Future deeper Python, SQL, and internship tracks can have their own folders.
 
-## Where to start
+## Conventions
+- Write materials in English.
+- Use feature/... branches; daily branches use feature/dayNN.
+- Keep exercises as problem statements; put teaching examples in lesson.md and detailed hints in help.md.
+- Every guide includes commit and push commands.
+- Preserve learner submissions.
+- Use local PostgreSQL and pgAdmin through Day 17; introduce Docker in Day 18.
 
-1. Read the [30-day roadmap](roadmap.md).
-2. Use the [learning resources](resources.md) to choose the relevant reading for each stage.
-3. Work on the earliest day you have not completed.
-4. Save notes, errors, and results in that day's folder.
+## Saved unfinished work
 
-## Structure
+Your unfinished Day 12 work and related README/resources edits were saved, including untracked files:
+- Original branch: feature/day12.
+- Stash commit: c031987f2878b5642dd87a066ff67e0cef6d4213.
+- Message: WIP Day 12 before completing the 30-day course (2026-10-06).
 
-```text
-roadmap.md   # The full month's learning plan
-resources.md # Selected resources for each stage
-day-01/      # Day 1 lessons, data, and code
-day-02/      # Python: functions, lists, sets, and dictionaries
-day-03/      # JSON, datetime, configuration, and logs
-day-04/      # pandas: cleaning whole columns
-day-05/      # pandas: merge, groupby, and result checks
-day-06/      # CLI, environment variables, and HTTP APIs
-day-07/      # Mini-project 1: raw JSON to a clean weather record
-day-08/      # PostgreSQL with pgAdmin 4: tables, keys, and constraints
-day-09/      # SQL: SELECT, WHERE, JOIN, GROUP BY, and ten query exercises
-day-10/      # SQL: local dates, CASE, subqueries, CTEs, and a daily weather report
-...
-```
+The stash is retained. Ignored local files are not included by --include-untracked; existing daily ignored files were moved with their folders into de-30-days.
 
-For each day, follow **guide.md → lesson.md → exercise**, opening **help.md** when you need a hint. Day 7 also has a project README.
+To resume the original work, first commit the curriculum changes or save them in a separate stash. Then:
 
-New days will be added directly to this project with practice data, code scaffolds, and instructions.
+~~~powershell
+Set-Location "C:\DE Courses"
+git switch feature/day12
+git stash apply c031987f2878b5642dd87a066ff67e0cef6d4213
+~~~
 
-## Convention for future lesson guides
+This restores Day 12 at its original paths on that branch and retains the backup. Do not apply the old layout over the reorganized course branch.
 
-Every new day's `guide.md` must include a **Git checkpoint** with ready-to-run PowerShell commands: move to `C:\DE Courses`, inspect `git status`, stage the relevant lesson files, commit with a meaningful message, and push. Specify the working folder and use paths appropriate to that day. Check the current branch and its upstream; include `git push -u origin <actual-branch-name>` when no upstream is configured. The learner runs these commands after completing and reviewing the exercise.
+## Commit this curriculum
+
+After reviewing:
+
+~~~powershell
+Set-Location "C:\DE Courses"
+git status
+git add -- README.md .gitignore de-30-days
+git add -u
+git diff --cached --stat
+git commit -m "docs(course): complete the 30-day DE foundation curriculum"
+git push -u origin feature/de-30-day-course
+~~~
+
+The second staging command records the old paths' removals. Inspect staged files before committing. Day 11 is part of this branch's ancestry; merge its branch first if a later pull request should show only the curriculum changes.

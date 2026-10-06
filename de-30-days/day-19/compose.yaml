@@ -1,0 +1,4 @@
+# Day 19: Package the pipeline with Docker Compose
+# Read lesson.md and exercise.md; use help.md for detailed steps.
+# Write the db/app services and external named volume in ../capstone/compose.yaml. This file is a problem statement, not a runnable Compose configuration.
+# Write your own implementation below.

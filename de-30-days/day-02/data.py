@@ -1,0 +1,2 @@
+# PROVIDED INPUT: do not change these five clean observations.
+WEATHER_ROWS = [{'city': 'Hanoi', 'observed_at': '2026-08-01', 'temperature_c': 31.2}, {'city': 'Da Nang', 'observed_at': '2026-08-01', 'temperature_c': 30.1}, {'city': 'Ho Chi Minh City', 'observed_at': '2026-08-01', 'temperature_c': 32.0}, {'city': 'Hanoi', 'observed_at': '2026-08-02', 'temperature_c': 33.4}, {'city': 'Da Nang', 'observed_at': '2026-08-02', 'temperature_c': 29.8}]

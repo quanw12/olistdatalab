@@ -1,0 +1,10 @@
+-- Day 08: PostgreSQL tables, keys, and constraints
+-- Read lesson.md, then exercise.md. Detailed guidance: help.md.
+-- On the empty weather_day08 database, create cities and weather_observations. cities: city_id
+-- INTEGER identity PRIMARY KEY, city_name TEXT NOT NULL UNIQUE, timezone_name TEXT NOT NULL;
+-- reject blank names/timezones. observations: city_id INTEGER NOT NULL FK to cities,
+-- observed_at/requested_at TIMESTAMPTZ NOT NULL, temperature_c NUMERIC(4,1) NOT NULL in[-50,60],
+-- humidity_pct SMALLINT NOT NULL in[0,100], source TEXT NOT NULL/nonblank. Composite PK(city_id,
+-- observed_at). Write the COMPLETE CREATE TABLE statements, not just constraints. Then run
+-- supplied seed.sql once and verify.sql.
+-- Write your own implementation below. No solution is supplied here.

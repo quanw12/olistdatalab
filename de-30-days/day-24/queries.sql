@@ -1,0 +1,5 @@
+-- Day 24: Warehouses, query plans, and a small cloud lab
+-- Read lesson.md and exercise.md; use help.md for detailed steps.
+-- Write PostgreSQL EXPLAIN and clearly labeled GoogleSQL SELECT variants. Do not execute a
+-- mixed-dialect file as one script.
+-- Write your own implementation below.

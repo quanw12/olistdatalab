@@ -1,0 +1,4 @@
+# Day 26: Continuous integration with GitHub Actions
+# Read lesson.md and exercise.md; use help.md for detailed steps.
+# Create the actual workflow at ../../.github/workflows/ci.yml. Use the assignment trigger, permissions, Python version, working directory and offline tests.
+# Write your own implementation below.

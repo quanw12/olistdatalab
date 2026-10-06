@@ -1,0 +1,132 @@
+[
+  {
+    "city": "Hanoi",
+    "requested_at": "2026-09-18T02:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T09:00",
+        "temperature_2m": 30.0,
+        "relative_humidity_2m": 80
+      }
+    }
+  },
+  {
+    "city": "Hanoi",
+    "requested_at": "2026-09-18T05:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T12:00",
+        "temperature_2m": 32.0,
+        "relative_humidity_2m": 70
+      }
+    }
+  },
+  {
+    "city": "Hanoi",
+    "requested_at": "2026-09-19T02:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-19T09:00",
+        "temperature_2m": 31.0,
+        "relative_humidity_2m": 75
+      }
+    }
+  },
+  {
+    "city": "Da Nang",
+    "requested_at": "2026-09-18T02:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T09:00",
+        "temperature_2m": 29.0,
+        "relative_humidity_2m": 85
+      }
+    }
+  },
+  {
+    "city": "Da Nang",
+    "requested_at": "2026-09-18T05:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T12:00",
+        "temperature_2m": 30.0,
+        "relative_humidity_2m": 80
+      }
+    }
+  },
+  {
+    "city": "Ho Chi Minh City",
+    "requested_at": "2026-09-18T02:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T09:00",
+        "temperature_2m": 33.0,
+        "relative_humidity_2m": 65
+      }
+    }
+  },
+  {
+    "city": "Ho Chi Minh City",
+    "requested_at": "2026-09-18T05:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T12:00",
+        "temperature_2m": 34.0,
+        "relative_humidity_2m": 60
+      }
+    }
+  },
+  {
+    "city": "Ho Chi Minh City",
+    "requested_at": "2026-09-19T02:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-19T09:00",
+        "temperature_2m": 32.0,
+        "relative_humidity_2m": 70
+      }
+    }
+  },
+  {
+    "city": "Hanoi",
+    "requested_at": "2026-09-18T02:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T09:00",
+        "temperature_2m": "oops",
+        "relative_humidity_2m": 80
+      }
+    }
+  },
+  {
+    "city": "Hanoi",
+    "requested_at": "2026-09-18T02:01:00+00:00",
+    "source": "open-meteo-demo",
+    "payload": {
+      "timezone": "Asia/Ho_Chi_Minh",
+      "current": {
+        "time": "2026-09-18T09:00",
+        "temperature_2m": 30.0,
+        "relative_humidity_2m": 110
+      }
+    }
+  }
+]

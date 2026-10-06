@@ -1,0 +1,5 @@
+-- Day 13: Load PostgreSQL from Python
+-- Read lesson.md and exercise.md; use help.md for detailed steps.
+-- Create staging.weather_observations using the seven columns, types and constraints in
+-- ../capstone/contract.md.
+-- Write your own implementation below.
