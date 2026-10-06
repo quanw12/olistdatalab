@@ -1,0 +1,6 @@
+run=r1 level=INFO event=started
+run=r1 level=INFO event=input_read
+run=r1 level=WARN event=rows_rejected
+run=r2 level=ERROR event=missing_input
+run=r3 level=ERROR event=output_unavailable
+run=r1 level=INFO event=completed

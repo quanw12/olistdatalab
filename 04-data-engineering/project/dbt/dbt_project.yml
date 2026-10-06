@@ -1,0 +1,23 @@
+name: engineering_retail
+version: '1.0.0'
+config-version: 2
+profile: engineering_retail
+model-paths: [models]
+seed-paths: [seeds]
+test-paths: [tests]
+clean-targets: [target, dbt_packages]
+models:
+  engineering_retail:
+    +materialized: view
+seeds:
+  engineering_retail:
+    changes:
+      +column_types:
+        id: varchar
+        customer_id: varchar
+        occurred_at: varchar
+        updated_at: varchar
+        version: integer
+        amount_cents: bigint
+        op: varchar
+

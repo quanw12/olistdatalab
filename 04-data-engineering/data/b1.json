@@ -1,0 +1,21 @@
+[
+  {
+    "id": "A",
+    "customer_id": "c1",
+    "occurred_at": "2026-09-01T09:00:00+00:00",
+    "updated_at": "2026-09-01T10:00:00+00:00",
+    "version": 1,
+    "amount_cents": 1000,
+    "op": "upsert"
+  },
+  {
+    "id": "B",
+    "customer_id": "c2",
+    "occurred_at": "2026-09-01T09:30:00+00:00",
+    "updated_at": "2026-09-01T10:00:00+00:00",
+    "version": 1,
+    "amount_cents": 1500,
+    "op": "upsert"
+  }
+]
+

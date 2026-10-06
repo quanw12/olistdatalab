@@ -1,50 +1,36 @@
-# Data Engineering learning workspace
+# Data Engineering study
 
-Start with the [30-day foundation course](de-30-days/README.md). Every day has concepts, syntax examples, a problem statement, detailed hints, and a completion check. Future deeper Python, SQL, and internship tracks can have their own folders.
+**Start here: [the learning roadmap](roadmap.md).** Follow the four courses below in order. Each course has its own setup and lesson index; the roadmap is the only overall schedule.
 
-For the next stage, use [DE internship preparation](intern-prep/README.md): a prioritized roadmap, concrete topic targets, and a checklist for choosing teachers and supplying materials. Start with practical Python while continuing SQL practice.
+Your next lesson is **[Foundation Day 12: data modeling](01-foundation/day-12/guide.md)**. Days 1–11 remain completed. Your saved submissions and unfinished Day 12 schema are preserved.
 
-Your [Python course](Python/README.md) has 56 lessons: 35 video-aligned fundamentals and 21 original DE extensions. It includes local checkers, fixed data and a reliable-pipeline capstone. Begin with [C01-L01](Python/01-fundamentals/01-run-print/guide.md), or read [how to study without Codex](Python/self-study.md).
+| Order | Course | Purpose |
+|---|---|---|
+| 1 | [01-foundation](01-foundation/README.md) — full 30-day DE course | Review the foundations and build a weather pipeline |
+| 2 | [02-python](02-python/README.md) — 56 lesson units | Learn to write, test and explain a complete Python program |
+| 3 | [03-linux](03-linux/README.md) — 22 lesson units | Run, inspect, collaborate on and deliver a program |
+| 4 | [04-data-engineering](04-data-engineering/README.md) — 23 core + 4 optional lessons | Design reliable data work and practise an independent intern assignment |
 
-## Conventions
-- Write materials in English.
-- Use feature/... branches; daily branches use feature/dayNN.
-- Keep exercises as problem statements; put teaching examples in lesson.md and detailed hints in help.md.
-- Every guide includes commit and push commands.
-- Preserve learner submissions.
-- Use local PostgreSQL and pgAdmin through Day 17; introduce Docker in Day 18.
+SQL continues through your own learning resources and the roadmap's exercises/assessment. A lesson unit is not necessarily a calendar day; integrations can take several sessions.
 
-## Saved unfinished work
+## Read only what you need
 
-Your unfinished Day 12 work and related README/resources edits were saved, including untracked files:
-- Original branch: feature/day12.
-- Stash commit: c031987f2878b5642dd87a066ff67e0cef6d4213.
-- Message: WIP Day 12 before completing the 30-day course (2026-10-06).
+- [Roadmap](roadmap.md): learning order, outcomes, core coverage and pacing.
+- [Study guide](docs/study.md): how the lesson files fit together and how to learn/debug independently.
+- [Assessment](docs/assessment.md): practical skill gates and readiness evidence.
+- [Resources](docs/resources.md): focused references and choosing additional teaching material.
+- [Workspace](docs/workspace.md): folder rules, preserved work and manual Git commands.
+- [Interview practice](docs/interviews.md): explanations and a short project demo.
 
-The stash is retained. Ignored local files are not included by --include-untracked; existing daily ignored files were moved with their folders into de-30-days.
+The old `intern-prep` planning folder has been merged into these shared documents. It is not another course.
 
-To resume the original work, first commit the curriculum changes or save them in a separate stash. Then:
-
-~~~powershell
-Set-Location "C:\DE Courses"
-git switch feature/day12
-git stash apply c031987f2878b5642dd87a066ff67e0cef6d4213
+~~~text
+C:\DE Courses\
+  README.md
+  roadmap.md
+  docs/
+  01-foundation/
+  02-python/
+  03-linux/
+  04-data-engineering/
 ~~~
-
-This restores Day 12 at its original paths on that branch and retains the backup. Do not apply the old layout over the reorganized course branch.
-
-## Commit this curriculum
-
-After reviewing:
-
-~~~powershell
-Set-Location "C:\DE Courses"
-git status
-git add -- README.md .gitignore de-30-days
-git add -u
-git diff --cached --stat
-git commit -m "docs(course): complete the 30-day DE foundation curriculum"
-git push -u origin feature/de-30-day-course
-~~~
-
-The second staging command records the old paths' removals. Inspect staged files before committing. Day 11 is part of this branch's ancestry; merge its branch first if a later pull request should show only the curriculum changes.

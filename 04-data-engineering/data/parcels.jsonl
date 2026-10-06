@@ -1,0 +1,7 @@
+{"parcel_id":"P1","revision":1,"status":"created","weight_g":1000}
+{"parcel_id":"P2","revision":1,"status":"delivered","weight_g":500}
+{"parcel_id":"P1","revision":2,"status":"delivered","weight_g":1200}
+{"parcel_id":"P2","revision":2,"status":"cancelled","weight_g":500}
+{"parcel_id":"P3","revision":1,"status":"transit","weight_g":700}
+{"parcel_id":"P1","revision":1,"status":"created","weight_g":1000}
+

@@ -1,0 +1,71 @@
+-- Write CREATE SCHEMA day12_mart and all three complete table definitions.
+-- Run on weather_day09 in a transaction. Do not alter public source tables.
+-- TODO 1: CREATE TABLE day12_mart.dim_city.
+-- One row represents one city in this fixed, single-source exercise.
+-- Required columns:
+-- city_key: INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY.
+-- source_city_id: INTEGER NOT NULL UNIQUE.
+-- city_name: TEXT NOT NULL UNIQUE, with CHECK (btrim(city_name) <> '').
+-- timezone_name: TEXT NOT NULL, with CHECK (btrim(timezone_name) <> '').
+-- source_city_id is for source-to-mart mapping; it is not a foreign key
+-- back to public.cities. Fact foreign keys reference the mart dimensions.
+-- Write the complete statement below.
+CREATE SCHEMA day12_mart;
+CREATE TABLE day12_mart.dim_city (
+	city_key INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	source_city_id INTEGER NOT NULL UNIQUE,
+	city_name TEXT NOT NULL UNIQUE,
+	timezone_name TEXT NOT NULL,
+	CONSTRAINT ck_city_name CHECK (btrim(city_name) <> ''),
+	CONSTRAINT ck_timezone_name CHECK (btrim(timezone_name) <> '')
+);
+-- TODO 2: CREATE TABLE day12_mart.dim_date.
+-- One row represents one calendar date.
+-- Required columns:
+-- calendar_date: DATE PRIMARY KEY.
+-- calendar_year: INTEGER NOT NULL.
+-- calendar_month: SMALLINT NOT NULL, with CHECK (calendar_month BETWEEN 1 AND 12).
+-- iso_weekday: SMALLINT NOT NULL, with CHECK (iso_weekday BETWEEN 1 AND 7).
+-- ISO weekday: Monday = 1, Sunday = 7.
+-- calendar_date is the date dimension's key; no extra generated ID is needed.
+-- Write the complete statement below.
+CREATE TABLE day12_mart.dim_date(
+	calendar_date DATE PRIMARY KEY,
+	calendar_year INTEGER NOT NKEY,
+	calendar_month SMALLINT NOT NULL,
+	iso_weekday SMALLINT NOT NULL,
+	CONSTRAINT ck_calendar_month CHECK (calendar_month BETWEEN 1 AND 12),
+	CONSTRAINT ck_iso_weekday CHECK (iso_weekday BETWEEN 1 AND 7)
+);
+-- TODO 3: CREATE TABLE day12_mart.fact_weather.
+-- Grain: one observation for one city at one observed instant, from the
+-- exercise's single provider. Multiple times on one date remain separate rows.
+-- Required columns:
+-- observation_key: BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY.
+-- city_key: INTEGER NOT NULL, REFERENCES day12_mart.dim_city (city_key).
+-- observation_date: DATE NOT NULL, REFERENCES day12_mart.dim_date (calendar_date).
+-- observed_at: TIMESTAMPTZ NOT NULL.
+-- requested_at: TIMESTAMPTZ NOT NULL.
+-- temperature_c: NUMERIC(4,1) NOT NULL, with CHECK (temperature_c BETWEEN -50 AND 60).
+-- humidity_pct: SMALLINT NOT NULL, with CHECK (humidity_pct BETWEEN 0 AND 100).
+-- source: TEXT NOT NULL, with CHECK (btrim(source) <> '').
+-- Also add UNIQUE (city_key, observed_at).
+-- observation_key identifies a stored row; the UNIQUE pair protects the grain.
+-- Do NOT use UNIQUE (city_key, observation_date), which would reject the
+-- second observation for the same city on the same date.
+-- Write the complete statement below.
+CREATE TABLE day12_mart.fact_weather(
+	observation_key BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	city_key INTEGER NOT NULL,
+	observation_date DATE NOT NULL,
+	observed_at TIMESTAMPTZ NOT NULL,
+	requested_at TIMESTAMPTZ NOT NULL,
+	temperature_c NUMERIC(4,1) NOT NULL,
+	humidity_pct SMALLINT NOT NULL,
+	source TEXT NOT NULL with CHECK (btrim(source) <> ''),
+	CONSTRAINT fk_city_key FOREIGN KEY(city_key)  REFERENCES day12_mart.dim_city (city_key),
+	CONSTRAINT fk_calendar_date FOREIGN KEY(observation_date) REFERENCES day12_mart.dim_date (calendar_date),
+	CONSTRAINT ck_temperature_c CHECK (temperature_c BETWEEN -50 AND 60),
+	CONSTRAINT ck_humidity_pct CHECK (humidity_pct BETWEEN 0 AND 100),
+	CONSTRAINT uq_city_key_observed_at UNIQUE (city_key, observed_at)
+);
