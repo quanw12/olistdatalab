@@ -1,6 +1,6 @@
 # while loops and guaranteed progress
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=24052s), assigned window **06:40:52–07:10:04**. Roadmap connection: PY02.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=24052s), assigned window **06:40:52–07:10:04**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -34,8 +34,5 @@ next: 3
 
 The body runs with attempt 1 and 2. The next update makes it 3, which fails the condition. The value remains 3 afterward.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/reference/compound_stmts.html#the-while-statement).

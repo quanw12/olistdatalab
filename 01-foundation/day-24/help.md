@@ -9,7 +9,10 @@
 6. Record estimated and actual processed bytes even if the dataset is tiny; the goal is learning where cost evidence appears, not demonstrating a meaningful performance gain.
 7. If no sandbox is available, stop the cloud setup and finish the same fixed-data aggregates locally from the CSV. Mark the proposed GoogleSQL as unexecuted.
 
-## GoogleSQL date syntax
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>GoogleSQL date syntax</summary>
 
 Run this constant expression in BigQuery:
 
@@ -18,3 +21,5 @@ SELECT DATE(TIMESTAMP '2026-09-17 18:30:00+00', 'Asia/Ho_Chi_Minh') AS local_dat
 ~~~
 
 Expected local_date is2026-09-18. For an aggregate, select city and COUNT(*), use the console's fully qualified table reference after FROM, then GROUP BY city. BigQuery encloses project.dataset.table in backtick characters; PostgreSQL uses different identifier quoting.
+
+</details>

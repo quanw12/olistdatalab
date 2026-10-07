@@ -22,6 +22,10 @@ class Location:
     city: str
     country: str = "VN"
 
+    def __post_init__(self):
+        if not self.city.strip():
+            raise ValueError("city required")
+
 location = Location("Hue")
 print(location.city)
 print(location == Location("Hue"))
@@ -36,3 +40,11 @@ The generated initializer assigns the fields. Equality compares field values. Th
 A typed record makes field names visible across pipeline stages. Runtime checks remain necessary at external-data boundaries.
 
 The problem contract is in [exercise.py](exercise.py). The checker supplies fixtures; it does not contain your implementation.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `def __post_init__(self):` | Runs after generated initialization; raise ValueError for a violated instance invariant. |
+| `self.field` | Read the current object's attribute. type(value) is int rejects bool for an exact-integer contract. |

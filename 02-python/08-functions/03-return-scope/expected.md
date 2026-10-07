@@ -1,5 +1,10 @@
 # Expected results — Return values, early return, and scope
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -15,3 +20,5 @@ A valid zero reading must not be mistaken for absent input. Only the caller prin
 ## Explain your result
 
 Why is print not a replacement for return? Can a function mutate an argument despite its variable names being local?
+
+</details>

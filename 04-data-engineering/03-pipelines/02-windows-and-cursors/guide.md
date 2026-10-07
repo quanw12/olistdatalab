@@ -1,12 +1,14 @@
 # DE09 — Event time, extraction cursors and backfills
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE08](../01-corrections-and-deletes/guide.md)
 
 ## Prerequisites and pace
 
 DE08; Python timezone-aware datetime.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -42,3 +44,9 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE10](../03-quality-and-reconciliation/guide.md)
+
+
+## Independent variation
+
+Place several records at the same extraction timestamp and one on the exclusive end. Prove no tied ID is skipped.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

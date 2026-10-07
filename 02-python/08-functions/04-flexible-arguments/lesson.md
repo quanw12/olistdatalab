@@ -39,8 +39,5 @@ Expected output:
 
 The first values tuple is (2, 3, 4). The expanded list supplies two arguments in the second call. Keyword names become metadata keys.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#arbitrary-argument-lists).

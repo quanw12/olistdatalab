@@ -30,3 +30,13 @@ An explicit half-up rule yields 2.68. Decimal addition from strings yields the e
 Financial totals should not drift because one stage used floats and another used integer cents.
 
 The problem contract is in [exercise.py](exercise.py). The checker supplies fixtures; it does not contain your implementation.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `Decimal(text) / InvalidOperation` | Parse decimal text / catch a malformed decimal. |
+| `value.is_finite()` | Reject NaN and infinities before range comparisons. |
+| `value.to_integral_value()` | Compare with the original scaled amount to detect fractional cents; do not silently round invalid data. |
+| `int(value)` | Convert only after validating integrality and range. |

@@ -1,12 +1,14 @@
 # DE21 — Spark schemas, plans and distributed-processing decisions
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE20](../02-bigquery-sandbox/guide.md)
 
 ## Prerequisites and pace
 
 DE12 SQL/dataframes; optional PySpark role extension.
 
-**Optional specialization.** Skip this runtime until a target role needs it. Read the concepts and record your choice. Budget 2–4 hours; integrations may need more than one session.
+**Optional specialization.** Skip this runtime until a target role needs it. Read the concepts and record your choice. Use the difficulty and pace above.
 
 ## Study order
 

@@ -1,5 +1,7 @@
 # C03-L02 — Rounding, display precision, and randomness
 
+**Difficulty: Learn.** 15–45 minutes of coding; allow extra time for first setup. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../01-arithmetic/guide.md) · [Next lesson](../../04-logic/01-truthiness/guide.md)
@@ -49,3 +51,6 @@ git push -u origin HEAD
 ~~~
 
 Review all staged files: changes staged earlier remain in the index. These commands do not change your branch or apply any stash.
+
+
+If this is familiar, solve and explain a changed example before treating it as a short refresh. Setup recipes teach the environment; copying one is not an independent coding assessment.

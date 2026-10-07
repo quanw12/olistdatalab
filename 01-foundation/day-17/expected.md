@@ -1,5 +1,9 @@
 # Day 17 — Incremental loads, corrections, and backfills
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
 
 | Operation | Stored observations | HCMC Sep19 09:00 local |
 |---|---:|---:|
@@ -9,3 +13,5 @@
 | Replay base | 10 | 32.5 |
 
 Final sum 314.0, mean 31.4. Watermark after next:2026-09-19T05:01:00+00:00. Failed transactions change neither data nor checkpoint. Base backfill Sep18..Sep20 reads8 old observations and leaves ten stored rows and the correction intact: replay is not full replacement.
+
+</details>

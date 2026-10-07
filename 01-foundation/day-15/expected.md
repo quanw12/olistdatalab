@@ -1,5 +1,9 @@
 # Day 15 — Reliable HTTP extraction and bounded retries
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
 
 | Scenario | Attempts | Pauses | Outcome |
 |---|---:|---|---|
@@ -10,3 +14,5 @@
 | invalid JSON200 | 1 | none | failure |
 
 429/Retry-After5 waits at least5 seconds. Retry-After120 stops under the30-second lab policy. Complete offline evidence is sufficient; live network success is optional.
+
+</details>

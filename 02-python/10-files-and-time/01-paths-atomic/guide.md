@@ -1,5 +1,7 @@
 # C10-L01 — Paths, context managers, and safe file replacement
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../../09-errors-and-types/03-dataclasses/guide.md) · [Next lesson](../02-csv-jsonl/guide.md)
@@ -38,3 +40,9 @@ git push -u origin HEAD
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.
+
+
+## Independent variation
+
+Cause serialization to fail after an existing output is present. Prove that output is unchanged and no owned temporary file is leaked.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

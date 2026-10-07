@@ -33,3 +33,12 @@ The example reports TimeoutError. A retry wrapper decides whether another attemp
 Unbounded retries can leave a scheduled pipeline stuck indefinitely.
 
 Use [exercise.py](exercise.py) for the exact input/output contract.
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `range(max_attempts)` | Bound total calls; the first request counts as an attempt. |
+| `except TimeoutError:` | Catch only the transient exception named in this exercise's contract. |
+| `raise` | Re-raise the current exception; do not convert exhausted attempts into success. |
+| `sleep(seconds) / 2 ** exponent` | Use the injected sleeper for the declared backoff; no actual sleeping is needed in tests. |

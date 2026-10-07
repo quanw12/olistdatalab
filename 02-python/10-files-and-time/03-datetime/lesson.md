@@ -31,3 +31,13 @@ print(local == utc)
 Consistent UTC versions prevent older updates from appearing newer merely because their offset strings differ.
 
 The problem contract is in [exercise.py](exercise.py). The checker supplies fixtures; it does not contain your implementation.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `datetime.fromisoformat(text)` | Parse ISO text; separately require an offset. |
+| `value.tzinfo / value.utcoffset()` | Inspect awareness; reject a missing offset when the contract requires an instant. |
+| `value.astimezone(timezone.utc)` | Preserve the instant while changing its representation. |
+| `value.isoformat(timespec='microseconds')` | Choose the precision required by the output contract. |

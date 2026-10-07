@@ -1,12 +1,14 @@
 # DE17 — Prefect runs, retry ownership and backfill rehearsal
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE16](../01-dependencies/guide.md)
 
 ## Prerequisites and pace
 
 DE16 and foundation Days 20–21; one main orchestrator.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 

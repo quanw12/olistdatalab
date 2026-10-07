@@ -1,12 +1,14 @@
 # DE22 — Credentials, privacy and verified AI assistance
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE21](../03-spark-introduction/guide.md)
 
 ## Prerequisites and pace
 
 DE04; tests; Linux environment variables and Git diffs.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 

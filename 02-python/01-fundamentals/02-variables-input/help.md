@@ -1,10 +1,9 @@
 # Help — Variables and input conversion
 
-## Hint 1: identify the contract
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
 
-Write down the required input values and output order from exercise.py. Predict the result for the main case manually. Separate each requirement into a small operation.
-
-## Hint 2: syntax and reasoning
+<details>
+<summary>Hint 1 — syntax and reasoning after your attempt</summary>
 
 Keep input and conversion as two steps so you can inspect them.
 ~~~python
@@ -14,12 +13,13 @@ print(count + 2)
 ~~~
 Use input in your exercise instead of this fixed string. If you see text concatenation such as 31, check whether you converted the number. If you see a TypeError from adding an integer to a string, inspect the operand types.
 
-## Hint 3: inspect intermediate values
+</details>
 
-Temporarily print the intermediate value and its type after the operation you suspect. Compare it with the lesson trace. Remove diagnostic prints when comparing exact required output.
-
-## Check your explanation
+<details>
+<summary>Check your explanation</summary>
 
 Why does input return text even when you type digits? Why did changing sessions not change total_minutes in the example?
 
 Use [expected.md](expected.md) to check the result, then repeat with the additional case. Matching one output by hardcoding it does not complete the task.
+
+</details>

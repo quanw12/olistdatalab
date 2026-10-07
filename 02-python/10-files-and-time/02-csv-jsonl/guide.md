@@ -1,5 +1,7 @@
 # C10-L02 — CSV, JSON, JSON Lines, and schema boundaries
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../01-paths-atomic/guide.md) · [Next lesson](../03-datetime/guide.md)
@@ -38,3 +40,9 @@ git push -u origin HEAD
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.
+
+
+## Independent variation
+
+Try a quoted comma, a duplicate header and an extra cell. Distinguish a whole-file schema defect from an individual value defect.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

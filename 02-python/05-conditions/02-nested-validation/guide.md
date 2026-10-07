@@ -1,5 +1,7 @@
 # C05-L02 — Nested conditions and validation order
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../01-branches/guide.md) · [Next lesson](../03-inline-match/guide.md)

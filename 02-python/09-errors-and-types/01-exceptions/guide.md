@@ -1,5 +1,7 @@
 # C09-L01 — Exceptions and deliberate validation
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../../08-functions/06-clean-functions/guide.md) · [Next lesson](../02-logging/guide.md)
@@ -38,3 +40,9 @@ git push -u origin HEAD
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.
+
+
+## Independent variation
+
+Use a value of the wrong type and one with the right type but invalid value. Explain which exception represents each boundary.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

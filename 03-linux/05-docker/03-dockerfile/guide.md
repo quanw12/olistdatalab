@@ -1,5 +1,7 @@
 # LE18 — Build an image and control its command
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Module](../README.md) · [Course index](../../README.md) · [Setup](../../setup.md) · [Independent study](../../../docs/study.md)
 
 ## Before starting

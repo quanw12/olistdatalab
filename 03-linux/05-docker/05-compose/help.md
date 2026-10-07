@@ -1,10 +1,16 @@
 # Help — Compose for a batch job and report viewer
 
-## First hint
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>First hint</summary>
 
 Startup ordering and ongoing publication consistency are different properties.
 
-## Detailed approach
+</details>
+
+<details>
+<summary>Detailed approach</summary>
 
 Compose uses spaces for indentation. The dependency shape is:
 ~~~yaml
@@ -43,8 +49,11 @@ docker compose -p le-capstone -f "$LE_COURSE_ROOT/project/compose.yaml" up -d
 
 Check the new batch's exit status and viewer response again; merely seeing the volume exist does not prove a successful rerun.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 A successful one-shot batch showing Exited(0) is expected. web must bind 0.0.0.0 inside the container. If batch fails, inspect its logs before replacing depends_on with an arbitrary sleep.
 
-Change one thing at a time. Preserve the complete error message and confirm your shell, working directory, input path and interpreter before guessing.
+</details>

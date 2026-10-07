@@ -1,5 +1,10 @@
 # Expected results — Clean functions and a weather-report mini-project
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -26,3 +31,5 @@ Calling summarize_weather twice with the same rows returns equal dictionaries an
 ## Explain your result
 
 Why must validation order be explicit? How does returning data make the report easier to test and reuse?
+
+</details>

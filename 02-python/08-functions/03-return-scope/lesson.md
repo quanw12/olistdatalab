@@ -44,8 +44,5 @@ None
 
 The empty case returns before division. shifted rebinds its local number to 11, leaving the outer integer binding at 10.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#defining-functions).

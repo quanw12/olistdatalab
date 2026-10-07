@@ -1,6 +1,6 @@
 # if, elif, else, and boundary order
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=15559s), assigned window **04:19:19–04:40:34**. Roadmap connection: PY02.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=15559s), assigned window **04:19:19–04:40:34**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -35,8 +35,5 @@ mild
 
 24 fails the first comparison and passes the second. Python assigns mild, skips else, then prints the selected label.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#if-statements).

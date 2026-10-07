@@ -1,5 +1,7 @@
 # C14-L03 — Capstone: reproducible retail ingestion
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../02-data-quality/guide.md) · [Finish and review progress](../../progress.md)

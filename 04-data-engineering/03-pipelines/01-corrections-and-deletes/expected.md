@@ -1,5 +1,10 @@
 # Expected — DE08
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 After b1: 2 active orders, 2500 cents. After b2: 2 active orders, 2000 cents; current state has A v2, B v2 delete, C v1. Replaying b1 leaves 2000 cents. Equal-version conflicting amount fails.
 
 ## Reflection answer
@@ -13,3 +18,4 @@ Its newer tombstone prevents an old B upsert from reappearing during replay or a
 
 Passing a supplied fixture is one piece of evidence. Explain the result and show one changed-input or failure example before marking the lesson complete.
 
+</details>

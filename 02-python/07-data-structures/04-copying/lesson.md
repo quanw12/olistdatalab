@@ -40,8 +40,5 @@ Expected output:
 
 Appending changes the shared outer object, so original gains a third row. The shallow copy has only two rows but shares its first inner row. The deep copy keeps independent inner values.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/copy.html).

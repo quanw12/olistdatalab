@@ -6,7 +6,10 @@ Function-body fragments containing return must be indented inside the named func
 
 Complete `clean_weather` one TODO at a time. These examples use column operations; no for loop is needed.
 
-## Step 1: copy and normalize text
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>Step 1: copy and normalize text</summary>
 
 ~~~python
 df = raw_df.copy()
@@ -15,7 +18,10 @@ df["city"] = df["city"].str.strip()
 
 `copy()` preserves `raw_df` so you can compare input and output.
 
-## Step 2: convert types
+</details>
+
+<details>
+<summary>Step 2: convert types</summary>
 
 ~~~python
 df["observed_at"] = pd.to_datetime(
@@ -27,7 +33,10 @@ df["temperature_c"] = pd.to_numeric(df["temperature_c"], errors="coerce")
 df["humidity_pct"] = pd.to_numeric(df["humidity_pct"], errors="coerce")
 ~~~
 
-## Step 3: filter invalid rows
+</details>
+
+<details>
+<summary>Step 3: filter invalid rows</summary>
 
 ~~~python
 valid_rows = (
@@ -42,7 +51,10 @@ invalid_rows = int((~valid_rows).sum())
 candidate_df = df.loc[valid_rows].copy()
 ~~~
 
-## Step 4: remove duplicates, format dates, and return
+</details>
+
+<details>
+<summary>Step 4: remove duplicates, format dates, and return</summary>
 
 ~~~python
 before_deduplicate = len(candidate_df)
@@ -57,7 +69,10 @@ clean_df["observed_at"] = clean_df["observed_at"].dt.strftime("%Y-%m-%d")
 return clean_df, invalid_rows, duplicate_rows
 ~~~
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 | Error or symptom | Common cause | Fix |
 |---|---|---|
@@ -67,7 +82,10 @@ return clean_df, invalid_rows, duplicate_rows
 | Extra index column in output | Missing index=False | Use `clean_df.to_csv(..., index=False)` |
 | Accepted count is not 4 | Missing deduplication or mask condition | Check TODOs 3 and 4 |
 
-## Building the driver when starting from a blank file
+</details>
+
+<details>
+<summary>Building the driver when starting from a blank file</summary>
 
 Define helper functions first; call them from main. A function definition does not execute its body. This small unrelated example shows the syntax:
 
@@ -91,3 +109,5 @@ Read input inside main, pass data to your transformation, validate the result, t
 For CSV use csv.DictReader/csv.DictWriter (or pandas read_csv/to_csv on Days4–5). For JSON use json.load/json.dump with an opened UTF-8 file. CSV writer files need newline="". JSON datetime values must become ISO strings before serialization. Catch the expected exception around the risky conversion; do not hide every error behind except Exception: pass.
 
 A whitespace-only city becomes an empty string after strip; ne("") rejects it. mod(1).eq(0) requires whole-number humidity, so72.5 cannot be silently accepted. The bounded temperature mask rejects infinity and missing values.
+
+</details>

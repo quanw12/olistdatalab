@@ -1,5 +1,10 @@
 # Expected — DE04
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 The first supplied batch's two records validate. An ID containing only spaces produces errors ['id']; a naive occurred_at and True version produce ['occurred_at', 'version']. Extra source metadata is omitted from the canonical record. Original dict remains unchanged.
 
 ## Reflection answer
@@ -13,3 +18,4 @@ Changing cents to currency units changes meaning without changing an integer col
 
 Passing a supplied fixture is one piece of evidence. Explain the result and show one changed-input or failure example before marking the lesson complete.
 
+</details>

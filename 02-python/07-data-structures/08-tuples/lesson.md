@@ -1,6 +1,6 @@
 # Tuples and fixed-shape records
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=36721s), assigned window **10:12:01–10:19:59**. Roadmap connection: PY03.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=36721s), assigned window **10:12:01–10:19:59**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -37,8 +37,5 @@ tuple
 
 The two-field tuple unpacks into two names. The trailing comma makes single a tuple even though it contains only one value.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/datastructures.html#tuples-and-sequences).

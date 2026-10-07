@@ -16,6 +16,29 @@ Use one main course at a time, in the roadmap's order. The materials, hints, fix
 
 A focused block can be 60–90 minutes. A lesson or integration can span several blocks. If most hints were needed, count it as guided practice and repeat a small variation independently later. In DE26, finish the diagnostic before seeking implementation help; using it early makes the attempt practice rather than an independent assessment.
 
+
+## Difficulty and hints
+
+| Level | Work expected | Help |
+|---|---|---|
+| Learn | Small syntax/concept drill; first setup may take longer. | Toy example and documentation. Group familiar drills after a changed-case check. |
+| Apply | Choose logic for a specified contract and handle failures. | Attempt first, then one closed hint at a time. |
+| Integrate | Connect boundaries; demonstrate durable/recoverable behavior. | Documentation and focused questions; stronger plans after effort. |
+| Assess | Transfer to unfamiliar work or rehearse independent delivery. | Syntax references allowed; approach help only after the attempt ends. |
+
+Pace excludes some installation/service troubleshooting. Inputs, required names/
+types, failure rules and acceptance criteria are visible task contracts, not hidden
+hints. Setup/run commands remain visible. A short drill does not certify mastery.
+
+Try for 15–25 focused minutes after identifying an obstacle before revealing an
+approach. Do not guess an undocumented function for an hour: use its API reference
+immediately. Record highest help used: none / syntax pointer / approach / walkthrough.
+After a walkthrough, repeat a changed case independently.
+
+Worked results/reflection explanations are closed until the first attempt. A
+Markdown preview supports expandable details; the raw editor still shows contents.
+Stop before reading a section you have not chosen to reveal.
+
 ## What the files mean
 
 | File | Purpose |

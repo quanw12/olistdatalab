@@ -1,6 +1,6 @@
 # Data types and explicit conversion
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=4465s), assigned window **01:14:25–01:46:54**. Roadmap connection: PY01.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=4465s), assigned window **01:14:25–01:46:54**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -36,8 +36,5 @@ True
 
 Conversion produces a new float. raw_temperature stays a string. The last two results demonstrate truncation and truthiness rather than semantic parsing.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/stdtypes.html).

@@ -1,12 +1,14 @@
 # DE04 — Data contracts, types and evolution
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Overall roadmap](../../../roadmap.md)
 
 ## Prerequisites and pace
 
 Complete the preceding courses and DE01–DE03. You should be able to write/test Python functions, read analytical SQL and run a program in the named environment.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 

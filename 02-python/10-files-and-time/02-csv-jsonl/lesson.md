@@ -34,3 +34,12 @@ The quoted comma stays inside the city field. The amount remains the string '10.
 Preserving raw input allows you to explain a rejection instead of losing the original value during conversion.
 
 The problem contract is in [exercise.py](exercise.py). The checker supplies fixtures; it does not contain your implementation.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `reader.fieldnames` | The parsed header list; compare it with the declared schema, including duplicates. |
+| `row[None] / row[name] is None` | DictReader can place extra cells under None or use None for missing cells. |
+| `json.loads(line) / json.dumps(record)` | Parse one JSON value / encode it. A JSONL record occupies one line. |

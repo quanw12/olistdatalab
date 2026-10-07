@@ -1,0 +1,2 @@
+-- TODO: Return product_id, total_units, event_count at product grain.
+-- SQLite SELECT only. See exercise.md.

@@ -1,6 +1,6 @@
 # Clean and format strings
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=6414s), assigned window **01:46:54–02:16:56**. Roadmap connection: PY01/PY05.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=6414s), assigned window **01:46:54–02:16:56**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -33,8 +33,5 @@ north zone
 
 split creates two words despite the repeated whitespace. join inserts one space. lower changes the letters. The original string still contains its spaces.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/stdtypes.html#string-methods).

@@ -1,5 +1,10 @@
 # Checking your work
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 config validates; batch exits 0; web serves the fixture manifest; rerun total remains 3050; down retains le-capstone_artifacts under this explicit project name. Actual Docker verification is required.
 
 ## Reflection answer — reveal after your attempt
@@ -12,3 +17,5 @@ No. It controls initial dependency startup. The app replaces separate artifacts 
 </details>
 
 Completion requires your own work and an explanation. Creating materials does not mark the lesson complete.
+
+</details>

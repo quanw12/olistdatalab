@@ -1,6 +1,6 @@
 # Data Engineering progress
 
-Prepared: 27 lessons, 23 core and 4 optional. All start unchecked. Foundation Days 1–11 remain completed separately.
+Prepared: 29 lessons, 25 core and 4 optional. All start unchecked. Foundation Days 1–11 remain completed separately.
 
 ## Workflow
 
@@ -48,7 +48,9 @@ Prepared: 27 lessons, 23 core and 4 optional. All start unchecked. Foundation Da
 - [ ] [DE24 — Point-in-time feature data and leakage](07-internship/02-ml-feature-data/guide.md) (optional)
 - [ ] [DE25 — A complete retail pipeline portfolio](07-internship/03-integrated-capstone/guide.md)
 - [ ] [DE26 — An independent take-home and debugging rehearsal](07-internship/04-unseen-assignment/guide.md)
-- [ ] [DE27 — Readiness, CV evidence and internship applications](07-internship/05-applications-and-interviews/guide.md)
+- [ ] [DE27 — Source discovery, profiling and catalog handoff](07-internship/05-source-discovery/guide.md)
+- [ ] [DE28 — Native backup and verified restore](07-internship/06-backup-and-restore/guide.md)
+- [ ] [DE29 — Readiness, CV evidence and internship applications](07-internship/07-applications-and-interviews/guide.md)
 
 ## Independent gates
 
@@ -58,10 +60,12 @@ Prepared: 27 lessons, 23 core and 4 optional. All start unchecked. Foundation Da
 - [ ] Gate D reliability
 - [ ] Gate E delivery
 - [ ] Gate F unseen assignment/English explanations
+- [ ] Gate G source discovery/verified restore
 
 ## Actual runtime evidence
 
 - [ ] Native PostgreSQL rollback/replay
+- [ ] Native backup/restore and constraint evidence
 - [ ] dbt build/tests and meaningful failing mutation
 - [ ] Prefect real task/run state
 - [ ] Docker delivery if claimed

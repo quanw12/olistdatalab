@@ -1,5 +1,9 @@
 # Day 22 — Meaningful automated tests with pytest
 
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>After an attempt — supporting explanation</summary>
 
 Begin with the valid raw envelope and assert exact normalized UTC time/temperature/source. Then change just one field per case and assert a field-specific ValueError. A broad 'any exception' assertion can pass for the wrong bug.
 
@@ -10,3 +14,5 @@ Test transform_batch counts on raw_batch_with_errors.json. For manifest timing, 
 Run python -m pytest -m "not integration" -q. Integration test files must not connect while being imported/collected, because marker deselection happens after collection. Put connections inside fixtures/test bodies. Before running integration, set PGDATABASE=weather_course_test and verify current_database() inside the test fixture.
 
 A meaningful rollback check compares both the stored data and watermark before/after a forced failure. A test that simply mocks commit() is insufficient.
+
+</details>

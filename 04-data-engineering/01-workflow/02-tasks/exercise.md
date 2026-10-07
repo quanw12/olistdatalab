@@ -27,3 +27,11 @@ Use the shared fixture to write at least two exact expected amounts/counts. Do n
 ## Reflection
 
 Which unknowns can you investigate independently, and which need a stakeholder decision before you can claim the task is correct?
+
+
+## Inspect before planning
+
+Before writing plan.md, inspect the supplied raw input. In task.md record its row
+count, field names, apparent types, at least one repeated ID and one correction/delete.
+Distinguish observed facts from source guarantees you still need to ask about.
+This is a brief discovery step; DE27 later assesses a different source with a full profile.

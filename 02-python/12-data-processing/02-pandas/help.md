@@ -1,20 +1,32 @@
 # Help — pandas joins, types, and trustworthy totals
 
-## First hint
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>First hint</summary>
 
 Validate dimension keys, merge left with validation/indicator, then aggregate.
 
-## Detailed approach
+</details>
+
+<details>
+<summary>Detailed approach</summary>
 
 Use isna and duplicated checks. Merge with how='left', validate='many_to_one', indicator=True; require all _merge values to equal 'both'. Group, sum, rename amount_cents, sort and reset the index. Detecting unmatched facts after an inner join is too late.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 Unexpectedly high totals suggest duplicate dimension keys. Missing totals suggest silently dropped unmatched facts.
 
 Read the first failing check, compare input/type/output and side effects, then make one focused change. The checker is an executable specification.
 
-## Break pandas operations into visible steps
+</details>
+
+<details>
+<summary>Break pandas operations into visible steps</summary>
 
 ~~~python
 import pandas as pd
@@ -32,3 +44,5 @@ frame["group"] selects one Series. isna produces Boolean flags; any reduces them
 For the exercise, first reject missing keys and duplicated city keys in the dimension. Then inspect an intermediate left merge with indicator=True. _merge == "left_only" identifies an order with no dimension match. Raise a clear ValueError before grouping when such rows exist. Never replace their region with a guessed value.
 
 Use copies or expressions that return new frames. Keep the promised columns for empty input too.
+
+</details>

@@ -1,16 +1,24 @@
 # Help — Warehouse layers and a local analytical engine
 
-## First hint
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>First hint</summary>
 
 Window the complete history before filtering active rows.
 
-## Detailed approach
+</details>
+
+<details>
+<summary>Detailed approach</summary>
 
 Use ROW_NUMBER() OVER (PARTITION BY id ORDER BY version DESC) in a CTE, then rn = 1. Return only seven specified columns and no hard-coded IDs. Preserve TIMESTAMPTZ values. A later mart filters op = 'upsert'. Detect equal-version conflict upstream rather than choosing arbitrary ties.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 Filtering deletes early resurrects B. COUNT(*) over raw counts changes, not active orders.
 
-If stuck, write the smallest input, expected result and actual result. Check interpreter, cwd, schema and units before changing multiple things. Preserve the error; do not silently return success.
-
+</details>

@@ -1,5 +1,7 @@
 # C04-L03 — Membership, equality, and identity
 
+**Difficulty: Learn.** 15–45 minutes of coding; allow extra time for first setup. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../02-combined-rules/guide.md) · [Next lesson](../../05-conditions/01-branches/guide.md)
@@ -49,3 +51,6 @@ git push -u origin HEAD
 ~~~
 
 Review all staged files: changes staged earlier remain in the index. These commands do not change your branch or apply any stash.
+
+
+If this is familiar, solve and explain a changed example before treating it as a short refresh. Setup recipes teach the environment; copying one is not an independent coding assessment.

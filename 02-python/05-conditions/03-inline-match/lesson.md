@@ -1,6 +1,6 @@
 # Conditional expressions and match
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=17853s), assigned window **04:57:33–05:24:56**. Roadmap connection: PY02.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=17853s), assigned window **04:57:33–05:24:56**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -41,8 +41,5 @@ show
 
 The expression chooses empty. match compares preview with the first quoted literal and runs that branch.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#match-statements).

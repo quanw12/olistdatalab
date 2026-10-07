@@ -4,7 +4,7 @@
 
 ## Folder and naming rules
 
-The root contains one README, one overall roadmap and four numbered courses. `docs/` holds shared guidance. Use lowercase folder names with hyphens; course numbers define learning order. Keep notes and solutions inside their lesson. Keep generated artifacts in output/ or a scoped external lab directory.
+The root contains one README, one overall roadmap, four numbered core courses and [05-extensions](../05-extensions/README.md). Its four tracks stay inside Part 5. `docs/` holds shared guidance. Use lowercase folder names with hyphens; course numbers define learning order. Keep notes and solutions inside their lesson. Keep generated artifacts in output/ or a scoped external lab directory.
 
 Each course owns its setup, lesson index, progress and source references. These describe that course; they do not create a second overall study schedule. SQL remains your independent learning track.
 
@@ -36,3 +36,20 @@ git push -u origin HEAD
 This migration command stages the whole workspace, including tracked removals and the current Day 12 schema: inspect its diff before committing. It does not restore the stash. For later lesson commits, use that guide's smaller path list and review any files already staged.
 
 No branch switch, commit, push or stash operation is performed by editing the course materials.
+
+## Save the prepared extensions together
+
+After reviewing status, use your feature/... branch. If you need a new preparation branch, create feature/extensions only after checking it does not already exist and deciding how to carry your uncommitted work. The following stages the new course and its shared navigation, not earlier learner implementations:
+
+~~~powershell
+Set-Location "C:\DE Courses"
+git status
+git branch --show-current
+git add -- "05-extensions" "README.md" "roadmap.md" "docs/workspace.md" "docs/resources.md" ".gitignore"
+git diff --cached --stat
+git diff --cached
+git commit -m "docs(course): add engineering cloud AI data and streaming extensions"
+git push -u origin HEAD
+~~~
+
+Inspect anything already staged before committing. For individual extension practice use its guide's smaller path list; stage progress.md explicitly if you updated it.

@@ -1,0 +1,5 @@
+-- DE28 prompt: write your verification SQL below.
+-- Compare complete key/value/version/deletion state and ledger state with baseline.
+-- Report active count/units and orphans; inspect key/check/FK constraints.
+-- Reuse these queries on SOURCE before the dump and TARGET after restoration.
+-- Prove invalid writes fail in separate disposable transactions; roll back afterward.

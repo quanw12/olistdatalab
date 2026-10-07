@@ -1,12 +1,14 @@
 # DE15 — Incremental transformations and correctness before pruning
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE14](../03-dbt-tests/guide.md)
 
 ## Prerequisites and pace
 
 DE13–DE14 and DE08–DE09.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -19,6 +21,16 @@ DE13–DE14 and DE08–DE09.
 ## Verification
 
 Record the real commands, outputs and limits in notes.md. Expected observations are criteria, not a claim that an author ran your environment.
+
+
+## Command reference
+
+Use these after implementing the relevant task. Environment setup is linked above;
+commands do not supply model/flow logic. Inspect each exit code before continuing.
+
+~~~powershell
+& "C:/DE Courses/.venv-engineering/Scripts/python.exe" "C:/DE Courses/04-data-engineering/checks/check_dbt.py" --incremental
+~~~
 
 ## Commit completed work — Windows PowerShell
 
@@ -38,3 +50,9 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE16](../../05-orchestration/01-dependencies/guide.md)
+
+
+## Independent variation
+
+Create a scratch change for an older event day and a new tombstone. Compare incrementally materialized state with a full refresh, including key sets.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

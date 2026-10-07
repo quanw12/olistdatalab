@@ -1,6 +1,6 @@
 # Unpack rows and analyze lists
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=28088s), assigned window **07:48:08–08:19:18**. Roadmap connection: PY03/PY05.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=28088s), assigned window **07:48:08–08:19:18**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -38,8 +38,5 @@ Hue 27
 
 Two targets receive two row fields. The starred target becomes a list containing 4 and 9. The total is 15 across three items.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/functions.html#min).

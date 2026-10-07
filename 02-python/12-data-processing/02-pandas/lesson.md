@@ -31,3 +31,13 @@ The central total is 300. Each of two facts matches exactly one dimension row.
 A successful merge can still produce incorrect totals if its relationship is wrong.
 
 Use [exercise.py](exercise.py) for the exact input/output contract.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `left.merge(right, on='city', how='left', validate='many_to_one', indicator=True)` | Check join cardinality and inspect the _merge match indicator. |
+| `frame['city'].isna() / frame['city'].duplicated()` | Detect null keys / repeated dimension keys before publishing totals. |
+| `frame.groupby('region', as_index=False)['amount_cents'].sum()` | Aggregate at an explicit grain; do not assume a join preserved row count. |
+| `frame.rename(columns={...}).sort_values('region').reset_index(drop=True)` | Name, order and reindex a returned report without changing input frames. |

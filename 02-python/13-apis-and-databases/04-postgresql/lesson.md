@@ -18,20 +18,23 @@ Credentials belong in environment configuration. Do not print a connection strin
 
 ~~~python
 SQL = """
-INSERT INTO orders(order_id,city,amount_cents,updated_at)
-VALUES (%s,%s,%s,%s)
-ON CONFLICT(order_id) DO UPDATE
-SET city=EXCLUDED.city, amount_cents=EXCLUDED.amount_cents,
-    updated_at=EXCLUDED.updated_at
-WHERE EXCLUDED.updated_at > orders.updated_at
+INSERT INTO sensor_state(sensor_id,reading,revision)
+VALUES (%s,%s,%s)
+ON CONFLICT(sensor_id) DO UPDATE
+SET reading=EXCLUDED.reading, revision=EXCLUDED.revision
+WHERE EXCLUDED.revision > sensor_state.revision
 """
-values=("A","Hue",100,"2026-10-01T01:00:00+00:00")
-print(len(values))
+parameters = ("s1", 12, 2)
+# The table must already exist on your own lab connection:
+# with connection.transaction():
+#     with connection.cursor() as cursor:
+#         cursor.execute(SQL, parameters)
+print(len(parameters))
 ~~~
 
 ## Trace
 
-The four bound values remain separate from SQL. EXCLUDED refers to the proposed incoming row. No database connection is made by this syntax example.
+The three bound values remain separate from SQL. EXCLUDED refers to the proposed incoming row. No database connection is made by this syntax example.
 
 ## DE connection
 

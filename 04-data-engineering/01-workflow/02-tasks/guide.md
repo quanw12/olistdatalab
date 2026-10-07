@@ -1,5 +1,7 @@
 # DE02 — From an assigned task to a checked delivery
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Overall roadmap](../../../roadmap.md)
 
 ## Before starting
@@ -30,3 +32,9 @@ Use your feature/... branch and inspect all staged files. Generated profiles/out
 ## Continue
 
 [Previous: DE01](../01-systems/guide.md) · [Next: DE03](../03-debugging/guide.md)
+
+
+## Independent variation
+
+List observed source facts before writing your plan. Separate source guarantees requiring confirmation from assumptions you can test.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

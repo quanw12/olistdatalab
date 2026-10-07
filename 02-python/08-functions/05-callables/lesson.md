@@ -42,8 +42,5 @@ a
 
 operation refers to the same function object as normalize. transform calls its supplied operation once per item. The lambda supplies an alternative one-expression transformation.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#lambda-expressions).

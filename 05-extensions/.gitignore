@@ -1,0 +1,13 @@
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.pstats
+output/
+.cache/
+models/
+.env
+*.key
+credentials*.json

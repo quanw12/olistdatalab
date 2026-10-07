@@ -1,5 +1,7 @@
 # C13-L01 — HTTP responses, pagination, and bounded extraction
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../../12-data-processing/03-parquet/guide.md) · [Next lesson](../02-retries/guide.md)
@@ -36,3 +38,9 @@ git push -u origin HEAD
 ~~~
 
 Keep your feature/... convention and inspect previously staged changes too.
+
+
+## Independent variation
+
+Use a repeated continuation token and a sequence exceeding max_pages. Prove no extra request is made; separately reject a malformed next value.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

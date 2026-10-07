@@ -1,6 +1,6 @@
 # Iterables, enumerate, zip, and filtering
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=33509s), assigned window **09:18:29–09:41:38**. Roadmap connection: PY03/PY05.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=33509s), assigned window **09:18:29–09:41:38**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -42,8 +42,5 @@ Hanoi 30
 
 enumerate creates numbered pairs. zip matches by position, not by a database key. The explicit filter keeps zero because the condition is >= 0.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/functions.html#zip).

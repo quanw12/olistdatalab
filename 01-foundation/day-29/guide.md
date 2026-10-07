@@ -1,6 +1,8 @@
 # Day 29 — Rehearse end to end and recover from failures
 
-Aim for 2.5–4 hours. Complete the core task before any optional extension. Each day is one lesson, not an entire tool certification.
+**Difficulty: Assess.** use the assignment's timebox; otherwise allow 2–4 hours. Syntax documentation is allowed; keep approach hints closed until the independent attempt ends.
+
+Complete the core task before any optional extension.
 
 ## Before starting
 
@@ -56,4 +58,4 @@ git push -u origin $lessonBranch
 The curriculum itself must be committed first using the repository README's commands. These daily commands stage only today's work and shared project changes. Generated output remains ignored; selected sanitized evidence belongs in evidence/.
 
 
-[Course index](../README.md) · [Roadmap](../lessons.md)
+[Course index](../README.md) · [Lesson index](../lessons.md)

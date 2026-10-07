@@ -1,5 +1,10 @@
 # Expected results — Dictionaries, nested records, and aggregation
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -15,3 +20,5 @@ The given city values are strings when present. Supporting None or other types i
 ## Explain your result
 
 What is the difference between a missing key and a key with None? Why must the grouping dictionary be created before the loop?
+
+</details>

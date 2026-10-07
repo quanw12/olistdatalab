@@ -1,5 +1,10 @@
 # Checking your work
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 Fixture succeeds; nonexistent file/directory -> 66; wrong arity -> 64. Failure stdout is empty. Source unchanged.
 
 ## Reflection answer — reveal after your attempt
@@ -12,3 +17,5 @@ A shell script often returns its last command's status. Propagate the failure ex
 </details>
 
 Completion requires your own work and an explanation. Creating materials does not mark the lesson complete.
+
+</details>

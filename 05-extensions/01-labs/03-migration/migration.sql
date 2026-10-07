@@ -1,0 +1,2 @@
+-- TODO: Add zone with a compatible default, preserving existing rows.
+-- One SQLite ALTER TABLE statement.

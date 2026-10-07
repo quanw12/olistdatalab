@@ -6,7 +6,10 @@ Function-body fragments containing return must be indented inside the named func
 
 Complete `build_clean_record` before `validate_record`.
 
-## build_clean_record
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>build_clean_record</summary>
 
 ~~~python
 response = raw["response"]
@@ -30,7 +33,10 @@ return {
 }
 ~~~
 
-## validate_record
+</details>
+
+<details>
+<summary>validate_record</summary>
 
 ~~~python
 errors = []
@@ -55,7 +61,10 @@ if type(record["humidity_pct"]) is not int or not 0 <= record["humidity_pct"] <=
 return errors
 ~~~
 
-## Debug deliberately
+</details>
+
+<details>
+<summary>Debug deliberately</summary>
 
 Before return in build_clean_record, temporarily add:
 
@@ -73,7 +82,10 @@ print(errors)
 
 Once you understand the values, remove debug prints so only the final report remains.
 
-## Building the driver when starting from a blank file
+</details>
+
+<details>
+<summary>Building the driver when starting from a blank file</summary>
 
 Define helper functions first; call them from main. A function definition does not execute its body. This small unrelated example shows the syntax:
 
@@ -96,6 +108,11 @@ Read input inside main, pass data to your transformation, validate the result, t
 
 For CSV use csv.DictReader/csv.DictWriter (or pandas read_csv/to_csv on Days4–5). For JSON use json.load/json.dump with an opened UTF-8 file. CSV writer files need newline="". JSON datetime values must become ISO strings before serialization. Catch the expected exception around the risky conversion; do not hide every error behind except Exception: pass.
 
-## Preserve invalid values until you can reject them
+</details>
+
+<details>
+<summary>Preserve invalid values until you can reject them</summary>
 
 Before converting raw humidity to int, reject bool and check that the numeric value is finite, has no fractional part, and lies in0..100. Otherwise int(72.5) becomes72 and hides an invalid reading from validate_record. Keep this check in build_clean_record or a shared helper called before conversion. Report conversion failure without publishing output.
+
+</details>

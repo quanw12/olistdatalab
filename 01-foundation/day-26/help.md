@@ -1,5 +1,9 @@
 # Day 26 — Continuous integration with GitHub Actions
 
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>After an attempt — supporting explanation</summary>
 
 1. Create the .github/workflows directories at C:\DE Courses, not inside capstone. YAML indentation must use spaces.
 2. Copy the small syntax shape, replace the demo step with dependency/test commands, and set the job run directory.
@@ -9,3 +13,5 @@
    git add -- .github/workflows/ci.yml
 6. Push your current feature branch, open Actions on GitHub, inspect the failing step if red. A missing file usually means wrong path or an uncommitted dependency file; ModuleNotFoundError may mean wrong working directory or installation.
 7. Do not claim the remote run succeeded from local pytest output alone.
+
+</details>

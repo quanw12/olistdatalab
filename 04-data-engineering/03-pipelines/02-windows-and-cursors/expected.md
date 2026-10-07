@@ -1,5 +1,10 @@
 # Expected — DE09
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 An end-boundary row is excluded. Paging with limit 1 visits tied A and C without skipping either. Equivalent UTC/+07 instants compare correctly. Backfill/full rebuild yield the same 2000 cents when folding all source changes.
 
 ## Reflection answer
@@ -13,3 +18,4 @@ No. It covers only the chosen lookback under a source assumption; reconcile or r
 
 Passing a supplied fixture is one piece of evidence. Explain the result and show one changed-input or failure example before marking the lesson complete.
 
+</details>

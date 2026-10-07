@@ -1,5 +1,10 @@
 # Checking your work
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 No arguments -> 0. 008 2 -> 10. 1000000 0 -> 1000000. -1, 1+2, empty text, 1000001, over seven digits or over 100 arguments -> 65.
 
 ## Reflection answer — reveal after your attempt
@@ -12,3 +17,5 @@ Arithmetic can interpret expressions and alternate bases. Validation establishes
 </details>
 
 Completion requires your own work and an explanation. Creating materials does not mark the lesson complete.
+
+</details>

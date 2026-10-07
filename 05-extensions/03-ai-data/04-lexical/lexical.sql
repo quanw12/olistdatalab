@@ -1,0 +1,1 @@
+-- TODO: SQLite FTS5 SELECT with :query and :limit; include bm25 score.

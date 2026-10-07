@@ -1,6 +1,6 @@
 # Add, remove, and update list elements
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=29958s), assigned window **08:19:18–08:41:46**. Roadmap connection: PY03.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=29958s), assigned window **08:19:18–08:41:46**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -35,8 +35,5 @@ report
 
 append contributes one string. extend contributes two. pop removes report and returns it. Index assignment changes only the first element.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists).

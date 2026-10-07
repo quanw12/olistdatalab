@@ -1,0 +1,24 @@
+{
+  "name": "p5-stock-cdc",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "database.hostname": "source",
+    "database.port": "5432",
+    "database.user": "p5_cdc",
+    "database.password": "p5_cdc_local_only",
+    "database.dbname": "p5_inventory",
+    "topic.prefix": "p5-cdc",
+    "plugin.name": "pgoutput",
+    "slot.name": "p5_slot",
+    "publication.name": "p5_pub",
+    "publication.autocreate.mode": "disabled",
+    "table.include.list": "public.stock",
+    "snapshot.mode": "initial",
+    "tombstones.on.delete": "true",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false"
+  }
+}

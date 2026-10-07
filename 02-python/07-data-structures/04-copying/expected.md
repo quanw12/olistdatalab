@@ -1,5 +1,10 @@
 # Expected results — Aliases, shallow copies, and nested data
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -15,3 +20,5 @@ Mutating deep[1][1] afterward must not affect original. Adding an outer element 
 ## Explain your result
 
 Why does a shallow copy not isolate nested rows? What is the difference between changing a row cell and replacing a whole row?
+
+</details>

@@ -1,6 +1,6 @@
 # Boolean values and truthiness
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=12484s), assigned window **03:28:04–03:42:33**. Roadmap connection: PY01/PY02.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=12484s), assigned window **03:28:04–03:42:33**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -38,8 +38,5 @@ True
 
 The first value is numeric zero. The second is a one-character string. Python treats those differently. Two not operators turn the final value into its Boolean interpretation.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/stdtypes.html#truth-value-testing).

@@ -1,10 +1,16 @@
 # Help — Capstone: deliver and recover a Linux batch pipeline
 
-## First hint
+Keep this closed until the timed/independent attempt ends. Reading an approach first makes the attempt guided practice; record that honestly.
+
+<details>
+<summary>First hint</summary>
 
 Combine current process status/logs with fresh contract checks.
 
-## Detailed approach
+</details>
+
+<details>
+<summary>Detailed approach</summary>
 
 The failed one-shot command is:
 ~~~bash
@@ -14,8 +20,11 @@ The service ENTRYPOINT still selects app.py; the trailing arguments replace its 
 
 Do not use down -v to simulate ordinary restart. If a clean empty-volume rehearsal is desired later, use a different project name and record it explicitly. No production database is part of this capstone.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 curl returning the previous report while a batch failed is expected preservation, not a successful ingestion. A stale log can also mislead if you capture the wrong service/run.
 
-Change one thing at a time. Preserve the complete error message and confirm your shell, working directory, input path and interpreter before guessing.
+</details>

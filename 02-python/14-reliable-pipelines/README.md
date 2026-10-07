@@ -21,3 +21,6 @@ Handle corrections and stale versions, measure quality, and recover output publi
 Pass each local checker, explain its central rule in your own words, and repeat one task with changed input. A passing test is evidence for its cases, not proof of mastery. Mark [progress](../progress.md) only after completing your own work.
 
 The capstone has a [detailed contract and rehearsal](03-capstone/contract.md). Reserve multiple sessions for implementation and the failure/recovery demonstration.
+
+
+After this chapter, complete [independent checkpoint 4](../checkpoints.md) with approach help closed.

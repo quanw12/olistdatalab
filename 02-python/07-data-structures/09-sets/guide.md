@@ -1,5 +1,7 @@
 # C07-L09 — Sets, membership, and stable deduplication
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../08-tuples/guide.md) · [Next lesson](../10-dictionaries/guide.md)
@@ -49,3 +51,9 @@ git push -u origin HEAD
 ~~~
 
 Review all staged files: changes staged earlier remain in the index. These commands do not change your branch or apply any stash.
+
+
+## Independent variation
+
+Use an input whose first-seen order differs from alphabetical order, with a normalized duplicate. Explain the role of each collection.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

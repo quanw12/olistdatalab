@@ -1,0 +1,1 @@
+-- TODO: One SQLite SELECT; latest business revision per event_id, including deletes.

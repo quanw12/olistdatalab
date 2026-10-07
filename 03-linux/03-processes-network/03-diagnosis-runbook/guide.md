@@ -1,5 +1,7 @@
 # LE12 — Logs, resource checks and a useful runbook
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Module](../README.md) · [Course index](../../README.md) · [Setup](../../setup.md) · [Independent study](../../../docs/study.md)
 
 ## Before starting
@@ -42,3 +44,9 @@ Use your feature/... convention; the course README links the shared branch/stagi
 ## Continue
 
 [Previous: LE11](../02-http-network/guide.md) · [Next: LE13](../../04-git-collaboration/01-branches-and-diffs/guide.md)
+
+
+## Independent variation
+
+Reproduce an unfamiliar failure before consulting the runbook. Record evidence that distinguishes environment failure from bad input.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

@@ -1,12 +1,14 @@
 # DE12 — Warehouse layers and a local analytical engine
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE11](../../03-pipelines/04-observability-and-recovery/guide.md)
 
 ## Prerequisites and pace
 
 DE08–DE10 and SQL windows; install the warehouse environment here.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 

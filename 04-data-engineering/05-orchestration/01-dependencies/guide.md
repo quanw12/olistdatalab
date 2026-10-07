@@ -1,12 +1,14 @@
 # DE16 — Dependency graphs, parameters and run boundaries
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE15](../../04-warehouse/04-incremental-models/guide.md)
 
 ## Prerequisites and pace
 
 DE11–DE15; Python collections/functions.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -42,3 +44,9 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE17](../02-prefect-runs/guide.md)
+
+
+## Independent variation
+
+Use an unknown dependency and a cycle. Fail explicitly rather than returning a partial valid-looking ordering.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

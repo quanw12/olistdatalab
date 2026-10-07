@@ -1,12 +1,14 @@
 # DE18 — Airflow concepts and orchestration transfer
 
+**Difficulty: Learn.** 15–45 minutes of coding; allow extra time for first setup. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE17](../02-prefect-runs/guide.md)
 
 ## Prerequisites and pace
 
 DE16–DE17; role-specific extension.
 
-**Optional specialization.** Skip this runtime until a target role needs it. Read the concepts and record your choice. Budget 2–4 hours; integrations may need more than one session.
+**Optional specialization.** Skip this runtime until a target role needs it. Read the concepts and record your choice. Use the difficulty and pace above.
 
 ## Study order
 
@@ -38,3 +40,6 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE19](../../06-platforms/01-cloud-design/guide.md)
+
+
+If this is familiar, solve and explain a changed example before treating it as a short refresh. Setup recipes teach the environment; copying one is not an independent coding assessment.

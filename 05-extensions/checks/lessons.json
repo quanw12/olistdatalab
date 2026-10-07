@@ -1,0 +1,258 @@
+[
+  {
+    "id": "LAB01",
+    "title": "Repair a report with inflated totals",
+    "path": "01-labs/01-joins",
+    "file": "query.sql",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "LAB02",
+    "title": "Adapt a changed API contract",
+    "path": "01-labs/02-api-change",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "LAB03",
+    "title": "Extend a schema without losing existing data",
+    "path": "01-labs/03-migration",
+    "file": "migration.sql",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "LAB04",
+    "title": "Repair missing backfill intervals",
+    "path": "01-labs/04-backfill",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "LAB05",
+    "title": "Repair a partial commit with a durable batch ledger",
+    "path": "01-labs/05-recovery",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "LAB06",
+    "title": "Measure and improve dimension enrichment",
+    "path": "01-labs/06-performance",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "LAB07",
+    "title": "Interpret retries without reporting recovered runs as failures",
+    "path": "01-labs/07-logs",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "LAB08",
+    "title": "Complete an independent maintenance ticket",
+    "path": "01-labs/08-handoff",
+    "file": "app.py",
+    "check": false,
+    "hours": "4–8"
+  },
+  {
+    "id": "CL01",
+    "title": "Plan one cloud pipeline and its ownership",
+    "path": "02-cloud/01-boundaries",
+    "file": "plan.md",
+    "check": false,
+    "hours": "2–4"
+  },
+  {
+    "id": "CL02",
+    "title": "Create stable object keys and immutable raw input",
+    "path": "02-cloud/02-storage",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "CL03",
+    "title": "Package a bounded batch job",
+    "path": "02-cloud/03-jobs",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "CL04",
+    "title": "Load history and materialize current state",
+    "path": "02-cloud/04-warehouse",
+    "file": "local_query.sql",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "CL05",
+    "title": "Grant permissions at the right scope",
+    "path": "02-cloud/05-iam",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "CL06",
+    "title": "Authenticate a schedule and preserve batch identity",
+    "path": "02-cloud/06-scheduler",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "CL07",
+    "title": "Bound query work and own cleanup",
+    "path": "02-cloud/07-costs",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "CL08",
+    "title": "Deliver the cloud inventory batch pipeline",
+    "path": "02-cloud/08-capstone",
+    "file": "app.py",
+    "check": false,
+    "hours": "6–10"
+  },
+  {
+    "id": "AI01",
+    "title": "Define document identity and provenance",
+    "path": "03-ai-data/01-documents",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "AI02",
+    "title": "Normalize text without losing paragraph structure",
+    "path": "03-ai-data/02-text",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "AI03",
+    "title": "Create deterministic overlapping chunks",
+    "path": "03-ai-data/03-chunks",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "AI04",
+    "title": "Build a local lexical retrieval baseline",
+    "path": "03-ai-data/04-lexical",
+    "file": "lexical.sql",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "AI05",
+    "title": "Rank vectors and distinguish fixtures from embeddings",
+    "path": "03-ai-data/05-vectors",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "AI06",
+    "title": "Propagate document edits and deletes",
+    "path": "03-ai-data/06-index-state",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "AI07",
+    "title": "Evaluate retrieval before trusting generated answers",
+    "path": "03-ai-data/07-evaluation",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "AI08",
+    "title": "Deliver a reproducible document search pipeline",
+    "path": "03-ai-data/08-capstone",
+    "file": "app.py",
+    "check": false,
+    "hours": "6–10"
+  },
+  {
+    "id": "ST01",
+    "title": "Understand topics, partitions and a local broker",
+    "path": "04-streaming/01-broker",
+    "file": null,
+    "check": false,
+    "hours": "2–4"
+  },
+  {
+    "id": "ST02",
+    "title": "Publish keyed records and confirm delivery",
+    "path": "04-streaming/02-producer",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "ST03",
+    "title": "Commit only the safe processed prefix",
+    "path": "04-streaming/03-offsets",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "ST04",
+    "title": "Make a transactional sink tolerate replay",
+    "path": "04-streaming/04-sink",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "ST05",
+    "title": "Quarantine poison data without hiding infrastructure failures",
+    "path": "04-streaming/05-rejections",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "ST06",
+    "title": "Interpret real PostgreSQL change envelopes",
+    "path": "04-streaming/06-cdc",
+    "file": "exercise.py",
+    "check": true,
+    "hours": "2–4"
+  },
+  {
+    "id": "ST07",
+    "title": "Capture changes and recover after a consumer crash",
+    "path": "04-streaming/07-restart",
+    "file": "sink.py",
+    "check": false,
+    "hours": "4–6"
+  },
+  {
+    "id": "ST08",
+    "title": "Deliver a streaming and CDC recovery demo",
+    "path": "04-streaming/08-capstone",
+    "file": "app.py",
+    "check": false,
+    "hours": "6–10"
+  }
+]

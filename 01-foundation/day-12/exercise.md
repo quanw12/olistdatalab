@@ -6,4 +6,4 @@
 4. Run checks.sql A1–A6, then complete all questions in queries.sql.
 5. Explain why UNIQUE(city_key, observation_date) is wrong when several observations occur on one day.
 
-Your unfinished earlier Day 12 work remains in the stash recorded in the repository README. This is a fresh assignment template.
+Continue your current schema.sql and model.md. Your unfinished work is preserved; this revision does not reset your implementation.

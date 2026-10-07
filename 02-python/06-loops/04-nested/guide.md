@@ -1,5 +1,7 @@
 # C06-L04 — Nested loops and pairs
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../03-loop-else/guide.md) · [Next lesson](../05-while/guide.md)

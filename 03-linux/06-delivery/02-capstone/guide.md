@@ -1,5 +1,7 @@
 # LE22 — Capstone: deliver and recover a Linux batch pipeline
 
+**Difficulty: Assess.** use the assignment's timebox; otherwise allow 2–4 hours. Syntax documentation is allowed; keep approach hints closed until the independent attempt ends.
+
 [Module](../README.md) · [Course index](../../README.md) · [Setup](../../setup.md) · [Independent study](../../../docs/study.md)
 
 ## Before starting

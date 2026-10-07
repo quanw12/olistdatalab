@@ -37,8 +37,5 @@ pairs: 4
 
 For A, the inner range completes 1 and 2. Then the outer loop moves to B and restarts that range. Two zones times two batches makes four pairs.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#break-and-continue-statements).

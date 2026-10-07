@@ -1,6 +1,6 @@
 # Create and access lists
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=25804s), assigned window **07:10:04–07:48:08**. Roadmap connection: PY03.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=25804s), assigned window **07:10:04–07:48:08**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -35,8 +35,5 @@ Hue
 
 There are two top-level rows. The first nested access gives Hue. The last row's second field is 28. A slice returns a list, even when it selects one row.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/introduction.html#lists).

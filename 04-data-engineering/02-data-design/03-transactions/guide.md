@@ -1,12 +1,14 @@
 # DE06 — Transactions, upserts and checkpoint atomicity
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE05](../02-grain-and-history/guide.md)
 
 ## Prerequisites and pace
 
 DE05; foundation Day 13; Python database parameters and context managers.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -38,3 +40,9 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE07](../04-query-plans/guide.md)
+
+
+## Independent variation
+
+Demonstrate the supplied mid-batch failure on native PostgreSQL. A mock connection is not evidence of durable atomicity.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

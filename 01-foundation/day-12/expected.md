@@ -1,5 +1,10 @@
 > Refreshed workflow: write DDL in schema.sql, run it on weather_day09, then run the provided fixture.sql once. The fixture load is now separate from your table definitions. Follow guide.md for this order.
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 # Day 12 — Expected structure and results
 
 Compare these after attempting the design and queries. The data is the fixed Day 9 fixture. Set the Query Tool display timezone to Asia/Ho_Chi_Minh.
@@ -94,3 +99,5 @@ Before submitting, confirm that your answers explain:
 - Why missing data remains missing rather than becoming zero.
 
 For unequal-size groups, weight each group's unrounded average by its observation count. Prefer calculating directly from the atomic observations when they are available. Rounding is for the final display.
+
+</details>

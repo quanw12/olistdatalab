@@ -1,5 +1,7 @@
 # C12-L03 — Parquet and explicit storage schemas
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../02-pandas/guide.md) · [Next lesson](../../13-apis-and-databases/01-pagination/guide.md)
@@ -36,3 +38,9 @@ git push -u origin HEAD
 ~~~
 
 Keep your feature/... convention and inspect previously staged changes too.
+
+
+## Independent variation
+
+Round-trip a changed valid dataset and compare values and dtypes. Demonstrate the out-of-range case is rejected before publication.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

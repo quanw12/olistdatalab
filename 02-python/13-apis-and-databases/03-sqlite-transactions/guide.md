@@ -1,5 +1,7 @@
 # C13-L03 — Parameterized SQL and transaction rollback
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../02-retries/guide.md) · [Next lesson](../04-postgresql/guide.md)
@@ -36,3 +38,9 @@ git push -u origin HEAD
 ~~~
 
 Keep your feature/... convention and inspect previously staged changes too.
+
+
+## Independent variation
+
+Inject a failure after one attempted write and compare durable state before/after rollback; a successful happy path is insufficient.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

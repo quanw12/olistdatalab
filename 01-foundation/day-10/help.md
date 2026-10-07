@@ -2,7 +2,10 @@
 
 Try the tutorial example first, change it once, then attempt the exercise. The snippets below are patterns, not ten finished answers.
 
-## Q1 — Convert before taking the date
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>Q1 — Convert before taking the date</summary>
 
 Use the Day 9 INNER JOIN on city_id. Select the original observed_at too, so you can compare it with the converted local clock reading.
 
@@ -13,7 +16,10 @@ o.observed_at AT TIME ZONE c.timezone_name AS local_time,
 
 Do not write local_time::date in the same SELECT list. Repeat the expression. All four configured city timezones are Asia/Ho_Chi_Minh.
 
-## Q2 — Select a complete calendar day
+</details>
+
+<details>
+<summary>Q2 — Select a complete calendar day</summary>
 
 Put this WHERE block after the join and before ORDER BY:
 
@@ -24,7 +30,10 @@ WHERE o.observed_at >= TIMESTAMPTZ '2026-09-18 00:00:00+07:00'
 
 Use AND because both bounds must hold. The explicit +07:00 identifies the timezone offset for these sample dates. A filter on only the day number 18 would ignore month and year.
 
-## Q3 — One row per local date
+</details>
+
+<details>
+<summary>Q3 — One row per local date</summary>
 
 Use the same date expression in SELECT and GROUP BY:
 
@@ -34,7 +43,10 @@ Use the same date expression in SELECT and GROUP BY:
 
 Add COUNT(*), ROUND(AVG(temperature_c), 2), MIN, and MAX. Grouping by city_id would answer a different question; grouping by the full timestamp would produce several rows per date.
 
-## Q4 — Three CASE branches
+</details>
+
+<details>
+<summary>Q4 — Three CASE branches</summary>
 
 For ascending temperature thresholds, test the smallest band first:
 
@@ -48,7 +60,10 @@ END AS temperature_band
 
 The second branch implicitly starts at 30 because the first branch already handled lower values. Expected band totals: cool 1, warm 5, hot 2. These are exercise categories.
 
-## Q5 — Count condition matches, not all non-NULL flags
+</details>
+
+<details>
+<summary>Q5 — Count condition matches, not all non-NULL flags</summary>
 
 Use a LEFT JOIN from cities and group by its city ID and name. Select both:
 
@@ -60,7 +75,10 @@ SUM(CASE WHEN o.temperature_c >= 32 THEN 1 ELSE 0 END)
 
 Do not put the temperature condition in WHERE: that would remove nonmatching observations and Hue before aggregation. In this exercise, COUNT(*) would also give Hue the wrong total count.
 
-## Q6 — Run the inner average first
+</details>
+
+<details>
+<summary>Q6 — Run the inner average first</summary>
 
 ```sql
 SELECT AVG(temperature_c)
@@ -69,11 +87,17 @@ FROM weather_observations;
 
 It returns 31.375, possibly with extra decimal places. Put this query, without its semicolon, inside the outer comparison's parentheses. Use >, not >=, and compare with the calculated value without rounding it or typing a literal number.
 
-## Q7 — Equality preserves ties
+</details>
+
+<details>
+<summary>Q7 — Equality preserves ties</summary>
 
 Change the scalar aggregate to MAX and compare with =. The maximum is 34.0. A LIMIT 1 solution does not satisfy the requirement to return every tied maximum. Do not insert extra rows into the lesson tables to test ties; explain the behavior in words or use a small VALUES example separately.
 
-## Q8 — Correlate the subquery
+</details>
+
+<details>
+<summary>Q8 — Correlate the subquery</summary>
 
 The predicate inside the outer WHERE has this form:
 
@@ -87,7 +111,10 @@ NOT EXISTS (
 
 c belongs to the outer query. Removing the inner WHERE changes the question to whether the whole observations table is empty. Today it is not empty, but Hue individually has no matching rows.
 
-## Q9 — Inspect the CTE before the final filter
+</details>
+
+<details>
+<summary>Q9 — Inspect the CTE before the final filter</summary>
 
 1. Write and run a joined, grouped city summary alone. It should return three cities.
 2. Wrap that SELECT, without its semicolon, inside WITH city_summary AS (...).
@@ -96,7 +123,10 @@ c belongs to the outer query. Removing the inner WHERE changes the question to w
 
 The aliases c and o exist inside the CTE's inner query. They are not available in the outer SELECT. Refer to the CTE output columns there.
 
-## Q10 — Build the report in layers
+</details>
+
+<details>
+<summary>Q10 — Build the report in layers</summary>
 
 First finish the grouped daily_summary query using Q2's date bounds. It should return city IDs 1, 2, and 3, each with count 2.
 
@@ -120,7 +150,10 @@ END AS report_status
 
 A missing group creates no daily_summary row for Hue, so its joined count is NULL before COALESCE. The CTE already produces one row per city; the final join does not need another GROUP BY.
 
-## Common problems
+</details>
+
+<details>
+<summary>Common problems</summary>
 
 | Symptom | What to check |
 |---|---|
@@ -141,3 +174,5 @@ A missing group creates no daily_summary row for Hue, so its joined count is NUL
 | No output from queries.sql | The starter contains comments only; write a real query under each TODO. |
 
 If you are stuck, send the complete statement and the error text. For a CTE, include both the WITH block and final SELECT.
+
+</details>

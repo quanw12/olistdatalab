@@ -1,6 +1,6 @@
 # Variables and input conversion
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=3121s), assigned window **00:52:01–01:14:25**. Roadmap connection: PY01.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=3121s), assigned window **00:52:01–01:14:25**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -34,8 +34,5 @@ Planned sessions: 3
 
 total_minutes becomes 60 when sessions is 2. Rebinding sessions to 3 does not rerun the earlier multiplication. The f-string reads the current value 3.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/functions.html#input).

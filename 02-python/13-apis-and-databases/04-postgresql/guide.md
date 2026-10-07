@@ -1,5 +1,7 @@
 # C13-L04 — Native PostgreSQL with Psycopg
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../03-sqlite-transactions/guide.md) · [Next lesson](../../14-reliable-pipelines/01-incremental/guide.md)
@@ -36,3 +38,9 @@ git push -u origin HEAD
 ~~~
 
 Keep your feature/... convention and inspect previously staged changes too.
+
+
+## Independent variation
+
+Run the live checker, then explain transaction ownership. Offline binding checks alone do not prove PostgreSQL rollback.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

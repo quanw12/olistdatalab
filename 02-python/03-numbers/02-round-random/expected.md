@@ -1,5 +1,10 @@
 # Expected results — Rounding, display precision, and randomness
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -18,3 +23,5 @@ The first line is numeric output; the second comes from a string even though the
 ## Explain your result
 
 Why should expected results avoid one exact unseeded random number? Why do equal-looking rounded/formatted results have different types?
+
+</details>

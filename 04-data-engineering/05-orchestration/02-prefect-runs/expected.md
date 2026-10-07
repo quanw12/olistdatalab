@@ -1,5 +1,10 @@
 # Expected — DE17
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 Success passes; permanent load failure blocks transform/publish; repair/replay reconciles. Toy fail-once makes two attempts. Backfill matches rebuild.
 
 ## Reflection answer
@@ -13,3 +18,4 @@ It means initial attempt plus up to two retries; inner retries can multiply atte
 
 Passing a supplied fixture is one piece of evidence. Explain the result and show one changed-input or failure example before marking the lesson complete.
 
+</details>

@@ -1,5 +1,10 @@
 # Expected results — CLI options, configuration, and environments
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 --input a.csv gives limit=100; --limit 0 exits. {'source':' fixture ','batch_size':2,'token':'x'} returns only source='fixture' and batch_size=2.
 
 check.py prints PASS when all included cases succeed. Missing functions are expected until implemented.
@@ -12,5 +17,7 @@ Why install with the selected interpreter's -m pip?
 <summary>Reveal reasoning after answering</summary>
 
 It ensures the package goes into that interpreter's environment instead of a different Python installation.
+
+</details>
 
 </details>

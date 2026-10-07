@@ -12,3 +12,12 @@ Can this synthetic sample prove why customers spend more?
 
 Write your answer before opening expected.md. Keep teaching examples in scratch files; your final implementation belongs in the requested starter.
 
+
+
+## Consumer handoff
+
+Add a compact data dictionary for the published report: each column's meaning,
+type/unit, NULL meaning and grain/key. Map each column to its source field or
+transformation, identify the owner and expected refresh, and say which sensitive
+fields must not appear. State when an analyst should withhold a stale report.
+These definitions accompany your existing report; no new dashboard tool is required.

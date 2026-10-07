@@ -33,3 +33,12 @@ The text round-trips through an explicitly encoded file. TemporaryDirectory clea
 A manifest should not appear complete while containing a half-written JSON document.
 
 The problem contract is in [exercise.py](exercise.py). The checker supplies fixtures; it does not contain your implementation.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `NamedTemporaryFile(mode='w', encoding='utf-8', delete=False, dir=parent)` | Unique sibling temporary file; close it before replacement on Windows. |
+| `Path(temp_name).replace(destination)` | Replace one destination path, after serialization/writing succeeds. |
+| `Path(temp_name).unlink(missing_ok=True)` | Remove your own leftover temporary file after an error. |

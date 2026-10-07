@@ -1,5 +1,10 @@
 # Checking your work
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 main holds the initial commit. feature/logging holds your later commit. Unstaging removes README.md from the index while its working change remains. Recorded commit IDs are unique to your run.
 
 ## Reflection answer — reveal after your attempt
@@ -12,3 +17,5 @@ Previously staged paths remain in the index until committed or unstaged. A new g
 </details>
 
 Completion requires your own work and an explanation. Creating materials does not mark the lesson complete.
+
+</details>

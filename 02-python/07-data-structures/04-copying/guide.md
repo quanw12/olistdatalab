@@ -1,5 +1,7 @@
 # C07-L04 — Aliases, shallow copies, and nested data
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../03-mutation/guide.md) · [Next lesson](../05-sort-combine/guide.md)

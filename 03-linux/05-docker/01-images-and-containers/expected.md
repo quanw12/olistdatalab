@@ -1,5 +1,10 @@
 # Checking your work
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 Client/server reachable, Python command exits 0, logs show its version, and ps -a displays the stopped lab container before removal. Runtime evidence must come from your machine.
 
 ## Reflection answer — reveal after your attempt
@@ -12,3 +17,5 @@ The client is installed, but its configured engine endpoint is unavailable or wr
 </details>
 
 Completion requires your own work and an explanation. Creating materials does not mark the lesson complete.
+
+</details>

@@ -1,0 +1,89 @@
+{
+  "b1": [
+    {
+      "id": "d-ops",
+      "version": 1,
+      "source_uri": "local://ops.md",
+      "text": "Recovery: commit database changes before acknowledging a batch. Replay a failed batch using its durable identity."
+    },
+    {
+      "id": "d-api",
+      "version": 1,
+      "source_uri": "local://api.md",
+      "text": "Pagination: a cursor identifies the next page. Persist the cursor only after its rows commit successfully."
+    },
+    {
+      "id": "d-search",
+      "version": 1,
+      "source_uri": "local://search.md",
+      "text": "Evaluation: measure retrieval using labeled relevant documents. Report precision, recall and reciprocal rank."
+    },
+    {
+      "id": "d-time",
+      "version": 1,
+      "source_uri": "local://time.md",
+      "text": "Timezone: use aware timestamps. Convert an instant to UTC and retain the source timezone name."
+    }
+  ],
+  "b2": [
+    {
+      "id": "d-api",
+      "version": 2,
+      "source_uri": "local://api.md",
+      "text": "HTTP retries: respect Retry-After and use bounded backoff. Log the status code without exposing credentials."
+    },
+    {
+      "id": "d-time",
+      "version": 2,
+      "op": "delete"
+    },
+    {
+      "id": "d-types",
+      "version": 1,
+      "source_uri": "local://types.md",
+      "text": "Python validation: reject bool when an exact integer is required. Strings and integers have different boundaries."
+    }
+  ],
+  "labels_b1": [
+    {
+      "query": "cursor",
+      "relevant": [
+        "d-api"
+      ]
+    },
+    {
+      "query": "timezone",
+      "relevant": [
+        "d-time"
+      ]
+    },
+    {
+      "query": "recovery",
+      "relevant": [
+        "d-ops"
+      ]
+    }
+  ],
+  "labels_b2": [
+    {
+      "query": "cursor",
+      "relevant": []
+    },
+    {
+      "query": "timezone",
+      "relevant": []
+    },
+    {
+      "query": "Python",
+      "relevant": [
+        "d-types"
+      ]
+    },
+    {
+      "query": "retries",
+      "relevant": [
+        "d-api"
+      ]
+    }
+  ]
+}

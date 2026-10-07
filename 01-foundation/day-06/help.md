@@ -6,7 +6,10 @@ Function-body fragments containing return must be indented inside the named func
 
 Complete `fetch_current_weather` one TODO at a time.
 
-## Step 1: parameters
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>Step 1: parameters</summary>
 
 ~~~python
 params = {
@@ -17,7 +20,10 @@ params = {
 }
 ~~~
 
-## Step 2: environment timeout
+</details>
+
+<details>
+<summary>Step 2: environment timeout</summary>
 
 ~~~python
 timeout_seconds = float(os.getenv("WEATHER_TIMEOUT_SECONDS", "10"))
@@ -25,7 +31,10 @@ timeout_seconds = float(os.getenv("WEATHER_TIMEOUT_SECONDS", "10"))
 
 Environment variables are text, so convert this value to float.
 
-## Step 3: GET, timeout, and status
+</details>
+
+<details>
+<summary>Step 3: GET, timeout, and status</summary>
 
 ~~~python
 try:
@@ -39,7 +48,10 @@ except requests.exceptions.RequestException as error:
     raise RuntimeError(f"weather request failed: {error}") from error
 ~~~
 
-## Step 4: JSON and contract check
+</details>
+
+<details>
+<summary>Step 4: JSON and contract check</summary>
 
 ~~~python
 payload = response.json()
@@ -56,7 +68,10 @@ The function returns two values, which main unpacks:
 payload, params = fetch_current_weather(args)
 ~~~
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 | Error | Common cause | What to do |
 |---|---|---|
@@ -66,7 +81,10 @@ payload, params = fetch_current_weather(args)
 | `HTTPError` | Invalid URL/parameters or API failure | Read the status in the traceback and inspect params |
 | `JSONDecodeError` | Response is not valid JSON | Do not write output; send the full error |
 
-## Building the driver when starting from a blank file
+</details>
+
+<details>
+<summary>Building the driver when starting from a blank file</summary>
 
 Define helper functions first; call them from main. A function definition does not execute its body. This small unrelated example shows the syntax:
 
@@ -88,3 +106,5 @@ if __name__ == "__main__":
 Read input inside main, pass data to your transformation, validate the result, then write output. Test one helper with a tiny input before connecting all steps. Use print(repr(value)) to inspect an unexpected value; remove temporary prints after debugging. Return data from helpers and print only at the CLI boundary.
 
 For CSV use csv.DictReader/csv.DictWriter (or pandas read_csv/to_csv on Days4–5). For JSON use json.load/json.dump with an opened UTF-8 file. CSV writer files need newline="". JSON datetime values must become ISO strings before serialization. Catch the expected exception around the risky conversion; do not hide every error behind except Exception: pass.
+
+</details>

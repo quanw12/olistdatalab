@@ -1,5 +1,10 @@
 # Expected — DE11
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 Each of four incidents is reproducible and has a repaired pass. Rollback leaves data/progress unchanged; publication failure can leave committed data with old files and an explicit pending/failed publication status. Notes do not claim cross-system atomicity.
 
 ## Reflection answer
@@ -13,3 +18,4 @@ It may be stale from an earlier execution. Match run identity, timestamps, curre
 
 Passing a supplied fixture is one piece of evidence. Explain the result and show one changed-input or failure example before marking the lesson complete.
 
+</details>

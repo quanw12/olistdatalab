@@ -1,5 +1,7 @@
 # C08-L05 — Built-ins, named functions, and lambdas
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../04-flexible-arguments/guide.md) · [Next lesson](../06-clean-functions/guide.md)

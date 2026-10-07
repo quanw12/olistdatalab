@@ -16,6 +16,7 @@ These are references or optional replacements, not an additional set of mandator
 | Spark | [PySpark docs](https://spark.apache.org/docs/latest/api/python/index.html) | Optional schema/plan comparison after core gates |
 | Broad DE project examples | [Data Engineering Zoomcamp repository](https://github.com/DataTalksClub/data-engineering-zoomcamp) | Optional later reference; its stack is broader than this course, not an extra workload |
 | Linux/Git/Docker | [Linux course](../03-linux/README.md) | Use its setup and corresponding skill lessons |
+| Engineering extensions | [Part 5](../05-extensions/README.md) and [source notes](../05-extensions/sources.md) | Prepared repair, GCP, retrieval and Kafka/CDC practice; follow track order after the core |
 
 For independently chosen SQL learning, prefer real datasets, changed-input exercises, joins/cardinality, NULL/time/windows and query reasoning. Validate it against Gate B. Certificates/watch time do not replace independent evidence.
 

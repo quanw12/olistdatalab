@@ -37,6 +37,23 @@ Follow the capstone README from a fresh terminal/environment. Show dbt model/tes
 
 Complete DE26's unfamiliar parcel task and SQL diagnostic within an honest timebox. First write a small task contract and plan using DE02's method. Read an unfamiliar entry point, reproduce a defect, preserve a failing regression test and verify a small repair using DE03's method. Deliver a handoff with actual checks and remaining limits. Give a 90-second English introduction and answer follow-ups on grain, replay, late data, transactions, joins and recovery without reading a script.
 
+
+## Gate G — Source discovery and verified recovery
+
+On a changed source, complete DE27's profile and explain grain, candidate keys,
+defects and unanswered owner guarantees before selecting a cleaning policy.
+Hand off a catalog, column lineage and consumer contract, omitting unnecessary
+sensitive fields.
+
+Complete DE28 on two new owned databases: inspect the archive, restore to an empty
+target, compare complete item/deletion/ledger state and prove constraints. Add a
+different baseline item so hard-coded totals cannot pass. Record restore-plus-
+verification time and post-dump changes that were not recovered. Explain logical
+backup, access-policy and PITR limits. These checks can span separate sessions.
+
+Pass: facts and business decisions are separated, changed-source checks work, and
+a native restore produces verified usable data. An archive alone or mock is insufficient.
+
 ## Score each gate
 
 | Score | Meaning | Action |
@@ -46,7 +63,7 @@ Complete DE26's unfamiliar parcel task and SQL diagnostic within an honest timeb
 | 2 | Independent core works, meaningful tests/evidence, limitations clear | Sufficient evidence to discuss relevant internship work |
 | 3 | Handles new variations, diagnoses errors and explains trade-offs well | Stronger evidence; pursue role-specific extension |
 
-Aim for at least 2 on A–F, especially Python/SQL/modeling and reliability. This is a course rubric, not an employer standard or a hiring guarantee. If one supporting delivery skill is weaker, apply to roles matching what you can demonstrate and state the gap; keep practising.
+Aim for at least 2 on A–G, especially Python/SQL/modeling and reliability. This is a course rubric, not an employer standard or a hiring guarantee. If one supporting delivery skill is weaker, apply to roles matching what you can demonstrate and state the gap; keep practising.
 
 ## Role-fit check
 
@@ -55,4 +72,3 @@ For 3–5 fresh postings, record date, location, student-year eligibility, work 
 ## Repair rule
 
 Name the failed behavior, choose at most two focused lessons, practise on a new fixture, then retry the gate. Do not restart all courses or install five new tools. Preserve failed/repaired evidence so improvement is visible.
-

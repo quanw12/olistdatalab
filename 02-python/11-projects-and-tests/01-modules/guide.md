@@ -1,5 +1,7 @@
 # C11-L01 — Imports, modules, and entry points
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../../10-files-and-time/04-decimal/guide.md) · [Next lesson](../02-cli-config/guide.md)

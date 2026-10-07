@@ -1,6 +1,8 @@
 # Day 20 — Orchestration with Prefect flows and tasks
 
-Aim for 2.5–4 hours. Complete the core task before any optional extension. Each day is one lesson, not an entire tool certification.
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
+Complete the core task before any optional extension.
 
 ## Before starting
 
@@ -50,4 +52,4 @@ git push -u origin $lessonBranch
 The curriculum itself must be committed first using the repository README's commands. These daily commands stage only today's work and shared project changes. Generated output remains ignored; selected sanitized evidence belongs in evidence/.
 
 
-[Course index](../README.md) · [Roadmap](../lessons.md)
+[Course index](../README.md) · [Lesson index](../lessons.md)

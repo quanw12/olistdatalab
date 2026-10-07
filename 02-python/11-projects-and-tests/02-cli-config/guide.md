@@ -1,5 +1,7 @@
 # C11-L02 — CLI options, configuration, and environments
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../01-modules/guide.md) · [Next lesson](../03-unit-tests/guide.md)

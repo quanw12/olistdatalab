@@ -1,5 +1,10 @@
 # Expected results — Variables and input conversion
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -19,3 +24,5 @@ Do not hardcode the output city/count. Prompts are additional output and may dif
 ## Explain your result
 
 Why does input return text even when you type digits? Why did changing sessions not change total_minutes in the example?
+
+</details>

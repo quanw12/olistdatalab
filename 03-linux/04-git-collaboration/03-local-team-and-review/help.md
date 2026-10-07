@@ -1,10 +1,16 @@
 # Help — Local remotes, pull requests and review evidence
 
-## First hint
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>First hint</summary>
 
 Separate receiving history from integrating history.
 
-## Detailed approach
+</details>
+
+<details>
+<summary>Detailed approach</summary>
 
 ~~~bash
 mkdir -p "$LE_LAB_ROOT/git/team"
@@ -54,8 +60,11 @@ git status
 
 Alice's working README stays unchanged after fetch. Use that evidence in your explanation. Write review.md and pr.md in this lesson's course folder so they can be committed with your notes; the practice clones themselves stay outside the course repository.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 An empty clone has no branch history yet. A bare remote's HEAD must name main to avoid confusing clone defaults. 'Already exists' means inspect/reuse the lab rather than recursively removing it.
 
-Change one thing at a time. Preserve the complete error message and confirm your shell, working directory, input path and interpreter before guessing.
+</details>

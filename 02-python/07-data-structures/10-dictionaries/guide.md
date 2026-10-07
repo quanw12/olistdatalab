@@ -1,5 +1,7 @@
 # C07-L10 — Dictionaries, nested records, and aggregation
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../09-sets/guide.md) · [Next lesson](../../08-functions/01-define-call/guide.md)
@@ -49,3 +51,9 @@ git push -u origin HEAD
 ~~~
 
 Review all staged files: changes staged earlier remain in the index. These commands do not change your branch or apply any stash.
+
+
+## Independent variation
+
+Use interleaved repeated groups plus empty input. Explain whether the number of groups equals the number of source records.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

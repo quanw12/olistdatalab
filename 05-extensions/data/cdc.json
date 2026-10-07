@@ -1,0 +1,39 @@
+[
+  {
+    "op": "r",
+    "before": null,
+    "after": {
+      "event_id": "M1",
+      "sku": "p01",
+      "units": 7
+    },
+    "source": {
+      "lsn": 100
+    }
+  },
+  {
+    "op": "u",
+    "before": {
+      "event_id": "M1"
+    },
+    "after": {
+      "event_id": "M1",
+      "sku": "p01",
+      "units": 8
+    },
+    "source": {
+      "lsn": 110
+    }
+  },
+  {
+    "op": "d",
+    "before": {
+      "event_id": "M2"
+    },
+    "after": null,
+    "source": {
+      "lsn": 120
+    }
+  },
+  null
+]

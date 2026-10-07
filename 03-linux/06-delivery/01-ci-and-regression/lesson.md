@@ -35,3 +35,19 @@ The job checks out code, selects Python 3.12 and runs a toy command. It does not
 A useful CI job rejects a behavior regression, not just malformed syntax.
 
 [Reference](https://docs.github.com/en/actions/tutorials/build-and-test-code/python). These explanations and exercises are original course material.
+
+
+## Required YAML and test syntax
+
+~~~yaml
+      - name: Run several checks
+        shell: bash
+        run: |
+          python -m unittest discover -s path/to/tests -p 'test*.py' -v
+          python path/to/another_check.py
+~~~
+
+run: | starts a multiline string; the commands need the same indentation.
+Use repository-relative paths in the runner. unittest -p is a filename pattern,
+not a test-function selector. Inspect the number of collected tests.
+Keep the local passing/failing behavior demonstration separate from activating a workflow.

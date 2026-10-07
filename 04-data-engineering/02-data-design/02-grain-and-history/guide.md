@@ -1,12 +1,14 @@
 # DE05 — Grain, dimensions and historical meaning
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE04](../01-contracts/guide.md)
 
 ## Prerequisites and pace
 
 DE04 and foundation Day 12; practise SQL independently.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -38,3 +40,9 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE06](../03-transactions/guide.md)
+
+
+## Independent variation
+
+Place an event exactly at a dimension boundary, then introduce overlapping intervals. Prove the first maps once and the second is rejected.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

@@ -1,12 +1,14 @@
 # DE20 — An optional BigQuery sandbox lab
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE19](../01-cloud-design/guide.md)
 
 ## Prerequisites and pace
 
 DE19; a deliberately chosen sandbox project.
 
-**Optional specialization.** Skip this runtime until a target role needs it. Read the concepts and record your choice. Budget 2–4 hours; integrations may need more than one session.
+**Optional specialization.** Skip this runtime until a target role needs it. Read the concepts and record your choice. Use the difficulty and pace above.
 
 ## Study order
 

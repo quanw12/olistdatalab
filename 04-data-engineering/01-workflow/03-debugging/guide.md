@@ -1,5 +1,7 @@
 # DE03 — Read, debug and profile unfamiliar code
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Overall roadmap](../../../roadmap.md)
 
 ## Before starting

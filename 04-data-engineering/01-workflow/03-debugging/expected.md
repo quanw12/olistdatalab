@@ -1,5 +1,10 @@
 # DE03 expected behavior
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 The original buggy script prints {" c1 ": 10, "c1": 20, "c2": 5}. It uses the raw whitespace-containing ID and replaces a customer's previous amount. The provided small fixture visibly demonstrates the normalization defect; a regression input with identical repeated keys also exposes overwrite.
 
 The correct result for data.json is {"c1": 30, "c2": 5}. Empty input returns {}. Reordered valid rows and non-adjacent repeated customers keep the same totals. Zero amounts remain valid, and input rows/dictionaries are unchanged.
@@ -15,5 +20,7 @@ Required evidence:
 <details><summary>Reflection explanation — reveal after answering</summary>
 
 A reproduction confirms the symptom and gives you a way to distinguish causes. A failing regression test captures the intended behavior and can reject an incomplete repair later. Making a change without either can hide the original issue, create unrelated changes or leave another variation broken.
+
+</details>
 
 </details>

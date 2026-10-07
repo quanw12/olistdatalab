@@ -1,12 +1,14 @@
 # DE19 — Cloud storage, IAM and cost-aware design
 
+**Difficulty: Learn.** 15–45 minutes of coding; allow extra time for first setup. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE18](../../05-orchestration/03-airflow-transfer/guide.md)
 
 ## Prerequisites and pace
 
 DE12 and Linux container/storage lessons.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -38,3 +40,6 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE20](../02-bigquery-sandbox/guide.md)
+
+
+If this is familiar, solve and explain a changed example before treating it as a short refresh. Setup recipes teach the environment; copying one is not an independent coding assessment.

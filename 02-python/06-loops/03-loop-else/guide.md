@@ -1,5 +1,7 @@
 # C06-L03 — Search with for-else
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../02-control/guide.md) · [Next lesson](../04-nested/guide.md)

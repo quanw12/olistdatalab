@@ -1,12 +1,14 @@
 # DE25 — A complete retail pipeline portfolio
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE24](../02-ml-feature-data/guide.md)
 
 ## Prerequisites and pace
 
 Core Engineering lessons; selected 02-python/Linux gates; see master study plan.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 

@@ -1,5 +1,7 @@
 # LE20 — Compose for a batch job and report viewer
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Module](../README.md) · [Course index](../../README.md) · [Setup](../../setup.md) · [Independent study](../../../docs/study.md)
 
 ## Before starting
@@ -42,3 +44,9 @@ Use your feature/... convention; the course README links the shared branch/stagi
 ## Continue
 
 [Previous: LE19](../04-container-network/guide.md) · [Next: LE21](../../06-delivery/01-ci-and-regression/guide.md)
+
+
+## Independent variation
+
+Remove an owned stopped batch container and run the viewer again. Identify the persistence boundary and avoid deleting the output volume.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

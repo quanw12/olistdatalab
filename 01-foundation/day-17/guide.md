@@ -1,6 +1,8 @@
 # Day 17 — Incremental loads, corrections, and backfills
 
-Aim for 2.5–4 hours. Complete the core task before any optional extension. Each day is one lesson, not an entire tool certification.
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
+Complete the core task before any optional extension.
 
 ## Before starting
 
@@ -52,4 +54,10 @@ git push -u origin $lessonBranch
 The curriculum itself must be committed first using the repository README's commands. These daily commands stage only today's work and shared project changes. Generated output remains ignored; selected sanitized evidence belongs in evidence/.
 
 
-[Course index](../README.md) · [Roadmap](../lessons.md)
+[Course index](../README.md) · [Lesson index](../lessons.md)
+
+
+## Independent variation
+
+Introduce a correction to an older observation and replay it. Compare the result with a rebuild rather than relying only on row counts.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

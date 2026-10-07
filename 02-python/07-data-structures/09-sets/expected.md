@@ -1,5 +1,10 @@
 # Expected results — Sets, membership, and stable deduplication
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -16,3 +21,5 @@ An empty incoming list gives [] and zero duplicates; all expected cities are the
 ## Explain your result
 
 Why does list(set(values)) not promise first-seen order? Why does {} not make an empty set?
+
+</details>

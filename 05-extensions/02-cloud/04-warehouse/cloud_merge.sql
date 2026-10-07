@@ -1,0 +1,2 @@
+-- TODO: GoogleSQL MERGE, event_id grain, strictly newer revisions.
+-- Reject conflicting equal revisions before this operation.

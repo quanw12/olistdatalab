@@ -1,6 +1,6 @@
 # break, continue, and pass
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=20877s), assigned window **05:47:57–06:18:39**. Roadmap connection: PY02.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=20877s), assigned window **05:47:57–06:18:39**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -37,8 +37,5 @@ finished
 
 The dash is skipped. The exclamation mark exits before c is visited. pass performs no action, and the final print still executes.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#break-and-continue-statements).

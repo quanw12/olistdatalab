@@ -1,5 +1,7 @@
 # LE09 — A reusable batch runner with logs
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Module](../README.md) · [Course index](../../README.md) · [Setup](../../setup.md) · [Independent study](../../../docs/study.md)
 
 ## Before starting
@@ -45,3 +47,9 @@ Use your feature/... convention; the course README links the shared branch/stagi
 ## Continue
 
 [Previous: LE08](../04-loops-and-functions/guide.md) · [Next: LE10](../../03-processes-network/01-processes-signals/guide.md)
+
+
+## Independent variation
+
+Run from a directory containing spaces and use an input that makes the app fail. Preserve its nonzero exit code and logs.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

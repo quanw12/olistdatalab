@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Overall roadmap](../roadmap.md) · [Study guide](../docs/study.md)
 
-**After Foundations, Python and Linux, read [setup.md](setup.md), then start [DE01](01-workflow/01-systems/guide.md).** This course has **27 lessons: 23 core and 4 optional**. It develops the reasoning, implementation and recovery skills needed for a scoped intern task.
+**After Foundations, Python and Linux, read [setup.md](setup.md), then start [DE01](01-workflow/01-systems/guide.md).** This course has **29 lessons: 25 core and 4 optional**. It develops the reasoning, implementation and recovery skills needed for a scoped intern task.
 
 ## Modules
 
@@ -14,15 +14,15 @@
 | [Warehouse](04-warehouse/README.md) | DE12–DE15 | Local analytical layers and tested dbt transformations |
 | [Orchestration](05-orchestration/README.md) | DE16–DE18 | One Prefect workflow; DE18 Airflow transfer is optional |
 | [Platforms](06-platforms/README.md) | DE19–DE22 | Cloud/IAM/cost concepts and verified AI; DE20 live cloud and DE21 Spark are optional |
-| [Delivery and assessment](07-internship/README.md) | DE23–DE27 | Metrics, portfolio, unfamiliar task and interviews; DE24 ML data is optional |
+| [Delivery and assessment](07-internship/README.md) | DE23–DE29 | Metrics, portfolio, unfamiliar task, source discovery, restore and interviews; DE24 ML data is optional |
 
-Use Python, native PostgreSQL, a small local dbt/DuckDB warehouse, Prefect and the Docker/CI skills already practised. Complete the core before adding an optional platform. Lesson IDs are DE01–DE27; folder numbers define module order.
+Use Python, native PostgreSQL, a small local dbt/DuckDB warehouse, Prefect and the Docker/CI skills already practised. Complete the core before adding an optional platform. Lesson IDs are DE01–DE29; folder numbers define module order.
 
 ## Verify and deliver
 
-Follow the lesson guide's concepts → task → help → verification → reflection/commit sequence. Nine small contracts have offline checks, including DE03 debugging. Other lessons require SQL, dbt, native-database, workflow or documented design evidence; their expected.md specifies it.
+Follow the lesson guide's concepts → task → help → verification → reflection/commit sequence. Ten small contracts have offline checks, including DE03 debugging. Other lessons require SQL, dbt, native-database, workflow or documented design evidence; their expected.md specifies it.
 
-Build the [integrated retail capstone](project/capstone/contract.md), then complete DE26's unfamiliar assignment independently. Use [assessment](../docs/assessment.md) to find gaps and [interviews](../docs/interviews.md) to practise explanations. Track core/optional work in [progress](progress.md).
+Build the [integrated retail capstone](project/capstone/contract.md), then complete DE26's unfamiliar assignment independently. DE27 profiles a new source; DE28 proves a native database restore before DE29 applications. Use [assessment](../docs/assessment.md) to find gaps and [interviews](../docs/interviews.md) to practise explanations. Track core/optional work in [progress](progress.md).
 
 Read [resources](../docs/resources.md) for focused references and [sources](sources.md) for provenance and actual author validation. Local reference passes do not mark your work complete. A small project cannot establish mastery of every production platform.
 

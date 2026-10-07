@@ -1,6 +1,6 @@
 # for loops and accumulators
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=19496s), assigned window **05:24:56–05:47:57**. Roadmap connection: PY02.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=19496s), assigned window **05:24:56–05:47:57**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -35,8 +35,5 @@ total: 9
 
 The values are 2, 3 and 4. The running totals are 2, 5 and 9. The final print is outside the loop.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#for-statements).

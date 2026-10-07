@@ -1,5 +1,10 @@
 # Checking your work
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 Local supplied and extra tests pass; four script checker modes pass; your extra test catches its documented mutation. A workflow draft exists. Do not claim live GitHub success unless you actually activated and observed a run.
 
 ## Reflection answer — reveal after your attempt
@@ -12,3 +17,5 @@ It demonstrates sensitivity to a real failure mode. A permanently passing or imp
 </details>
 
 Completion requires your own work and an explanation. Creating materials does not mark the lesson complete.
+
+</details>

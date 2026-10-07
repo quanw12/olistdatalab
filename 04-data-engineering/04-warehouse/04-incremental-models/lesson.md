@@ -1,23 +1,35 @@
 # Incremental transformations and correctness before pruning
 
-## Understand it
+Incremental materialization controls how dbt writes a model. It does not choose
+the correct source versions for you. Event time, source version and extraction time
+are different boundaries. A max-event-time filter can miss a late correction.
+Deleting an entity from an aggregate input can also leave an old target total.
 
-Incremental materialization updates a target, but correct source selection and replacement remain your responsibility. A max event-time filter misses late data. Appending aggregate totals preserves old corrections/deletes. First reconcile entity state against full rebuild; only then optimize scanning.
-
-## Syntax and trace
+## Required syntax
 
 ~~~sql
-{{ config(materialized='incremental', unique_key='id',
+{{ config(materialized='incremental',
+          unique_key='sensor_id',
           incremental_strategy='delete+insert') }}
--- Conservative full-current-state input, including tombstones.
-select * from {{ ref('latest_changes') }}
+-- Supply your own SELECT, at the model's declared grain.
 ~~~
 
-Scanning all latest state can be correct without saving source-read work. This is a conservative baseline, not a pruning optimization.
+| Construct | What you must decide |
+|---|---|
+| config(...) | Materialization and an adapter-supported update strategy. |
+| unique_key | The target row identity; it is not itself a database uniqueness test. |
+| ref('model_name') | The upstream relation/dependency. |
+| is_incremental() | True for an existing incremental model without full refresh; only add a filter when its correctness is justified. |
+| dbt run --full-refresh | Rebuild for comparison; retain before/after evidence. |
 
-## Engineering connection
+The assignment starts conservatively: reconcile the entire current entity state,
+including deletion state, before attempting scan pruning. Explain separately
+whether target writes and source reads are incremental. Never label a full source
+scan as a source-read optimization.
 
-Correct revision semantics matter more than an incremental label.
+Before implementing, predict how a correction to an old event day and a deletion
+affect the target. Choose tests that would catch an append-only answer. The exercise
+specifies the retail interfaces; it does not provide your SELECT.
 
-[Reference](https://github.com/duckdb/dbt-duckdb). Original explanation and exercises; source/version boundaries are in [sources.md](../../sources.md).
-
+[Adapter reference](https://github.com/duckdb/dbt-duckdb).
+[Incremental models](https://docs.getdbt.com/docs/build/incremental-models).

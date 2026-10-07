@@ -9,7 +9,10 @@ For Retry-After, try a nonnegative number; otherwise use email.utils.parsedate_t
 
 Log city, attempt, status and delay, without credentials. Save output only after successful parsing. Do not catch every Exception and continue, which would hide programming errors.
 
-## A tiny fake-response pattern
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>A tiny fake-response pattern</summary>
 
 ~~~python
 import requests
@@ -29,3 +32,5 @@ class ExampleResponse:
 ~~~
 
 This is test support, not the extractor. Instantiate it with a parsed copy of api_response.json; a fake client's get method returns the next response. To simulate invalid JSON, make json() raise the same parsing exception your real code catches. To record pauses, pass a list's append method as the sleeper.
+
+</details>

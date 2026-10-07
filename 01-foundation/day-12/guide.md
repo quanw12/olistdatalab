@@ -1,6 +1,8 @@
 # Day 12 — Data modeling: grain, dimensions, and facts
 
-Aim for 2.5–4 hours. Complete the core task before any optional extension. Each day is one lesson, not an entire tool certification.
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
+Complete the core task before any optional extension.
 
 ## Before starting
 
@@ -10,7 +12,7 @@ Read [setup](../setup.md) if your environment or current directory is unclear. I
 
 ## Study order
 
-1. Read [lesson.md](lesson.md), about 35–50 minutes. Type each small syntax example and predict its output.
+1. Read [lesson.md](lesson.md), about 15–25 minutes. Try the unfamiliar syntax in a scratch query and predict its output.
 2. Read [exercise.md](exercise.md). Identify inputs, outputs, and failure behavior before writing code.
 3. Implement one small step at a time, about 90–120 minutes. Exercise files contain problem statements only.
 4. Use [help.md](help.md) for the step you are stuck on; return to your own implementation after reading it.
@@ -50,4 +52,10 @@ git push -u origin $lessonBranch
 The curriculum itself must be committed first using the repository README's commands. These daily commands stage only today's work and shared project changes. Generated output remains ignored; selected sanitized evidence belongs in evidence/.
 
 
-[Course index](../README.md) · [Roadmap](../lessons.md)
+[Course index](../README.md) · [Lesson index](../lessons.md)
+
+
+## Independent variation
+
+Check two observations for the same city/date and a UTC-to-local midnight boundary. Explain why both facts survive and which date receives them; do not reload the fixture to test a SELECT.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

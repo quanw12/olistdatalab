@@ -1,6 +1,6 @@
 # Sources, job evidence and verification limits
 
-Research date: October 6, 2026. These Engineering explanations, synthetic fixtures and exercises are original; they are not a video transcript. Your selected Python course remains its own companion track.
+Research dates: October 6–7, 2026. These Engineering explanations, synthetic fixtures and exercises are original; they are not a video transcript. Your selected Python course remains its own companion track.
 
 ## Why these priorities
 
@@ -8,7 +8,7 @@ Employer descriptions inspected:
 - [Data Impact DE intern](https://dataimpact.vn/recruiter/detail/intern-data-engineer): SQL/programming, database basics, English and teamwork; big data/cloud/ML appear as advantages.
 - [TC Data intern/trainee](https://tcdata.vn/career/intern-trainee-data-engineer/): SQL, modeling, scripting, ETL and communication; platform/big-data exposure is additional.
 - [Pizza Hut Vietnam intern](https://pizzahut.talent.vn/job/hcm-data-engineer-intern-53453): SQL/Python, ETL/modeling/cloud fundamentals and familiarity with at least one listed tool. Its displayed June 30, 2026 deadline has passed.
-- Norrin's role surfaced in search, but its detail page was inaccessible. It is not used to establish requirements.
+- [Norrin's integration internship](https://careers.norrin.com/o/azure-data-integration-engineer-intern-1?lang=en) was inspected October 7: SQL/programming, English/problem solving; Git/APIs/cloud are additional. Its August start is past; current availability is unconfirmed.
 
 These are examples, not a representative hiring survey or verified active-vacancy list. Some descriptions require final-year/recent graduates or a minimum attendance schedule. Your upcoming third year needs a separate eligibility check. The study priority is an inference from your gaps and these examples, not a universal employer syllabus.
 
@@ -35,3 +35,8 @@ See [verification.md](verification.md) for actual checks and environments. Offli
 
 Native PostgreSQL rollback, Prefect service/task states, optional Airflow/Spark/cloud and deployment CI need your live evidence. A parsed Python file or mock check does not prove a scheduler/database/container worked. No guarantee of production readiness or employment follows from prepared material.
 
+
+
+## Teaching audit additions
+
+DE27 supplies synthetic source profiling with a behavioral checker. DE28 supplies isolated native-database setup and logical restore practice; verification SQL is learner work. See [course review](../docs/course-review.md) for the audit and validation limits.

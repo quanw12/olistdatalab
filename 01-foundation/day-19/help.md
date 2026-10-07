@@ -1,5 +1,9 @@
 # Day 19 — Package the pipeline with Docker Compose
 
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>After an attempt — supporting explanation</summary>
 
 1. Check that native fixture mode succeeds first. A Docker build cannot fix broken Python.
 2. Write the Dockerfile with Python 3.13, /app workdir, requirements installation and package COPY. Add sql/ only if your application needs it. Do not COPY the entire repository by accident.
@@ -9,3 +13,5 @@
 6. docker compose config --quiet checks syntax without printing expanded credentials. up -d db then logs db diagnoses startup. run --rm app uses the command you defined.
 7. Missing input means the mount or container path is wrong. Connection refused means host/port/readiness; missing table means bootstrap, not a network problem.
 8. The external volume must exist. For a truly new machine create it, start db and run your SQL through pgAdmin5433 before app. Do not claim Compose alone creates your schemas unless you implement and document an initialization method.
+
+</details>

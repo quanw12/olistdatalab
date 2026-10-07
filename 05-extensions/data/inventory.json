@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "product_id": "p01",
+      "category": "hardware"
+    },
+    {
+      "product_id": "p02",
+      "category": "food"
+    },
+    {
+      "product_id": "p03",
+      "category": "books"
+    }
+  ],
+  "movements": [
+    {
+      "event_id": "M1",
+      "product_id": "p01",
+      "units": 7
+    },
+    {
+      "event_id": "M2",
+      "product_id": "p01",
+      "units": 3
+    },
+    {
+      "event_id": "M3",
+      "product_id": "p02",
+      "units": 5
+    }
+  ],
+  "audits": [
+    {
+      "audit_id": "a1",
+      "event_id": "M1"
+    },
+    {
+      "audit_id": "a2",
+      "event_id": "M1"
+    },
+    {
+      "audit_id": "a3",
+      "event_id": "M2"
+    }
+  ]
+}

@@ -34,3 +34,12 @@ One test executes and produces True. Incorrect expectations would register a fai
 A test should catch real regressions such as lost normalization or accepted invalid records.
 
 Use [exercise.py](exercise.py) for the exact input/output contract.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `unittest.TestCase / self.assertEqual(a, b)` | Define a discovered test and compare observable values. |
+| `with self.assertRaises(ValueError):` | Require a specific exception from the operation inside the block. |
+| `unittest.TestSuite / suite.addTest(case)` | Collect explicitly constructed tests when the task requires a returned suite. |

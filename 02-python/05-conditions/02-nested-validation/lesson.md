@@ -1,6 +1,6 @@
 # Nested conditions and validation order
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=16834s), assigned window **04:40:34–04:57:33**. Roadmap connection: PY02.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=16834s), assigned window **04:40:34–04:57:33**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -39,8 +39,5 @@ within limit
 
 The nonempty ASCII digit string reaches the final block. Conversion is now safe for this contract, and the inner range check selects the result.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#if-statements).

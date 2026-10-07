@@ -33,3 +33,12 @@ The next token is second. The caller still needs to fetch that page before decid
 A pipeline that fetches only the first page can look healthy while silently omitting most records.
 
 Use [exercise.py](exercise.py) for the exact input/output contract.
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `page = get_page(token)` | Call the injected fetcher. This exercise follows tokens, not real URLs. |
+| `page['items'] / page['next']` | Read required dictionary fields after checking the page shape. |
+| `items.extend(page_items)` | Append elements, rather than the page list as a single nested element. |
+| `token in seen_tokens` | Test repeated identity before another request; choose the tracking logic yourself. |

@@ -8,5 +8,6 @@ Follow this order. Each guide links concepts, exercise, help, expected evidence 
 - [DE24 — Point-in-time feature data and leakage](02-ml-feature-data/guide.md) — optional
 - [DE25 — A complete retail pipeline portfolio](03-integrated-capstone/guide.md)
 - [DE26 — An independent take-home and debugging rehearsal](04-unseen-assignment/guide.md)
-- [DE27 — Readiness, CV evidence and internship applications](05-applications-and-interviews/guide.md)
-
+- [DE27 — Discover/profile a source; catalog and lineage](05-source-discovery/guide.md)
+- [DE28 — Prove a native PostgreSQL restore](06-backup-and-restore/guide.md)
+- [DE29 — Readiness, CV evidence and internship applications](07-applications-and-interviews/guide.md)

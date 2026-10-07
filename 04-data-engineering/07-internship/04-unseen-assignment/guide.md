@@ -1,18 +1,20 @@
 # DE26 — An independent take-home and debugging rehearsal
 
+**Difficulty: Assess.** 4 hours for implementation plus the separate SQL diagnostic. Syntax documentation is allowed; keep approach hints closed until the independent attempt ends.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE25](../03-integrated-capstone/guide.md)
 
 ## Prerequisites and pace
 
 DE25 core acceptance and independent SQL gate.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
 1. Read [lesson.md](lesson.md), predict the example and trace it.
 2. Complete [exercise.md](exercise.md); starter files contain prompts only.
-3. Use [help.md](help.md) one hint at a time.
+3. Keep [help.md](help.md) closed until the independent attempt ends; then use it to diagnose gaps.
 4. Verify with [expected.md](expected.md), including a failure case.
 5. Explain the reflection in notes.md, then mark [progress](../../progress.md).
 
@@ -37,4 +39,4 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 
 ## Continue
 
-[Next: DE27](../05-applications-and-interviews/guide.md)
+[Next: DE27](../05-source-discovery/guide.md)

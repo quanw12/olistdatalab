@@ -1,5 +1,10 @@
 # Expected results — Incremental state, replays, and corrections
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 A=100 on day 1 corrected to 150 on day 2 stays 150 after a day-1 replay. A new B is inserted. Equal day-2 A=160 conflicts. Repeating the same batch returns equal state.
 
 check.py prints PASS when all included cases succeed. Missing functions are expected until implemented.
@@ -12,5 +17,7 @@ Why does 'drop duplicate IDs' lose valid information?
 <summary>Reveal reasoning after answering</summary>
 
 The same ID can represent a newer correction. Deduplication needs a version/winner rule, not just a seen-key set.
+
+</details>
 
 </details>

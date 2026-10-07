@@ -36,7 +36,7 @@ Before Chapter 9, complete [extension setup](de-setup.md). These are supplied le
 
 ## Completion
 
-Use each chapter's checkpoint and [progress](progress.md). Easy lessons may be short refreshes if you solve and explain a changed input independently. Difficult topics can take several sessions; do not replace coding practice with video time.
+Use each chapter's checkpoint and [progress](progress.md). After Chapters 3, 6, 8 and 14, complete the [independent checkpoints](checkpoints.md). Easy lessons may be short refreshes if you solve and explain a changed input independently. Difficult topics can take several sessions; do not replace coding practice with video time.
 
 Part A ends with a [weather validator/report](08-functions/06-clean-functions/guide.md). Part B ends with a [retail ingestion capstone](14-reliable-pipelines/03-capstone/guide.md): validation, quarantine, exact money, UTC time, persistent latest-version state, replay, rollback and recovery.
 

@@ -34,8 +34,5 @@ no vowel
 
 None of d, r or y matches, so the loop exhausts normally and else prints no vowel. With text='rain', the first vowel a triggers break and suppresses else.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#else-clauses-on-loops).

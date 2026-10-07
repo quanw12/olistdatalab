@@ -1,5 +1,7 @@
 # C10-L04 — Decimal parsing and exact money
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../03-datetime/guide.md) · [Next lesson](../../11-projects-and-tests/01-modules/guide.md)
@@ -38,3 +40,9 @@ git push -u origin HEAD
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.
+
+
+## Independent variation
+
+Compare 1.2300, 1.001 and a nonfinite value. Preserve exact cents; do not make an invalid amount acceptable by rounding.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

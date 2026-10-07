@@ -33,8 +33,5 @@ Hue: 82 F
 
 The first call fills the first two positions and uses the default C. The second call maps names directly, regardless of their written order.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#default-argument-values).

@@ -1,5 +1,10 @@
 # Expected results — CSV, JSON, JSON Lines, and schema boundaries
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 Reading the shared orders.csv returns eight raw dictionaries. A header-only valid CSV returns []. Quoted commas round-trip. Two supplied rows produce two JSONL lines; writing [] again clears them.
 
 When every included check passes, check.py prints PASS and the lesson folder name. A FAIL message points to the first unmet contract. A missing function means the exercise is not implemented yet.
@@ -12,5 +17,7 @@ Why keep CSV strings separate from typed clean records?
 <summary>Reveal the reasoning after answering</summary>
 
 Parsing the container format does not establish business validity. A separate transformation can preserve raw values, apply explicit types, and record precise rejection reasons.
+
+</details>
 
 </details>

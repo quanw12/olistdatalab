@@ -1,5 +1,10 @@
 # Checking your work
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 Host and sibling probe both retrieve the correct manifest. Host uses 8765, sibling uses service name/container port 8000. Container-local localhost is explained accurately.
 
 ## Reflection answer — reveal after your attempt
@@ -12,3 +17,5 @@ The sibling reaches the target through their shared Docker network. Its localhos
 </details>
 
 Completion requires your own work and an explanation. Creating materials does not mark the lesson complete.
+
+</details>

@@ -2,7 +2,10 @@
 
 Use lesson.md for complete runnable examples. This file gives the exact expressions and shapes to use when you get stuck. Keep your full answers in queries.sql.
 
-## Q1 — Full average beside each observation
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>Q1 — Full average beside each observation</summary>
 
 Use the normal INNER JOIN to select city names. The added expression is:
 
@@ -13,7 +16,10 @@ ROUND(AVG(o.temperature_c) OVER (PARTITION BY o.city_id), 1)
 
 Do not GROUP BY: that would collapse observations. Do not put ORDER BY inside this OVER clause: the exercise needs the average of all the city's observations. Only the final SELECT needs display ordering.
 
-## Q2 — Chronological numbering
+</details>
+
+<details>
+<summary>Q2 — Chronological numbering</summary>
 
 ```sql
 ROW_NUMBER() OVER (
@@ -24,7 +30,10 @@ ROW_NUMBER() OVER (
 
 ROW_NUMBER() has no value argument. It resets to 1 at each city. DESC would number the newest observation first, which is useful in Q3 but is not Q2's instruction.
 
-## Q3 — Number first, filter second
+</details>
+
+<details>
+<summary>Q3 — Number first, filter second</summary>
 
 The inner joined SELECT returns the requested fields plus:
 
@@ -37,7 +46,10 @@ ROW_NUMBER() OVER (
 
 Wrap that SELECT, without a semicolon, inside WITH numbered AS (...). The outer query reads numbered and uses WHERE latest_number = 1. Do not place the window call or its alias directly in the inner WHERE. Hue is intentionally absent from this query.
 
-## Q4 — Keep equal temperatures tied
+</details>
+
+<details>
+<summary>Q4 — Keep equal temperatures tied</summary>
 
 ```sql
 RANK() OVER (ORDER BY o.temperature_c DESC) AS temperature_rank,
@@ -48,7 +60,10 @@ No city partition is requested. Do not add observed_at or city_id inside these r
 
 For 34, 33, 32, 32, 31, 30, 30, 29, ranks are 1, 2, 3, 3, 5, 6, 6, 8. Dense ranks are 1, 2, 3, 3, 4, 5, 5, 6.
 
-## Q5 — Use a CTE to subtract the previous value
+</details>
+
+<details>
+<summary>Q5 — Use a CTE to subtract the previous value</summary>
 
 Calculate this in the inner SELECT:
 
@@ -67,7 +82,10 @@ temperature_c - previous_temperature_c AS temperature_change_c
 
 Subtraction is current minus previous. A positive value means an increase between those two observations. Keep the first previous value and first difference NULL. Do not apply COALESCE(..., 0).
 
-## Q6 — Exactly the requested observation frame
+</details>
+
+<details>
+<summary>Q6 — Exactly the requested observation frame</summary>
 
 Type the same partition/order/frame for both AVG and COUNT:
 
@@ -81,7 +99,10 @@ Write ROUND(AVG(...) OVER (...), 2), putting OVER next to AVG and ROUND around t
 
 Two preceding positions plus the current position means up to three rows. Use the four-row tutorial to verify the difference from an unbounded running average; this small weather fixture alone cannot expose that mistake.
 
-## Q7 — Maximum so far
+</details>
+
+<details>
+<summary>Q7 — Maximum so far</summary>
 
 Use MAX(o.temperature_c), then OVER with a city partition, ascending observation order, and:
 
@@ -91,7 +112,10 @@ ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
 
 This retains all earlier observations in the city's frame. Ordering DESC would look toward newer measurements instead and answer a different question.
 
-## Q8 — Build features before keeping the latest row
+</details>
+
+<details>
+<summary>Q8 — Build features before keeping the latest row</summary>
 
 Start with a SELECT from weather_observations AS o that returns the three base columns and all three features:
 
@@ -123,7 +147,10 @@ END AS trend_status
 
 Do not GROUP BY in the outer query. The row-number condition already limits the right-side match to at most one record per city. Keep missing fields as NULL, and round only the displayed rolling average.
 
-## Common problems
+</details>
+
+<details>
+<summary>Common problems</summary>
 
 | Symptom | What to inspect |
 |---|---|
@@ -147,10 +174,15 @@ Do not GROUP BY in the outer query. The row-number condition already limits the 
 | Only the last result appears | Highlight and execute one complete query at a time. |
 | Starter queries.sql gives no results | It contains comments until you write the queries. |
 
-## Window calculations see filtered input
+</details>
+
+<details>
+<summary>Window calculations see filtered input</summary>
 
 A WHERE inside the feature SELECT removes observations before its windows are calculated. Filtering to only September 19 there would discard the September 18 predecessors. Q8 needs all existing observations, so do not add that filter.
 
 Today's exercises use observation positions. Irregular intervals do not become regular simply because LAG or ROWS is used. Check timestamps when interpreting a change.
 
 If you need help, send the complete statement and the exact error. For a CTE, include its WITH block and final SELECT together.
+
+</details>

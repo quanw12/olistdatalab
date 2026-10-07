@@ -19,3 +19,12 @@ Never publish after a failed load or failed quality gate.
 
 Original practice contract; review [sources.md](../../sources.md) for context.
 
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `set() / set.add(value)` | Track identities without promising execution order. |
+| `dict.items() / all(predicate for value in values)` | Inspect task/dependency pairs or a readiness condition. |
+| `raise ValueError(message)` | Fail explicitly for invalid dependencies; returning a partial order is not success. |

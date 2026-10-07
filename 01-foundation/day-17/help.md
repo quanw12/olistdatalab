@@ -1,5 +1,9 @@
 # Day 17 — Incremental loads, corrections, and backfills
 
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>After an attempt — supporting explanation</summary>
 
 1. Read the state row; on first use there is no lower bound. Parse request times to aware datetimes before filtering. File order is not a sorting guarantee.
 2. Select candidates >= watermark minus one day. Process with a version-aware upsert; do not use file position as the version.
@@ -8,3 +12,5 @@
 5. Parse --start/--end with date.fromisoformat and reject end<=start. Convert each observation to its named timezone before taking date(); use start <= local_date < end.
 6. Backfill skips the normal incremental filter. Reuse validation/loading, retain the previous checkpoint, and do not delete records outside the selected interval.
 7. Label counters accurately: input 4/candidate4/stored 10 is meaningful. Do not call all four candidates 'inserted'.
+
+</details>

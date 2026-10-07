@@ -1,5 +1,7 @@
 # C08-L04 — Collect and unpack arguments with * and **
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../03-return-scope/guide.md) · [Next lesson](../05-callables/guide.md)

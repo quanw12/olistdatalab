@@ -1,5 +1,10 @@
 # Expected results — Built-ins, named functions, and lambdas
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -15,3 +20,5 @@ Pass normalize_city without calling it at the call site. Empty values must retur
 ## Explain your result
 
 Why is passing len different from passing len(values)? What makes a function easier to test independently?
+
+</details>

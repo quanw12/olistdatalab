@@ -1,0 +1,10 @@
+item_id,site_id,observed_at,units,version,contact_email
+A,S1,2026-10-01T01:00:00+00:00,10,1,a@example.test
+A,S1,2026-10-01T01:00:00+00:00,12,2,a@example.test
+B,S1,2026-10-01T08:00:00+07:00,3,1,b@example.test
+B,S1,2026-10-01T08:00:00+07:00,3,1,b@example.test
+C,,2026-10-01T02:00:00+00:00,5,1,
+D,S2,bad-time,,1,ops@example.test
+E,S2,2026-10-01T03:00:00,-1,2,ops@example.test
+F,S2,2026-10-01T04:00:00+00:00,2.5,,ops@example.test
+G,S3,2026-10-01T05:00:00+00:00,0,1,

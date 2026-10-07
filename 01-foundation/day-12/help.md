@@ -4,7 +4,10 @@
 
 Use the matching hint after trying for 15–20 minutes. schema.sql specifies the required columns; this file explains how to express them.
 
-## 1. I do not know where to write my answers
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>1. I do not know where to write my answers</summary>
 
 - model.md: design explanations, diagram, dictionary, assumptions, and reflections.
 - schema.sql: complete CREATE TABLE statements under TODO 1–3.
@@ -13,9 +16,12 @@ Use the matching hint after trying for 15–20 minutes. schema.sql specifies the
 
 Save the workspace file before opening or copying it into pgAdmin. If you change a query there, copy the final version back to the workspace.
 
-## 2. CREATE TABLE syntax
+</details>
 
-Read the complete dim_date example in lesson section 6. Use the same outer shape for the other tables:
+<details>
+<summary>2. CREATE TABLE syntax</summary>
+
+Use the unrelated table shape in lesson.md's Required SQL syntax section. Choose each weather table's columns and constraints from schema.sql:
 
 ```text
 CREATE TABLE schema_name.table_name (
@@ -55,7 +61,10 @@ UNIQUE (city_key, observed_at)
 
 Both columns form one combination. It does not mean city_key must be unique by itself.
 
-## 3. Which key goes where?
+</details>
+
+<details>
+<summary>3. Which key goes where?</summary>
 
 | Purpose | Column |
 |---|---|
@@ -69,7 +78,10 @@ Both columns form one combination. It does not mean city_key must be unique by i
 
 A column's numeric value is not proof that it refers to the same thing as another column. Follow the keys and the mapping.
 
-## 4. A relation or schema does not exist
+</details>
+
+<details>
+<summary>4. A relation or schema does not exist</summary>
 
 Check which phase you are in:
 
@@ -81,7 +93,10 @@ If public.cities is missing, inspect the selected database. It should be weather
 
 Refresh the Schemas node in pgAdmin after a successful build. Refreshing the tree does not create tables; it only updates the displayed object list.
 
-## 5. The transaction failed
+</details>
+
+<details>
+<summary>5. The transaction failed</summary>
 
 Common follow-on error:
 
@@ -109,7 +124,10 @@ If pgAdmin already rolled the transaction back, ROLLBACK may say there is no tra
 
 DDL and fixture loading use separate transactions. A failed load leaves earlier committed tables in place. Inspect the first error before retrying fixture.sql; do not drop source tables or skip transaction completion.
 
-## 6. day12_mart already exists
+</details>
+
+<details>
+<summary>6. day12_mart already exists</summary>
 
 CREATE SCHEMA fails if the schema exists. The fixture guard stops a second load if target rows exist. Inspect the model before deciding what remains necessary:
 
@@ -125,7 +143,10 @@ Expected table names: dim_city, dim_date, fact_weather.
 
 If the model is not correct, save your SQL and request a review before deciding how to repair existing objects.
 
-## 7. A duplicate or foreign-key error occurs during the first build
+</details>
+
+<details>
+<summary>7. A duplicate or foreign-key error occurs during the first build</summary>
 
 - A duplicate on (city_key, observation_date) often means you chose a daily key for an observation table. Use the required city/observed_at pair.
 - A foreign-key error can mean you referenced a source ID rather than the mart city key, or loaded facts before dimensions.
@@ -134,7 +155,10 @@ If the model is not correct, save your SQL and request a review before deciding 
 
 The provided load is for an empty, newly built model. Day 13 introduces loading from Python and handling existing observations.
 
-## 8. Report syntax hints
+</details>
+
+<details>
+<summary>8. Report syntax hints</summary>
 
 ### Q1: join using actual keys
 
@@ -178,7 +202,10 @@ LEFT JOIN day12_mart.fact_weather AS f ON f.city_key = c.city_key
 
 COUNT(f.observation_key) ignores the NULL fact key for Hue. AVG also ignores NULL input and returns NULL when there are no measurements. A final WHERE condition requiring a fact value would remove Hue.
 
-## 9. Reflection prompts
+</details>
+
+<details>
+<summary>9. Reflection prompts</summary>
 
 Use examples rather than memorized definitions:
 
@@ -190,3 +217,5 @@ Use examples rather than memorized definitions:
 - R6: ask whether a missing observation provides evidence of a 0 C measurement.
 
 Reference: [PostgreSQL constraints](https://www.postgresql.org/docs/18/ddl-constraints.html), [transactions](https://www.postgresql.org/docs/18/tutorial-transactions.html), [aggregate functions](https://www.postgresql.org/docs/18/functions-aggregate.html).
+
+</details>

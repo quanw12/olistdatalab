@@ -1,5 +1,7 @@
 # C12-L02 — pandas joins, types, and trustworthy totals
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../01-generators/guide.md) · [Next lesson](../03-parquet/guide.md)
@@ -36,3 +38,9 @@ git push -u origin HEAD
 ~~~
 
 Keep your feature/... convention and inspect previously staged changes too.
+
+
+## Independent variation
+
+Add a duplicate dimension key, then an unmatched fact key in separate fixtures. Require explicit failure instead of inflated or silently missing totals.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

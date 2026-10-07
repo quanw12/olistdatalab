@@ -33,3 +33,12 @@ The result is [{'cents': 100}]. The selected column remains numeric.
 Stable storage schemas let batches combine predictably.
 
 Use [exercise.py](exercise.py) for the exact input/output contract.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `frame.astype({'amount_cents': 'int64'})` | Choose a storage type only after checking values fit it. |
+| `frame.to_parquet(path, index=False, engine='pyarrow')` | Write Parquet using the configured engine. |
+| `pd.read_parquet(path, engine='pyarrow')` | Read back and verify values plus dtypes; file existence is insufficient. |

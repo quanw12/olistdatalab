@@ -1,5 +1,7 @@
 # C07-L05 — Sort, reverse, and combine lists
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../04-copying/guide.md) · [Next lesson](../06-iteration-filtering/guide.md)

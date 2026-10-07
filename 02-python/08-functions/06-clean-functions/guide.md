@@ -1,5 +1,7 @@
 # C08-L06 — Clean functions and a weather-report mini-project
 
+**Difficulty: Integrate.** 2–6 hours across several sessions. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter overview](../README.md) · [Course start](../../README.md)
 
 [Previous lesson](../05-callables/guide.md) · [Next: C09-L01 exceptions](../../09-errors-and-types/01-exceptions/guide.md)
@@ -49,3 +51,9 @@ git push -u origin HEAD
 ~~~
 
 Review all staged files: changes staged earlier remain in the index. These commands do not change your branch or apply any stash.
+
+
+## Independent variation
+
+Complete checkpoint 3 in the Python checkpoint file on a different subject before calling this independent programming.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

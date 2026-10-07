@@ -32,3 +32,12 @@ No network request occurs. The mock returns a configured payload and records the
 Repeatable tests should not depend on changing data or external uptime.
 
 Use [exercise.py](exercise.py) for the exact input/output contract.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `Mock() / Mock(side_effect=[...])` | Create a fake dependency or a sequence of responses/exceptions. |
+| `mock.assert_called_once_with(...) / mock.call_args_list` | Inspect arguments/call order as required by an interface. |
+| `patch('module_where_used.name')` | Replace the name the tested code actually looks up, not an unrelated import. |

@@ -49,8 +49,5 @@ not numeric
 
 describe delegates the numeric rule, then formats only an accepted value. Exact type membership rejects bool, even though bool is an int subclass. The assertion passes silently.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#intermezzo-coding-style).

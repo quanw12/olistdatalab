@@ -33,3 +33,12 @@ The results are 0, [2, 4], then []. Each operation consumes more of the same str
 File and API processing should use bounded memory where possible.
 
 Use [exercise.py](exercise.py) for the exact input/output contract.
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `yield value` | Suspend the generator and expose one value; state continues on the next request. |
+| `iter(values) / next(iterator)` | Create/advance an iterator. Exhaustion raises StopIteration. |
+| `list(iterator)` | Consume the remaining values; this materializes them and is not streaming. |

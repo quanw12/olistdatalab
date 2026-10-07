@@ -27,3 +27,6 @@ Prerequisite: finish the earlier chapter's practice, or demonstrate equivalent s
 Repeat one exercise with changed input without looking at its example. Use expected.md for boundary cases. Mark the [course checklist](../progress.md) only after explaining your own implementation.
 
 Each lesson's guide includes run, review and commit commands. Chapter numbers preserve the video order; lesson splits are designed for your practice.
+
+
+After this chapter, complete [independent checkpoint 2](../checkpoints.md) with approach help closed.

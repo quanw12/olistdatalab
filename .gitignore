@@ -4,6 +4,8 @@
 .venv-engineering/
 .venv-rehearsal/
 .venv-orchestration/
+.venv-extensions/
+.venv-embeddings/
 __pycache__/
 .pytest_cache/
 *.egg-info/

@@ -1,5 +1,9 @@
 # Day 18 — Docker and Linux CLI from the beginning
 
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>After an attempt — supporting explanation</summary>
 
 1. If docker is unrecognized, finish installation and reopen the terminal. If only the client is reachable, open Docker Desktop and wait for its engine.
 2. Run the small Alpine shell exercise first; exit returns to PowerShell. A Windows C:\ path is not an absolute Linux path.
@@ -9,3 +13,5 @@
 6. Bootstrap the empty database, set host Python PG variables, then run the loader. A missing table means SQL bootstrap was skipped.
 7. Run docker stop de30-pg, then docker start de30-pg. Reconnect and count. The same named volume retains data.
 8. Changing a port changes how you reach a server, not what is stored in it. Show current_database() and server port if you accidentally query the wrong one.
+
+</details>

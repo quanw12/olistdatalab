@@ -1,5 +1,7 @@
 # C12-L01 — Generators, batching, and memory
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../../11-projects-and-tests/04-mocks/guide.md) · [Next lesson](../02-pandas/guide.md)
@@ -36,3 +38,9 @@ git push -u origin HEAD
 ~~~
 
 Keep your feature/... convention and inspect previously staged changes too.
+
+
+## Independent variation
+
+Use a one-shot generator with a partial final batch. Verify each item is consumed once; explain when you materialize the input.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

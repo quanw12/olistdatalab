@@ -1,5 +1,10 @@
 # Expected results — Run a script, comments, and print
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -16,3 +21,5 @@ The comment must not appear in output. The final saved script runs without a syn
 ## Explain your result
 
 What is the difference between a terminal command and Python source code? Why is the comment absent from output?
+
+</details>

@@ -20,3 +20,11 @@ Practise analytical transformations locally before adding a cloud account.
 
 [Reference](https://duckdb.org/docs/stable/clients/python/overview). Original explanation and exercises; source/version boundaries are in [sources.md](../../sources.md).
 
+
+
+## API quick reference
+
+| Syntax | Purpose |
+|---|---|
+| `duckdb.connect(path)` | Open the intended local database; relative paths use the current working directory. |
+| `ROW_NUMBER() OVER (PARTITION BY key ORDER BY version DESC)` | Rank within a declared identity. Decide filtering, tie policy and deletion handling yourself. |

@@ -1,12 +1,14 @@
 # DE08 — Corrections, tombstones and deterministic replay
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE07](../../02-data-design/04-query-plans/guide.md)
 
 ## Prerequisites and pace
 
 DE04–DE06; Python dictionaries and tests.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -42,3 +44,9 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE09](../02-windows-and-cursors/guide.md)
+
+
+## Independent variation
+
+Use a reordered fixture with a tombstone and later stale replay. Reject equal-version differing content rather than selecting it arbitrarily.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

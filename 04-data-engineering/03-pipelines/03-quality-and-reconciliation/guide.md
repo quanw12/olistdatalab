@@ -1,12 +1,14 @@
 # DE10 — Quality checks, reconciliation and fixed-clock freshness
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE09](../02-windows-and-cursors/guide.md)
 
 ## Prerequisites and pace
 
 DE08–DE09; Python tests; independently learned aggregates.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 

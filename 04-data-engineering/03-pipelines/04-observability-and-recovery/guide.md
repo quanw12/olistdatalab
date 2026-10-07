@@ -1,12 +1,14 @@
 # DE11 — Batch evidence, publication state and recovery
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Previous: DE10](../03-quality-and-reconciliation/guide.md)
 
 ## Prerequisites and pace
 
 DE06 and DE10; Linux logs/status lessons.
 
-**Core lesson.** Demonstrate the behavior before marking it complete. Budget 2–4 hours; integrations may need more than one session.
+**Core lesson.** Demonstrate the behavior before marking it complete. Use the difficulty and pace above.
 
 ## Study order
 
@@ -38,3 +40,9 @@ Use your feature/... branch. Review previously staged files too. Runtime databas
 ## Continue
 
 [Next: DE12](../../04-warehouse/01-layers-and-duckdb/guide.md)
+
+
+## Independent variation
+
+Fail after database commit but before file publication. Recover without reapplying durable changes or falsely claiming publication.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

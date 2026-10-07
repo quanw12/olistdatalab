@@ -1,5 +1,7 @@
 # LE14 — Merge conflicts and preserving both intentions
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Module](../README.md) · [Course index](../../README.md) · [Setup](../../setup.md) · [Independent study](../../../docs/study.md)
 
 ## Before starting
@@ -42,3 +44,9 @@ Use your feature/... convention; the course README links the shared branch/stagi
 ## Continue
 
 [Previous: LE13](../01-branches-and-diffs/guide.md) · [Next: LE15](../03-local-team-and-review/guide.md)
+
+
+## Independent variation
+
+Explain both intentions before resolving the conflict. Show the final behavior and diff, not just the absence of conflict markers.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

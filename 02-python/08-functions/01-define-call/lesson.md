@@ -1,6 +1,6 @@
 # Define and call small functions
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=40185s), assigned window **11:09:45–11:28:12**. Roadmap connection: PY04.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=40185s), assigned window **11:09:45–11:28:12**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -38,8 +38,5 @@ after
 
 The function body is skipped during definition. Each call creates a new local binding for name and executes the body once.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/controlflow.html#defining-functions).

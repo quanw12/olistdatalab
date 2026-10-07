@@ -1,10 +1,9 @@
 # Help — Aliases, shallow copies, and nested data
 
-## Hint 1: identify the contract
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
 
-Write down the required input values and output order from exercise.py. Predict the result for the main case manually. Separate each requirement into a small operation.
-
-## Hint 2: syntax and reasoning
+<details>
+<summary>Hint 1 — syntax and reasoning after your attempt</summary>
 
 Create all three references/copies before any mutation. Otherwise your deep copy may intentionally capture the already changed value.
 ~~~python
@@ -15,12 +14,13 @@ print(nested[0] is outer_copy[0])
 ~~~
 The first comparison is False; the second is True. Use that picture to explain the requested result.
 
-## Hint 3: inspect intermediate values
+</details>
 
-Temporarily print the intermediate value and its type after the operation you suspect. Compare it with the lesson trace. Remove diagnostic prints when comparing exact required output.
-
-## Check your explanation
+<details>
+<summary>Check your explanation</summary>
 
 Why does a shallow copy not isolate nested rows? What is the difference between changing a row cell and replacing a whole row?
 
 Use [expected.md](expected.md) to check the result, then repeat with the additional case. Matching one output by hardcoding it does not complete the task.
+
+</details>

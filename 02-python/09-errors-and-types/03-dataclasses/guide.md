@@ -1,5 +1,7 @@
 # C09-L03 — Type hints, dataclasses, and simple objects
 
+**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Chapter](../README.md) · [Extension setup](../../de-setup.md) · [Study without Codex](../../../docs/study.md)
 
 [Previous lesson](../02-logging/guide.md) · [Next lesson](../../10-files-and-time/01-paths-atomic/guide.md)
@@ -38,3 +40,9 @@ git push -u origin HEAD
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.
+
+
+## Independent variation
+
+Try True where an exact integer is required. Explain why an annotation and frozen fields do not validate external values.
+Record the input, predicted result and actual evidence in notes.md. Do not change the supplied fixture/checker.

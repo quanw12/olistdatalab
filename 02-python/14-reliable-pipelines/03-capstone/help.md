@@ -1,10 +1,16 @@
 # Help — Capstone: reproducible retail ingestion
 
-## First hint
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>First hint</summary>
 
 Finish one stage at a time: parse, clean/reject, merge versions, transact, report, publish.
 
-## Detailed approach
+</details>
+
+<details>
+<summary>Detailed approach</summary>
 
 1. Validate the four-field CSV header before touching the database. Keep raw dictionaries and enumerate parsed data records starting at 2.
 2. Reject in order: blank order_id -> id; blank city -> city; invalid amount -> amount; invalid/naive updated_at -> time. Reuse exact cents and UTC conversion.
@@ -16,13 +22,19 @@ Finish one stage at a time: parse, clean/reject, merge versions, transact, repor
 8. Prove replay after a newer correction does not revert that correction. Simulate publication failure using a file where an output directory is expected, then retry with a proper directory.
 Keep run_pipeline as the coordinator. Helpers should not print. Use a finally block to close database connections even when publication fails.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 Base total 5100 means the duplicate A2 was counted twice. Total 102850 after the second fixture means stale A1=999.00 overwrote its newer value. A missing report after replay means you returned early when seeing the ledger entry.
 
 Read the first failing check, compare input/type/output and side effects, then make one focused change. The checker is an executable specification.
 
-## Suggested function boundaries
+</details>
+
+<details>
+<summary>Suggested function boundaries</summary>
 
 Design the program before joining its steps:
 
@@ -41,3 +53,5 @@ These are design suggestions, not required function names. Only run_pipeline is 
 Test milestones in order: one valid CSV -> one rejected row -> duplicate -> correction -> stale row -> conflicting equal version -> failed output directory. After each milestone, run one small manual fixture and inspect counts. Then run the complete checker.
 
 For the batch ledger, a parameterized SELECT can check whether the content hash exists. Do not mark a batch as complete before its row changes commit. Do not return early for a known batch: report generation must still use current database state.
+
+</details>

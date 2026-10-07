@@ -1,0 +1,46 @@
+{
+  "b1": [
+    {
+      "event_id": "M1",
+      "sku": "p01",
+      "observed_at": "2026-10-01T00:00:00+00:00",
+      "version": 1,
+      "units": 7,
+      "op": "upsert"
+    },
+    {
+      "event_id": "M2",
+      "sku": "p01",
+      "observed_at": "2026-10-01T00:00:00+00:00",
+      "version": 1,
+      "units": 3,
+      "op": "upsert"
+    }
+  ],
+  "b2": [
+    {
+      "event_id": "M1",
+      "sku": "p01",
+      "observed_at": "2026-10-01T00:00:00+00:00",
+      "version": 2,
+      "units": 8,
+      "op": "upsert"
+    },
+    {
+      "event_id": "M2",
+      "sku": "p01",
+      "observed_at": "2026-10-01T00:00:00+00:00",
+      "version": 2,
+      "units": 0,
+      "op": "delete"
+    },
+    {
+      "event_id": "M3",
+      "sku": "p02",
+      "observed_at": "2026-10-02T00:00:00+00:00",
+      "version": 1,
+      "units": 5,
+      "op": "upsert"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # LE03 — Standard streams, pipes and text inspection
 
+**Difficulty: Learn.** 15–45 minutes of coding; allow extra time for first setup. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Module](../README.md) · [Course index](../../README.md) · [Setup](../../setup.md) · [Independent study](../../../docs/study.md)
 
 ## Before starting
@@ -42,3 +44,6 @@ Use your feature/... convention; the course README links the shared branch/stagi
 ## Continue
 
 [Previous: LE02](../02-files-and-find/guide.md) · [Next: LE04](../04-permissions/guide.md)
+
+
+If this is familiar, solve and explain a changed example before treating it as a short refresh. Setup recipes teach the environment; copying one is not an independent coding assessment.

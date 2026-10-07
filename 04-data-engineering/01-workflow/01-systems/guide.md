@@ -1,5 +1,7 @@
 # DE01 — Data systems and the lifecycle
 
+**Difficulty: Learn.** 15–45 minutes of coding; allow extra time for first setup. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+
 [Course](../../README.md) · [Setup](../../setup.md) · [Overall roadmap](../../../roadmap.md)
 
 ## Before starting
@@ -30,3 +32,6 @@ Use your feature/... branch and inspect all staged files. Generated profiles/out
 ## Continue
 
 [Course index](../../README.md) · [Next: DE02](../02-tasks/guide.md)
+
+
+If this is familiar, solve and explain a changed example before treating it as a short refresh. Setup recipes teach the environment; copying one is not an independent coding assessment.

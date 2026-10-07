@@ -6,7 +6,10 @@ Function-body fragments containing return must be indented inside the named func
 
 Open only the TODO you are stuck on. Type each line yourself and track what each variable contains.
 
-## TODOs 1 and 2: empty collections
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>TODOs 1 and 2: empty collections</summary>
 
 ~~~python
 temperatures = []
@@ -15,7 +18,10 @@ cities = set()
 
 `[]` creates an empty list. `set()` creates an empty set; `{}` creates an empty dictionary.
 
-## Step 3: visit each row
+</details>
+
+<details>
+<summary>Step 3: visit each row</summary>
 
 ~~~python
 for row in rows:
@@ -25,7 +31,10 @@ for row in rows:
 
 `row` is a temporary variable. Each iteration assigns the next dictionary in `rows` to it.
 
-## Step 4: collect values
+</details>
+
+<details>
+<summary>Step 4: collect values</summary>
 
 Place these **inside** the loop, at the same indentation as the two lookup lines:
 
@@ -36,7 +45,10 @@ temperatures.append(temperature_c)
 
 The set keeps each city name once. The list keeps every temperature because each is an observation used in the calculation.
 
-## Step 5: calculate statistics
+</details>
+
+<details>
+<summary>Step 5: calculate statistics</summary>
 
 Place this **after** the loop, at the function body's indentation level (four spaces):
 
@@ -48,7 +60,10 @@ average_temperature = sum(temperatures) / len(temperatures)
 
 The list now contains five numbers. Their sum divided by their count gives the mean.
 
-## Step 6: return the report
+</details>
+
+<details>
+<summary>Step 6: return the report</summary>
 
 ~~~python
 return {
@@ -62,7 +77,10 @@ return {
 
 `sorted(cities)` produces an ordered list so the output is consistent.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 | Error or symptom | Common cause | Fix |
 |---|---|---|
@@ -72,7 +90,10 @@ return {
 | `IndentationError` | Inconsistent block indentation | Use four spaces; do not mix tabs and spaces |
 | Incorrect average | Append outside the loop, or missing division | Check TODOs 4 and 5 |
 
-## Trace by hand
+</details>
+
+<details>
+<summary>Trace by hand</summary>
 
 First iteration:
 
@@ -89,7 +110,10 @@ temperatures  # [31.2]
 
 The second iteration adds `"Da Nang"` and `30.1`. After five iterations, the list has five temperatures and the set has three city names.
 
-## Building the driver when starting from a blank file
+</details>
+
+<details>
+<summary>Building the driver when starting from a blank file</summary>
 
 Define helper functions first; call them from main. A function definition does not execute its body. This small unrelated example shows the syntax:
 
@@ -112,6 +136,11 @@ Read input inside main, pass data to your transformation, validate the result, t
 
 For CSV use csv.DictReader/csv.DictWriter (or pandas read_csv/to_csv on Days4–5). For JSON use json.load/json.dump with an opened UTF-8 file. CSV writer files need newline="". JSON datetime values must become ISO strings before serialization. Catch the expected exception around the risky conversion; do not hide every error behind except Exception: pass.
 
-## Empty input and display formatting
+</details>
+
+<details>
+<summary>Empty input and display formatting</summary>
 
 Before min/max/division, handle an empty temperatures list. Return row_count0, cities[], and None for all three temperature statistics. A check such as if not temperatures detects an empty list. In print_summary, display "no data" for None; otherwise format one decimal place with an f-string format specifier such as f"{value:.1f}". Keep the calculated mean unrounded until display.
+
+</details>

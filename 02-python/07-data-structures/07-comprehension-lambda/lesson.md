@@ -1,6 +1,6 @@
 # Comprehensions and small lambda expressions
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=34898s), assigned window **09:41:38–10:12:01**. Roadmap connection: PY05.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=34898s), assigned window **09:41:38–10:12:01**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -33,8 +33,5 @@ Expected output:
 
 The filter removes -2, then the expression doubles 0 and 4. The sort compares numeric second fields rather than the first labels.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/tutorial/datastructures.html#list-comprehensions).

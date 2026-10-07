@@ -1,10 +1,16 @@
 # Help — Merge conflicts and preserving both intentions
 
-## First hint
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>First hint</summary>
 
 Resolve the behavior, not only the marker text.
 
-## Detailed approach
+</details>
+
+<details>
+<summary>Detailed approach</summary>
 
 Make both edits to the same committed base line on separate branches. Commit each before switching. git merge feature/retry-policy on main should expose that overlap. Open policy.txt and identify <<<<<<<, ======= and >>>>>>> sections. Replace them with the final valid line and explain the choice. git add -- policy.txt marks it resolved; git commit completes the merge. Check git diff --check and status.
 
@@ -42,8 +48,11 @@ git status
 
 If the branch already exists, inspect it instead of repeating branch creation. `git merge --abort` cancels an unresolved practice merge if you need to return to the clean pre-merge state.
 
-## Troubleshooting
+</details>
+
+<details>
+<summary>Troubleshooting</summary>
 
 Changing different lines may merge automatically. A branch not based on the same shared file may produce a different conflict. Uncommitted edits can block switching/merging.
 
-Change one thing at a time. Preserve the complete error message and confirm your shell, working directory, input path and interpreter before guessing.
+</details>

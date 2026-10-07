@@ -1,6 +1,6 @@
 # Rounding, display precision, and randomness
 
-Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=11493s), assigned window **03:11:33–03:28:04**. Roadmap connection: PY01.  These explanations and exercises are original companion material; see [source notes](../../sources.md).
+Companion to [Data With Baraa's video](https://www.youtube.com/watch?v=Rq5gJVxz55Q&t=11493s), assigned window **03:11:33–03:28:04**. These explanations and exercises are original companion material; see [source notes](../../sources.md).
 
 ## Understand the idea
 
@@ -39,8 +39,5 @@ True
 
 Formatting displays a trailing zero but does not modify 12.3. The two independent generators start in equivalent states, so their first equivalent operation agrees.
 
-## Before the exercise
-
-Predict one result after changing a value in the example. Run the example, compare it with your prediction, and explain any mismatch. Then use the exercise's own data and requirements.
 
 Technical reference: [Python documentation](https://docs.python.org/3.13/library/random.html).

@@ -1,5 +1,10 @@
 # Expected results — Nested loops and pairs
 
+The task's acceptance contract remains in the assignment. Attempt it before opening worked results or reflection explanations.
+
+<details>
+<summary>After your attempt — results and explanations</summary>
+
 These are checking targets, not implementation code. Preserve the output order when the task specifies it. Input prompt text may differ where stated.
 
 ~~~text
@@ -19,3 +24,5 @@ Temporarily add a break after the first inner print: each outer prefix should st
 ## Explain your result
 
 How many body executions occur for 4 outer and 5 inner items? Why does an inner break not stop the outer loop?
+
+</details>

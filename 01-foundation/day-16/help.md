@@ -1,5 +1,9 @@
 # Day 16 — ETL, file layers, and a complete batch pipeline
 
+Attempt the smallest case and write its expected result first. Open one section only when you can name the obstacle; record the highest hint used in notes.md.
+
+<details>
+<summary>After an attempt — supporting explanation</summary>
 
 1. Normalize one row on paper:09:00 local becomes02:00 UTC; request time remains02:01 UTC. Compare payload timezone with configured timezone.
 2. Check fields before conversions. Wrap expected field/conversion errors with context. Do not hide all exceptions across the whole program.
@@ -8,3 +12,5 @@
 5. Open one connection transaction for load_records and refresh_mart. Only after context exit write the success/warning manifest.
 6. On failure keep raw evidence and a failure manifest when possible. Do not overwrite a previous successful run's files.
 7. CLI errors must exit nonzero. Document whether warnings use zero or a separate code; a warning is not silent success.
+
+</details>
