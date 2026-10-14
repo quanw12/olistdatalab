@@ -32,7 +32,7 @@ git add -- "04-data-engineering/07-internship/07-applications-and-interviews"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(engineering): complete de29 applications-and-interviews"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
+Work on `main`. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.

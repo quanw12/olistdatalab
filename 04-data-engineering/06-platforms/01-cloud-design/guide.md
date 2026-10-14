@@ -32,10 +32,10 @@ git add -- "04-data-engineering/06-platforms/01-cloud-design"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(engineering): complete de19 cloud-design"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
+Work on `main`. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
 
 ## Continue
 

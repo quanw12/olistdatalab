@@ -1,6 +1,6 @@
 # Data Engineering progress
 
-Prepared: 29 lessons, 25 core and 4 optional. All start unchecked. Foundation Days 1–11 remain completed separately.
+Prepared: 29 lessons, 25 core and 4 optional. All start unchecked. Complete [Foundation](../01-foundation/progress.md) before DE01 unless you can pass Gates A–B independently.
 
 ## Workflow
 

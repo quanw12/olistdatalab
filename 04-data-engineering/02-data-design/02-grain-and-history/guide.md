@@ -32,10 +32,10 @@ git add -- "04-data-engineering/02-data-design/02-grain-and-history"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(engineering): complete de05 grain-and-history"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
+Work on `main`. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
 
 ## Continue
 

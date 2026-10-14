@@ -1,59 +1,45 @@
 # Foundation lesson index
 
-## How to use this plan
+[Start Day 01](day-01/guide.md) · [References](../docs/lesson-references.md) · [Progress](progress.md)
 
-Each row is one lesson. Budget 2.5–4 hours, with extra setup time for a new tool. Read concepts and syntax, solve the exercise, use help selectively, verify and commit. Finish a core task before starting its dependent lesson; the day number is a sequence, not a deadline.
+Each row is one lesson. Budget 2.5–4 hours (more for mini-projects). Finish the core task before the next dependent day.
 
-You have completed Days 1–11, as confirmed by you. Continue at [Day 12](day-12/guide.md). Earlier submissions are preserved in [submissions](submissions/README.md). Your active Day 12 schema remains in its lesson folder; [workspace notes](../docs/workspace.md) describe the older retained stash.
-
-| Day | Lesson | Concrete deliverable |
-|---|---|---|
-| [01](day-01/guide.md) | Python and CSV cleaning | Clean a CSV with rejection counts |
-| [02](day-02/guide.md) | Functions, lists, dictionaries, and sets | Return and print a structured summary |
-| [03](day-03/guide.md) | JSON, configuration, and datetime | Extract a configured JSON snapshot |
-| [04](day-04/guide.md) | Clean tabular data with pandas | Filter invalid rows with pandas |
-| [05](day-05/guide.md) | Join and aggregate with pandas | Build a joined city summary |
-| [06](day-06/guide.md) | CLI, environment variables, and HTTP APIs | Fetch weather with a CLI |
-| [07](day-07/guide.md) | Mini-project 1: a reproducible weather snapshot | Finish the first offline pipeline |
-| [08](day-08/guide.md) | PostgreSQL tables, keys, and constraints | Create constrained tables in pgAdmin |
-| [09](day-09/guide.md) | SQL joins, grouping, and NULL | Write ten join/aggregate queries |
-| [10](day-10/guide.md) | CTEs, CASE, dates, and subqueries | Write ten CTE/date/subquery reports |
-| [11](day-11/guide.md) | Window functions and time comparisons | Write eight window-function queries |
-| [12](day-12/guide.md) | Data modeling: grain, dimensions, and facts | Build a dimensional model |
-| [13](day-13/guide.md) | Load PostgreSQL from Python | Load normalized JSON in one transaction |
-| [14](day-14/guide.md) | Mini-project 2: a reusable loader and SQL mart | Package a loader and dimensional mart |
-| [15](day-15/guide.md) | Reliable HTTP extraction and bounded retries | Prove bounded HTTP retries |
-| [16](day-16/guide.md) | ETL, file layers, and a complete batch pipeline | Create raw/clean/rejected layers and manifests |
-| [17](day-17/guide.md) | Incremental loads, corrections, and backfills | Handle corrections, progress and backfill |
-| [18](day-18/guide.md) | Docker and Linux CLI from the beginning | Run persistent PostgreSQL; learn Linux commands |
-| [19](day-19/guide.md) | Package the pipeline with Docker Compose | Run the application with Compose |
-| [20](day-20/guide.md) | Orchestration with Prefect flows and tasks | Observe Prefect flow/task states |
-| [21](day-21/guide.md) | Mini-project 3: schedule and observe repeated runs | Schedule the third mini-project |
-| [22](day-22/guide.md) | Meaningful automated tests with pytest | Test contracts and transactions |
-| [23](day-23/guide.md) | Data quality and deterministic freshness checks | Report quality with a fixed clock |
-| [24](day-24/guide.md) | Warehouses, query plans, and a small cloud lab | Read query plans; optional cloud warehouse |
-| [25](day-25/guide.md) | Analytics: turn clean data into an honest report | Create three charts and a supported report |
-| [26](day-26/guide.md) | Continuous integration with GitHub Actions | Run offline tests in GitHub Actions |
-| [27](day-27/guide.md) | Use AI assistance with deterministic verification | Validate AI proposals against computed facts |
-| [28](day-28/guide.md) | Capstone architecture, contracts, and runbook | Document architecture and recovery |
-| [29](day-29/guide.md) | Rehearse end to end and recover from failures | Rehearse fresh setup and failures |
-| [30](day-30/guide.md) | Package the portfolio and explain your decisions | Finish a portfolio demo and skills assessment |
-
-## Deliberate scope
-
-One language (Python), one relational database (PostgreSQL), one orchestrator (Prefect), one container workflow (Docker/Compose), and one optional warehouse (BigQuery). Git and testing recur throughout. CLI practice starts in PowerShell; Day 18 introduces a Linux shell explicitly.
-
-The [roadmap.sh DE map](https://roadmap.sh/data-engineer) is a long-term checklist. This month selects a connected path. Spark is a conceptual introduction on Day 24; these small fixtures do not need distributed processing. Kafka, Kubernetes, Terraform, Airflow, dbt, multiple clouds and production Spark are deferred until a later goal justifies them.
+| Day | Lesson | Deliverable | Primary references |
+|---|---|---|---|
+| [01](day-01/guide.md) | Python and CSV cleaning | `clean.csv` + rejection counts | [Python tutorial](https://docs.python.org/3.13/tutorial/), [csv](https://docs.python.org/3.13/library/csv.html) |
+| [02](day-02/guide.md) | Functions, lists, dicts, sets | Structured summary | [Data structures](https://docs.python.org/3.13/tutorial/datastructures.html) |
+| [03](day-03/guide.md) | JSON, config, datetime | JSON snapshot | [json](https://docs.python.org/3.13/library/json.html), [datetime](https://docs.python.org/3.13/library/datetime.html) |
+| [04](day-04/guide.md) | pandas cleaning | Validated DataFrame | [pandas intro](https://pandas.pydata.org/docs/getting_started/intro_tutorials/) |
+| [05](day-05/guide.md) | pandas join/aggregate | City summary | [merge](https://pandas.pydata.org/docs/user_guide/merging.html), [groupby](https://pandas.pydata.org/docs/user_guide/groupby.html) |
+| [06](day-06/guide.md) | CLI and HTTP | Weather fetch CLI | [Requests](https://requests.readthedocs.io/en/stable/user/quickstart/), [argparse](https://docs.python.org/3.13/library/argparse.html) |
+| [07](day-07/guide.md) | Mini-project 1 | Offline pipeline | [json](https://docs.python.org/3.13/library/json.html), [Pro Git](https://git-scm.com/book/en/v2) |
+| [08](day-08/guide.md) | PostgreSQL DDL | Constrained tables | [PostgreSQL tutorial](https://www.postgresql.org/docs/18/tutorial.html) |
+| [09](day-09/guide.md) | SQL joins/NULL | Ten queries | [SELECT](https://www.postgresql.org/docs/18/tutorial-select.html), [JOIN](https://www.postgresql.org/docs/18/tutorial-join.html) |
+| [10](day-10/guide.md) | CTEs, CASE, dates | Ten reports | [datetime types](https://www.postgresql.org/docs/18/datatype-datetime.html) |
+| [11](day-11/guide.md) | Window functions | Eight queries | [Window tutorial](https://www.postgresql.org/docs/18/tutorial-window.html) |
+| [12](day-12/guide.md) | Dimensional model | Mart DDL + reports | [Constraints](https://www.postgresql.org/docs/18/ddl-constraints.html), [Kimball grain](https://www.kimballgroup.com/2008/11/fact-tables/) |
+| [13](day-13/guide.md) | Load from Python | Idempotent load | [Psycopg params](https://www.psycopg.org/psycopg3/docs/basic/params.html) |
+| [14](day-14/guide.md) | Loader package + mart | Reusable package | [modules](https://docs.python.org/3.13/tutorial/modules.html) |
+| [15](day-15/guide.md) | HTTP retries | Bounded retry proof | [Requests advanced](https://requests.readthedocs.io/en/stable/user/advanced/) |
+| [16](day-16/guide.md) | ETL layers | raw/clean/reject + manifest | [pathlib](https://docs.python.org/3.13/library/pathlib.html), [zoneinfo](https://docs.python.org/3.13/library/zoneinfo.html) |
+| [17](day-17/guide.md) | Incremental/backfill | Correction vs rebuild | [INSERT](https://www.postgresql.org/docs/18/sql-insert.html) |
+| [18](day-18/guide.md) | Docker basics | Containerized Postgres | [Docker install](https://docs.docker.com/desktop/setup/install/windows-install/) |
+| [19](day-19/guide.md) | Compose | Stack with persistence | [Compose file](https://docs.docker.com/reference/compose-file/services/) |
+| [20](day-20/guide.md) | Prefect flows | Flow/task run | [Prefect flows](https://docs.prefect.io/v3/concepts/flows) |
+| [21](day-21/guide.md) | Scheduled runs | Served deployment | [Prefect schedules](https://docs.prefect.io/v3/concepts/schedules) |
+| [22](day-22/guide.md) | pytest | Meaningful tests | [pytest how-to](https://docs.pytest.org/en/stable/how-to/index.html) |
+| [23](day-23/guide.md) | Data quality | Fixed-clock freshness | [aggregates](https://www.postgresql.org/docs/18/functions-aggregate.html) |
+| [24](day-24/guide.md) | Warehouse concepts | EXPLAIN + optional BQ | [EXPLAIN](https://www.postgresql.org/docs/18/using-explain.html), [BQ sandbox](https://docs.cloud.google.com/bigquery/docs/sandbox) |
+| [25](day-25/guide.md) | Reporting | Honest charts | [matplotlib](https://matplotlib.org/stable/tutorials/pyplot.html) |
+| [26](day-26/guide.md) | GitHub Actions | CI test job | [Python CI](https://docs.github.com/en/actions/tutorials/build-and-test-code/python) |
+| [27](day-27/guide.md) | Verified AI | Reject false claims | [json](https://docs.python.org/3.13/library/json.html) |
+| [28](day-28/guide.md) | Architecture | Runbook + contracts | [capstone contract](capstone/contract.md) |
+| [29](day-29/guide.md) | Rehearsal | Recovery evidence | Prior days' runbooks |
+| [30](day-30/guide.md) | Portfolio | Demo + retrospective | [interviews](../docs/interviews.md) |
 
 ## Milestones
 
-- Day 07: reproducible weather snapshot with validation.
-- Day 14: packaged loader and dimensional PostgreSQL mart.
-- Day 21: repeatable pipeline with containers and orchestration.
-- Day 30: portfolio with reproducible setup, failure evidence, analytics and a short demo.
-
-## Outcome and next stage
-
-You practise reading files/APIs, defining contracts, validating data, loading safely, writing analytical SQL, handling reruns/failures and explaining your decisions. This supports later DA reports and ML feature pipelines.
-
-One month does not establish mastery of all DE tools or guarantee internship readiness. Continue through [the overall roadmap](../roadmap.md): Python, Linux, then Data Engineering. Keep your independent SQL practice alongside the current course.
+- **Day 07:** reproducible weather snapshot.
+- **Day 14:** loader + SQL mart.
+- **Day 21:** scheduled orchestration.
+- **Day 30:** portfolio ready for Gate E/F practice.

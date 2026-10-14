@@ -1,4 +1,4 @@
-> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic. Previous submissions are preserved in ../submissions/day-02/.
+> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic.
 
 # Day 2 lesson: understand Python through Day 1's pipeline
 

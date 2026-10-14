@@ -1,4 +1,4 @@
-> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic. Previous submissions are preserved in ../submissions/day-07/.
+> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic.
 
 # Day 7 review: raw JSON to a clean record
 

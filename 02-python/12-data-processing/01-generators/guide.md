@@ -34,10 +34,10 @@ git add -- "02-python/12-data-processing/01-generators"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c12-l01 generators"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Keep your feature/... convention and inspect previously staged changes too.
+Commit on `main` and inspect previously staged changes too.
 
 
 ## Independent variation

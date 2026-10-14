@@ -20,7 +20,7 @@ The first run should fail because the implementation is unfinished. Write your o
 
 ## Commit completed work — Windows PowerShell
 
-Use your existing feature/... branch, or create feature/extensions-ai02 from a clean starting point. Inspect your current work before changing branches. These commands stage only this lesson; include another file explicitly if your implementation also changed it.
+Work on `main`.
 
 ~~~powershell
 Set-Location "C:\DE Courses"
@@ -30,7 +30,7 @@ git add -- "05-extensions/03-ai-data/02-text"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(extensions): complete ai02 text"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Keep generated databases, profiles, credentials and output out of commits. [Workspace rules](../../../docs/workspace.md) explain staging and branches. Files under this course's data/ directory are supplied fixtures; do not edit them to make a check pass.

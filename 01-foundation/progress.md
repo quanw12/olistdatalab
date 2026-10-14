@@ -1,20 +1,18 @@
 # Learning progress
 
-These are review checkboxes, not a reset of your history. Mark a lesson complete only after checking its result and explanation. Original submissions remain in [submissions/](submissions/README.md).
+Mark a lesson only after you verify the result and can explain it without reading `expected.md`. Reset intentionally: all days start unchecked.
 
-**Current position: Days 1–11 completed, confirmed by you; Day 12 is the next practice lesson.** This records your completion history without requiring you to redo the rewritten lesson starters.
-
-- [x] [Day 01: Python and CSV cleaning](day-01/guide.md) — completed; [saved submission](submissions/day-01/)
-- [x] [Day 02: Functions, lists, dictionaries, and sets](day-02/guide.md) — completed; [saved submission](submissions/day-02/)
-- [x] [Day 03: JSON, configuration, and datetime](day-03/guide.md) — completed; [saved submission](submissions/day-03/)
-- [x] [Day 04: Clean tabular data with pandas](day-04/guide.md) — completed; [saved submission](submissions/day-04/)
-- [x] [Day 05: Join and aggregate with pandas](day-05/guide.md) — completed; [saved submission](submissions/day-05/)
-- [x] [Day 06: CLI, environment variables, and HTTP APIs](day-06/guide.md) — completed; [saved submission](submissions/day-06/)
-- [x] [Day 07: Mini-project 1: a reproducible weather snapshot](day-07/guide.md) — completed; [saved submission](submissions/day-07/)
-- [x] [Day 08: PostgreSQL tables, keys, and constraints](day-08/guide.md) — completed; [saved submission](submissions/day-08/)
-- [x] [Day 09: SQL joins, grouping, and NULL](day-09/guide.md) — completed; [saved submission](submissions/day-09/)
-- [x] [Day 10: CTEs, CASE, dates, and subqueries](day-10/guide.md) — completed; [saved submission](submissions/day-10/)
-- [x] [Day 11: Window functions and time comparisons](day-11/guide.md) — completed; [saved submission](submissions/day-11/)
+- [ ] [Day 01: Python and CSV cleaning](day-01/guide.md) — evidence/review:
+- [ ] [Day 02: Functions, lists, dictionaries, and sets](day-02/guide.md) — evidence/review:
+- [ ] [Day 03: JSON, configuration, and datetime](day-03/guide.md) — evidence/review:
+- [ ] [Day 04: Clean tabular data with pandas](day-04/guide.md) — evidence/review:
+- [ ] [Day 05: Join and aggregate with pandas](day-05/guide.md) — evidence/review:
+- [ ] [Day 06: CLI, environment variables, and HTTP APIs](day-06/guide.md) — evidence/review:
+- [ ] [Day 07: Mini-project 1: a reproducible weather snapshot](day-07/guide.md) — evidence/review:
+- [ ] [Day 08: PostgreSQL tables, keys, and constraints](day-08/guide.md) — evidence/review:
+- [ ] [Day 09: SQL joins, grouping, and NULL](day-09/guide.md) — evidence/review:
+- [ ] [Day 10: CTEs, CASE, dates, and subqueries](day-10/guide.md) — evidence/review:
+- [ ] [Day 11: Window functions and time comparisons](day-11/guide.md) — evidence/review:
 - [ ] [Day 12: Data modeling: grain, dimensions, and facts](day-12/guide.md) — evidence/review:
 - [ ] [Day 13: Load PostgreSQL from Python](day-13/guide.md) — evidence/review:
 - [ ] [Day 14: Mini-project 2: a reusable loader and SQL mart](day-14/guide.md) — evidence/review:
@@ -37,4 +35,4 @@ These are review checkboxes, not a reset of your history. Mark a lesson complete
 
 ## Review notes
 
-Record date, files changed, actual result, one concept you can explain and one question. Do not copy expected.md results without running your implementation.
+Record date, files changed, actual result, one concept you can explain and one open question.

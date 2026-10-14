@@ -1,6 +1,6 @@
 # How to study
 
-[Home](../README.md) · [Roadmap](../roadmap.md) · [Assessments](assessment.md)
+[Home](../README.md) · [Roadmap](../roadmap.md) · [Lesson references](lesson-references.md) · [Assessments](assessment.md)
 
 Use one main course at a time, in the roadmap's order. The materials, hints, fixtures and checkers are local; you can continue without a Codex subscription. Video/documentation, package installation and live services need the relevant internet/environment setup.
 

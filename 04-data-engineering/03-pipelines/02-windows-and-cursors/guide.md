@@ -36,10 +36,10 @@ git add -- "04-data-engineering/03-pipelines/02-windows-and-cursors"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(engineering): complete de09 windows-and-cursors"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
+Work on `main`. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
 
 ## Continue
 

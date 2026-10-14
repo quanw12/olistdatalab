@@ -24,10 +24,10 @@ git add -- "04-data-engineering/01-workflow/02-tasks"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(de): complete de02 tasks"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch and inspect all staged files. Generated profiles/output stay ignored. See [workspace conventions](../../../docs/workspace.md).
+Work on `main` and inspect all staged files. Generated profiles/output stay ignored. See [workspace conventions](../../../docs/workspace.md).
 
 ## Continue
 

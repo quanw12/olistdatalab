@@ -2,54 +2,49 @@
 
 [Home](../README.md) · [Roadmap](../roadmap.md)
 
-## Folder and naming rules
+## Folder layout
 
-The root contains one README, one overall roadmap, four numbered core courses and [05-extensions](../05-extensions/README.md). Its four tracks stay inside Part 5. `docs/` holds shared guidance. Use lowercase folder names with hyphens; course numbers define learning order. Keep notes and solutions inside their lesson. Keep generated artifacts in output/ or a scoped external lab directory.
+The root has one README, one roadmap, four numbered core courses and [05-extensions](../05-extensions/README.md). `docs/` holds shared guidance. Use lowercase hyphenated folder names. Keep solutions inside the lesson folder; put generated output in `output/` or paths named in the guide.
 
-Each course owns its setup, lesson index, progress and source references. These describe that course; they do not create a second overall study schedule. SQL remains your independent learning track.
+Each course owns setup, lesson index, progress and sources. SQL remains an independent track alongside the current course.
 
-Old completed work is preserved under [01-foundation/submissions](../01-foundation/submissions/README.md). Its original bytes and old command text are historical evidence. Use the active lesson guides for current paths.
+## Git: work on `main`
 
-## Day 12 and the existing stash
-
-Your unfinished schema is at [01-foundation/day-12/schema.sql](../01-foundation/day-12/schema.sql). The older stash `c031987f2878b5642dd87a066ff67e0cef6d4213` is retained. It references the old folder layout; do not blindly apply it over the reorganized course. Inspect it first if you need a historical file. The current schema is already in the workspace, so restoring the stash is not a step required to continue Day 12.
-
-A recoverable copy of the pre-cleanup course files is stored outside this repository at `C:\Users\DELL\AppData\Local\Temp\de-course-cleanup-20261006\before.zip`. The same backup folder contains a hash manifest and old-to-new path map. The cleanup preserved learner submissions and Day 12's schema.
-
-## Git: keep your feature/... convention
-
-Lesson guides contain scoped commands for their work. Run them in **Windows PowerShell**, inspect the current branch and staged diff, then commit only what you intend. If you are starting a new branch, inspect status first and use a name such as `feature/day12` or `feature/course-cleanup`. Check whether the name exists before creating it. Uncommitted changes are not isolated by a branch name.
-
-The cleanup changes many paths. To save it together with your current Day 12 work, review and use:
+Commit after you verify a lesson. Pull before starting a new session.
 
 ~~~powershell
 Set-Location "C:\DE Courses"
+git checkout main
+git pull origin main
 git status
-git branch --show-current
-git add -A -- .
+# Use the scoped git add paths from the lesson guide.md
 git diff --cached --stat
-git diff --cached
-git commit -m "docs(course): organize the DE learning path and preserve practice"
-git push -u origin HEAD
+git commit -m "feat(day-01): complete the daily DE exercise"
+git push origin main
 ~~~
 
-This migration command stages the whole workspace, including tracked removals and the current Day 12 schema: inspect its diff before committing. It does not restore the stash. For later lesson commits, use that guide's smaller path list and review any files already staged.
+Do not commit passwords, `.env`, live database dumps, or secrets. Review the staged diff every time.
 
-No branch switch, commit, push or stash operation is performed by editing the course materials.
+Lesson guides contain the exact folder to stage. Stage `progress.md` when you check off completion.
 
-## Save the prepared extensions together
+## Clean local feature branches (optional)
 
-After reviewing status, use your feature/... branch. If you need a new preparation branch, create feature/extensions only after checking it does not already exist and deciding how to carry your uncommitted work. The following stages the new course and its shared navigation, not earlier learner implementations:
+If you still have old `feature/day*` branches locally:
 
 ~~~powershell
 Set-Location "C:\DE Courses"
-git status
-git branch --show-current
-git add -- "05-extensions" "README.md" "roadmap.md" "docs/workspace.md" "docs/resources.md" ".gitignore"
-git diff --cached --stat
-git diff --cached
-git commit -m "docs(course): add engineering cloud AI data and streaming extensions"
-git push -u origin HEAD
+git checkout main
+git branch | ForEach-Object { $_.Trim() } | Where-Object {
+  $_ -notmatch '^\*' -and $_ -ne 'main' -and $_ -ne 'master'
+} | ForEach-Object { git branch -D $_ }
 ~~~
 
-Inspect anything already staged before committing. For individual extension practice use its guide's smaller path list; stage progress.md explicitly if you updated it.
+To remove matching branches on the remote (only when you no longer need them):
+
+~~~powershell
+git push origin --delete feature/day01  # repeat per branch name
+~~~
+
+## Evidence and fixtures
+
+Do not edit supplied fixtures unless a guide tells you to copy them to a scratch path. Label evidence as offline, native database, container, or CI as directed in [study.md](study.md).

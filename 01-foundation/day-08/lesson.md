@@ -1,4 +1,4 @@
-> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic. Previous submissions are preserved in ../submissions/day-08/.
+> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic.
 
 # Day 8 — How a database protects your data contract
 

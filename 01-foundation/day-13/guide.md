@@ -1,6 +1,6 @@
 # Day 13 — Load PostgreSQL from Python
 
-**Difficulty: Apply.** 45–120 minutes of coding/checking; environment setup may take longer. For an independent attempt, syntax documentation is allowed; leave approach hints closed until you have tried.
+**Difficulty: Apply.** 45–120 minutes; split across sessions if needed. Syntax documentation is allowed; keep approach hints closed until you try.
 
 Complete the core task before any optional extension.
 
@@ -36,19 +36,21 @@ Send the command output or query result, the files you changed, any error, and y
 
 ## Git checkpoint
 
-Run this only after checking your result. Review what is staged; do not commit passwords or the .env file. Stay on your current feature branch. If starting a later study session from an updated main branch, you may first create feature/day13; do not recreate an existing branch.
+Work on `main`. Stage only this lesson (plus shared project files you changed on purpose).
 
 ~~~powershell
 Set-Location "C:\DE Courses"
+git checkout main
+git pull origin main
 git status
-git add -- 01-foundation/day-13 01-foundation/capstone
+git add -- 01-foundation/day-13
 git diff --cached --stat
 git commit -m "feat(day-13): complete the daily DE exercise"
-$lessonBranch = git branch --show-current
-git push -u origin $lessonBranch
+git push origin main
 ~~~
 
-The curriculum itself must be committed first using the repository README's commands. These daily commands stage only today's work and shared project changes. Generated output remains ignored; selected sanitized evidence belongs in evidence/.
+Generated output stays ignored; put selected evidence in `evidence/` when a guide asks for it.
+
 
 
 [Course index](../README.md) · [Lesson index](../lessons.md)

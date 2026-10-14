@@ -21,3 +21,5 @@ Contracts protect downstream tables and tests from plausible but incorrect input
 
 Original practice contract; review [sources.md](../../sources.md) for context.
 
+
+[Reference](https://json-schema.org/understanding-json-schema). See also [lesson references](../../../docs/lesson-references.md).

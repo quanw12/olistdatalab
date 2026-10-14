@@ -32,10 +32,10 @@ git add -- "04-data-engineering/03-pipelines/04-observability-and-recovery" "04-
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(engineering): complete de11 observability-and-recovery"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
+Work on `main`. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
 
 ## Continue
 

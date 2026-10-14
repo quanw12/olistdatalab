@@ -36,7 +36,7 @@ git add -- "03-linux/06-delivery/02-capstone" "03-linux/project/runbook.md"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(linux): complete le22 capstone"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Use your feature/... convention; the course README links the shared branch/staging instructions. Review all previously staged files too. Generated logs, environments and local lab repositories do not belong in this commit.

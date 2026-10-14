@@ -36,7 +36,7 @@ git add -- "02-python/09-errors-and-types/02-logging"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c09-l02 logging"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.

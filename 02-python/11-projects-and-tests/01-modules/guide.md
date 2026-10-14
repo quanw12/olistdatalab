@@ -34,7 +34,7 @@ git add -- "02-python/11-projects-and-tests/01-modules"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c11-l01 modules"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Keep your feature/... convention and inspect previously staged changes too.
+Commit on `main` and inspect previously staged changes too.

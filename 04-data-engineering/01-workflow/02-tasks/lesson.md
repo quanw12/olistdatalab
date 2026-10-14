@@ -35,3 +35,5 @@ An assertion compares actual behavior with a declared expectation. A test that a
 Some record errors can be quarantined. A database disconnect or conflicting source version may fail a batch and prevent progress from advancing. Specify who sees that failure, what output may be visible and how to retry. “Catch every exception and continue” can conceal missing data.
 
 After the task, document what was observed rather than copying planned test results. A concise handoff lets another person reproduce and assess your work without reading the conversation.
+
+[Reference](https://www.atlassian.com/agile/project-management/requirements). See also [lesson references](../../../docs/lesson-references.md).

@@ -1,5 +1,7 @@
 # Focused resources
 
+[Lesson references](lesson-references.md) index every core lesson. Use this page for optional teachers and deeper reading.
+
 These are references or optional replacements, not an additional set of mandatory courses. Use one teacher per subject, plus documentation for specific questions.
 
 | Topic | Resource | How to use it |

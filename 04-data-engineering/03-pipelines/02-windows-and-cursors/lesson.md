@@ -21,3 +21,5 @@ Backfills are controlled reprocessing with the same state rules, not extra blind
 
 Original practice contract; review [sources.md](../../sources.md) for context.
 
+
+[Reference](https://docs.python.org/3.13/library/datetime.html). See also [lesson references](../../../docs/lesson-references.md).

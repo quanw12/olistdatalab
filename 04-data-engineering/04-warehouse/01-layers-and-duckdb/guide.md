@@ -36,10 +36,10 @@ git add -- "04-data-engineering/04-warehouse/01-layers-and-duckdb"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(engineering): complete de12 layers-and-duckdb"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
+Work on `main`. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
 
 ## Continue
 

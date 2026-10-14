@@ -1,4 +1,4 @@
-> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic. Previous submissions are preserved in ../submissions/day-05/.
+> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic.
 
 # Day 5 lesson: merge, groupby, and data checks
 

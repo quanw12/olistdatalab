@@ -26,4 +26,4 @@ Build the [integrated retail capstone](project/capstone/contract.md), then compl
 
 Read [resources](../docs/resources.md) for focused references and [sources](sources.md) for provenance and actual author validation. Local reference passes do not mark your work complete. A small project cannot establish mastery of every production platform.
 
-Every guide includes manual commit commands using the current paths. Keep your feature/... branch convention and review the staged diff. Shared folder/Git rules are in [workspace](../docs/workspace.md).
+Every guide includes manual commit commands using the current paths. Commit on `main` and review the staged diff. Shared folder/Git rules are in [workspace](../docs/workspace.md).

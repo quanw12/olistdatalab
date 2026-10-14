@@ -39,7 +39,7 @@ git add -- "03-linux/02-bash-scripting/05-batch-runner" "03-linux/project/run_ba
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(linux): complete le09 batch-runner"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Use your feature/... convention; the course README links the shared branch/staging instructions. Review all previously staged files too. Generated logs, environments and local lab repositories do not belong in this commit.

@@ -62,8 +62,8 @@ git branch --show-current
 git add -- "04-data-engineering/07-internship/06-backup-and-restore"
 git diff --cached
 git commit -m "feat(engineering): complete de28 restore rehearsal"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your current feature/... branch; record sanitized conclusions in notes.md.
+Work on `main`; record sanitized conclusions in notes.md.
 [Next: DE29](../07-applications-and-interviews/guide.md)

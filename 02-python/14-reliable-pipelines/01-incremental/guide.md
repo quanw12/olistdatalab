@@ -34,10 +34,10 @@ git add -- "02-python/14-reliable-pipelines/01-incremental"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c14-l01 incremental"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Keep your feature/... convention and inspect previously staged changes too.
+Commit on `main` and inspect previously staged changes too.
 
 
 ## Independent variation

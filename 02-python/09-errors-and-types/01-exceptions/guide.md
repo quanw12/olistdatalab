@@ -36,7 +36,7 @@ git add -- "02-python/09-errors-and-types/01-exceptions"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c09-l01 exceptions"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.

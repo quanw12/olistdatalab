@@ -2,7 +2,7 @@
 
 [Master roadmap](../roadmap.md) · [Setup](setup.md) · [Progress](progress.md) · [Sources](sources.md) · [Author verification](verification.md)
 
-**All four extensions are prepared: 32 lessons, eight per track.** Follow the order below after the four core courses. Your current main-course lesson remains Foundation Day 12; preparing these materials does not mark future practice complete.
+**All four extensions are prepared: 32 lessons, eight per track.** Follow the order below after the four core courses and passing core readiness gates. Preparing these materials does not mark practice complete.
 
 | Order | Track | Lessons | Purpose |
 |---|---|---|---|

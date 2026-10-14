@@ -20,3 +20,5 @@ Replay safety comes from stable keys and update rules, not from a scheduler's re
 
 Original practice contract; review [sources.md](../../sources.md) for context.
 
+
+[Reference](https://docs.python.org/3.13/library/dataclasses.html). See also [lesson references](../../../docs/lesson-references.md).

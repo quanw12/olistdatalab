@@ -1,4 +1,4 @@
-> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic. Previous submissions are preserved in ../submissions/day-06/.
+> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic.
 
 # Day 6 lesson: call an HTTP API from a CLI script
 

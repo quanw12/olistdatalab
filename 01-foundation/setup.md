@@ -2,7 +2,7 @@
 
 ## Python
 
-Use Python 3.13 for a consistent course environment. This machine already has a Python 3.13 installation. Keep the original environment available for earlier submissions.
+Use Python 3.13 for a consistent course environment. This machine already has a Python 3.13 installation.
 
 Run once in PowerShell:
 ~~~powershell

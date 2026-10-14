@@ -39,7 +39,7 @@ git add -- "03-linux/02-bash-scripting/03-status-and-conditions"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(linux): complete le07 status-and-conditions"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Use your feature/... convention; the course README links the shared branch/staging instructions. Review all previously staged files too. Generated logs, environments and local lab repositories do not belong in this commit.

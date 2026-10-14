@@ -37,7 +37,7 @@ Send the exercise file for review and describe any mismatch. Completion is about
 
 ## Commit after completing this lesson
 
-These commands stage this lesson folder only. Shared course documents have their own initial commit command in the [course README](../../README.md). Keep your feature/... branch convention.
+These commands stage this lesson folder only. Shared course documents have their own initial commit command in the [course README](../../README.md). Keep your `main` branch workflow.
 
 ~~~powershell
 Set-Location "C:\DE Courses"
@@ -47,7 +47,7 @@ git add -- "02-python/07-data-structures/06-iteration-filtering"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c07-l06 iteration-filtering"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Review all staged files: changes staged earlier remain in the index. These commands do not change your branch or apply any stash.

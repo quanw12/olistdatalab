@@ -32,10 +32,10 @@ git add -- "04-data-engineering/02-data-design/03-transactions"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(engineering): complete de06 transactions"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Use your feature/... branch. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
+Work on `main`. Review previously staged files too. Runtime databases, secrets and generated files stay ignored or outside the repository.
 
 ## Continue
 

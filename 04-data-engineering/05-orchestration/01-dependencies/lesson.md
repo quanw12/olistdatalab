@@ -28,3 +28,5 @@ Original practice contract; review [sources.md](../../sources.md) for context.
 | `set() / set.add(value)` | Track identities without promising execution order. |
 | `dict.items() / all(predicate for value in values)` | Inspect task/dependency pairs or a readiness condition. |
 | `raise ValueError(message)` | Fail explicitly for invalid dependencies; returning a partial order is not success. |
+
+[Reference](https://docs.python.org/3.13/library/graphlib.html). See also [lesson references](../../../docs/lesson-references.md).

@@ -34,10 +34,10 @@ git add -- "02-python/11-projects-and-tests/03-unit-tests"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c11-l03 unit-tests"
-git push -u origin HEAD
+git push origin main
 ~~~
 
-Keep your feature/... convention and inspect previously staged changes too.
+Commit on `main` and inspect previously staged changes too.
 
 
 ## Independent variation

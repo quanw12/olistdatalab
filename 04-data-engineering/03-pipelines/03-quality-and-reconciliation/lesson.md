@@ -21,3 +21,5 @@ A trusted mart has explainable counts, key relationships and amounts.
 
 Original practice contract; review [sources.md](../../sources.md) for context.
 
+
+[Reference](https://docs.pytest.org/en/stable/). See also [lesson references](../../../docs/lesson-references.md).

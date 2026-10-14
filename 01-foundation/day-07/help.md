@@ -1,4 +1,4 @@
-> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic. Previous submissions are preserved in ../submissions/day-07/.
+> Write the complete program yourself using exercise.md. The numbered steps below teach the syntax and logic.
 
 Function-body fragments containing return must be indented inside the named function; they are not standalone scripts.
 

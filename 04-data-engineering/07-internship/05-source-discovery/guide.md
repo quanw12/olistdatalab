@@ -24,7 +24,7 @@ decide an unconfirmed production cleaning policy.
 
 ## Commit after verification
 
-Use your current feature/... branch. Review previously staged work too.
+Work on `main`. Review previously staged work too.
 
 ~~~powershell
 Set-Location "C:\DE Courses"
@@ -33,7 +33,7 @@ git branch --show-current
 git add -- "04-data-engineering/07-internship/05-source-discovery"
 git diff --cached
 git commit -m "feat(engineering): complete de27 source discovery"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 [Next: DE28](../06-backup-and-restore/guide.md)

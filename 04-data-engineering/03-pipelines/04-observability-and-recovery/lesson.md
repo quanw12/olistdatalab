@@ -20,3 +20,5 @@ An intern who can recover a pipeline and explain evidence is more useful than on
 
 Original practice contract; review [sources.md](../../sources.md) for context.
 
+
+[Reference](https://docs.python.org/3.13/library/logging.html). See also [lesson references](../../../docs/lesson-references.md).

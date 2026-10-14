@@ -36,7 +36,7 @@ git add -- "02-python/10-files-and-time/03-datetime"
 git diff --cached --stat
 git diff --cached
 git commit -m "feat(python): complete c10-l03 datetime"
-git push -u origin HEAD
+git push origin main
 ~~~
 
 Use your existing feature/... branch. Inspect all previously staged changes too. Shared course setup can be committed using the course README's command.

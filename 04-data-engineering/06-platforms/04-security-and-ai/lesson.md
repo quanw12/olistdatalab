@@ -21,3 +21,5 @@ Use AI for hypotheses and reviewed proposals, never as an authority over row cou
 
 Original practice contract; review [sources.md](../../sources.md) for context.
 
+
+[Reference](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html). See also [lesson references](../../../docs/lesson-references.md).

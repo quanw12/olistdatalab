@@ -42,4 +42,4 @@ Part A ends with a [weather validator/report](08-functions/06-clean-functions/gu
 
 Pass [Python Gate A](../docs/assessment.md#gate-a--python-independence-90120-minutes) before continuing to [Linux](../03-linux/README.md). Keep SQL practice alongside the current course. Setup, chapter checkpoints and checks define this course; use the root roadmap for the overall calendar.
 
-Save experiments in scratch.py and your reasoning in notes.md inside the lesson. Its guide contains scoped commit commands. [Workspace conventions](../docs/workspace.md) explain the feature/... branch naming and the course-folder migration.
+Save experiments in scratch.py and your reasoning in notes.md inside the lesson. Its guide contains scoped commit commands. [Workspace conventions](../docs/workspace.md) explain the `main` branch workflow and course folders.
