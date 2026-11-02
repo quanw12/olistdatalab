@@ -1,0 +1,27 @@
+name: olist
+version: "1.0.0"
+config-version: 2
+profile: olist
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  olist:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table
+      +schema: marts
+
+vars:
+  # Days back an exchange rate may be reused when a day has no published rate
+  # (weekends, holidays). Longer gaps leave the converted value empty.
+  fx_max_gap_days: 3
+  # Days of history the incremental daily mart recomputes on every run (late updates).
+  incremental_lookback_days: 3
