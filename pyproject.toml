@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "olist-platform"
+name = "OlistDataLab"
 version = "0.1.0"
 description = "End-to-end data platform on the Olist e-commerce dataset: lakehouse, dbt, streaming, Spark, ML and LLM enrichment"
 readme = "README.md"

@@ -1,4 +1,4 @@
-# Olist Data Platform
+# OlistDataLab
 
 ## Course and lessons: the DEcourse vault
 
@@ -18,7 +18,7 @@ Built as a learning project to practise what a data engineering team runs in pro
 contracts at ingestion, idempotent loads, dbt models with reconciliation tests, orchestration,
 streaming with at-least-once delivery, and treating ML/LLM output as data that must be validated.
 
-[![ci](https://github.com/quanw12/courseDE/actions/workflows/ci.yml/badge.svg)](https://github.com/quanw12/courseDE/actions/workflows/ci.yml)
+[![ci](https://github.com/quanw12/olistdatalab/actions/workflows/ci.yml/badge.svg)](https://github.com/quanw12/olistdatalab/actions/workflows/ci.yml)
 
 ## Architecture
 
