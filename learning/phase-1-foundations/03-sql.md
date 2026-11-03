@@ -1,6 +1,8 @@
 # 03 · SQL from zero
 
-**Level:** Basic → Intermediate · **Weeks:** 4–6 · **Prerequisite:** 01
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/02%20-%20SQL/Aggregation%20va%20Window%20Functions.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 4–6 · **Điều kiện:** 01
 
 ## Goal
 Answer business questions in SQL without help: filtering, joins, aggregation, CTEs, CASE, dates,

@@ -1,6 +1,8 @@
 # 18 · Portfolio and interviews
 
-**Level:** Integration · **Week:** 32, then ongoing
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/09%20-%20Projects/Interview%20va%20Portfolio.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 32 · **Điều kiện:** **Level:** Integration · **Week:** 32, then ongoing
 
 ## 1. Watch
 | Video | Why |
@@ -50,3 +52,7 @@ Practice platforms: [LeetCode SQL 50](https://leetcode.com/studyplan/top-sql-50/
 - [ ] Public repo with real results, screenshots, demo video
 - [ ] CV updated with bullets you can defend line by line
 - [ ] Mock interview done for every question above
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+CV chỉ liệt kê core/nhánh có evidence thật. Không copy toàn bộ bullets nếu chỉ chạy một nhánh hoặc sample. G5 cần dự án độc lập module 22 và review từ người khác; mock interview gồm SQL, trade-off, incident và cách kiểm tra AI. Evidence còn thiếu thì ghi rõ thay vì đổi Status thành Done.

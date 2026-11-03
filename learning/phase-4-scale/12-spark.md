@@ -1,6 +1,8 @@
 # 12 · Apache Spark
 
-**Level:** Advanced · **Weeks:** 21–22 · **Prerequisite:** 04, 05, 10
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/08%20-%20Chuyen%20sau/Spark%20Partitions%20Shuffle%20va%20Skew.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 26–28 · nhánh tự chọn · **Điều kiện:** 04, 05, 10
 
 ## Goal
 Process data that does not fit one machine: DataFrames in PySpark, partitions and shuffles,
@@ -74,3 +76,7 @@ to run Spark **inside WSL2**: `sudo apt install openjdk-17-jdk`, then
 ## Done when
 - [ ] Your RFM matches the SQL version; plans explained in notes
 - [ ] Partitioning + Delta time travel demonstrated
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Olist nhỏ không chứng minh distributed scale. Nếu chọn Spark làm extension chính: sinh dữ liệu có ID hợp lệ/seed cố định theo RAM máy, tạo skew, đọc plan/UI và đo shuffle, task imbalance, file count; so semantics với DuckDB trước benchmark. Java/Spark/Delta cần phiên bản tương thích đã ghi lại. Không bắt buộc nhánh này để đạt core.

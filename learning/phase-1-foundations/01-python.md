@@ -1,6 +1,8 @@
 # 01 · Python from zero
 
-**Level:** Basic · **Weeks:** 1–3 · **Prerequisite:** none
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/01%20-%20Python/Python%20co%20ban%20va%20Collections.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 1–3 · **Điều kiện:** none
 
 ## Goal
 Write small, clean Python programs from a blank file: variables, control flow, functions,
@@ -66,7 +68,7 @@ utc = local.astimezone(timezone.utc)
 1. FizzBuzz, then a function `word_count(text) -> dict` without `Counter`, then with it.
 2. Read any CSV you have (school data, a Kaggle file); print row count and the 3 most common values of one column.
 3. Write `safe_int(text) -> int | None` that returns `None` for blanks and raises a clear error for garbage.
-4. Convert "2024-03-10 01:30:00" from `America/New_York` to UTC. Why is this hour special? (Daylight saving.)
+4. Convert "2024-03-10 01:30:00" and "2024-03-10 03:30:00" from `America/New_York` to UTC. Compare elapsed time and wall-clock time across the spring DST transition. Investigate why local 02:30 did not exist.
 
 ## 5. Apply to the project — lab 01
 Folder: [`labs/01-python`](../../labs/01-python). Open `olist_basics.py`: every function has a

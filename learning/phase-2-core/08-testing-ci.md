@@ -1,6 +1,8 @@
 # 08 · Testing, logging and CI
 
-**Level:** Intermediate · **Weeks:** 13–14 · **Prerequisite:** 01–07
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/04%20-%20Core%20DE/Testing%20Logging%20va%20CI.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 13–14 · **Điều kiện:** 01–07
 
 ## Goal
 Prove your pipeline works with tests that would catch real bugs, make failures visible in logs
@@ -88,3 +90,7 @@ your code was right; if it fails, you found a bug. Keep both.
 ## Done when
 - [ ] Labs in CI, pre-commit, failure artifact, CLI exit-code test merged
 - [ ] **Gate 2:** labs 06 + 07 green in CI — add Phases 1–2 to your CV and start applying
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+CI mặc định chỉ chạy tests mã mẫu. G2 phải chạy lab do bạn viết; chỉ thêm lab sau khi hoàn thành. Giữ expected nhỏ tính bằng tay, tests A/B/A, missing output, API page failure. Ghi rõ integration nào bị skip hoặc lỗi môi trường; không gọi unit test là broker/cloud end-to-end.

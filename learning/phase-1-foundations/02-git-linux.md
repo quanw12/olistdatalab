@@ -1,6 +1,8 @@
 # 02 · Git, terminal and Linux
 
-**Level:** Basic · **Week:** 3 · **Prerequisite:** 01 started
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/03%20-%20Git%20Linux/Git%20Branch%20PR%20va%20Review.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 1–3 · **Điều kiện:** 01 started
 
 ## Goal
 Work like a team member from day one: branches, commits with clear messages, pull requests, and

@@ -86,8 +86,8 @@ def cmd_ai_eval(args, settings, run_id) -> None:
     from olist_platform.ai_enrich import evaluate
 
     with connect(settings.duckdb_path) as con:
-        for provider, version, labeled, agreement, unparsed in evaluate(con):
-            print(f"{provider:<10} {version:<4} labeled={labeled:<6} "
+        for provider, version, model, labeled, agreement, unparsed in evaluate(con):
+            print(f"{provider:<10} {version:<4} model={model} labeled={labeled:<6} "
                   f"sentiment_vs_score={agreement}  unparsed={unparsed}")
 
 

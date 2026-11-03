@@ -1,6 +1,8 @@
 # 14 · Cloud and Terraform
 
-**Level:** Advanced · **Weeks:** 25–26 · **Prerequisite:** 09, 10, 12
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/07%20-%20Cloud/GCP%20BigQuery%20Terraform%20va%20Cost.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 24–25 · **Điều kiện:** 09, 10, 21 (không cần Spark)
 
 ## Goal
 Deploy the lake and warehouse to a cloud with infrastructure as code, least-privilege access and
@@ -72,12 +74,12 @@ the console; delete them. Then do the same with Terraform.
 3. Add `olist publish-gcp` to the CLI: upload `data/lake/gold/*.parquet` to the bucket and load
    each into BigQuery (partition `fct_orders` by `order_date`, cluster by `customer_state`).
    Hint: `google-cloud-storage` + the load snippet above. Credentials: `gcloud auth application-default login`, never a key in git.
-4. Run dbt on BigQuery: add a `bigquery` target to a profile, install `dbt-bigquery`, fix the
+4. Optional extension: run dbt on BigQuery: add a `bigquery` target to a profile, install `dbt-bigquery`, fix the
    DuckDB-only SQL (`ASOF JOIN`, `arg_min`, `date_diff` argument order, `::` casts). List each change.
 5. Cost: run one query with `SELECT *` and one with 3 columns + a partition filter; compare
    "bytes processed".
-6. Snowflake trial (30 days): load the same Parquet via a stage and run one mart. Compare dialects.
-7. `terraform destroy`. **Check:** billing shows nothing running.
+6. Optional extension: Snowflake trial (check current trial terms): load the same Parquet via a stage and run one mart. Compare dialects.
+7. `terraform destroy`. **Check:** inventory has no unintended resources; billing can be delayed and past usage still costs money.
 
 ## 6. Self-check
 - How do you keep cloud costs under control?
@@ -86,4 +88,8 @@ the console; delete them. Then do the same with Terraform.
 
 ## Done when
 - [ ] Infra created and destroyed with Terraform; budget alert set
-- [ ] Marts in BigQuery and dbt running there; dialect changes listed
+- [ ] One mart in BigQuery, reader/writer tested, dry run and bytes cap demonstrated; full dbt migration is optional
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Core cloud: một bucket/dataset bằng IaC, một mart Parquet trong BigQuery, role reader/writer, dry run + maximum_bytes_billed + partition filter. Port toàn bộ dbt và Snowflake trial là mở rộng sau đó; không phải điều kiện core. Budget alert không phải hard cap; LIMIT không bảo đảm giảm scan. Sau cleanup kiểm tra resources/state và chi phí cập nhật trễ, không suy destroy là hóa đơn về 0 tức thì.

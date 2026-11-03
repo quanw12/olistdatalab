@@ -3,7 +3,7 @@
 This is the data-engineering side of AI, not prompt tinkering:
 - providers are swappable (keyword baseline, local Ollama, Anthropic API) behind one function,
 - every answer is validated against a fixed schema; anything else is stored as 'unparsed',
-- results are cached in ai.review_labels keyed by (review, prompt version, provider), so
+- results are cached by review, input hash, prompt version, provider and model, so
   re-runs only pay for new reviews and a prompt change is a new, comparable version,
 - quality is measured, not assumed: sentiment is compared with the customer's own 1-5 score.
 """
@@ -113,31 +113,63 @@ def anthropic_labeler(settings: Settings) -> Callable[[str], str]:
 
 def ensure_table(con: duckdb.DuckDBPyConnection) -> None:
     con.execute("CREATE SCHEMA IF NOT EXISTS ai")
+    legacy = con.execute(
+        "SELECT count(*) FROM information_schema.columns "
+        "WHERE table_schema='ai' AND table_name='review_labels'"
+    ).fetchone()[0]
+    has_hash = con.execute(
+        "SELECT count(*) FROM information_schema.columns "
+        "WHERE table_schema='ai' AND table_name='review_labels' "
+        "AND column_name='input_sha256'"
+    ).fetchone()[0]
+    if legacy and not has_hash:
+        # Preserve historical labels but never reuse an entry whose input is unknown.
+        con.execute("BEGIN TRANSACTION")
+        try:
+            con.execute("ALTER TABLE ai.review_labels RENAME TO review_labels_legacy")
+            _create_label_table(con)
+            con.execute(
+                "INSERT INTO ai.review_labels "
+                "SELECT *, '' AS input_sha256 FROM ai.review_labels_legacy"
+            )
+            con.execute("DROP TABLE ai.review_labels_legacy")
+            con.execute("COMMIT")
+        except Exception:
+            con.execute("ROLLBACK")
+            raise
+    else:
+        _create_label_table(con)
+
+
+def _create_label_table(con: duckdb.DuckDBPyConnection) -> None:
     con.execute(
         """
         CREATE TABLE IF NOT EXISTS ai.review_labels (
             review_id VARCHAR, order_id VARCHAR, prompt_version VARCHAR, provider VARCHAR,
             model VARCHAR, topic VARCHAR, sentiment VARCHAR, labeled_at TIMESTAMPTZ,
-            PRIMARY KEY (review_id, order_id, prompt_version, provider)
+            input_sha256 VARCHAR,
+            PRIMARY KEY (review_id, order_id, prompt_version, provider, model, input_sha256)
         )
         """
     )
 
 
-def pending_reviews(con: duckdb.DuckDBPyConnection, provider: str, limit: int) -> list[tuple]:
+def pending_reviews(con: duckdb.DuckDBPyConnection, provider: str, limit: int,
+                    model: str) -> list[tuple]:
     return con.execute(
         """
-        SELECT r.review_id, r.order_id, r.comment_message
+        SELECT r.review_id, r.order_id, r.comment_message, sha256(r.comment_message)
         FROM staging.stg_order_reviews r
         WHERE r.comment_message IS NOT NULL
           AND NOT EXISTS (
               SELECT 1 FROM ai.review_labels l
               WHERE l.review_id = r.review_id AND l.order_id = r.order_id
-                AND l.prompt_version = ? AND l.provider = ?)
+                AND l.prompt_version = ? AND l.provider = ? AND l.model = ?
+                AND l.input_sha256 = sha256(r.comment_message))
         ORDER BY r.review_id
         LIMIT ?
         """,
-        [PROMPT_VERSION, provider, limit],
+        [PROMPT_VERSION, provider, model, limit],
     ).fetchall()
 
 
@@ -161,13 +193,13 @@ def label_reviews(con: duckdb.DuckDBPyConnection, settings: Settings, provider: 
                     return parsed
             return {"topic": "unparsed", "sentiment": "unparsed"}
 
-    rows = pending_reviews(con, provider, limit)
-    for review_id, order_id, text in rows:
+    rows = pending_reviews(con, provider, limit, model)
+    for review_id, order_id, text, input_sha256 in rows:
         result = label(text)
         con.execute(
-            "INSERT INTO ai.review_labels VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT INTO ai.review_labels VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
             [review_id, order_id, PROMPT_VERSION, provider, model, result["topic"],
-             result["sentiment"], datetime.now(UTC)],
+             result["sentiment"], datetime.now(UTC), input_sha256],
         )
     logger.info("%s labeled %d new reviews", provider, len(rows))
     return len(rows)
@@ -175,15 +207,17 @@ def label_reviews(con: duckdb.DuckDBPyConnection, settings: Settings, provider: 
 
 def evaluate(con: duckdb.DuckDBPyConnection) -> list[tuple]:
     """Sentiment agreement with the review score (1-2 negative, 3 neutral, 4-5 positive)."""
+    ensure_table(con)
     return con.execute(
         """
-        SELECT l.provider, l.prompt_version, count(*) AS labeled,
+        SELECT l.provider, l.prompt_version, l.model, count(*) AS labeled,
                round(avg((l.sentiment = CASE WHEN r.review_score <= 2 THEN 'negative'
                                               WHEN r.review_score = 3 THEN 'neutral'
                                               ELSE 'positive' END)::INT), 3) AS agreement,
                round(avg((l.topic = 'unparsed')::INT), 3) AS unparsed_rate
         FROM ai.review_labels l
         JOIN staging.stg_order_reviews r USING (review_id, order_id)
+        WHERE l.input_sha256 = sha256(r.comment_message)
         GROUP BY ALL ORDER BY ALL
         """
     ).fetchall()

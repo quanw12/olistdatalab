@@ -1,6 +1,8 @@
 # 06 · Ingestion and data quality
 
-**Level:** Intermediate · **Weeks:** 10–11 · **Prerequisite:** 01–05
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/04%20-%20Core%20DE/Ingestion%20Contract%20va%20Idempotency.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 10–11 · **Điều kiện:** 01–05
 
 ## Goal
 Build a loader that is **idempotent** (running twice = once), **checks a contract** before
@@ -66,7 +68,7 @@ Build it in this order (one test group at a time):
 4. `run_checks(con, table, contract)` → list of `(check_name, severity, failed_rows)`.
    Hint: write the SQL for one check by hand first, then generate it with an f-string per column.
    Severity: broken key/format = `error`; "delivered without date" = `warn`.
-5. `ingest(con, path, contract)` — skip if hash already in `audit_manifest`; else load → check →
+5. `ingest(con, path, contract)` — skip only if hash matches the current published table; else load → check →
    publish atomically → write manifest. On any `error` check: raise and keep the old table.
 
 When green, compare with `src/olist_platform/ingest.py` and `quality.py`. Note in your PR
@@ -80,3 +82,7 @@ what you did differently.
 ## Done when
 - [ ] Contract-checks videos watched, lab 06 green
 - [ ] Your design compared with the reference, differences in the PR description
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Bắt buộc thêm regression A→B→A: skip chỉ khi input trùng phiên bản đang publish, không phải mọi hash từng nạp. Xóa Parquet và thử output cũ sau DB commit: retry phải khôi phục. Bản tham chiếu re-export local Parquet cả khi bỏ qua DB load; ghi trade-off I/O, giới hạn một writer và publish từng bảng.

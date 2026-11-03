@@ -94,3 +94,34 @@ def test_missing_required_file_fails(con, contract, landing, tmp_path):
     (landing / contract.tables["sellers"].file).unlink()
     with pytest.raises(ContractError, match="required file not found"):
         ingest_all(con, contract, landing, tmp_path / "lake", run_id="r1")
+
+
+def test_snapshot_revert_publishes_previously_seen_content(con, contract, landing, tmp_path):
+    table = contract.tables["sellers"]
+    path = landing / table.file
+    original = path.read_bytes()
+    ingest_table(con, table, path, tmp_path, "a", contract.timestamp_format)
+    _rewrite(path, lambda lines: [lines[0]] + lines[1:-1])
+    ingest_table(con, table, path, tmp_path, "b", contract.timestamp_format)
+    path.write_bytes(original)
+    status, _ = ingest_table(con, table, path, tmp_path, "a-again", contract.timestamp_format)
+    assert status == "loaded"
+    assert con.execute("SELECT DISTINCT _run_id FROM bronze.sellers").fetchall() == [("a-again",)]
+
+
+@pytest.mark.parametrize("damage", ["missing", "stale"])
+def test_rerun_repairs_parquet_without_reloading(con, contract, landing, tmp_path, damage):
+    table = contract.tables["sellers"]
+    path = landing / table.file
+    ingest_table(con, table, path, tmp_path, "a", contract.timestamp_format)
+    target = tmp_path / "bronze" / "sellers" / "sellers.parquet"
+    if damage == "missing":
+        target.unlink()
+    else:
+        target.write_bytes(b"interrupted or stale output")
+    status, _ = ingest_table(con, table, path, tmp_path, "retry", contract.timestamp_format)
+    assert status == "skipped"
+    assert con.execute("SELECT count(*) FROM read_parquet(?)", [str(target)]).fetchone() == (
+        con.execute("SELECT count(*) FROM bronze.sellers").fetchone()
+    )
+    assert con.execute("SELECT count(*) FROM audit.ingest_manifest").fetchone()[0] == 1

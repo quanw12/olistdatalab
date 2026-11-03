@@ -10,7 +10,7 @@ data/
 logs/
 mlruns/
 mlflow.db
-models/
+/models/
 
 # dbt
 dbt/target/
@@ -28,3 +28,8 @@ infra/terraform/**/*.tfvars
 .env
 .env.*
 !.env.example
+
+# Obsidian personal UI/cache; share only portable vault defaults/snippet
+DEcourse/.obsidian/workspace*.json
+DEcourse/.obsidian/cache/
+DEcourse/.trash/

@@ -1,6 +1,8 @@
 # 05 · Data modelling
 
-**Level:** Intermediate · **Week:** 9 · **Prerequisite:** 03, 04
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/04%20-%20Core%20DE/Data%20Modeling%20va%20SCD2.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 9 · **Điều kiện:** 03, 04
 
 ## Goal
 Design tables that answer questions correctly: grain, keys, facts vs dimensions, star schema,
@@ -56,3 +58,7 @@ Then compare with the reference marts and `docs/decisions.md`. Write 3 differenc
 ## Done when
 - [ ] Baraa's data warehouse project done (any engine)
 - [ ] `docs/my-model.md` with diagram and decisions, compared with the reference
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Ngoài ERD, viết metric contract cho payments và late-delivery rate: tử/mẫu, NULL, timezone, ngày ghi nhận và người dùng. Mô phỏng hai version seller, kiểm tra SCD2 không overlap và join đúng ngày biên. Không suy lịch sử địa chỉ từ snapshot hiện tại.

@@ -1,6 +1,8 @@
 # 10 · Docker, PostgreSQL and BI
 
-**Level:** Intermediate · **Weeks:** 17–18 · **Prerequisite:** 02, 03, 09
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/05%20-%20Modern%20Stack/Docker%20PostgreSQL%20va%20Serving.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 17–18 · **Điều kiện:** 02, 03, 09
 
 ## Goal
 Run any service reproducibly with Docker Compose, serve marts from PostgreSQL to many readers,
@@ -58,8 +60,8 @@ on the same volume — is the data still there? Then without the volume.
 4. Indexes: pick the slowest dashboard query, `EXPLAIN ANALYZE` before and after an index.
 5. Write a `Dockerfile` for the pipeline CLI and a compose service `pipeline` that runs `olist run`.
    Hint: the data folder must be a volume; the DuckDB path comes from an env var.
-6. Same dashboard in **Power BI Desktop** (Get Data → PostgreSQL), or add **Superset** to compose.
-7. Extend `dashboards/app.py` (Streamlit) with a seller drill-down page.
+6. Optional: same dashboard in **Power BI Desktop** (Get Data → PostgreSQL), or add **Superset** to compose.
+7. Optional: extend `dashboards/app.py` (Streamlit) with a seller drill-down page.
 
 ## 6. Self-check
 - Image vs container vs volume?
@@ -69,3 +71,7 @@ on the same volume — is the data still there? Then without the volume.
 ## Done when
 - [ ] Dashboard screenshot committed, pipeline image runs `olist run`
 - [ ] One index with before/after timing in your notes
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Chọn một dashboard Metabase hoặc Power BI; dashboard thứ hai/Streamlit drill-down là mở rộng. Bắt buộc transaction/rollback, quan sát lock bằng hai session lab và EXPLAIN trước/sau index. Tạo reader role, kiểm tra SELECT được và INSERT/raw bị từ chối; kiểm tra lại sau publish vì DROP/CREATE có thể mất grant/index. Atomic từng bảng không phải atomic toàn bộ dataset.

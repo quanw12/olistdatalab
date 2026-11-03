@@ -1,6 +1,8 @@
 # 13 · Streaming with Kafka
 
-**Level:** Advanced · **Weeks:** 23–24 · **Prerequisite:** 07, 08, 10
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/08%20-%20Chuyen%20sau/Kafka%20Offsets%20Replay%20va%20Ordering.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 26–28 · nhánh tự chọn · **Điều kiện:** 07, 08, 10
 
 ## Goal
 Move events in real time: topics, partitions, keys, consumer groups, offsets; build a consumer
@@ -73,3 +75,7 @@ with two consumers in the same group, then in two different groups. Explain the 
 ## Done when
 - [ ] Your consumer passes the crash test with a saved proof query
 - [ ] Out-of-order handling and dead letter demonstrated
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Nếu chọn Kafka: broker end-to-end, crash sau DB write trước offset commit, replay/out-of-order/DLQ, counts và event_id proof. Dùng version tie-breaker khi timestamp bằng nhau; commit không vượt message chưa xử lý. Unit test không chứng minh Kafka service đã chạy. Window/watermark và Schema Registry là mở rộng.

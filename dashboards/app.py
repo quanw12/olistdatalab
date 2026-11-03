@@ -62,11 +62,20 @@ left.plotly_chart(px.bar(late_by_state, x="customer_state", y="late_rate",
 
 try:
     topics = query("""
-        SELECT topic, sentiment, count(*) AS reviews FROM ai.review_labels
+        WITH current_labels AS (
+            SELECT l.* FROM ai.review_labels l
+            JOIN staging.stg_order_reviews r USING (review_id, order_id)
+            WHERE l.input_sha256 = sha256(r.comment_message)
+            QUALIFY row_number() OVER (
+                PARTITION BY review_id, order_id
+                ORDER BY labeled_at DESC, model DESC, provider DESC, prompt_version DESC
+            ) = 1
+        )
+        SELECT topic, sentiment, count(*) AS reviews FROM current_labels
         GROUP BY ALL ORDER BY reviews DESC
     """)
     right.plotly_chart(px.bar(topics, x="topic", y="reviews", color="sentiment",
                               title="Review topics (LLM labels)"),
                        use_container_width=True)
-except duckdb.CatalogException:
+except (duckdb.CatalogException, duckdb.BinderException):
     right.info("Run `olist ai-label` to see review topics.")

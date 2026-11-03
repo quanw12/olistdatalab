@@ -72,7 +72,8 @@ def run_checks(con: duckdb.DuckDBPyConnection, relation: str,
 def ingest(con: duckdb.DuckDBPyConnection, csv_path: Path, contract: dict) -> str:
     """Load one file. Return "loaded" or "skipped".
 
-    1. sha256 of the file; if audit_manifest already has it for this table -> "skipped"
+    1. sha256 of the file; skip only when it matches the CURRENT published version
+       (not merely any historical manifest row); A -> B -> A must publish A again
     2. check_header -> load_candidate -> run_checks
     3. any failing error check -> drop the candidate, raise ContractError naming the checks;
        the previously published table must stay untouched

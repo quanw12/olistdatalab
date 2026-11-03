@@ -1,6 +1,8 @@
 # 11 · Orchestration with Apache Airflow
 
-**Level:** Advanced · **Weeks:** 19–20 · **Prerequisite:** 08, 09, 10
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/05%20-%20Modern%20Stack/Airflow%20Interval%20va%20Backfill.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 19–20 · **Điều kiện:** 08, 09, 10
 
 ## Goal
 Schedule the pipeline with dependencies, retries, alerting and backfills, and understand why every
@@ -69,3 +71,7 @@ randomly, `retries=3`. Watch the retries in the UI.
 ## Done when
 - [ ] Your DAG runs green in Docker with callback and quality gate
 - [ ] Backfill done and explained · **Gate 3** passed
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+DAG tham chiếu olist_daily chạy snapshot, chưa có partition CLI. Bài bắt buộc: tự viết partition_job.py nhận --start/--end, input version cố định và output theo [start,end); truyền data_interval_start/end từ Airflow. Backfill 3 ngày phải tạo đúng 3 partition và rerun cùng interval cho cùng kết quả. Viết callback/quality gate; không chỉ chụp DAG xanh để claim backfill.

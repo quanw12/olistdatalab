@@ -1,6 +1,8 @@
 # 04 · pandas, NumPy and Polars
 
-**Level:** Basic → Intermediate · **Weeks:** 7–8 · **Prerequisite:** 01, 03
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/01%20-%20Python/DataFrames%20pandas%20Polars.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 7–8 · **Điều kiện:** 01, 03
 
 ## Goal
 Load, clean, join and aggregate tabular data in Python with DataFrames; know when pandas, Polars
@@ -60,7 +62,7 @@ Use `olist sample --orders 20000` data (later: the real Kaggle files).
    Hint: `duplicated(subset=...)`.
 3. **Pre-aggregate then join:** items per order (count, sum price, sum freight) and payments per
    order, then merge both into orders with `validate="one_to_one"`. Check: row count = orders.
-4. Same as 3 in **Polars** and in **DuckDB SQL**. Time all three (`%%timeit`) on 100k orders.
+4. Same as 3 in **DuckDB SQL**; **Polars** is optional. Time all three (`%%timeit`) on 100k orders.
 5. Write the result to Parquet; compare its file size with the CSV; read it back and check dtypes.
 
 Then compare your step 3 with `dbt/models/intermediate/int_order_items_by_order.sql` and `fct_orders.sql`.
@@ -74,3 +76,7 @@ Then compare your step 3 with `dbt/models/intermediate/int_order_items_by_order.
 ## Done when
 - [ ] Notebook committed with profiling notes and the timing table
 - [ ] **Gate 1** passed (see the roadmap)
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Pandas + DuckDB SQL là core; Polars và benchmark ba engine là mở rộng. Có thể profile Olist thật ngay ở đây, giữ sample và real ở thư mục khác nhau. Báo 5 quan sát bằng query, phân biệt quan sát với giả thuyết nguyên nhân.

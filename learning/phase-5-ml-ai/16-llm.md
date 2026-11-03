@@ -1,6 +1,8 @@
 # 16 · LLM engineering for data engineers
 
-**Level:** Advanced · **Weeks:** 28–29 · **Prerequisite:** 07, 08, 15
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/08%20-%20Chuyen%20sau/LLM%20Cache%20Evaluation%20va%20Guardrails.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 26–28 · nhánh tự chọn · **Điều kiện:** 07, 08, G4; đọc point-in-time/leakage của 15
 
 ## Goal
 Use LLMs as a component of a data pipeline: structured output validated against a schema,
@@ -39,9 +41,9 @@ r = requests.post("http://localhost:11434/api/chat", json={
 answer = r.json()["message"]["content"]
 
 # hosted model (pip install anthropic; ANTHROPIC_API_KEY in .env)
-import anthropic
+import anthropic, os
 msg = anthropic.Anthropic().messages.create(
-    model="claude-haiku-5-5", max_tokens=100, temperature=0,
+    model=os.environ["ANTHROPIC_MODEL"], max_tokens=100, temperature=0,
     messages=[{"role": "user", "content": "..."}])
 text = msg.content[0].text
 
@@ -49,8 +51,9 @@ text = msg.content[0].text
 data = json.loads(answer)
 assert data.get("sentiment") in {"positive", "neutral", "negative"}
 
-# cache key = input + prompt version + model  -> re-runs cost nothing
-key = (review_id, "v1", "qwen2.5:3b")
+# cache key includes content, prompt, provider and model; version config changes too
+import hashlib
+key = (review_id, hashlib.sha256(review_text.encode()).hexdigest(), "v1", "ollama", "qwen2.5:3b")
 
 # embeddings + cosine similarity in DuckDB
 # SELECT doc, list_cosine_similarity(embedding, ?::FLOAT[]) AS score FROM docs ORDER BY score DESC LIMIT 3
@@ -83,5 +86,9 @@ Then ask for JSON 20 times and count how many answers parse.
 - How do you stop a text-to-SQL tool from damaging data?
 
 ## Done when
-- [ ] Three providers compared on the same reviews, numbers in README
-- [ ] Text-to-SQL guardrail tests green
+- [ ] Baseline + at least one model compared on the same held-out reviews, including quality/latency/cost
+- [ ] If choosing text-to-SQL extension: permission, AST, timeout and resource-limit tests green
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Chọn labelling làm extension chính: baseline + ít nhất một model, cùng held-out input, schema pass/unparsed, macro-F1/confusion matrix trên gold gán tay và latency/cost. Ba provider, RAG và text-to-SQL là mở rộng. Cache gồm input hash + prompt + provider + model/config version; review/model đổi phải invalidation. Điểm sao là weak label, không phải gold sentiment; đúng JSON không bảo đảm đúng nghĩa hoặc chống injection. Chỉ dùng model ID thực sự có trong tài khoản theo docs nhà cung cấp, không coi tên hardcode là cam kết model tồn tại.

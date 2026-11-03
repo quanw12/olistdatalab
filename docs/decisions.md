@@ -18,7 +18,10 @@ A candidate table is checked and swapped in only if it passes. Downstream never 
 half-good table, and yesterday's data stays available when today's file is broken.
 
 ## 4. Idempotency by file hash
-Re-running the pipeline with the same files does nothing. A changed file is reloaded in full
+Re-running the same current snapshot skips the DB load; bronze Parquet is re-exported so retry
+repairs missing/stale outputs after a DB commit. Compare the input hash with the currently
+published table, not any historical manifest row: A→B→A must publish A again.
+A changed file is reloaded in full
 (Olist is a snapshot, not a change feed). For a change feed you would switch to merge on key +
 updated_at; see learning module 09 (dbt incremental).
 
@@ -35,5 +38,29 @@ A random split leaks the future into training. The model trains on older orders 
 on the newest 20%, the way it would be used.
 
 ## 8. LLM labels are cached and versioned
-Labels are keyed by review, prompt version and provider. Re-runs cost nothing, and a new prompt
-is a new version that can be compared with the old one on the same reviews.
+Labels are keyed by review/order, input SHA-256, prompt version, provider and model. Re-runs
+reuse only the same configuration and content; changed text/model gets a new historical entry.
+Legacy rows are migrated transactionally with an unknown-input marker and are not reused.
+Evaluation excludes labels for old input and groups by model. Generation parameters/preprocessing
+must be versioned too when changed; a model alias alone does not pin a hosted model revision.
+
+## 9. Learning core before breadth
+
+The course now integrates real data at module 09 and tests production failure modes before one
+chosen specialization. `DEcourse/` is a standalone Vietnamese Obsidian vault. Modules 19–22 add
+incremental/CDC, observability/recovery, security/delivery and an independent second project.
+The reference snapshot DAG and bounded-lookback mart remain intentionally limited; course
+instructions identify the missing interval/update/delete handling instead of claiming it exists.
+
+## 10. Track dbt source models, ignore only root ML artifacts
+
+The ignore rule `/models/` is anchored at the repository root. The old unanchored `models/`
+also hid `dbt/models/`, so a clean clone missed the transformation source even though local
+tests passed. dbt SQL/YAML source belongs in Git; generated ML binaries in root models do not.
+
+## 11. Seller quality rates use seller/order grain
+
+Item revenue is summed from item lines, but late-delivery and review averages give each
+seller/order one vote. Aggregate item lines to seller/order before joining order-level
+measures; otherwise multi-item orders overweight the rates. A singular dbt reconciliation
+test checks these rates against distinct seller/order keys.

@@ -1,6 +1,8 @@
 # 09 · dbt (data build tool)
 
-**Level:** Intermediate → Advanced · **Weeks:** 15–16 · **Prerequisite:** 03, 05, 06
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/05%20-%20Modern%20Stack/dbt%20Models%20Tests%20va%20Incremental.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 15–16 · **Điều kiện:** 03, 05, 06
 
 ## Goal
 Turn SQL into a tested, documented, dependency-aware project: sources, staging, marts, tests,
@@ -90,3 +92,7 @@ Then diff your project against `dbt/` and list improvements in both directions.
 ## Done when
 - [ ] Your dbt project builds green with the 2 singular tests
 - [ ] Incremental + snapshot demonstrated; lineage screenshot committed
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Chạy Olist thật ở cuối module này, điền counts và reconciliation trong docs/data-contract.md, lưu input hash/run log. Bắt buộc phản ví dụ: update order cũ 30 ngày, delete và đổi ngày; so incremental với full rebuild theo key. Khoảng lookback 3 ngày theo order_date không bảo đảm mọi thay đổi được xử lý; giải pháp đầy đủ tiếp tục ở module 19.

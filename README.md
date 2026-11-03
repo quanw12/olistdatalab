@@ -1,5 +1,15 @@
 # Olist Data Platform
 
+## Học và ôn tập với DEcourse
+
+- [Lộ trình hướng sản phẩm](learning/README.md): core bắt buộc, một nhánh tự chọn, dữ liệu thật từ module dbt, bài vận hành và dự án độc lập.
+- [DEcourse — vault Obsidian tiếng Việt](DEcourse/README.md): syntax, code có expected output, tình huống áp dụng, bẫy, bài tập và lịch ôn 1–7–30 ngày. Mở thư mục `DEcourse` bằng **Open folder as vault**, bắt đầu tại `00 - Bat dau/DEcourse.md`.
+- [Production modules 19–22](learning/phase-7-production/19-incremental-cdc.md): incremental/CDC, observability/recovery, security/delivery và chuyển kiến thức sang domain mới.
+
+Validate vault links and local executable examples with `python scripts/check_course.py` after installing the core dependencies. CI runs the same check; service/cloud patterns are excluded from automatic execution.
+
+The platform below is a reference implementation. Your learning progress is tracked separately in the vault; written integrations and sample tests do not prove every service has been operated on real data.
+
 An end-to-end data platform on real e-commerce data: ~100k orders from Olist, a Brazilian
 marketplace. Raw CSVs and an exchange-rate API go in; a tested star schema, a streaming order
 feed, a late-delivery model and LLM-labelled customer reviews come out.
@@ -21,7 +31,7 @@ flowchart LR
     subgraph Batch["Batch (daily, Airflow)"]
         ING[ingest<br/>contract checks<br/>idempotent by file hash]
         BR[(bronze<br/>DuckDB + Parquet)]
-        DBT[dbt build<br/>staging → marts<br/>56 tests]
+        DBT[dbt build<br/>staging → marts<br/>quality tests]
         GOLD[(gold marts<br/>star schema)]
     end
     subgraph Serve
@@ -94,9 +104,9 @@ pytest
 Details and counts in [docs/data-contract.md](docs/data-contract.md). The short version:
 
 - **Grain decides everything.** Items are one row per item, payments one row per payment. Joining both to orders repeats each payment once per item. Both are summed to the order first, and a dbt test reconciles every cent against the source.
-- **Timestamps have no zone.** They are São Paulo wall-clock time, including Brazilian summer time until 2019. Staging stores UTC for durations and the local date as the business day.
+- **Timestamps have no zone.** This project assumes São Paulo wall-clock time; record and validate that assumption against the source, including historical summer time. Staging stores UTC for durations and the local date as the business day.
 - **Reject broken data, keep bad news.** A late or cancelled order is a fact; a duplicate key is broken. Contract checks stop the load only for the second kind.
-- **Revenue has two definitions.** Payments and item prices differ (unavailable orders were charged, vouchers, instalment interest). Every report states which one it uses.
+- **Revenue has two definitions.** Payments and item prices can differ; measure the gap and investigate unmatched orders and payment semantics before assigning causes. Every report states which one it uses.
 - **LLM output is untrusted input.** Labels are schema-validated, cached per prompt version and scored against the customer's own rating before anyone uses them.
 
 ## Repository layout
@@ -110,7 +120,8 @@ dashboards/           Streamlit app
 infra/terraform/      GCP lake + warehouse as code
 tests/                pytest: unit tests and an end-to-end dbt run on the sample
 docs/                 architecture, data contract, decisions, runbook, AI log
-learning/             32-week roadmap: 18 modules, basics -> integration, videos + docs + hints
+learning/             32-week core + elective roadmap: 22 modules, production drills, independent project
+DEcourse/             standalone Obsidian vault: Vietnamese syntax, examples, applications and review
 labs/                 your own code for the learning path, with tests that start red
 ```
 
@@ -123,6 +134,13 @@ labs/                 your own code for the learning path, with tests that start
 | Kafka streaming | Logic unit-tested; end-to-end run with the broker: _to do_ |
 | Airflow DAG, Postgres + Metabase, Spark job, Terraform | Written; run and record results: _to do_ |
 | Results on the full real dataset | _to do_ — fill in [docs/data-contract.md](docs/data-contract.md) |
+
+Regression coverage includes snapshot A→B→A, repairing missing/stale bronze Parquet on retry,
+and invalidating LLM labels when review text or model changes. Bronze snapshots are re-exported
+even when the DB load is skipped; this trades local I/O for recoverable outputs on this small dataset.
+The daily incremental mart still has a bounded lookback; historical updates/deletes require an
+explicit rebuild/backfill policy (learning module 19). The reference Airflow DAG schedules snapshots;
+interval-aware processing is a learner extension, not an implemented CLI feature.
 
 ## Credits
 

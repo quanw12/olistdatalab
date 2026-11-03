@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: One row per order, typed. Status normalised, timestamps in UTC plus the Sao Paulo business date.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: order_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [created, approved, invoiced, processing, shipped, delivered, canceled, unavailable]
+      - name: purchased_at_utc
+        tests: [not_null]
+
+  - name: stg_order_items
+    description: One row per item line of an order.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [order_id, order_item_id]
+    columns:
+      - name: order_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: order_id
+      - name: price
+        tests: [not_null]
+
+  - name: stg_order_payments
+    description: One row per payment of an order.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [order_id, payment_sequential]
+    columns:
+      - name: payment_value
+        tests: [not_null]
+
+  - name: stg_order_reviews
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [review_id, order_id]
+    columns:
+      - name: review_score
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5]
+                quote: false
+
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: stg_sellers
+    columns:
+      - name: seller_id
+        tests: [unique, not_null]
+
+  - name: stg_products
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+
+  - name: stg_fx_rates
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [rate_date, quote]

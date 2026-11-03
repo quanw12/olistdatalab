@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: >
+      One row per order with its items and payments pre-aggregated and BRL->USD/VND rates of the
+      Sao Paulo order date (or the latest earlier rate, at most fx_max_gap_days back).
+      Item revenue and payment revenue are different numbers; reports must say which they use.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: customer_unique_id
+        tests: [not_null]
+      - name: order_date
+        tests: [not_null]
+      - name: brl_usd
+        description: NULL only when no rate exists within the allowed gap.
+
+  - name: fct_order_items
+    description: One row per item line.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [order_id, order_item_id]
+    columns:
+      - name: product_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_id
+      - name: seller_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_sellers')
+                field: seller_id
+
+  - name: dim_customers
+    columns:
+      - name: customer_unique_id
+        tests: [unique, not_null]
+
+  - name: dim_sellers
+    columns:
+      - name: seller_id
+        tests: [unique, not_null]
+
+  - name: dim_products
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+
+  - name: dim_date
+    columns:
+      - name: date_day
+        tests: [unique, not_null]
+
+  - name: mart_daily_revenue
+    columns:
+      - name: order_date
+        tests: [unique, not_null]
+
+  - name: mart_seller_performance
+    columns:
+      - name: seller_id
+        tests: [unique, not_null]

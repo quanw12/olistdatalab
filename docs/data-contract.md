@@ -37,7 +37,7 @@ result is stored in `audit.quality_results`; every load in `audit.ingest_manifes
 
 ## Time
 
-Olist timestamps carry no zone. They are São Paulo local time, and Brazil observed summer time
+Olist timestamps carry no zone. The project assumes São Paulo local time (validate this with the source); Brazil observed summer time
 until 2019, so a fixed `-03:00` offset is wrong for part of the data.
 - `*_at_utc` columns: converted with the zone database — use for durations.
 - `order_date`: the São Paulo calendar date — use for daily reporting. An order at 22:30 local
@@ -48,8 +48,8 @@ until 2019, so a fixed `-03:00` offset is wrong for part of the data.
 ## Money
 
 - Item revenue (`items_price + items_freight`) and payment revenue (`payment_total`) are different
-  numbers. Find out by how much on the real data, and explain the gap (orders without items that
-  were charged, vouchers, instalment interest).
+  numbers. Find out by how much on the real data, and investigate the gap using source rows. Unmatched orders, vouchers and instalment semantics are
+  hypotheses to verify, not established causes inferred from a difference alone.
 - Orders without items or payments keep NULL amounts, never 0.
 - `tests/assert_money_reconciles.sql` fails the build if fact totals differ from the source by
   more than one cent or if any item/payment row is lost or duplicated.

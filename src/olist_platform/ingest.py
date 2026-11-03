@@ -73,16 +73,32 @@ def _ensure_audit_tables(con: duckdb.DuckDBPyConnection) -> None:
 
 
 def already_loaded(con: duckdb.DuckDBPyConnection, table: str, sha: str) -> bool:
-    row = con.execute(
-        "SELECT 1 FROM audit.ingest_manifest WHERE table_name = ? AND file_sha256 = ? LIMIT 1",
-        [table, sha],
-    ).fetchone()
     exists = con.execute(
         "SELECT count(*) FROM information_schema.tables "
         "WHERE table_schema = 'bronze' AND table_name = ?",
         [table],
     ).fetchone()[0]
-    return row is not None and exists == 1
+    if exists != 1:
+        return False
+    # The manifest is history, not current state: A -> B -> A must publish A again.
+    hashes = con.execute(
+        f'SELECT DISTINCT _file_sha256 FROM bronze."{table}"'
+    ).fetchall()
+    if hashes:
+        return hashes == [(sha,)]
+    # Empty snapshots have no lineage rows; use their most recent manifest entry.
+    row = con.execute(
+        "SELECT file_sha256 FROM audit.ingest_manifest WHERE table_name = ? "
+        "ORDER BY loaded_at DESC LIMIT 1", [table],
+    ).fetchone()
+    return row == (sha,)
+
+
+def _export_bronze(con: duckdb.DuckDBPyConnection, table: str, target: Path) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    tmp = target.with_suffix(".parquet.tmp")
+    con.execute(f"COPY bronze.{table} TO '{tmp.as_posix()}' (FORMAT parquet)")
+    tmp.replace(target)
 
 
 def ingest_table(
@@ -97,7 +113,11 @@ def ingest_table(
     """Load one file. Return ("loaded" | "skipped", check results)."""
     _ensure_audit_tables(con)
     sha = sha256_of(path)
+    target = lake_dir / "bronze" / contract.name / f"{contract.name}.parquet"
     if not force and already_loaded(con, contract.name, sha):
+        # DB and filesystem cannot share a transaction. Re-export the small local
+        # snapshot even on a skip, repairing missing, stale or interrupted output.
+        _export_bronze(con, contract.name, target)
         logger.info("%s: unchanged file %s, skipped", contract.name, sha[:12])
         return "skipped", []
 
@@ -147,11 +167,7 @@ def ingest_table(
     )
     con.execute("COMMIT")
 
-    target = lake_dir / "bronze" / contract.name / f"{contract.name}.parquet"
-    target.parent.mkdir(parents=True, exist_ok=True)
-    tmp = target.with_suffix(".parquet.tmp")
-    con.execute(f"COPY bronze.{contract.name} TO '{tmp.as_posix()}' (FORMAT parquet)")
-    tmp.replace(target)
+    _export_bronze(con, contract.name, target)
     logger.info("%s: loaded %d rows from %s", contract.name, row_count, path.name)
     return "loaded", results
 

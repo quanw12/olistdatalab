@@ -1,0 +1,11 @@
+/* Optional local styling; no community plugin or external asset needed. */
+body {
+  --font-text-size: 17px;
+  --line-height-normal: 1.7;
+  --file-line-width: 960px;
+  --h1-color: #91caff;
+  --h2-color: #b9dbff;
+}
+.markdown-rendered pre { border: 1px solid var(--background-modifier-border); border-radius: 10px; }
+.markdown-rendered .callout { border-radius: 12px; }
+.markdown-rendered table { font-size: .95em; }

@@ -18,6 +18,8 @@ jobs:
         run: pip install -e ".[dev,dbt]"
       - name: Lint
         run: ruff check .
+      - name: Validate DEcourse links and runnable examples
+        run: python scripts/check_course.py
       - name: Unit and end-to-end tests
         run: pytest
       - name: Full batch on the synthetic sample

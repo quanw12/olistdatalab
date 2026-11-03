@@ -1,6 +1,8 @@
 # 07 · APIs and reliability
 
-**Level:** Intermediate · **Week:** 12 · **Prerequisite:** 01, 06
+> **DEcourse:** [Syntax và ví dụ tiếng Việt](../../DEcourse/04%20-%20Core%20DE/API%20Retry%20Pagination%20va%20Replay.md) · [Lịch chuẩn và core/tự chọn](../README.md). Video dùng theo bài chẩn đoán, không bắt buộc xem hết.
+
+**Lịch mới:** 12 · **Điều kiện:** 01, 06
 
 ## Goal
 Extract data from HTTP APIs safely: timeouts, retries only for errors worth retrying, backoff,
@@ -79,5 +81,9 @@ Compare with `src/olist_platform/fx.py` when done.
 - The API timed out on page 7 of 10. What does your pipeline contain now?
 
 ## Done when
-- [ ] Lab 07 green, one extension done
+- [ ] Lab 07 green, pagination/replay failure scenario demonstrated
 - [ ] **Gate 2 almost done** — finish module 08
+
+## Yêu cầu cập nhật · hướng sản phẩm
+
+Bắt buộc fake pagination 10 trang, lỗi trang 7; giữ raw/page manifest và checkpoint sau write. Restart không thiếu/trùng; xử lý cursor lặp và 429/Retry-After có giới hạn. FastAPI serving là tự chọn, không dùng nó thay bài pagination/replay.
