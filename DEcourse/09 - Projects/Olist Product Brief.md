@@ -5,48 +5,72 @@ module: 17
 
 # Olist Product Brief
 
-## Người dùng và quyết định
+> [!info] Purpose
+> This brief turns the Olist dataset into a product with users, decisions and a definition of done. It is a simulated requirement for learning, not Olist's real requirement. Every module contributes to it; [[Module 17 - Capstone]] is the acceptance checklist.
 
-Operations lead muốn điều tra vùng giao trễ và seller có vấn đề; finance analyst cần xem payments theo ngày mà không bị nhân do join. Đây là giả lập yêu cầu sản phẩm để học, không đại diện yêu cầu thật của Olist.
+## 1. The dataset
 
-## Ba câu hỏi cần trả lời
+The [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) contains ~100k orders (2016–2018) from a Brazilian marketplace, in 9 CSV files: orders, order items, payments, reviews, customers, sellers, products, geolocation and a category name translation. Check the licence/terms before sharing derived data.
 
-1. Payments theo ngày/tháng là bao nhiêu; dữ liệu thiếu payment bao nhiêu đơn?
-2. Late-delivery rate theo state, với mẫu số hợp lệ, thay đổi ra sao?
-3. Seller nào có volume và tỷ lệ trễ đáng điều tra; drill-down tới order nào?
+Key facts you will discover while profiling (verify each one yourself):
 
-## Definition of done
+- `customer_id` is per order; `customer_unique_id` identifies the person.
+- Items, payments and reviews are 1:n with orders — the fan-out trap ([[JOIN Grain and Fan-out]]).
+- Timestamps carry no timezone; the project assumes São Paulo local time ([[Datetime Decimal and Timezones]]).
+- Geolocation has many rows per zip prefix.
+- Review text is Portuguese free text.
 
-- Grain/key mỗi nguồn và mỗi fact rõ; không mất parent vì LEFT JOIN sai điều kiện.
-- Tiền source/fact đối soát; payment khác item+freight được báo riêng, nguyên nhân chỉ nêu khi có bằng chứng.
-- Raw version/hash, timezone assumption, NULL policy và snapshot freshness được ghi lại.
-- Một dashboard có metric definitions và trạng thái dữ liệu.
-- Batch thật đã chạy, counts thật trong docs/data-contract; sample dùng cho tests.
-- Replay/recovery được kiểm chứng; quyền reader sau publish được thử.
+## 2. Users and decisions
 
-## Môi trường sample/real riêng — PowerShell từ repo
+- **Operations lead:** wants to investigate regions with late deliveries and problematic sellers.
+- **Finance analyst:** needs daily payments that are not inflated by joins, in BRL and converted to USD/VND with documented FX dates.
+
+## 3. Three questions to answer
+
+1. What are payments per day/month, and how many orders have no payment?
+2. How does the late-delivery rate per state change over time, with a valid denominator?
+3. Which sellers have enough volume and a late rate worth investigating, with a drill-down to the orders?
+
+## 4. Definition of done
+
+- The grain and key of every source and fact are documented; no parents are lost through wrong LEFT JOIN conditions.
+- Money reconciles between source and fact; payments that differ from items + freight are reported separately, with a cause stated only when there is evidence.
+- Raw versions/hashes, the timezone assumption, the NULL policy and snapshot freshness are recorded.
+- One dashboard with metric definitions and data status ([[BI Metrics and Data Products]]).
+- The real batch has been run, with real counts in `docs/data-contract.md` (code repo); sample data is for tests.
+- Replay and recovery are verified; reader permissions are tested after publishing.
+
+## 5. Separate sample and real environments — PowerShell from the code repo
 
 ```powershell
-# Sample: tạo trong đường dẫn riêng, không trỏ Olist thật.
+# Sample: generate into its own path, never pointing at the real Olist data.
 $env:OLIST_DATA_DIR = "data/sample"
 $env:DUCKDB_PATH = "data/warehouse/sample.duckdb"
 python -m olist_platform sample --orders 500
 python -m olist_platform run --offline
 
-# Real: tự tải dataset đúng quyền về data/real/landing/olist trước.
+# Real: first download the dataset (respecting its terms) into data/real/landing/olist.
 $env:OLIST_DATA_DIR = "data/real"
 $env:DUCKDB_PATH = "data/warehouse/real.duckdb"
 python -m olist_platform run
 ```
 
-Chọn Python trong venv đã cài project. `--offline` dùng FX giả để test, không dùng số đó làm kết quả finance thật. Dữ liệu không được commit vào repo.
+Use the Python of the venv where the project is installed. `--offline` uses fake FX rates for tests; never report those numbers as real finance results. Data is never committed to the repo.
 
-## Mốc tích hợp
+## 6. Integration milestones
 
-Module 04 profile thật → module 09 batch thật → module 11 schedule/backfill → module 20 recovery → module 14 cloud → một nhánh extension → nghiệm thu. Không dồn tất cả vào hai tuần cuối.
+Module 04 real profile → module 09 real batch → module 11 schedule/backfill → module 20 recovery → module 14 cloud → one branch extension → acceptance. Do not cram everything into the last two weeks.
 
-## Evidence cần lưu
+## 7. Evidence to keep
 
-Command/version/input hash, counts/key checks, query reconciliation, một screenshot/dashboard và một incident report có recovery time. Screenshot là minh họa, query/log là bằng chứng kiểm chứng được.
+Command, versions, input hash, counts and key checks, reconciliation queries, a dashboard screenshot, and an incident report with recovery time. A screenshot illustrates; queries and logs are the verifiable evidence.
 
-Liên quan: [[BI Metrics va Data Product]], [[Failure Drills]], [[Tien do va bang chung]]. Nguồn dữ liệu: [Olist Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce); kiểm tra điều kiện sử dụng trước khi chia sẻ.
+## 8. Review questions
+
+> [!question]- Why does this brief name users and decisions before tools?
+> Because the metrics, grain, freshness and acceptable error all follow from what the user decides; tools are chosen afterwards.
+
+> [!question]- What would make the payments chart wrong even though the SQL runs?
+> Joining payments together with items (fan-out), mixing UTC and local dates, using `--offline` FX, or silently dropping orders without payments.
+
+Related: [[BI Metrics and Data Products]], [[Failure Drills]], [[Progress and Evidence]], [[Module 17 - Capstone]].

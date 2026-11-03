@@ -3,30 +3,32 @@ tags: [decourse, template, incident]
 status: template
 ---
 
-# Incident report
+# Incident Report
 
-## Tác động
+Blameless: describe systems and decisions, not people.
 
-Dataset/metric/interval nào sai hoặc thiếu, người dùng bị ảnh hưởng thế nào? Chưa xác định thì ghi rõ, không đoán số.
+## Impact
+
+Which dataset/metric/interval was wrong or missing, and how were users affected? If unknown, say so — do not guess numbers.
 
 ## Timeline
 
-| Thời điểm và timezone | Sự kiện | Bằng chứng |
+| Time and timezone | Event | Evidence |
 |---|---|---|
-| Điền | Phát hiện | Log/query |
-| Điền | Giảm tác động | Thao tác |
-| Điền | Phục hồi | Query đối soát |
+| fill in | Detected | Log/query |
+| fill in | Impact contained | Action |
+| fill in | Recovered | Reconciliation query |
 
-## Nguyên nhân
+## Cause
 
-Trigger, giả định thiết kế sai, vì sao test/alert chưa bắt được. Phân biệt nguyên nhân với triệu chứng.
+Trigger, the wrong design assumption, and why tests/alerts did not catch it. Separate cause from symptom.
 
 ## Recovery
 
-Input version, lệnh, phạm vi backfill, checkpoint, thời gian khôi phục. Có mất dữ liệu không và biết bằng cách nào?
+Input version, commands, backfill range, checkpoint, time to recover. Was data lost, and how do you know?
 
-## Kiểm chứng và hành động
+## Verification and actions
 
-- [ ] Keys/counts/tiền/partition khớp đối chứng.
-- [ ] Test bắt lỗi trước fix và qua sau fix.
-- [ ] Action có chủ sở hữu, hạn và điều kiện hoàn thành.
+- [ ] Keys/counts/money/partitions match the reference.
+- [ ] A test fails before the fix and passes after it.
+- [ ] Each action has an owner, a deadline and a completion criterion.

@@ -1,0 +1,83 @@
+# 15 · Machine learning for data engineers
+
+> **Theory notes:** [[ML Features and Point-in-Time]] · **Route:** [[Roadmap]] · **Labs:** [[Labs Guide]]. Videos are optional: use the diagnostic test to decide what to watch.
+
+**Weeks:** 26–28 · elective branch · **Prerequisites:** 04, 09
+
+## Goal
+Build trustworthy training data and a tracked model: features known at prediction time, a
+time-based split, honest metrics on imbalanced data, experiments in MLflow, batch scoring.
+
+## 1. Watch
+| Video | What to watch | Length |
+|---|---|---|
+| [A Gentle Introduction to Machine Learning — StatQuest](https://www.youtube.com/watch?v=Gv9_4yMHFhI) | All | 13 min |
+| [Bias and Variance](https://www.youtube.com/watch?v=EuBBz3bI-aA) and [The Confusion Matrix — StatQuest](https://www.youtube.com/watch?v=Kdsp6soqA7o) | All | 14 min |
+| [Scikit-learn Crash Course — freeCodeCamp](https://www.youtube.com/watch?v=0B5eIE_1vpU) | All | 2 h 09 |
+| [MLflow Tutorial — codebasics](https://www.youtube.com/watch?v=6ngxBkx05Fs) | All | 51 min |
+| Deeper (optional): [Machine Learning with Python and Scikit-Learn — freeCodeCamp](https://www.youtube.com/watch?v=hDKCxebp88A) | Pick chapters | 18 h |
+
+PyTorch / TensorFlow / Keras: not needed for DE interviews at this level. Know they train neural
+networks; if curious, do one beginner tutorial after this module.
+
+## 2. Read
+- [scikit-learn: getting started](https://scikit-learn.org/stable/getting_started.html) · [pipelines & ColumnTransformer](https://scikit-learn.org/stable/modules/compose.html) · [model evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html) · [common pitfalls: data leakage](https://scikit-learn.org/stable/common_pitfalls.html)
+- [MLflow tracking quickstart](https://mlflow.org/docs/latest/ml/tracking/quickstart/)
+
+## 3. Syntax sheet
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_auc_score, average_precision_score
+
+pre = ColumnTransformer([
+    ("cat", OneHotEncoder(handle_unknown="ignore"), ["state"]),
+    ("num", SimpleImputer(strategy="median"), ["price", "freight"]),
+])
+model = Pipeline([("pre", pre), ("clf", LogisticRegression(max_iter=1000))])
+
+df = df.sort_values("order_date")                 # time split, not random
+cut = int(len(df) * 0.8)
+train, test = df.iloc[:cut], df.iloc[cut:]
+model.fit(train[features], train["y"])
+p = model.predict_proba(test[features])[:, 1]
+roc_auc_score(test["y"], p), average_precision_score(test["y"], p)
+
+import mlflow
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_experiment("my-exp")
+with mlflow.start_run():
+    mlflow.log_params({"model": "logreg"}); mlflow.log_metric("roc_auc", 0.8)
+```
+
+## 4. Practice
+Titanic or any small Kaggle dataset: baseline (majority class) vs logistic regression vs a tree
+model; confusion matrix for each.
+
+## 5. Apply to the project
+Target: will a delivered order arrive late? Build it yourself in `labs/15-ml/` first.
+1. **Feature list on paper:** for each candidate column, "known when the order is approved?"
+   yes/no. Anything about delivery or reviews is leakage.
+2. Features as a **dbt model** `ml_late_delivery_features` (one row per delivered order), with tests.
+3. Train: majority-class baseline → logistic regression → gradient boosting; time split; log all
+   three runs to MLflow; open `mlflow ui --backend-store-uri sqlite:///mlflow.db` and compare.
+4. Leakage test: a pytest that fails if any feature name is in a deny list.
+5. Batch scoring: `olist ml-score` writes `marts.order_late_risk` for orders not yet delivered.
+6. Compare with `src/olist_platform/ml.py`. Then break it on purpose: add `delivery_days` as a
+   feature and watch the metric jump. Explain why that model is useless.
+
+## 6. Self-check
+- Data leakage: define it and give an Olist example.
+- Why ROC-AUC alone can mislead when 8% of orders are late?
+- What does a data engineer own in an ML system?
+
+## Done when
+- [ ] If scoring is your main extension: experiments compared, point-in-time checks and batch scoring merged
+- [ ] Real-data metrics recorded in the README
+
+## Product-focused requirements
+
+The core of the AI branch is feature availability, point-in-time joins, dataset versions and a baseline — not tuning many models. A time split does not remove all leakage by itself: check each feature's known_at and the selection bias of a delivered-only cohort. A deny-list of column names helps but does not prove the pipeline is leakage-safe. Batch scoring and three full model experiments are mandatory only if you choose scoring as your main extension.

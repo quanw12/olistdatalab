@@ -1,10 +1,10 @@
 # Olist Data Platform
 
-## Học và ôn tập với DEcourse
+## Course and lessons: the DEcourse vault
 
-- [Lộ trình hướng sản phẩm](learning/README.md): core bắt buộc, một nhánh tự chọn, dữ liệu thật từ module dbt, bài vận hành và dự án độc lập.
-- [DEcourse — vault Obsidian tiếng Việt](DEcourse/README.md): syntax, code có expected output, tình huống áp dụng, bẫy, bài tập và lịch ôn 1–7–30 ngày. Mở thư mục `DEcourse` bằng **Open folder as vault**, bắt đầu tại `00 - Bat dau/DEcourse.md`.
-- [Production modules 19–22](learning/phase-7-production/19-incremental-cdc.md): incremental/CDC, observability/recovery, security/delivery và chuyển kiến thức sang domain mới.
+All learning material lives in [`DEcourse/`](DEcourse/README.md), an Obsidian vault kept separate from the code: the 32-week roadmap, 22 module guides, full theory lessons with runnable examples, exercises and review questions, lab instructions, project briefs and templates. Open the `DEcourse` folder with **Open folder as vault** and start at `00 - Start Here/Home.md`.
+
+This repository holds code only: the reference platform below and the lab skeletons in `labs/` that you implement while following the vault.
 
 Validate vault links and local executable examples with `python scripts/check_course.py` after installing the core dependencies. CI runs the same check; service/cloud patterns are excluded from automatic execution.
 
@@ -120,8 +120,7 @@ dashboards/           Streamlit app
 infra/terraform/      GCP lake + warehouse as code
 tests/                pytest: unit tests and an end-to-end dbt run on the sample
 docs/                 architecture, data contract, decisions, runbook, AI log
-learning/             32-week core + elective roadmap: 22 modules, production drills, independent project
-DEcourse/             standalone Obsidian vault: Vietnamese syntax, examples, applications and review
+DEcourse/             Obsidian vault with every lesson: roadmap, module guides, theory, labs guide
 labs/                 your own code for the learning path, with tests that start red
 ```
 

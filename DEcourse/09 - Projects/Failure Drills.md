@@ -5,44 +5,63 @@ module: 20
 
 # Failure Drills
 
-> [!warning] Môi trường thực hành
-> Dùng bản sao raw/warehouse ở thư mục drill với env riêng, không phá bản dữ liệu thật duy nhất. Snapshot trước thao tác; không tự động xóa database dùng chung.
+> [!warning] Practice environment
+> Use a copy of raw data and the warehouse in a drill folder with its own environment variables. Never break your only copy of real data. Snapshot before acting; never automate deleting a shared database.
 
-## Ma trận nghiệm thu
+## 1. Why drill
 
-| Drill | Kỳ vọng | Proof |
+Systems fail in ways nobody designed for: a column is renamed, an export is half-written, the network drops on page 7, an old order is corrected, a job is green while data is missing. A drill causes a failure **on purpose**, under controlled conditions, and proves that the pipeline detects it, protects consumers and recovers — with a measured time. Reading the code and believing it would work is not evidence.
+
+## 2. Acceptance matrix
+
+| Drill | Expected | Proof |
 |---|---|---|
-| Rename/drop cột bắt buộc | Contract fail, last good giữ nguyên | Exception + query version cũ |
-| Duplicate key | Không publish | Key/count query |
-| Snapshot A→B→A | Cuối là A | Hash đang publish |
-| File Parquet thiếu hoặc cũ sau commit | Retry sửa output | Đọc Parquet so DB |
-| API lỗi ở trang 7/10 | Không dataset nửa batch | Page manifest + counts |
-| API trả 404 | Không retry vô hạn | Request count |
-| Update đơn 30 ngày trước | Tiền ngày cũ sửa | So full rebuild theo key |
-| Đổi ngày / delete hết một ngày | Partition cũ không giữ số stale | EXCEPT ALL hai chiều |
-| Job exit 0 nhưng thiếu batch | Freshness alert | Expected vs published |
-| Warehouse drill mất | Rebuild từ raw | Recovery time + reconciliation |
-| Reader sau republish | Đọc được mart, không ghi/raw | Test bằng login reader |
-| Consumer crash sau write | Redelivery không duplicate/mất | Produced vs event_id sink |
-| Review đổi / model đổi | Không tái dùng nhãn cũ | Cache versions + eval |
+| Rename/drop a required column | Contract fails, last good version kept | Exception + query on the old version |
+| Duplicate key | Not published | Key/count query |
+| Snapshot A→B→A | Final state is A | Hash of the published version |
+| Parquet missing or stale after commit | Retry repairs the output | Read Parquet, compare with DB |
+| API fails on page 7/10 | No half-batch dataset | Page manifest + counts |
+| API returns 404 | No endless retries | Request count |
+| Update an order from 30 days ago | Old day's money corrected | Compare with full rebuild by key |
+| Changed date / delete a whole day | Old partition keeps no stale numbers | Two-way `EXCEPT ALL` |
+| Job exits 0 but a batch is missing | Freshness alert | Expected vs published partitions |
+| Lose the drill warehouse | Rebuild from raw | Recovery time + reconciliation |
+| Reader after republish | Can read marts, cannot write or read raw | Test with the reader login |
+| Consumer crash after write (Kafka) | Redelivery causes no duplicate/loss | Produced vs sink event_ids |
+| Review changed / model changed (LLM) | Old labels not reused | Cache versions + eval |
 
-Kafka/LLM là bắt buộc chỉ nếu chọn nhánh tương ứng; các drill core còn lại phải có evidence. Không ghi “passed” dựa vào đọc code.
+Kafka and LLM drills are mandatory only if you chose that branch; all core drills need evidence. Never write "passed" based on reading code.
 
-## Mẫu ghi kết quả
+Theory for each drill: [[Ingestion Contracts and Idempotency]], [[API Retry Pagination and Replay]], [[Incremental CDC and Backfill]], [[Observability and Recovery]], [[Security and Governance]], [[Kafka Offsets Replay and Ordering]], [[LLM Caching Evaluation and Guardrails]].
+
+## 3. How to run a drill
+
+1. **State the hypothesis:** "If the orders file loses `order_status`, the load is blocked and the dashboard keeps yesterday's data."
+2. **Prepare:** separate env vars, copy of data, record versions.
+3. **Trigger** the failure (edit the file, kill the process, block the network, delete the output).
+4. **Observe:** did a check/alert fire? How long until detection?
+5. **Recover** following the runbook; time it.
+6. **Verify** with queries (keys, counts, money, permissions).
+7. **Record** the result and fix gaps (new test, better alert, runbook update).
+
+## 4. Result template
 
 ```text
 Drill: ...
-Input snapshot/code/config: ...
+Input snapshot / code / config: ...
 Trigger: ...
 Expected: ...
-Actual và query proof: ...
-Thời gian phát hiện / phục hồi: ...
-Nguyên nhân và giới hạn: ...
-Test/commit ngăn tái diễn: ...
+Actual, with query proof: ...
+Time to detect / time to recover: ...
+Cause and limits: ...
+Test/commit preventing a repeat: ...
 ```
 
-## Tự hỏi
+## 5. Ask yourself
 
-Lỗi được phát hiện trước hay sau người dùng? Giữ dữ liệu cũ có đánh dấu stale không? Retry có làm tình hình tệ hơn không? Sau sửa, consumer có đọc được schema và quyền cũ không?
+- Was the failure detected before a user noticed?
+- Was old data kept and marked stale, or silently replaced?
+- Could the retry make things worse (duplicates, API lockout)?
+- After the fix, can consumers still read the schema with their old permissions?
 
-Liên quan: [[Incident Report]], [[Observability va Recovery]], [[Ingestion Contract va Idempotency]].
+Related: [[Incident Report]], [[Observability and Recovery]], [[Ingestion Contracts and Idempotency]], [[Module 20 - Observability and Recovery]].

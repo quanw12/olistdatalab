@@ -47,7 +47,7 @@ must be versioned too when changed; a model alias alone does not pin a hosted mo
 ## 9. Learning core before breadth
 
 The course now integrates real data at module 09 and tests production failure modes before one
-chosen specialization. `DEcourse/` is a standalone Vietnamese Obsidian vault. Modules 19–22 add
+chosen specialization. `DEcourse/` is a standalone English Obsidian vault that holds every lesson; the repo holds only code. Modules 19–22 add
 incremental/CDC, observability/recovery, security/delivery and an independent second project.
 The reference snapshot DAG and bounded-lookback mart remain intentionally limited; course
 instructions identify the missing interval/update/delete handling instead of claiming it exists.

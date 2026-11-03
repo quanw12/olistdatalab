@@ -16,8 +16,8 @@ Interviewers ask about this; a log of caught mistakes is stronger evidence than 
 - A DuckDB file named `stream.duckdb` made the schema name `stream` ambiguous → schema renamed
   to `live`; covered by `test_streaming.py`.
 - MLflow 3 refuses the old `./mlruns` file store → switched to its SQLite backend.
-**My follow-up:** I must be able to explain every file before I list it on my CV. Each module in
-`learning/` ends with a checklist; I tick it only after rebuilding the part myself.
+**My follow-up:** I must be able to explain every file before I list it on my CV. Each module guide in
+the DEcourse vault ends with a checklist; I tick it only after rebuilding the part myself.
 
 ---
 
@@ -36,7 +36,7 @@ DEcourse with syntax/applications/examples/review, then commit and push.
 
 **Changed:** core + one elective route, real-data integration from dbt, modules 19–22 for
 incremental/CDC, observability/recovery, security/delivery and independent transfer project.
-Vietnamese vault notes contain worked examples, pitfalls and recall exercises; learner
+Vault notes contain worked examples, pitfalls and recall exercises; learner
 progress/evidence starts unchecked. Lab 19 intentionally starts red and is excluded from
 the reference test suite until the learner solves it.
 
@@ -54,3 +54,14 @@ the reference test suite until the learner solves it.
 examples, isolated sample batch + keyword labelling/evaluation, and a source-only checkout
 without ignored local data. These checks do not claim broker/cloud/hosted-LLM execution or
 learner completion; real-data findings remain for the learner to measure.
+
+## 2026-11-03 · Vault becomes the single home for lessons, in English
+
+**Asked:** separate lessons from the code repo, expand the thin theory, translate everything to English.
+
+**Changed:** `learning/` and the lab instructions moved into `DEcourse/` as module guides and a
+Labs Guide; folders and notes renamed to English; every theory note rewritten as a full lesson
+(goals, concepts, runnable examples, Olist application, pitfalls, exercises, folded answers).
+`scripts/check_course.py` now also rejects Vietnamese text and links from the vault into the repo.
+
+**How I checked:** `python scripts/check_course.py` executes every runnable Python/SQL example.

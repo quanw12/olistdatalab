@@ -21,6 +21,12 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 VAULT = ROOT / "DEcourse"
+# Letters used by Vietnamese but not Portuguese (Olist reviews), plus common unaccented words.
+VIETNAMESE = re.compile(
+    r"[\u0102\u0103\u0110\u0111\u01a0\u01a1\u01af\u01b0\u1ea0-\u1ef9]"
+    r"|\b(?:va|cua|khong|nhung|duoc|nguoi|bat dau|chuyen sau|ghi chu|nhat ky)\b",
+    re.IGNORECASE,
+)
 
 
 def equivalent(actual, expected) -> bool:
@@ -73,9 +79,19 @@ def main() -> None:
                 assert equivalent(actual, expected), (path, actual, expected)
                 sql_examples += 1
 
-    # Check ordinary relative Markdown links in the vault and course module guides.
-    paths = [*notes, *(ROOT / "learning").rglob("*.md"), ROOT / "README.md",
-             ROOT / "labs" / "README.md"]
+    # The vault holds every lesson and stays self-contained: English only, no links into the repo.
+    for path in notes:
+        text = path.read_text(encoding="utf-8-sig")
+        match = VIETNAMESE.search(text)
+        assert not match, f"Vietnamese text {match.group()!r} in {path}"
+        for target in re.findall(r"(?<!!)\[[^\]]+\]\(([^)]+)\)", text):
+            if not urlsplit(target).scheme and not target.startswith("#"):
+                resolved = (path.parent / unquote(urlsplit(target).path)).resolve()
+                assert resolved.is_relative_to(VAULT.resolve()), (
+                    f"Link leaves the vault: {target} in {path}")
+
+    # Check ordinary relative Markdown links in the vault and the repo entry points.
+    paths = [*notes, ROOT / "README.md", ROOT / "labs" / "README.md"]
     for path in paths:
         for target in re.findall(r"(?<!!)\[[^\]]+\]\(([^)]+)\)",
                                  path.read_text(encoding="utf-8-sig")):

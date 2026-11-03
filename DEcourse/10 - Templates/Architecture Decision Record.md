@@ -3,27 +3,33 @@ tags: [decourse, template, architecture]
 status: template
 ---
 
-# Architecture decision record
+# Architecture Decision Record
 
-## Bối cảnh
+Copy this note for each significant decision (e.g. "Snapshot loads instead of CDC for Olist"). Short and honest beats long and generic.
 
-Người dùng, volume, latency, budget, team và ràng buộc.
+## Context
 
-## Các lựa chọn
+Users, volume, latency, budget, team and constraints. What problem forces a decision now?
 
-| Lựa chọn | Ưu điểm | Chi phí/giới hạn |
+## Options
+
+| Option | Benefits | Costs / limits |
 |---|---|---|
-| A | Điền | Điền |
-| B | Điền | Điền |
+| A | fill in | fill in |
+| B | fill in | fill in |
 
-## Quyết định
+## Decision
 
-Chọn gì, vì sao phù hợp hiện tại? Không dùng “best practice” thay cho lý do.
+What did you choose, and why does it fit **now**? Do not use "best practice" as a substitute for a reason.
 
-## Bằng chứng
+## Evidence
 
-Benchmark, test failure/recovery, query plan hoặc phản hồi người dùng.
+Benchmark, failure/recovery test, query plan or user feedback.
 
-## Khi xem xét lại
+## Consequences
 
-Ngưỡng volume/latency/cost hoặc yêu cầu mới nào làm quyết định hết phù hợp?
+What becomes easier, what becomes harder, what new risks appear?
+
+## Revisit when
+
+Which volume/latency/cost threshold or new requirement would make this decision obsolete?

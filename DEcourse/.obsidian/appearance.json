@@ -1,4 +1,6 @@
 {
   "theme": "obsidian",
-  "enabledCssSnippets": ["decourse"]
+  "enabledCssSnippets": [
+    "decourse"
+  ]
 }
