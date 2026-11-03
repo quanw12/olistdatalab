@@ -1,66 +1,102 @@
-# Learning path: build this platform one technology at a time
+# Learning roadmap: from zero to a data platform
 
-The repo root is the portfolio. This folder is how you earn it. Every module teaches one part of a
-modern data stack by **reading, rebuilding and extending** the matching part of the platform.
+The repo root is a finished **reference platform**. This folder is the road to building it yourself,
+step by step: **basics → core data engineering → modern stack → scale → ML/AI → integration**.
 
-> Rule: you list a technology on your CV only after you ticked that module's *Done when*
-> checklist and can explain its code without notes. Code you cannot explain is a liability in an
-> interview, not an asset.
+> Rules
+> 1. Never open the reference code (`src/`, `dbt/`, ...) for a task before you have a working
+>    attempt of your own. Compare **after**, and write down what differs and why.
+> 2. A technology goes on your CV only after its module's *Done when* checklist is ticked and
+>    you can explain your code without notes.
+> 3. Go in order. Each phase uses everything before it.
 
-## How to study a module
+## How to study one module (the loop)
 
-1. **Learn** — read the concepts and the official docs linked (1–3 h).
-2. **Read in this repo** — trace the code that uses the concept; run it; add `print`/breakpoints.
-3. **Build** — do the exercises in a branch. Each has an acceptance check (test, query, number).
-4. **Break it** — run the failure drills and write what happened in `docs/ai-log.md` or your notes.
-5. **Explain** — answer the interview questions out loud in English, 2 minutes each.
-6. Commit with a clear message, open a PR to yourself, let CI pass, merge.
-
-## Plan (about 16 weeks at 15–20 h/week next to school)
-
-| Weeks | Module | Stack you add | Builds / extends |
-|---|---|---|---|
-| 1 | [01 Setup, Git, CI](01-setup-git-ci.md) | Git, GitHub Actions, pytest, ruff, venv | CI pipeline, branch + PR workflow |
-| 2–3 | [02 SQL and data modelling](02-sql-modeling.md) | SQL, DuckDB, star schema, window functions | Analytical queries on the marts |
-| 3–4 | [03 Ingestion and data quality](03-ingestion-quality.md) | pandas, NumPy, Polars, Parquet, data contracts | `ingest.py`, `quality.py` |
-| 5 | [04 APIs and reliability](04-apis-reliability.md) | requests, retries, idempotency | `fx.py`, a second API source |
-| 6–7 | [05 dbt](05-dbt.md) | dbt, incremental models, tests, docs | `dbt/` models and tests |
-| 8 | [06 Orchestration](06-orchestration-airflow.md) | Apache Airflow 3 | `olist_daily` DAG, backfills |
-| 9 | [07 Docker, Postgres, BI](07-docker-postgres-bi.md) | Docker Compose, PostgreSQL, Metabase/Superset, Power BI | Serving layer + dashboard |
-| 10–11 | [08 Spark and big data](08-spark.md) | PySpark, partitions, Hadoop/Hive concepts, Delta Lake | `spark/customer_rfm.py` |
-| 11–12 | [09 Streaming with Kafka](09-kafka-streaming.md) | Kafka, consumer groups, offsets | `streaming.py` live feed |
-| 13 | [10 Cloud and IaC](10-cloud-terraform.md) | GCP (GCS, BigQuery), Terraform; Snowflake/Databricks mapping | `infra/terraform/gcp` + load to BigQuery |
-| 14 | [11 ML for data engineers](11-ml-for-de.md) | scikit-learn, MLflow, feature pipelines | `ml.py` |
-| 15 | [12 LLM and AI engineering](12-llm-ai-engineering.md) | Ollama, Claude API, structured output, RAG, LangChain | `ai_enrich.py`, text-to-SQL |
-| 16 | [13 Portfolio and interviews](13-portfolio-interviews.md) | — | Real-data numbers, demo, CV bullets |
-
-Apply for internships from **week 8** (after module 06): ingestion, SQL, dbt and Airflow on real
-data already match most intern postings. Modules 07–12 continue while you apply.
-
-## Coverage map: where each skill appears
-
-| Category | Technologies | Module |
+| Step | What | Time share |
 |---|---|---|
-| Languages | Python, SQL, Bash (CI, Docker), HCL (Terraform) | 01–10 |
-| Databases | DuckDB, PostgreSQL, Redis (cache idea in 12), Oracle → compare in 02 | 02, 07 |
-| Processing | pandas, NumPy, Polars, Spark; Hadoop/Hive concepts | 03, 08 |
-| Streaming | Kafka | 09 |
-| Orchestration / transformation | Airflow, dbt | 05, 06 |
-| Warehouse / lakehouse | DuckDB, BigQuery, Snowflake, Databricks, Delta Lake | 02, 08, 10 |
-| AI / ML | scikit-learn, MLflow, Ollama, Claude/OpenAI/Gemini APIs, Hugging Face, LangChain, FastAPI | 11, 12 |
-| BI | Metabase, Superset, Power BI, Streamlit, Jupyter | 07 |
-| Cloud / DevOps | GCP, Docker, Terraform, GitHub Actions, Linux, Git | 01, 07, 10 |
+| 1. Watch | The videos listed, at 1.25×, pausing to type every example yourself | 30% |
+| 2. Read | The official docs pages linked; they are the truth when a video is outdated | 10% |
+| 3. Syntax | The module's syntax sheet: retype each snippet, change it, break it | 10% |
+| 4. Practice | Small drills, unrelated to the project, until the syntax is automatic | 15% |
+| 5. Apply | Project tasks with hints, in `labs/` or a branch of this repo | 30% |
+| 6. Check | Self-check questions out loud in English; tick *Done when* | 5% |
+
+Stuck for more than 30 minutes? Read the hint again → official docs → search the exact error →
+ask an AI to **explain** (not to write) → only then look at the reference code. Log what you
+learned in [`docs/ai-log.md`](../docs/ai-log.md).
+
+## The roadmap (≈32 weeks at 12–15 h/week next to school)
+
+### Phase 1 · Foundations (Basic) — weeks 1–8
+| # | Module | Weeks | Main video |
+|---|---|---|---|
+| 01 | [Python from zero](phase-1-foundations/01-python.md) | 1–3 | Data with Baraa — Python Full Course (13 h) |
+| 02 | [Git, terminal and Linux](phase-1-foundations/02-git-linux.md) | 3 | freeCodeCamp Git crash course, Missing Semester |
+| 03 | [SQL from zero](phase-1-foundations/03-sql.md) | 4–6 | Data with Baraa — SQL Full Course (30 h) |
+| 04 | [pandas, NumPy, Polars](phase-1-foundations/04-dataframes.md) | 7–8 | Corey Schafer pandas, Bro Code NumPy, Baraa DataFrames |
+
+**Gate 1:** write a Python script that reads a CSV, cleans it, writes Parquet, plus SQL with joins
+and window functions on it — from a blank file, no AI.
+
+### Phase 2 · Core data engineering (Intermediate) — weeks 9–14
+| # | Module | Weeks | Main video |
+|---|---|---|---|
+| 05 | [Data modelling](phase-2-core/05-data-modeling.md) | 9 | Baraa — SQL Data Warehouse project |
+| 06 | [Ingestion and data quality](phase-2-core/06-ingestion-quality.md) | 10–11 | Medallion, data contracts, idempotency |
+| 07 | [APIs and reliability](phase-2-core/07-apis.md) | 12 | Corey Schafer requests, Caleb Curry REST |
+| 08 | [Testing, logging and CI](phase-2-core/08-testing-ci.md) | 13–14 | freeCodeCamp pytest, GitHub Actions course |
+
+**Gate 2:** your own `labs/` ingest + API extractor, tested, green in CI. Start applying for
+internships with Phases 1–2 on your CV.
+
+### Phase 3 · Modern data stack (Intermediate → Advanced) — weeks 15–20
+| # | Module | Weeks | Main video |
+|---|---|---|---|
+| 09 | [dbt](phase-3-modern-stack/09-dbt.md) | 15–16 | Data Tech dbt crash course, Luke Barousse dbt course |
+| 10 | [Docker, PostgreSQL and BI](phase-3-modern-stack/10-docker-postgres-bi.md) | 17–18 | TechWorld with Nana Docker, Luke Barousse Power BI |
+| 11 | [Airflow](phase-3-modern-stack/11-airflow.md) | 19–20 | Data with Marc (Airflow 3), Ansh Lamba full course |
+
+**Gate 3:** the batch pipeline runs on a schedule in Docker, dbt tests green, a dashboard on top.
+
+### Phase 4 · Scale (Advanced) — weeks 21–26
+| # | Module | Weeks | Main video |
+|---|---|---|---|
+| 12 | [Spark](phase-4-scale/12-spark.md) | 21–22 | Baraa "What is Spark?", Ansh Lamba PySpark |
+| 13 | [Kafka streaming](phase-4-scale/13-kafka.md) | 23–24 | TechWorld with Nana Kafka |
+| 14 | [Cloud and Terraform](phase-4-scale/14-cloud-terraform.md) | 25–26 | DevOps Directive Terraform, DE Zoomcamp |
+
+### Phase 5 · ML and AI for data engineers (Advanced) — weeks 27–29
+| # | Module | Weeks | Main video |
+|---|---|---|---|
+| 15 | [Machine learning](phase-5-ml-ai/15-ml.md) | 27 | StatQuest, freeCodeCamp scikit-learn, codebasics MLflow |
+| 16 | [LLM engineering](phase-5-ml-ai/16-llm.md) | 28–29 | Karpathy intro to LLMs, Ollama, RAG from scratch |
+
+### Phase 6 · Integration — weeks 30–32
+| # | Module | Weeks |
+|---|---|---|
+| 17 | [Capstone: everything on real data](phase-6-integration/17-capstone.md) | 30–31 |
+| 18 | [Portfolio and interviews](phase-6-integration/18-portfolio-interviews.md) | 32 |
+
+Faster if you study more hours: the order matters, the weeks do not.
+
+## Long courses to keep open in parallel
+
+| Course | Use it for |
+|---|---|
+| [Data with Baraa — channel](https://www.youtube.com/@DataWithBaraa) | Python, SQL, data warehouse, Spark/Databricks explained visually |
+| [Data with Baraa — "How I'd learn Data Engineering in 2026"](https://www.youtube.com/watch?v=1nVGaNbvuXg) | Watch once now, again at Phase 4 |
+| [DataTalksClub Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) | Free cohort course: Docker, Terraform, GCP, orchestration, dbt, Spark, Kafka. Use as a second explanation for Phases 3–4 |
+| [Luke Barousse — Data Engineer Bootcamp (27 h)](https://www.youtube.com/watch?v=ol9_NnC9-cc) | Alternative path through SQL, Python, cloud, Bash |
+| [Missing Semester (MIT)](https://missing.csail.mit.edu/) | Shell, Git, editor, debugging — the tools nobody teaches |
 
 ## Weekly rhythm
 
-- 3 sessions of build (2–3 h), 1 session of SQL practice (1 h, any site with real interview
-  questions), 1 session of review: re-explain last week's module without notes.
-- Every Sunday: update `docs/data-contract.md` or `docs/ai-log.md` with one thing you learned.
-- At school, map each course to a module (databases → 02, networks → 07/09, ML → 11).
+- 3 build sessions (2–3 h), 1 SQL practice session (1 h: [LeetCode SQL 50](https://leetcode.com/studyplan/top-sql-50/) or [DataLemur](https://datalemur.com/questions)), 1 review session (re-explain last week without notes).
+- Sunday: one entry in `docs/ai-log.md` or `docs/data-contract.md`.
+- Map school courses to modules (databases → 03/05, OS/networks → 02/10/13, ML → 15).
 
 ## Your old course
 
-The previous day-by-day course (weather pipeline, Python/Linux/DE lessons) is archived in git
-history under the tag `archive/pre-refactor-2026-11-02` (local) and in the bundle file
-`C:\Users\DELL\DE-Courses-history-2026-11-02.bundle`. To read an old lesson:
+The previous day-by-day course is archived in the local tag `archive/pre-refactor-2026-11-02`
+and in `C:\Users\DELL\DE-Courses-history-2026-11-02.bundle`. Read an old file with
 `git show archive/pre-refactor-2026-11-02:02-python/README.md`.

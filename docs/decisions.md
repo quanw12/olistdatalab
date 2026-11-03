@@ -20,7 +20,7 @@ half-good table, and yesterday's data stays available when today's file is broke
 ## 4. Idempotency by file hash
 Re-running the pipeline with the same files does nothing. A changed file is reloaded in full
 (Olist is a snapshot, not a change feed). For a change feed you would switch to merge on key +
-updated_at; see learning module 05.
+updated_at; see learning module 09 (dbt incremental).
 
 ## 5. Pre-aggregate before joining
 Items and payments are summed per order before joining to orders, because joining two

@@ -110,7 +110,8 @@ dashboards/           Streamlit app
 infra/terraform/      GCP lake + warehouse as code
 tests/                pytest: unit tests and an end-to-end dbt run on the sample
 docs/                 architecture, data contract, decisions, runbook, AI log
-learning/             the study path that builds this repo, one module per technology
+learning/             32-week roadmap: 18 modules, basics -> integration, videos + docs + hints
+labs/                 your own code for the learning path, with tests that start red
 ```
 
 ## Status
