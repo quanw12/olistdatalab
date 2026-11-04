@@ -50,7 +50,7 @@ The repo recommends Python 3.12; if you use another version, record it and test.
 
 ```toml
 [project]
-name = "olist-platform"
+name = "OlistDataLab"                 # distribution name (pip list); import name is olist_platform
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [

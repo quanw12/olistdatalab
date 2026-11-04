@@ -119,7 +119,7 @@ spark/                PySpark jobs
 dashboards/           Streamlit app
 infra/terraform/      GCP lake + warehouse as code
 tests/                pytest: unit tests and an end-to-end dbt run on the sample
-docs/                 architecture, data contract, decisions, runbook, AI log
+docs/                 data contract, decisions, runbook, AI log
 DEcourse/             Obsidian vault with every lesson: roadmap, module guides, theory, labs guide
 labs/                 your own code for the learning path, with tests that start red
 ```
